@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 export const MainWrapper = styled.div`
   width: 1200px;
   display: flex;
-  margin: 100px;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 0px 10px gray;
@@ -57,7 +56,7 @@ export const ContentWrapper = styled.div`
 export const ContentName = styled.div`
   margin: 16px 0px;
 `
-export const ContentBox = styled.textarea`
+export const ContentBox = styled.input`
   width: 996px;
   height: 480px;
   border: 1px solid #BDBDBD;
@@ -79,6 +78,8 @@ export const AdressBox = styled.input`
 export const AdressWrapper = styled.div`
 `
 export const AdressSubWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
   width: 498px;
 `
 export const Search = styled.span`
@@ -166,4 +167,7 @@ export const Button = styled.button`
   background-color: #FFD600;
   border: 0px;
   margin-top: 30px;
+`
+export const ErrorMessage = styled.div`
+  color: red;
 `
