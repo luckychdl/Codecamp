@@ -69,7 +69,7 @@ export default function AAA () {
       setLinkError('')
     }
   }
-
+//test
   const error = () => {
         if( user === '') {
           setUserError('이름을 입력해주세요.')
