@@ -8,15 +8,11 @@ export default function AAA () {
   const [password, setPassword] = useState('')
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  const [adress, setAdress] = useState('')
-  const [link, setLink] = useState('')
 
   const [userError, setUserError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [titleError, setTitleError] = useState('')
   const [contentError, setContentError] = useState('')
-  const [adressError, setAdressError] = useState('')
-  const [link_Error, setLinkError] = useState('')
 
   function useError(event) {
     setUser(event.target.value)
@@ -53,41 +49,21 @@ export default function AAA () {
       setContentError('')
     }
   }
-  function adError(event) {
-    setAdress(event.target.value)
-    if (adress === '') {
-      setAdressError('주소를 입력해주세요.')
-    } else {
-      setAdressError('')
-    }
-  }
-  function linkError(event) {
-    setLink(event.target.value)
-    if (link === '') {
-      setLinkError('링크를 입력해주세요.')
-    } else {
-      setLinkError('')
-    }
-  }
 //test
   const error = () => {
         if( user === '') {
           setUserError('이름을 입력해주세요.')
-        } else if ( password === '') {
+        } if ( password === '') {
           setPasswordError('비밀번호를 입력해주세요.')
         } 
-        else if ( title === '') {
+        if ( title === '') {
           setTitleError('제목을 작성해주세요.')
         } 
-        else if ( content === '') {
+        if ( content === '') {
           setContentError('내용을 작성해주세요.')
-        } 
-        else if ( adress === '') {
-          setAdressError('주소를 입력해주세요.')
-        } 
-        else if ( link === '') {
-          setLinkError('링크를 입력해주세요.')
-        } 
+        }else {
+          alert('게시물을 등록합니다')
+        }
       
   }
 
@@ -120,22 +96,18 @@ export default function AAA () {
       <AdressWrapper>
         <Adress>주소</Adress>
         <AdressSubWrapper>
-          <AdressBox placeholder='02750' onChange={adError}></AdressBox>
-          <ErrorMessage>{adressError}</ErrorMessage>
+          <AdressBox placeholder='02750'></AdressBox>
           <Search>우편번호 검색</Search>
         </AdressSubWrapper>
       <AdressBoxWrapper>
-        <AdressSubBox  onChange={adError}></AdressSubBox>
-        <ErrorMessage>{adressError}</ErrorMessage>
-        <AdressSubBox  onChange={adError}></AdressSubBox>
-        <ErrorMessage>{adressError}</ErrorMessage>
+        <AdressSubBox></AdressSubBox>
+        <AdressSubBox></AdressSubBox>
       </AdressBoxWrapper>
       </AdressWrapper>
       <YoutubeWrapper>
         <YoutubeName>유튜브</YoutubeName>
         <YoutubeSubWrapper>
-          <YoutubeBox placeholder='링크를 복사해주세요.' onChange={linkError}></YoutubeBox>
-          <ErrorMessage>{link_Error}</ErrorMessage>
+          <YoutubeBox placeholder='링크를 복사해주세요.'></YoutubeBox>
         </YoutubeSubWrapper>
       </YoutubeWrapper>
       <PhotoWarpper>
