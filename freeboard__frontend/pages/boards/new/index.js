@@ -1,21 +1,74 @@
 import {useState} from 'react'
-import {Title,Name,Wrapper, Box, MainWrapper, SubWrapper, TitleBox,ErrorMessage, TitleWrapper, TitleName, ContentWrapper, ContentName, ContentBox,Adress,AdressBox,AdressWrapper,AdressSubWrapper,Search,AdressSubBox,AdressBoxWrapper,YoutubeWrapper,YoutubeSubWrapper,YoutubeName,YoutubeBox,PhotoWarpper,Photo,PhotoSubWrapper,Plus,Upload,PhotoMainWrapper,Set,RadioWrapper,Radio,Button,ButtonWrapper,Word,RadioSubWrapper } from '../../../styles/boards/new/BoardsNew.styles'
+import {useMutation, gql} from '@apollo/client'
+import {
+  Title,
+  Name,
+  Wrapper, 
+  Box, 
+  MainWrapper, 
+  SubWrapper, 
+  TitleBox,
+  ErrorMessage, 
+  TitleWrapper, 
+  TitleName, 
+  ContentWrapper, 
+  ContentName, 
+  ContentBox,
+  Adress,
+  AdressBox,
+  AdressWrapper,
+  AdressSubWrapper,
+  Search,
+  AdressSubBox,
+  AdressBoxWrapper,
+  YoutubeWrapper,
+  YoutubeSubWrapper,
+  YoutubeName,
+  YoutubeBox,
+  PhotoWarpper,
+  Photo,
+  PhotoSubWrapper,
+  Plus,
+  Upload,
+  PhotoMainWrapper,
+  Set,
+  RadioWrapper,
+  Radio,
+  Button,
+  Word,
+  RadioSubWrapper } from '../../../styles/boards/new/BoardsNew.styles'
 
 
 export default function AAA () {
 
   const [user, setUser] =  useState('')
-  const [password, setPassword] = useState('')
-  const [title, setTitle] = useState('')
+  const [passwordA, setPasswordA] = useState('')
+  const [titleA, setTitleA] = useState('')
   const [content, setContent] = useState('')
 
   const [userError, setUserError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-  const [titleError, setTitleError] = useState('')
+  const [passwordAError, setPasswordAError] = useState('')
+  const [titleAError, setTitleAError] = useState('')
   const [contentError, setContentError] = useState('')
+
+  const [writer, setWriter] = useState() 
+  const [password, setPassword] = useState()
+  const [title, setTitle] = useState() 
+  const [contents, setContents] = useState()
+
+  const [click] = useMutation(
+    gql`
+    mutation zzzz($createBoardInput: CreateBoardInput!) {
+      createBoard(createBoardInput: $createBoardInput) {
+        writer, title, contents
+      }
+    }
+    `
+  )
 
   function useError(event) {
     setUser(event.target.value)
+    setWriter(event.target.value)
     if (user === '') {
       setUserError('이름을 입력해주세요.')
     } else {
@@ -24,48 +77,62 @@ export default function AAA () {
   }
 
   function pwError(event) {
-    setPassword(event.target.value)
-    if (password === '') {
-      setPasswordError('비밀번호를 입력해주세요.')
+    setPasswordA(event.target.value)
+    setPassword((event.target.value))
+    if (passwordA === '') {
+      setPasswordAError('비밀번호를 입력해주세요.')
   } else {
-    setPasswordError('')
+    setPasswordAError('')
   }
   } 
 
   function titError(event) {
+    setTitleA(event.target.value)
     setTitle(event.target.value)
-    if (title === '') {
-      setTitleError('제목을 작성해주세요.')
+    if (titleA === '') {
+      setTitleAError('제목을 작성해주세요.')
     } else {
-      setTitleError('')
+      setTitleAError('')
     }
   }
 
   function conError(event) {
     setContent(event.target.value)
+    setContents(event.target.value)
     if (content === '') {
       setContentError('내용을 작성해주세요.')
     } else {
       setContentError('')
     }
   }
+  
 //test
   const error = () => {
+    click({
+      variables: {
+        createBoardInput: {
+          writer: writer,
+          password: password,
+          title: title,
+          contents: contents
+        }
+      }
+    })
         if( user === '') {
           setUserError('이름을 입력해주세요.')
-        } if ( password === '') {
-          setPasswordError('비밀번호를 입력해주세요.')
+        } if ( passwordA === '') {
+          setPasswordAError('비밀번호를 입력해주세요.')
         } 
-        if ( title === '') {
-          setTitleError('제목을 작성해주세요.')
+        if ( titleA === '') {
+          setTitleAError('제목을 작성해주세요.')
         } 
         if ( content === '') {
           setContentError('내용을 작성해주세요.')
         }else {
           alert('게시물을 등록합니다')
         }
-      
   }
+
 
 
   return (
@@ -80,13 +147,13 @@ export default function AAA () {
         <Wrapper>  
           <Name>비밀번호</Name>
           <Box type='password' placeholder='비밀번호를 입력해주세요.' onChange={pwError}></Box>
-          <ErrorMessage>{passwordError}</ErrorMessage>
+          <ErrorMessage>{passwordAError}</ErrorMessage>
         </Wrapper>
       </SubWrapper>
       <TitleWrapper>
         <TitleName>제목</TitleName>
         <TitleBox placeholder='제목을 작성해주세요.' onChange={titError}></TitleBox>
-        <ErrorMessage>{titleError}</ErrorMessage>
+        <ErrorMessage>{titleAError}</ErrorMessage>
       </TitleWrapper>
       <ContentWrapper>
         <ContentName>내용</ContentName>

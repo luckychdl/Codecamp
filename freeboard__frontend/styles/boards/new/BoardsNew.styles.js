@@ -34,6 +34,7 @@ export const Box = styled.input`
   height: 52px;
   border: 1px solid #BDBDBD;
   margin-bottom: 10px;
+  padding: 10px;
 `
 
 export const TitleWrapper = styled.div`
@@ -46,6 +47,7 @@ export const TitleBox = styled.input`
   height: 52px;
   border: 1px solid #BDBDBD;
   margin-bottom: 10px;
+  padding: 10px;
 `
 export const TitleName = styled.div`
   font-size: 16px;
@@ -117,6 +119,7 @@ export const YoutubeBox = styled.input`
   width: 996px;
   height: 45.78px;
   margin-bottom: 36px;
+  padding: 10px;
 `
 export const PhotoWarpper = styled.div`
 `
@@ -163,8 +166,6 @@ margin-right: 12px;
 `
 export const Word = styled.div`
 margin-right: 16px;
-`
-export const ButtonWrapper = styled.div`
 `
 export const Button = styled.button`
   width: 179px;
