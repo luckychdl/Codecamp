@@ -107,8 +107,9 @@ export default function AAA () {
   }
   
 //test
-  const error = () => {
-    click({
+  async function error () {
+    try{
+    const result = await click({
       variables: {
         createBoardInput: {
           writer: writer,
@@ -118,19 +119,23 @@ export default function AAA () {
         }
       }
     })
-        if( user === '') {
-          setUserError('이름을 입력해주세요.')
-        } if ( passwordA === '') {
-          setPasswordAError('비밀번호를 입력해주세요.')
-        } 
-        if ( titleA === '') {
-          setTitleAError('제목을 작성해주세요.')
-        } 
-        if ( content === '') {
-          setContentError('내용을 작성해주세요.')
-        }else {
-          alert('게시물을 등록합니다')
-        }
+    alert(result.data.createBoard.message)
+  } catch(error){
+    alert(error.message)
+  }
+    if( user === '') {
+      setUserError('이름을 입력해주세요.')
+    } if ( passwordA === '') {
+      setPasswordAError('비밀번호를 입력해주세요.')
+    } 
+    if ( titleA === '') {
+      setTitleAError('제목을 작성해주세요.')
+    } 
+    if ( content === '') {
+      setContentError('내용을 작성해주세요.')
+    }else {
+      alert('게시물을 등록합니다')
+    }
   }
 
 
