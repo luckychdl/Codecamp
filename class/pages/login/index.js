@@ -27,7 +27,7 @@ export default function LoginPage() {
   const ccc = () => {
     if( id === '') {
       setIdError('아이디를 입력해주세요.')
-    } else if ( password === '') {
+    } if ( password === '') {
       setPwError('비밀번호를 입력해주세요.')
     } else {
       alert ('로그인을 하시겠습니까?')

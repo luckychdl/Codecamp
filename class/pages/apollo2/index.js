@@ -1,8 +1,17 @@
 import { useState } from "react"
-import {useMutation, gql} from '@apollo/client'
+import { useMutation, gql } from '@apollo/client'
+import { useRouter } from "next/router"
 
+
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!){
+    createBoard(createBoardInput: $createBoardInput){
+      _id
+    }
+  }
+`
 export default function ApolloPage() {
-
+  const router = useRouter()
 
   const [writer, setWriter] = useState()
   const [password, setPassword] = useState()
@@ -10,20 +19,7 @@ export default function ApolloPage() {
   const [contents, setContents] = useState()
 
 
-  const [asdf] = useMutation(
-    gql`
-      mutation zzzz($writer:String, $password:String, $title:String, $contents:String){
-        createBoard(
-          writer:$writer, 
-          password:$password, 
-          title:$title, 
-          contents:$contents
-        ){
-          message 
-        }
-      }
-    `
-  )
+  const [Mutation] = useMutation(CREATE_BOARD)
 
   function onChageWriter(event) {
     setWriter(event.target.value)
@@ -42,15 +38,17 @@ export default function ApolloPage() {
 
   async function onClickSubmit () {
     try{
-      const result = await asdf({
-        variables: {
-          writer: writer,
-          password: password,
-          title: title,
-          contents: contents
+      const result = await Mutation({
+        variables: { createBoardInput: {
+            writer: writer,
+            password: password,
+            title: title,
+            contents: contents
+          } 
         }
       })
-      alert(result.data.createBoard.message)
+      alert(result.data.createBoard._id)
+      router.push(`/detail/${result.data.createBoard._id}`)
     } catch(error) {
       alert(error.message)
     }

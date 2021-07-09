@@ -42,9 +42,9 @@ const myShopping = [
 		{ category: "장난감", price: 5000  },
 		{ category: "의류", price: 10000　 },
 ]
-let count = 0
-let price = 0
-let grade = ''
+let count = 0     // 구매한 횟수를 담아주는 변수
+let price = 0     // 구매한 총 금액을 담아주는 변수
+let grade = ''    // 구매한 횟수에 따라 결정되는 등급을 담아주는 변수
 for (let i = 0; i < myShopping.length; i ++) { 
   if ( myShopping[i].category === '의류') {
     count = count + 1;
