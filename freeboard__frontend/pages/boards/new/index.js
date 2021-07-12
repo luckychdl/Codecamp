@@ -1,5 +1,6 @@
-import {useState} from 'react'
-import {useMutation, gql} from '@apollo/client'
+import { useState } from 'react'
+import { useMutation, gql } from '@apollo/client'
+import { useRouter } from "next/router"
 import {
   Title,
   Name,
@@ -38,6 +39,13 @@ import {
   Word,
   RadioSubWrapper } from '../../../styles/boards/new/BoardsNew.styles'
 
+const CREATE_BOARD = gql`
+  mutation zzzz($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      _id
+    }
+  }
+`
 
 export default function AAA () {
 
@@ -56,15 +64,8 @@ export default function AAA () {
   const [title, setTitle] = useState() 
   const [contents, setContents] = useState()
 
-  const [click] = useMutation(
-    gql`
-    mutation zzzz($createBoardInput: CreateBoardInput!) {
-      createBoard(createBoardInput: $createBoardInput) {
-        writer, title, contents
-      }
-    }
-    `
-  )
+  const router = useRouter()
+  const [click] = useMutation(CREATE_BOARD)
 
   function useError(event) {
     setUser(event.target.value)
@@ -109,17 +110,16 @@ export default function AAA () {
 //test
   async function error () {
     try{
-    const result = await click({
-      variables: {
-        createBoardInput: {
-          writer: writer,
-          password: password,
-          title: title,
-          contents: contents
+      const result = await click({
+        variables: { createBoardInput: {
+            writer: writer,
+            password: password,
+            title: title,
+            contents: contents
+          }
         }
-      }
-    })
-    alert(result.data.createBoard.message)
+      })
+    router.push(`/detail/${result.data.createBoard._id}`)
   } catch(error){
     alert(error.message)
   }
