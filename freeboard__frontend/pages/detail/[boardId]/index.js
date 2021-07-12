@@ -22,13 +22,15 @@ import {
 
 const FETCH_BOARD = gql`
   query fetchBord($boardId: ID!) {
-    fetchBoard (boadId: $boardId) {
+    fetchBoard (boardId: $boardId) {
       writer
+      createdAt
       title
       contents
     }
   }
 `
+
 
 export default function DetailPage () {
 
@@ -44,8 +46,8 @@ export default function DetailPage () {
         <NameWrapper>
           <Profile src='/FreeBoard/Profile.png'/>
           <SubWrapper>
-            <Name>{data ? data.fetchBoard.writer : 'None'}</Name>
-            <Date>Date:2021.02.18</Date>
+            <Name>{data && data.fetchBoard.writer}</Name>
+            <Date>{data && data.fetchBoard.createdAt}</Date>
           </SubWrapper>
         </NameWrapper>
         <LinkWrapper>
@@ -55,9 +57,9 @@ export default function DetailPage () {
       </HeadWrapper>
 
       <Border></Border>
-      <Title>{data ? data.fetchBoard.title : 'None'}</Title>
+      <Title>{data && data.fetchBoard.title}</Title>
       <Image src='/FreeBoard/Image.png'/>
-      <Content>{data ? data.fetchBoard.contents : 'None'}</Content>
+      <Content>{data && data.fetchBoard.contents}</Content>
 
       <Youtube></Youtube>
 

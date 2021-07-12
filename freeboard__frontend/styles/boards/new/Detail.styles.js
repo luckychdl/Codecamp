@@ -8,7 +8,7 @@ export const MainWrapper = styled.div`
   height: 1602px;
   padding: 84px 102px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-  margin: 150px;
+  margin: 100px;
 `
 export const HeadWrapper = styled.div`
   width: 996px;
@@ -33,6 +33,7 @@ export const Name = styled.div`
   font-size: 24px;
 `
 export const Date = styled.div`
+  width : 300px;
   font-size: 16px;
   color: #828282;
 `
@@ -72,6 +73,7 @@ export const Content = styled.div`
   width: 996px;
   height: 96px;
   margin-bottom: 120px;
+  font-size: 16px;
 `
 export const Youtube = styled.div`
   width: 486px;
@@ -80,6 +82,8 @@ export const Youtube = styled.div`
 `
 export const LikeMainWrapper = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 120px;
 `
 export const Like = styled.img`

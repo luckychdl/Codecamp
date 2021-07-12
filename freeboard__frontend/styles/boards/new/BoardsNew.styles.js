@@ -8,7 +8,7 @@ export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid gray;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 `
 export const Title = styled.h1`
   font-size: 36px;
