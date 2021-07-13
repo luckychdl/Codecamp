@@ -45,7 +45,7 @@ JSON.parse(JSON.stringify(product))     // 깊은 복사
 // __proto__: Object 
 
 
-// 7월 12일
+// 2021 07 12
 
 구조분해할당
 
@@ -95,3 +95,66 @@ const [child1, child2] = getClassmates('훈이', '맹구')
 // "맹구"
 // child2
 // "훈이"
+
+
+
+// 2021 07 13
+// map
+const classmate = ['철수', '영희', '훈이']
+
+classmate.map((data) => data + '바보')
+// (3) ["철수바보", "영희바보", "훈이바보"]
+const classmates = classmate.map((data) => data + '바보')
+// (3) ["철수바보", "영희바보", "훈이바보"]
+const aaa = [{name: '철수'}, {name: '영희'}, {name: '훈이'}]
+
+const bbb = aaa.map((data) => data+'바보')
+
+const ccc = aaa.map((data) => ({name: `${data.name}바보`}))
+// (3) [{…}, {…}, {…}]
+// 0: {name: "철수바보"}
+// 1: {name: "영희바보"}
+// 2: {name: "훈이바보"}
+// length: 3
+// __proto__: Array(0)
+
+const classmates = [
+  {name: '철수', age: 13},
+  {name: '영희',age: 10},
+  {name:'훈이', age: 11}
+]
+
+classmates.map((data) => ({...data, school:'토끼 초등학교'}))
+
+// (3) [{…}, {…}, {…}]
+// 0: {name: "철수", age: 13}
+// 1: {name: "영희", age: 10}
+// 2: {name: "훈이", age: 11}
+// length: 3
+// __proto__: Array(0)
+
+const classmates = [
+  {name: '철수', age: 13},
+  {name: '영희',age: 10},
+  {name:'훈이', age: 11}
+]
+
+classmates.map((data) => ({name: data.name,age: data.age, school:'다람쥐 초등학교'}))
+
+// (3) [{…}, {…}, {…}]
+// 0: {name: "철수", age: 13, school: "다람쥐 초등학교"}
+// 1: {name: "영희", age: 10, school: "다람쥐 초등학교"}
+// 2: {name: "훈이", age: 11, school: "다람쥐 초등학교"}
+// length: 3
+// __proto__: Array(0)
+
+classmates.map((data) => ({...data,school:'다람쥐 초등학교'}))
+
+// (3) [{…}, {…}, {…}]
+// 0: {name: "철수", age: 13, school: "다람쥐 초등학교"}
+// 1: {name: "영희", age: 10, school: "다람쥐 초등학교"}
+// 2: {name: "훈이", age: 11, school: "다람쥐 초등학교"}
+// length: 3
+// __proto__: Array(0)
+
+const fruits = [{}]

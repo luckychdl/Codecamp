@@ -7,69 +7,90 @@ import { CREATE_BOARD } from './BoardWrite.queries'
 
 export default function BoardWrite () {
 
-  const [user, setUser] =  useState('')
-  const [passwordA, setPasswordA] = useState('')
-  const [titleA, setTitleA] = useState('')
-  const [content, setContent] = useState('')
+  const [writerError, setWriterError] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+  const [titleError, setTitleError] = useState('')
+  const [contentsError, setContentsError] = useState('')
 
-  const [userError, setUserError] = useState('')
-  const [passwordAError, setPasswordAError] = useState('')
-  const [titleAError, setTitleAError] = useState('')
-  const [contentError, setContentError] = useState('')
+  const [writer, setWriter] = useState('') 
+  const [password, setPassword] = useState('')
+  const [title, setTitle] = useState('') 
+  const [contents, setContents] = useState('')
 
-  const [writer, setWriter] = useState() 
-  const [password, setPassword] = useState()
-  const [title, setTitle] = useState() 
-  const [contents, setContents] = useState()
+  const [active, setActive] = useState(false)
 
   const router = useRouter()
   const [click] = useMutation(CREATE_BOARD)
 
   function useError(event) {
-    setUser(event.target.value)
     setWriter(event.target.value)
-    if (user === '') {
-      setUserError('이름을 입력해주세요.')
+    if (event.target.value !== '') {
+      setWriterError('')
+    }
+
+    if (event.target.value && password && title && contents) {
+      setActive(true)
     } else {
-      setUserError('')
+      setActive(false)
     }
   }
 
   function pwError(event) {
-    setPasswordA(event.target.value)
-    setPassword((event.target.value))
-    if (passwordA === '') {
-      setPasswordAError('비밀번호를 입력해주세요.')
+    setPassword(event.target.value)
+    if (event.target.value !== '') {
+    setPasswordError('')
+  }
+
+  if (writer && event.target.value && title && contents) {
+    setActive(true)
   } else {
-    setPasswordAError('')
+    setActive(false)
   }
   } 
 
   function titError(event) {
-    setTitleA(event.target.value)
     setTitle(event.target.value)
-    if (titleA === '') {
-      setTitleAError('제목을 작성해주세요.')
+    if (event.target.value !== ''){
+      setTitleError('')
+    }
+
+    if (writer && password && event.target.value && contents) {
+      setActive(true)
     } else {
-      setTitleAError('')
+      setActive(false)
     }
   }
 
   function conError(event) {
-    setContent(event.target.value)
     setContents(event.target.value)
-    if (content === '') {
-      setContentError('내용을 작성해주세요.')
+    if (event.target.value !== '')  {
+      setContentsError('')
+    }
+
+    if (writer && password && title && event.target.value) {
+      setActive(true)
     } else {
-      setContentError('')
+      setActive(false)
     }
   }
   
 //test
   async function error () {
-    try{
-      const result = await click({
-        variables: { createBoardInput: {
+    if( writer === '') {
+      setWriterError('이름을 입력해주세요.')
+    } if ( password === '') {
+      setPasswordError('비밀번호를 입력해주세요.')
+    } 
+    if ( title === '') {
+      setTitleError('제목을 작성해주세요.')
+    } 
+    if ( contents === '') {
+      setContentsError('내용을 작성해주세요.')
+    }
+    if( writer !== '' && password !== '' && title !== '' && contents !==''){
+      try{
+        const result = await click({
+          variables: { createBoardInput: {
             writer: writer,
             password: password,
             title: title,
@@ -77,37 +98,29 @@ export default function BoardWrite () {
           }
         }
       })
-    router.push(`/detail/${result.data.createBoard._id}`)
-  } catch(error){
-    alert(error.message)
-  }
-    if( user === '') {
-      setUserError('이름을 입력해주세요.')
-    } if ( passwordA === '') {
-      setPasswordAError('비밀번호를 입력해주세요.')
-    } 
-    if ( titleA === '') {
-      setTitleAError('제목을 작성해주세요.')
-    } 
-    if ( content === '') {
-      setContentError('내용을 작성해주세요.')
-    }else {
-      alert('게시물을 등록합니다')
+      alert('게시물이 성곡적으로 등록되었습니다')
+      router.push(`/detail/${result.data.createBoard._id}`)
+    } catch(error){
+      alert(error.message)
     }
   }
+}
 
 
 
-  return <BoardWriteUI 
-    aaa={useError}
-    aaaa={userError}
-    bbb={pwError}
-    bbbb={passwordAError}
-    ccc={titError}
-    cccc={titleAError}
-    ddd={conError}
-    dddd={contentError}
-    eee={error}
+  return (
+    <BoardWriteUI 
+      useError={useError}
+      pwError={pwError}
+      titError={titError}
+      conError={conError}
+      error={error}
+      passwordError={passwordError}
+      writerError={writerError}
+      titleError={titleError}
+      contentsError={contentsError}
+      active={active}
     />
+  )
 }
   

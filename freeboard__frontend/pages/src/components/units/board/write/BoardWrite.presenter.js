@@ -40,32 +40,30 @@ import {
 
 export default function BoardWriteUI (props) {
 
-
-
 return (
   <MainWrapper>
     <Title>게시물 등록</Title>
     <SubWrapper>
       <Wrapper>
         <Name>작성자*</Name>
-        <Box placeholder='이름을 적어주세요.' onChange={props.aaa}></Box>
-        <ErrorMessage>{props.aaaa}</ErrorMessage>
+        <Box placeholder='이름을 적어주세요.' onChange={props.useError}></Box>
+        <ErrorMessage>{props.writerError}</ErrorMessage>
       </Wrapper>
       <Wrapper>  
         <Name>비밀번호</Name>
-        <Box type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.bbb}></Box>
-        <ErrorMessage>{props.bbbb}</ErrorMessage>
+        <Box type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.pwError}></Box>
+        <ErrorMessage>{props.passwordError}</ErrorMessage>
       </Wrapper>
     </SubWrapper>
     <TitleWrapper>
       <TitleName>제목</TitleName>
-      <TitleBox placeholder='제목을 작성해주세요.' onChange={props.ccc}></TitleBox>
-      <ErrorMessage>{props.cccc}</ErrorMessage>
+      <TitleBox placeholder='제목을 작성해주세요.' onChange={props.titError}></TitleBox>
+      <ErrorMessage>{props.titleError}</ErrorMessage>
     </TitleWrapper>
     <ContentWrapper>
       <ContentName>내용</ContentName>
-      <ContentBox placeholder='내용을 작성해주세요.' onChange={props.ddd}></ContentBox>
-      <ErrorMessage>{props.dddd}</ErrorMessage>
+      <ContentBox placeholder='내용을 작성해주세요.' onChange={props.conError}></ContentBox>
+      <ErrorMessage>{props.contentsError}</ErrorMessage>
     </ContentWrapper>
     <AdressWrapper>
       <Adress>주소</Adress>
@@ -111,7 +109,7 @@ return (
       </RadioSubWrapper>
     </RadioWrapper>
     
-    <Button onClick={props.eee}>등록하기</Button>
+    <Button onClick={props.error} active={props.active}>등록하기</Button>
   </MainWrapper>
 
 )

@@ -171,7 +171,7 @@ export const Button = styled.button`
   width: 179px;
   height: 52px;
   font-weight: bold;
-  background-color: #FFD600;
+  background-color: ${(props) => props.active ? '#ffd600': ''};
   border: 0px;
   margin-top: 30px;
   cursor: pointer;
