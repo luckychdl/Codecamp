@@ -157,4 +157,108 @@ classmates.map((data) => ({...data,school:'다람쥐 초등학교'}))
 // length: 3
 // __proto__: Array(0)
 
-const fruits = [{}]
+const classmates = ['aaa','bbb','ccc']
+
+classmates.filter(data => data === 'aaa')
+
+// ["aaa"]
+
+classmates.filter(data => data !== 'aaa')
+
+// (2) ["bbb", "ccc"]
+
+const age = [10, 15, 13]
+
+age.filter(data => data >= 15)
+
+// [15]
+
+const classmates2 = [
+  {age: 10},
+  {age: 15},
+  {age: 13}
+]
+
+classmates2.filter(data => data.age >= 15)
+// [{…}]
+// 0: {age: 15}
+// length: 1
+// __proto__: Array(0)
+
+const classmates = [
+  {name: '철수', age: 10, school:'토끼초등학교'},
+  {name: '영희', age: 13, school:'다람쥐초등학교'},
+  {name: '훈이', age: 11, school:'토끼초등학교'}
+]
+
+classmates.filter(data => data.school === '토끼초등학교')
+
+// (2) [{…}, {…}]
+// 0: {name: "철수", age: 10, school: "토끼초등학교"}
+// 1: {name: "훈이", age: 11, school: "토끼초등학교"}
+// length: 2
+// __proto__: Array(0)
+
+classmates.filter(data => data.age === 11)
+
+// [{…}]
+// 0: {name: "훈이", age: 11, school: "토끼초등학교"}
+// length: 1
+// __proto__: Array(0)
+
+classmates.filter(data => data.name === '영희')
+
+// [{…}]
+// 0: {name: "영희", age: 13, school: "다람쥐초등학교"}
+// length: 1
+// __proto__: Array(0)
+
+classmates.map((data) => ({...data, location: 'seoul'}))
+
+// (3) [{…}, {…}, {…}]
+// 0: {name: "철수", age: 10, school: "토끼초등학교", location: "seoul"}
+// 1: {name: "영희", age: 13, school: "다람쥐초등학교", location: "seoul"}
+// 2: {name: "훈이", age: 11, school: "토끼초등학교", location: "seoul"}
+// length: 3
+// __proto__: Array(0)
+
+classmates
+  .filter(data => data.age >= 11)
+  .map(data => ({ ...data, gender: 'M'}))
+
+// (2) [{…}, {…}]
+// 0: {name: "영희", age: 13, school: "다람쥐초등학교", gender: "M"}
+// 1: {name: "훈이", age: 11, school: "토끼초등학교", gender: "M"}
+// length: 2
+// __proto__: Array(0)
+
+const classmates = [
+  {name: '철수', age: 10, school:'토끼초등학교'},
+  {name: '영희', age: 13, school:'다람쥐초등학교'},
+  {name: '훈이', age: 11, school:'토끼초등학교'}
+]
+
+classmates
+  .filter(data => data.school === '토끼초등학교')
+  .map(data => ({ ...data, candy: 10}))
+
+// (2) [{…}, {…}]
+// 0: {name: "철수", age: 10, school: "토끼초등학교", candy: 10}
+// 1: {name: "훈이", age: 11, school: "토끼초등학교", candy: 10}
+// length: 2
+// __proto__: Array(0)
+
+classmates
+  .filter(data => data.school === '다람쥐초등학교')
+  .map(data => `${data.name}어린이`)
+
+// ["영희어린이"]
+
+classmates
+  .filter(data => data.school === '다람쥐초등학교')
+  .map(data => ({...data,name: `${data.name}어린이`}))
+
+// [{…}]
+// 0: {name: "영희어린이", age: 13, school: "다람쥐초등학교"}
+// length: 1
+// __proto__: Array(0)

@@ -1,4 +1,4 @@
-import {Fruits, Number,Wrapper,Main} from './map2.styles'
+import {Fruits, Number,} from './map2.styles'
 
 const fruits = [
   { number: 1, title: "레드향" },
@@ -19,13 +19,27 @@ export default function map2Page() {
 
   
   return(
-    <Main>
-      <Wrapper>
-        {fruits.map(data => <Number> {data.number}</Number>)}
-      </Wrapper>
-      <Wrapper>
-        {fruits.map(data => <Fruits> {data.title} </Fruits>)}
-      </Wrapper>
-    </Main>
+    <>  
+      <div>
+        {fruits
+          .filter(data => data.number % 2 === 0)
+          .map(data => 
+            <div>
+              <Fruits>{data.number} </Fruits> 
+              <Number>{data.title} </Number>
+            </div>)}
+
+      </div><br />
+      <div>
+        {fruits
+          .filter(data => data.number % 2 === 1)
+          .map(data => 
+            <div>
+              <Fruits>{data.number} </Fruits> 
+              <Number>{data.title} </Number>
+            </div>)}
+
+      </div>
+    </>       
   )
 }

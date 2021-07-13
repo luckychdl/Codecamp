@@ -17,12 +17,17 @@ export default function map2Page() {
 
   
   return(
+    <>
+      {/* <div>
+        {fruits.map(data => <div>
+                              <span> {data.number}</span>
+                              <span> {data.title}</span>
+                            </div>)}
+      </div> */}
     
       <div>
-        {fruits.map(data => <div><span> {data.number}</span>
-                            <span> {data.title}</span>
-                            </div>)}
+        {fruits.filter(data => data.number % 2 === 0).map(data => <div>{data.number} {data.title}</div>)}
       </div>
-    
+  </>
   )
 }

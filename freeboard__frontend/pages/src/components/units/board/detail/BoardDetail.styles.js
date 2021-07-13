@@ -1,5 +1,8 @@
 import styled from '@emotion/styled'
 
+export const Main = styled.div`
+
+`
 export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,7 +11,7 @@ export const MainWrapper = styled.div`
   height: 1602px;
   padding: 84px 102px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-  margin: 100px;
+  margin: 100px 100px 80px 100px;
 `
 export const HeadWrapper = styled.div`
   width: 996px;
@@ -89,4 +92,21 @@ export const LikeMainWrapper = styled.div`
 export const Like = styled.img`
   margin: 20px;
   color: #828282;
+`
+export const ButtonWrapper = styled.div`
+  width: 1400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
+export const Button = styled.button`
+  border: 1px solid #BDBDBD;
+  width: 179px;
+  height: 45px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  margin-right: 24px;
+  background-color: white;
+  cursor: pointer;
 `
