@@ -12,6 +12,7 @@ function solution (seoul) {
 ~~~
 
 ~~~js
+// 김서방 찾기 indexOf 
 function solution(seoul) {
   const x = seoul.indexOf('Kim')
   return `김서방은 ${x}에 있다`
@@ -32,6 +33,7 @@ function solution(s) {
 ~~~
 
 ~~~js
+// 가운데 글자 가져오기 
 function solution(s) {
   const answer = s.length % 2 === 1 
   ? s[Math.floor(s.length / 2)] 
@@ -41,6 +43,7 @@ function solution(s) {
 ~~~
 
 ~~~js
+// 두 정수 사이의 합
 function solution (a,b) {
   let answer = 0
   if (a === b){
