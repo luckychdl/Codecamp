@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 
 export const Main = styled.div `
-  width: 100%;
+  width: 1200px;
+  margin: 100px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -49,4 +50,12 @@ export const Column = styled.div`
   text-align: center;
   font-size: 18px;
   border-top: 1px solid gray;
+  /* cursor: pointer; */
+`
+export const Title = styled.div`
+width: 25%;
+  text-align: center;
+  font-size: 18px;
+  border-top: 1px solid gray;
+  cursor: pointer;  
 `

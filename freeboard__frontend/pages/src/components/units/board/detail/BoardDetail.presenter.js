@@ -32,8 +32,8 @@ export default function BoardDetailUI (props) {
           <NameWrapper>
             <Profile src='/FreeBoard/Profile.png'/>
             <SubWrapper>
-              <Name>{props.qqq ?.fetchBoard.writer}</Name>
-              <Date>{props.qqq ?.fetchBoard.createdAt}</Date>
+              <Name>{props.data?.fetchBoard.writer}</Name>
+              <Date>{props.data?.fetchBoard.createdAt}</Date>
             </SubWrapper>
           </NameWrapper>
           <LinkWrapper>
@@ -43,9 +43,9 @@ export default function BoardDetailUI (props) {
         </HeadWrapper>
 
         <Border></Border>
-        <Title>{props.qqq ?.fetchBoard.title}</Title>
+        <Title>{props.data?.fetchBoard.title}</Title>
         <Image src='/FreeBoard/Image.png'/>
-        <Content>{props.qqq ?.fetchBoard.contents}</Content>
+        <Content>{props.data?.fetchBoard.contents}</Content>
 
         <Youtube></Youtube>
 

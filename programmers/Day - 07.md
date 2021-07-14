@@ -1,4 +1,5 @@
 
+~~~js
 // 문자열 다루기 기본
 function solution(s) {
   let answer = true
@@ -13,7 +14,8 @@ function solution(s) {
   }
   return answer
 }
-
+~~~
+~~~js
 // map , filter 사용
 
 function solution(s) {
@@ -27,7 +29,8 @@ function solution(s) {
       .length === 0
   }
 }
-
+~~~
+~~~js
 // 2016년
 
 const month = {
@@ -66,9 +69,11 @@ function solution(a , b) {
 }
 
 function solution(a , b) {
+  let answer = ''
   const week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
   const days = new Date(2016, a - 1, b).getDay()
   
-  return answer
+  return answer = week[days]
 
 }
+~~~

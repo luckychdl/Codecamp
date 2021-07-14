@@ -10,14 +10,17 @@ export default function BoardMain () {
 
   function onClickregister () {
     router.push('/boards/new')
+  }
 
-
+  function onClickMoveDetail (event) {
+    router.push(`/detail/${event.target.id}`)
   }
  
   return (
   <BoardMainUI 
-    qqq={ data }
+    data={ data }
     register={onClickregister}
+    moveDetail={onClickMoveDetail}
     />
     )
   }

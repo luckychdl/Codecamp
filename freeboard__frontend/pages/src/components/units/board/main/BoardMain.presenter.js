@@ -6,7 +6,8 @@ import {
   Column,
   ButtonWrapper,
   Img,
-  Button
+  Button,
+  Title
 } from './BoardMain.styles'
 import { getDate } from '../../../../commons/libraries/utils'
 
@@ -23,10 +24,10 @@ export default function BoardMainUI (props) {
         <ListColumn>작성자</ListColumn>
         <ListColumn>날짜</ListColumn>
       </Row>
-      {props.qqq?.fetchBoards.map((data, index) => (
-      <Row key={data.id}>
+      {props.data?.fetchBoards.map((data, index) => (
+      <Row key={data._id}>
         <Column>{index + 1}</Column>
-        <Column>{data.title}</Column>
+        <Title id={data._id} onClick={props.moveDetail}>{data.title}</Title>
         <Column>{data.writer}</Column>
         <Column>{getDate(data.createdAt)}</Column>
       </Row>
