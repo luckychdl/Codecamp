@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Main = styled.div`
-
+  margin-bottom: 100px;
 `
 export const MainWrapper = styled.div`
   display: flex;
@@ -139,7 +139,8 @@ export const ReviewPassword = styled.input`
   margin-right: 26px;
 `
 export const Star = styled.img`
-
+  width: 20px;
+  height: 20px;
 `
 export const ReviewWrite = styled.textarea`
   width: 1200px;
@@ -150,6 +151,7 @@ export const ReviewWrite = styled.textarea`
   font-size: 14px;
   line-height: 24px;
   padding: 20px;
+  border: 1px solid #BDBDBD;
 `
 export const ReviewBorder = styled.div`
   width: 1199px;
@@ -164,25 +166,84 @@ export const ReviewSubWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 1200px;
-  height: 300px;
-  margin: 0px 100px 0px 100px;
+  margin: 0px 100px 20px 100px;
 `
 export const ReviewButton = styled.button`
   position: absolute;
   left: 1209px;
-  top: 2525px;
+  top: 106px;
   width: 91px;
   height: 52px;
   background: #000000;
   color: white;
 `
 export const Text = styled.div`
+  position: absolute;
   width: 43px;
   height:24px;
-  position: absolute;
   color: #BDBDBD;
   font-size: 14px;
   line-height: 24px;
-  right: 1620px;
-  top: 2540px;
+  right: 1035px;
+  top: 115px;
+`
+export const TextWrapper = styled.div`
+  position: relative;
+  width: 1200px;
+`
+export const FooterMainWrapper = styled.div`
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1200px;
+  margin-left: 100px;
+
+`
+export const ReviewProfile = styled.img`
+  width: 40px;
+  height: 40px;
+  margin: 46px 16px 20px 0;
+`
+export const FooterWrapper = styled.div`
+  display: flex;
+`
+export const FooterSubWrapper = styled.div`
+  display: flex;
+  flex-direction:row;
+  margin-top: 46px;
+`
+export const ReviewName = styled.div`
+`
+export const YellowStar = styled.img`
+  width: 20px;
+  height: 20px;
+`
+export const ReviewContents = styled.div`
+  margin-top: 6px;
+  color: #4F4F4F;
+  font-size: 16px;
+  line-height: 24px;
+`
+export const FooterImg = styled.div`
+  margin-top: 46px;
+`
+export const Mode = styled.img`
+`
+export const Clear = styled.img`
+`
+export const ReviewDate = styled.div`
+  margin-left: 156px;
+  height: 38px;
+  color: lightgray;
+  font-size: 12px;
+  line-height: 18px;
+`
+export const ContentsWrapper = styled.div`
+
+`
+export const FooterBorder = styled.div`
+  border: 1px solid #BDBDBD;
+  width: 1200px;
+  margin-left: 100px;
+  margin-top: 20px;
 `

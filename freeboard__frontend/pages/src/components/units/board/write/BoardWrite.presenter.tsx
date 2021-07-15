@@ -56,23 +56,23 @@ return (
     <SubWrapper>
       <Wrapper>
         <Name>작성자*</Name>
-        <Box name={'writer'} type='text' placeholder='이름을 적어주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.writer} readOnly={props.data?.fetchBoard.writer}></Box>
+        <Box name='writer' type='text' placeholder='이름을 적어주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.writer} readOnly={props.data?.fetchBoard.writer}></Box>
         <ErrorMessage>{props.inputsErrors.writer}</ErrorMessage>
       </Wrapper>
       <Wrapper>  
         <Name>비밀번호</Name>
-        <Box name={'password'} type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.onChangeInputs} ></Box>
+        <Box name='password' type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.onChangeInputs} ></Box>
         <ErrorMessage>{props.inputsErrors.password}</ErrorMessage>
       </Wrapper>
     </SubWrapper>
     <TitleWrapper>
       <TitleName>제목</TitleName>
-      <TitleBox name={'title'} type='text' placeholder='제목을 작성해주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.title}></TitleBox>
+      <TitleBox name='title' type='text' placeholder='제목을 작성해주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.title}></TitleBox>
       <ErrorMessage>{props.inputsErrors.title}</ErrorMessage>
     </TitleWrapper>
     <ContentWrapper>
       <ContentName>내용</ContentName>
-      <ContentBox name={'contents'}  placeholder='내용을 작성해주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.contents}></ContentBox>
+      <ContentBox name='contents'  placeholder='내용을 작성해주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.contents}></ContentBox>
       <ErrorMessage>{props.inputsErrors.contents}</ErrorMessage>
     </ContentWrapper>
     <AdressWrapper>
@@ -119,7 +119,7 @@ return (
       </RadioSubWrapper>
     </RadioWrapper>
     
-    <Button active={props.active} 
+    <Button active={props?.active} 
       onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit} >
       {props.isEdit ? '수정하기' : '등록하기'}
       </Button>

@@ -31,7 +31,21 @@ import {
   WriterWrapper,
   ReviewSubWrapper,
   ReviewButton,
-  Text
+  Text,
+  FooterMainWrapper,
+  ReviewProfile,
+  FooterWrapper,
+  FooterSubWrapper,
+  ReviewName,
+  YellowStar,
+  ReviewContents,
+  FooterImg,
+  Mode,
+  Clear,
+  ReviewDate,
+  TextWrapper,
+  ContentsWrapper,
+  FooterBorder
 } from './BoardDetail.styles'
 
 interface IBoardDetailUIProps {
@@ -92,10 +106,83 @@ export default function BoardDetailUI (props: IBoardDetailUIProps) {
           <Star src='/FreeBoard/Star.png' />
         </WriterWrapper>
       </ReviewSubWrapper>
-      
-      <ReviewWrite placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은게시자에게 있습니다.' />
-      <ReviewButton>등록하기</ReviewButton>
-      <Text>0/100</Text>
+      <TextWrapper>
+        <ReviewWrite placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은게시자에게 있습니다.' />
+        <ReviewButton>등록하기</ReviewButton>
+        <Text>0/100</Text>
+      </TextWrapper>
+
+      <FooterMainWrapper>
+        <FooterWrapper>
+          <ReviewProfile src='/FreeBoard/ReviewProfile.png'/>
+          <ContentsWrapper>
+            <FooterSubWrapper>
+              <ReviewName>노원두</ReviewName>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <Star src='/FreeBoard/Star.png' />
+              <Star src='/FreeBoard/Star.png' />
+            </FooterSubWrapper>
+            <ReviewContents>진짜 유익하고 정말 필요한 정보인거 같아요~! 앞으로도 좋은 정보 부탁드립니다.</ReviewContents>
+          </ContentsWrapper>
+        </FooterWrapper>
+        
+        <FooterImg> 
+          <Mode src='/FreeBoard/Mode.png'/>
+          <Clear src='/FreeBoard/Clear.png'/>
+        </FooterImg>
+      </FooterMainWrapper>
+        <ReviewDate>{props.data?.fetchBoard.createdAt}</ReviewDate>
+        <FooterBorder></FooterBorder>
+      <FooterMainWrapper>
+        <FooterWrapper>
+          <ReviewProfile src='/FreeBoard/ReviewProfile.png'/>
+          <ContentsWrapper>
+            <FooterSubWrapper>
+              <ReviewName>땅찌</ReviewName>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <Star src='/FreeBoard/Star.png' />
+              <Star src='/FreeBoard/Star.png' />
+            </FooterSubWrapper>
+            <ReviewContents>진짜 좋네요~ 감사합니다~!</ReviewContents>
+          </ContentsWrapper>
+        </FooterWrapper>
+        
+        <FooterImg> 
+          <Mode src='/FreeBoard/Mode.png'/>
+          <Clear src='/FreeBoard/Clear.png'/>
+        </FooterImg>
+      </FooterMainWrapper>
+      <ReviewDate>{props.data?.fetchBoard.createdAt}</ReviewDate>
+        <FooterBorder></FooterBorder>
+      <FooterMainWrapper>
+        <FooterWrapper>
+          <ReviewProfile src='/FreeBoard/ReviewProfile.png'/>
+          <ContentsWrapper>
+            <FooterSubWrapper>
+              <ReviewName>안우엽</ReviewName>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <YellowStar src='/FreeBoard/YellowStar.png'/>
+              <Star src='/FreeBoard/Star.png' />
+              <Star src='/FreeBoard/Star.png' />
+            </FooterSubWrapper>
+            <ReviewContents>앞으로도 좋은 정보 부탁드립니다~!</ReviewContents>
+          </ContentsWrapper>
+
+        </FooterWrapper>
+        
+        <FooterImg> 
+          <Mode src='/FreeBoard/Mode.png'/>
+          <Clear src='/FreeBoard/Clear.png'/>
+        </FooterImg>
+      </FooterMainWrapper>
+      <ReviewDate>{props.data?.fetchBoard.createdAt}</ReviewDate>
+        <FooterBorder></FooterBorder>
+
   </Main>
   )
 }

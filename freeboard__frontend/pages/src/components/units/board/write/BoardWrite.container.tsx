@@ -15,8 +15,14 @@ export const INPUTS_INIT = {
 interface IBoardWriteProps {
   isEdit?: boolean
   data?: IQuery
+  
 }
-
+interface INewInputs {
+  title?:string
+  contents?:string
+  writer?:string
+  password?: string
+}
 export default function BoardWrite (props: IBoardWriteProps) {
   const [inputs, setInputs] = useState(INPUTS_INIT)
   const [inputsErrors, setInputsErrors] = useState(INPUTS_INIT)
@@ -29,8 +35,8 @@ export default function BoardWrite (props: IBoardWriteProps) {
   function onChangeInputs (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const newInputs = {...inputs, [event.target.name]: event.target.value }
     setInputs(newInputs)
-    setActive(Object.values(newInputs).every(data => data ))
-    setInputsErrors({...inputsErrors, [event.target.name]: ''})
+    Object.values(newInputs).every(data => data ) ? setActive(true) : setActive(false)
+    // setInputsErrors({...inputsErrors, [event.target.name]: ''})
   }
 
   async function onClickSubmit () {
@@ -54,22 +60,25 @@ export default function BoardWrite (props: IBoardWriteProps) {
 }
 
   async function onClickUpdate () {
-    setInputsErrors({
-      writer: inputs.writer ? '' : '작성자를 입력해주세요',
-      password: inputs.password ? '' : '비밀번호를 입력해주세요',
-      title: inputs.title ? '' : '제목을 입력해주세요',
-      contents: inputs.contents ? '': '내용을 입력해주세요'
-    })
-    if(Object.values(inputs).every(data => data)){
+    const newInputs: INewInputs = {}
+    inputs.writer ? newInputs.writer = inputs.writer : ''
+    inputs.password ? newInputs.password = inputs.password : ''
+    inputs.title ? newInputs.title = inputs.title : ''
+    inputs.contents ? newInputs.contents = inputs.contents : ''
+    
+    // setInputsErrors({
+    //     writer: newInputs.writer ? '' : '작성자를 입력해주세요',
+    //     password: newInputs.password ? '' : '비밀번호를 입력해주세요',
+    //     title: newInputs.title ? '' : '제목을 입력해주세요',
+    //     contents: newInputs.contents ? '': '내용을 입력해주세요'
+    // })
+    if (Object.values(inputs).every(data => data)){
     try{
       const result: any = await updateBoard({
         variables: {
           boardId: String(router.query.boardId),
           password: inputs.password,
-          updateBoardInput: {
-            title: inputs.title,
-            contents: inputs.contents
-          }
+          updateBoardInput: { ...newInputs }
         }
       })
       alert('게시물이 성공적으로 수정되었습니다')
@@ -96,5 +105,4 @@ export default function BoardWrite (props: IBoardWriteProps) {
       
 
   )
-}
-  
+  }
