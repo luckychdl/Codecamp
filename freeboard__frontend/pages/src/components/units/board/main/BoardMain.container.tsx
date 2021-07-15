@@ -2,7 +2,7 @@ import BoardMainUI from './BoardMain.presenter'
 import { FETCH_BOARDS } from './BoardMain.queries'
 import { useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
-
+import { MouseEvent } from 'react'
 
 export default function BoardMain () {
 
@@ -13,15 +13,15 @@ export default function BoardMain () {
     router.push('/boards/new')
   }
 
-  function onClickMoveDetail (event) {
-    router.push(`/detail/${event.target.id}`)
+  function onClickMoveDetail (event: MouseEvent<HTMLDivElement>) {
+    router.push(`/detail/${(event.target as Element).id}`)
   }
  
   return (
   <BoardMainUI 
     data={ data }
-    register={onClickregister}
-    moveDetail={onClickMoveDetail}
+    onClickregister={onClickregister}
+    onClickMoveDetail={onClickMoveDetail}
     />
     )
   }

@@ -1,36 +1,27 @@
 import { useRouter } from 'next/router'
-import { useMutation } from '@apollo/client'
-import { FETCH_BOARD, DELETE_BOARD, UPDATE_BOARD } from './BoardDetail.queries'
-import { useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
+import { FETCH_BOARD, DELETE_BOARD } from './BoardDetail.queries'
 import BoardDetailUI from './BoardDetail.presenter'
 
 export default function BoardDetail () {
-
   const router = useRouter()
   const [deleteBoard] = useMutation(DELETE_BOARD)
-  const { data } = useQuery(
-    FETCH_BOARD,
+  const { data } = useQuery(FETCH_BOARD,
     {variables: { boardId: router.query.boardId }}
   )
 
   function onClickList() {
     router.push('/boards')
   }
-  function onClickUpdate() {
-    router.push('/boards/new')
+  function onClickEdit() {
+    router.push(`/detail/${router.query.boardId}/edit`)
   }
 
   async function onClickDelete() {
-    alert('해당 글을 삭제합니다!')
-
     try {
-      await deleteBoard({
-        variables: { 
-          boardId: router.query.boardId 
-        }
-      })
+      await deleteBoard({ variables: { boardId: router.query.boardId }})
       alert('삭제가 완료되었습니다!')
-      router.back()
+      router.push('/boards')
     } catch(error) {
       alert(error.message)
     } 
@@ -43,7 +34,7 @@ export default function BoardDetail () {
       data={data}
       onClickList={onClickList}
       onClickDelete={onClickDelete}
-      onClickUpdate={onClickUpdate}
+      onClickEdit={onClickEdit}
     />
   )
 }

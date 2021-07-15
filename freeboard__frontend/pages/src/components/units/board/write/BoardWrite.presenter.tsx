@@ -1,3 +1,5 @@
+import {ChangeEvent} from 'react'
+import {INPUTS_INIT} from './BoardWrite.container'
 import {
   Title,
   Name,
@@ -35,35 +37,43 @@ import {
   Button,
   Word,
   RadioSubWrapper } from './BoardWrite.styles'
+  
+interface IBoardWriteUIProps {
+  onChangeInputs: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => void
+  onClickUpdate: () => void
+  onClickSubmit: () => void
+  active: boolean
+  isEdit?: boolean
+  data: any
+  inputsErrors: typeof INPUTS_INIT
+}
 
-
-
-export default function BoardWriteUI (props) {
+export default function BoardWriteUI (props: IBoardWriteUIProps) {
 
 return (
   <MainWrapper>
-    <Title>게시물 등록</Title>
+    <Title>{props.isEdit ? '게시물 수정' : '게시물 등록'}</Title>
     <SubWrapper>
       <Wrapper>
         <Name>작성자*</Name>
-        <Box name={'writer'} placeholder='이름을 적어주세요.' onChange={props.useError}></Box>
-        <ErrorMessage>{props.writerError}</ErrorMessage>
+        <Box name={'writer'} type='text' placeholder='이름을 적어주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.writer} readOnly={props.data?.fetchBoard.writer}></Box>
+        <ErrorMessage>{props.inputsErrors.writer}</ErrorMessage>
       </Wrapper>
       <Wrapper>  
         <Name>비밀번호</Name>
-        <Box name={'password'} type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.pwError}></Box>
-        <ErrorMessage>{props.passwordError}</ErrorMessage>
+        <Box name={'password'} type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.onChangeInputs} ></Box>
+        <ErrorMessage>{props.inputsErrors.password}</ErrorMessage>
       </Wrapper>
     </SubWrapper>
     <TitleWrapper>
       <TitleName>제목</TitleName>
-      <TitleBox name={'title'} placeholder='제목을 작성해주세요.' onChange={props.titError}></TitleBox>
-      <ErrorMessage>{props.titleError}</ErrorMessage>
+      <TitleBox name={'title'} type='text' placeholder='제목을 작성해주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.title}></TitleBox>
+      <ErrorMessage>{props.inputsErrors.title}</ErrorMessage>
     </TitleWrapper>
     <ContentWrapper>
       <ContentName>내용</ContentName>
-      <ContentBox name={'contents'} placeholder='내용을 작성해주세요.' onChange={props.conError}></ContentBox>
-      <ErrorMessage>{props.contentsError}</ErrorMessage>
+      <ContentBox name={'contents'}  placeholder='내용을 작성해주세요.' onChange={props.onChangeInputs} defaultValue={props.data?.fetchBoard.contents}></ContentBox>
+      <ErrorMessage>{props.inputsErrors.contents}</ErrorMessage>
     </ContentWrapper>
     <AdressWrapper>
       <Adress>주소</Adress>
@@ -109,8 +119,10 @@ return (
       </RadioSubWrapper>
     </RadioWrapper>
     
-    {!props.isEdit && <Button onClick={props.error} active={props.active}>데이터 입력하기</Button>}
-      {props.isEdit && <Button onClick={props.update} active={props.active}>데이터 수정하기</Button>}
+    <Button active={props.active} 
+      onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit} >
+      {props.isEdit ? '수정하기' : '등록하기'}
+      </Button>
   </MainWrapper>
 
 )

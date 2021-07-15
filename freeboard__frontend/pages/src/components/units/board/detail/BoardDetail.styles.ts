@@ -110,3 +110,79 @@ export const Button = styled.button`
   background-color: white;
   cursor: pointer;
 `
+export const ReviewImg = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 14px;
+`
+export const Review = styled.div`
+  font-size: 18px;
+`
+export const ReviewWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 40px;
+`
+export const ReviewWriter = styled.input`
+  width: 180px;
+  height: 52px;
+  margin-right: 40px;
+  border: 1px solid #BDBDBD;
+  color: #828282;
+`
+export const ReviewPassword = styled.input`
+  width: 180px;
+  height: 52px;
+  color: #828282;
+  border: 1px solid #BDBDBD;
+  margin-right: 26px;
+`
+export const Star = styled.img`
+
+`
+export const ReviewWrite = styled.textarea`
+  width: 1200px;
+  height: 161px;
+  resize: none;
+  position: relative;
+  margin: 0px 100px 0px 100px;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 20px;
+`
+export const ReviewBorder = styled.div`
+  width: 1199px;
+  border: 1px solid #BDBDBD;
+  margin: 87px 100px 87px 100px;
+  
+`
+export const WriterWrapper = styled.div`
+`
+export const ReviewSubWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 1200px;
+  height: 300px;
+  margin: 0px 100px 0px 100px;
+`
+export const ReviewButton = styled.button`
+  position: absolute;
+  left: 1209px;
+  top: 2525px;
+  width: 91px;
+  height: 52px;
+  background: #000000;
+  color: white;
+`
+export const Text = styled.div`
+  width: 43px;
+  height:24px;
+  position: absolute;
+  color: #BDBDBD;
+  font-size: 14px;
+  line-height: 24px;
+  right: 1620px;
+  top: 2540px;
+`

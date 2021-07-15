@@ -4,23 +4,30 @@ import { useRouter } from "next/router"
 import { useState } from 'react'
 import { CREATE_BOARD, UPDATE_BOARD } from './BoardWrite.queries'
 import { ChangeEvent } from 'react'
-import { IProps } from './BoardWrite.types'
-
+import { IMutation, IMutationCreateBoardArgs, IMutationUpdateBoardArgs, IQuery } from '../../../../commons/types/generated/types'
+ 
 const inputsInit = {
   writer: '',
   password: '',
   title: '',
   contents: ''
 }
+interface IProps{
+  isEdit?: boolean
+  data?: IQuery
+}
 
-
+interface INewInputs{
+  title?: string
+  contents?: string
+}
 export default function BoardWrite(props: IProps){
 
   const router = useRouter()
   const [active, setActive] = useState(false)
-  const [Mutation] = useMutation(CREATE_BOARD)
   const [inputs, setInputs] = useState(inputsInit)
-  const [updateBoard] = useMutation(UPDATE_BOARD)
+  const [createBoard] = useMutation<IMutation, IMutationCreateBoardArgs>(CREATE_BOARD)
+  const [updateBoard] = useMutation<IMutation, IMutationUpdateBoardArgs>(UPDATE_BOARD)
 
   // const [writer, setWriter] = useState('')
   // const [password, setPassword] = useState('')
@@ -87,30 +94,30 @@ export default function BoardWrite(props: IProps){
 
   async function onClickSubmit () {
     try{
-      const result = await Mutation({
+      const result = await createBoard({
         variables: { createBoardInput: {...inputs}}
       })
-      alert(result.data.createBoard._id)
-      router.push(`/detail/${result.data.createBoard._id}`)
+      alert(result.data?.createBoard._id)
+      router.push(`/detail/${result.data?.createBoard._id}`)
     } catch(error) {
       alert(error.message)
     }
   }
   
   async function onClickEdit () {
+    const newInputs: INewInputs = {}
+    if (inputs.title) newInputs.title = inputs.title
+    if (inputs.contents) newInputs.contents = inputs.contents
     try{
       const result = await updateBoard({
         variables: {
           password: inputs.password,
-          boardId: router.query.boardId,
-          updateBoardInput: {
-            title: inputs.title,
-            contents: inputs.contents
-          }
+          boardId: String(router.query.boardId),
+          updateBoardInput: { ...newInputs }
         }
       })
-      alert(result.data.updateBoard._id)
-      router.push(`/detail/${result.data.updateBoard._id}`)
+      alert(result.data?.updateBoard._id)
+      router.push(`/detail/${result.data?.updateBoard._id}`)
       } catch(error) {
         alert(error.message)
       }
@@ -126,6 +133,7 @@ export default function BoardWrite(props: IProps){
       onClickSubmit={onClickSubmit}
       active={active}
       isEdit={props.isEdit}
+      data={props.data}
       onClickEdit={onClickEdit}
     />
 

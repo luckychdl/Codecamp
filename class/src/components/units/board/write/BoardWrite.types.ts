@@ -6,11 +6,5 @@ import { ChangeEvent } from 'react'
   onClickEdit: () => void
   active: boolean
   isEdit?: boolean
-}
-
-export interface IProps{
-  isEdit?: boolean
-}
-export interface IStylesProps {
-  active: boolean
+  data: any
 }

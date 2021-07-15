@@ -1,5 +1,8 @@
 import styled from '@emotion/styled'
-import { IStylesProps } from './BoardWrite.types'
+
+interface IStylesProps {
+  active: boolean
+}
 
 export const MyInput = styled.input `
   margin: 10px;
