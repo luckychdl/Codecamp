@@ -2,7 +2,9 @@ import BoardWriteUI from './BoardWrite.presenter'
 import { useMutation } from '@apollo/client'
 import { useRouter } from "next/router"
 import { useState } from 'react'
-import { CREATE_BOARD } from './BoardWrite.queries'
+import { CREATE_BOARD, UPDATE_BOARD } from './BoardWrite.queries'
+import { ChangeEvent } from 'react'
+import { IProps } from './BoardWrite.types'
 
 const inputsInit = {
   writer: '',
@@ -12,12 +14,13 @@ const inputsInit = {
 }
 
 
-export default function BoardWrite(){
+export default function BoardWrite(props: IProps){
 
-  const router = useRouter('')
+  const router = useRouter()
   const [active, setActive] = useState(false)
   const [Mutation] = useMutation(CREATE_BOARD)
   const [inputs, setInputs] = useState(inputsInit)
+  const [updateBoard] = useMutation(UPDATE_BOARD)
 
   // const [writer, setWriter] = useState('')
   // const [password, setPassword] = useState('')
@@ -26,18 +29,23 @@ export default function BoardWrite(){
 
 
 
-  function onChangeInputs(event) {
+  function onChangeInputs(event: ChangeEvent<HTMLInputElement>) {
     const newInputs = {
       ...inputs,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     }
     setInputs(newInputs)
-    if (newInputs.writer && newInputs.password && newInputs.title && newInputs.contents) {
-      setActive(true)
-    } else {
-      setActive(false)
+    Object.values(newInputs).every(data => data) ? setActive(true) : setActive(false)
+    
+    // if (Object.values(newInputs).every(data => data)) {
+    //   setActive(true)
+    // } else {
+    //   setActive(false)
+    // }
+
+    // if (newInputs.writer && newInputs.password && newInputs.title && newInputs.contents) {
+    //   setActive(true)
     }
-  }
 
 
 
@@ -88,8 +96,25 @@ export default function BoardWrite(){
       alert(error.message)
     }
   }
- 
-
+  
+  async function onClickEdit () {
+    try{
+      const result = await updateBoard({
+        variables: {
+          password: inputs.password,
+          boardId: router.query.boardId,
+          updateBoardInput: {
+            title: inputs.title,
+            contents: inputs.contents
+          }
+        }
+      })
+      alert(result.data.updateBoard._id)
+      router.push(`/detail/${result.data.updateBoard._id}`)
+      } catch(error) {
+        alert(error.message)
+      }
+  }
 
   return (
     <BoardWriteUI 
@@ -100,6 +125,8 @@ export default function BoardWrite(){
       onChangeInputs={onChangeInputs}
       onClickSubmit={onClickSubmit}
       active={active}
+      isEdit={props.isEdit}
+      onClickEdit={onClickEdit}
     />
 
   )

@@ -10,6 +10,8 @@ export default function BoardDetailUI (props) {
                     {/* 옵셔널 체이닝 */}
 
       <div>글내용: {props.qqq?.fetchBoard.contents}</div>
+
+      <button onClick={props.onClickEdit}>수정하기</button>
     </>
   )
 }

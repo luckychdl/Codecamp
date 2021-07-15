@@ -2,10 +2,16 @@ import { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import BoardWriteUI from './BoardWrite.presenter'
-import { CREATE_BOARD } from './BoardWrite.queries'
+import { CREATE_BOARD,UPDATE_BOARD } from './BoardWrite.queries'
 
 
-export default function BoardWrite () {
+const inputsInit = {
+  writer: '',
+  password: '',
+  title: '',
+  contents: ''
+}
+export default function BoardWrite (props) {
 
   const [writerError, setWriterError] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -21,6 +27,7 @@ export default function BoardWrite () {
 
   const router = useRouter()
   const [click] = useMutation(CREATE_BOARD)
+  const [updateBoard] = useMutation(UPDATE_BOARD)
 
   function useError(event) {
     setWriter(event.target.value)
@@ -106,21 +113,50 @@ export default function BoardWrite () {
   }
 }
 
+  async function Update () {
+    try{
+      const result = await updateBoard({
+        variables: {
+          password: password,
+          boardId: router.query.boardId,
+          updateBoardInput: {
+            title: title,
+            contents: contents
+          }
+        }
+      })
+      alert(result.data.updateBoard._id)
+      router.push(`/detail/${result.data.updateBoard._id}`)
+      } catch(error) {
+        alert(error.message)
+      }
+
+  }
+
 
 
   return (
-    <BoardWriteUI 
-      useError={useError}
-      pwError={pwError}
-      titError={titError}
-      conError={conError}
-      error={error}
-      passwordError={passwordError}
-      writerError={writerError}
-      titleError={titleError}
-      contentsError={contentsError}
-      active={active}
-    />
+
+      <BoardWriteUI 
+        Update={Update}
+        useError={useError}
+        pwError={pwError}
+        titError={titError}
+        conError={conError}
+        error={error}
+        passwordError={passwordError}
+        writerError={writerError}
+        titleError={titleError}
+        contentsError={contentsError}
+        active={active}
+        writer={writer}
+        password={password}
+        title={title}
+        contents={contents}
+        isEdit={props.isEdit}
+      />
+      
+
   )
 }
   

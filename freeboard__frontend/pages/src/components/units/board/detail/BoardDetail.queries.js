@@ -18,3 +18,4 @@ export const DELETE_BOARD = gql `
     deleteBoard(boardId: $boardId)
   }
 `
+

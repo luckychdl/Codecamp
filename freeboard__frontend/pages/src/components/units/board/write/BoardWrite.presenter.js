@@ -46,23 +46,23 @@ return (
     <SubWrapper>
       <Wrapper>
         <Name>작성자*</Name>
-        <Box placeholder='이름을 적어주세요.' onChange={props.useError}></Box>
+        <Box name={'writer'} placeholder='이름을 적어주세요.' onChange={props.useError}></Box>
         <ErrorMessage>{props.writerError}</ErrorMessage>
       </Wrapper>
       <Wrapper>  
         <Name>비밀번호</Name>
-        <Box type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.pwError}></Box>
+        <Box name={'password'} type='password' placeholder='비밀번호를 입력해주세요.' onChange={props.pwError}></Box>
         <ErrorMessage>{props.passwordError}</ErrorMessage>
       </Wrapper>
     </SubWrapper>
     <TitleWrapper>
       <TitleName>제목</TitleName>
-      <TitleBox placeholder='제목을 작성해주세요.' onChange={props.titError}></TitleBox>
+      <TitleBox name={'title'} placeholder='제목을 작성해주세요.' onChange={props.titError}></TitleBox>
       <ErrorMessage>{props.titleError}</ErrorMessage>
     </TitleWrapper>
     <ContentWrapper>
       <ContentName>내용</ContentName>
-      <ContentBox placeholder='내용을 작성해주세요.' onChange={props.conError}></ContentBox>
+      <ContentBox name={'contents'} placeholder='내용을 작성해주세요.' onChange={props.conError}></ContentBox>
       <ErrorMessage>{props.contentsError}</ErrorMessage>
     </ContentWrapper>
     <AdressWrapper>
@@ -109,7 +109,8 @@ return (
       </RadioSubWrapper>
     </RadioWrapper>
     
-    <Button onClick={props.error} active={props.active}>등록하기</Button>
+    {!props.isEdit && <Button onClick={props.error} active={props.active}>데이터 입력하기</Button>}
+      {props.isEdit && <Button onClick={props.update} active={props.active}>데이터 수정하기</Button>}
   </MainWrapper>
 
 )

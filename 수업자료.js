@@ -262,3 +262,36 @@ classmates
 // 0: {name: "영희어린이", age: 13, school: "다람쥐초등학교"}
 // length: 1
 // __proto__: Array(0)
+
+
+// 2021/ 07 / 14
+
+const classmates = [
+  '철수',
+  '영희',
+  '훈이'
+]
+
+classmates.every(data => data)
+true
+
+const aaa = ['철수', '1234', '제목', '내용']
+
+aaa.every(data => data !== '')
+true
+
+const inputs = {
+  name: '철수',
+  password: '1234',
+  title: 'title',
+  contents: 'contents'
+}
+
+Object.keys(inputs)
+(4) ["name", "password", "title", "contents"]
+
+Object.values(inputs)
+(4) ["철수", "1234", "title", "contents"]
+
+Object.values(inputs).every(data => data !== '')
+true
