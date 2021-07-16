@@ -24,7 +24,28 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.7",
     "@graphql-codegen/typescript": "^1.23.0",
-    "eslint": "7.30.0",
-    "eslint-config-next": "11.0.1"
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "eslint": "^7.30.0",
+    "eslint-config-next": "11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": "4",
+    "lint-staged": "^11.0.1",
+    "prettier": "2.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts, tsx}": [
+      "npx eslint ."
+    ]
   }
 }

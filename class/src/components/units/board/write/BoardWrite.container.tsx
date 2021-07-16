@@ -1,49 +1,56 @@
-import BoardWriteUI from './BoardWrite.presenter'
-import { useMutation } from '@apollo/client'
-import { useRouter } from "next/router"
-import { useState } from 'react'
-import { CREATE_BOARD, UPDATE_BOARD } from './BoardWrite.queries'
-import { ChangeEvent } from 'react'
-import { IMutation, IMutationCreateBoardArgs, IMutationUpdateBoardArgs, IQuery } from '../../../../commons/types/generated/types'
- 
+import BoardWriteUI from "./BoardWrite.presenter";
+import { useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
+import { useState, ChangeEvent } from "react";
+import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import {
+  IMutation,
+  IMutationCreateBoardArgs,
+  IMutationUpdateBoardArgs,
+  IQuery,
+} from "../../../../commons/types/generated/types";
+
 const inputsInit = {
-  writer: '',
-  password: '',
-  title: '',
-  contents: ''
-}
-interface IProps{
-  isEdit?: boolean
-  data?: IQuery
+  writer: "",
+  password: "",
+  title: "",
+  contents: "",
+};
+interface IProps {
+  isEdit?: boolean;
+  data?: IQuery;
 }
 
-interface INewInputs{
-  title?: string
-  contents?: string
+interface INewInputs {
+  title?: string;
+  contents?: string;
 }
-export default function BoardWrite(props: IProps){
-
-  const router = useRouter()
-  const [active, setActive] = useState(false)
-  const [inputs, setInputs] = useState(inputsInit)
-  const [createBoard] = useMutation<IMutation, IMutationCreateBoardArgs>(CREATE_BOARD)
-  const [updateBoard] = useMutation<IMutation, IMutationUpdateBoardArgs>(UPDATE_BOARD)
+export default function BoardWrite(props: IProps) {
+  const router = useRouter();
+  const [active, setActive] = useState(false);
+  const [inputs, setInputs] = useState(inputsInit);
+  const [createBoard] = useMutation<IMutation, IMutationCreateBoardArgs>(
+    CREATE_BOARD
+  );
+  const [updateBoard] = useMutation<IMutation, IMutationUpdateBoardArgs>(
+    UPDATE_BOARD
+  );
 
   // const [writer, setWriter] = useState('')
   // const [password, setPassword] = useState('')
   // const [title, setTitle] = useState('')
   // const [contents, setContents] = useState('')
 
-
-
   function onChangeInputs(event: ChangeEvent<HTMLInputElement>) {
     const newInputs = {
       ...inputs,
-      [event.target.name]: event.target.value
-    }
-    setInputs(newInputs)
-    Object.values(newInputs).every(data => data) ? setActive(true) : setActive(false)
-    
+      [event.target.name]: event.target.value,
+    };
+    setInputs(newInputs);
+    Object.values(newInputs).every((data) => data)
+      ? setActive(true)
+      : setActive(false);
+
     // if (Object.values(newInputs).every(data => data)) {
     //   setActive(true)
     // } else {
@@ -52,10 +59,7 @@ export default function BoardWrite(props: IProps){
 
     // if (newInputs.writer && newInputs.password && newInputs.title && newInputs.contents) {
     //   setActive(true)
-    }
-
-
-
+  }
 
   // function onChangeWriter(event) {
   //   setWriter(event.target.value)
@@ -92,39 +96,39 @@ export default function BoardWrite(props: IProps){
   // // }
   // }
 
-  async function onClickSubmit () {
-    try{
+  async function onClickSubmit() {
+    try {
       const result = await createBoard({
-        variables: { createBoardInput: {...inputs}}
-      })
-      alert(result.data?.createBoard._id)
-      router.push(`/detail/${result.data?.createBoard._id}`)
-    } catch(error) {
-      alert(error.message)
+        variables: { createBoardInput: { ...inputs } },
+      });
+      alert(result.data?.createBoard._id);
+      router.push(`/detail/${result.data?.createBoard._id}`);
+    } catch (error) {
+      alert(error.message);
     }
   }
-  
-  async function onClickEdit () {
-    const newInputs: INewInputs = {}
-    if (inputs.title) newInputs.title = inputs.title
-    if (inputs.contents) newInputs.contents = inputs.contents
-    try{
+
+  async function onClickEdit() {
+    const newInputs: INewInputs = {};
+    if (inputs.title) newInputs.title = inputs.title;
+    if (inputs.contents) newInputs.contents = inputs.contents;
+    try {
       const result = await updateBoard({
         variables: {
           password: inputs.password,
           boardId: String(router.query.boardId),
-          updateBoardInput: { ...newInputs }
-        }
-      })
-      alert(result.data?.updateBoard._id)
-      router.push(`/detail/${result.data?.updateBoard._id}`)
-      } catch(error) {
-        alert(error.message)
-      }
+          updateBoardInput: { ...newInputs },
+        },
+      });
+      alert(result.data?.updateBoard._id);
+      router.push(`/detail/${result.data?.updateBoard._id}`);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   return (
-    <BoardWriteUI 
+    <BoardWriteUI
       // aaa={onChangeWriter}
       // bbb={onChangePassword}
       // ccc={onChangeTitle}
@@ -136,6 +140,5 @@ export default function BoardWrite(props: IProps){
       data={props.data}
       onClickEdit={onClickEdit}
     />
-
-  )
+  );
 }

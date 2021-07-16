@@ -8,26 +8,30 @@ const fruits = [
   { number: 7, title: "딸기" },
   { number: 8, title: "천혜향" },
   { number: 9, title: "과일선물세트" },
-  { number: 10, title: "귤" }
-]
-
+  { number: 10, title: "귤" },
+];
 
 export default function map2Page() {
-
-
-  
-  return(
+  return (
     <>
-      {/* <div>
-        {fruits.map(data => <div>
-                              <span> {data.number}</span>
-                              <span> {data.title}</span>
-                            </div>)}
-      </div> */}
-    
       <div>
-        {fruits.filter(data => data.number % 2 === 0).map(data => <div>{data.number} {data.title}</div>)}
+        {fruits.map((data) => (
+          <div>
+            <span> {data.number}</span>
+            <span> {data.title}</span>
+          </div>
+        ))}
       </div>
-  </>
-  )
+
+      <div>
+        {fruits
+          .filter((data) => data.number % 2 === 0)
+          .map((data) => (
+            <div>
+              {data.number} {data.title}
+            </div>
+          ))}
+      </div>
+    </>
+  );
 }
