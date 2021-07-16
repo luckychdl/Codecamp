@@ -1,3 +1,4 @@
+~~~js
 // 문자열 내림차순으로 배치하기
 function solution(s) {
   let answer = ''
@@ -13,7 +14,9 @@ function solution(s) {
   }
   return answer
 }
+~~~
 
+~~~js
 // 문자열 내림차순으로 배치하기
 function solution(s) {
   const answer = s.split('').sort().reverse().join('')
@@ -29,12 +32,12 @@ function solution(s) {
                   .join('')
     return answer
 }
+~~~
 
 
 
 
-
-
+~~~js
 // K번쨰수
 function solution(array, commands) {
   let answer = []
@@ -49,7 +52,9 @@ function solution(array, commands) {
 }
 return answer
 }
+~~~
 
+~~~js
 function solution(array, commands) {
   let answer = []
   for (let idx = 0; idx < commands.length; idx += 1) {
@@ -65,8 +70,9 @@ function solution(array, commands) {
 }
 return answer
 }
+~~~
 
-
+~~~js
 // K번쨰수
 function solution(array, commands) {
   const answer = commands.map( el => {
@@ -75,3 +81,4 @@ function solution(array, commands) {
 
   return sliceResult[el[2]-1]
 }
+~~~

@@ -15,14 +15,14 @@ const fruits = [
 
 export default function map2Page() {
   return (
-    <>
+    <div>
       <div>
         {fruits
           .filter((data) => data.number % 2 === 0)
           .map((data) => (
             <div>
-              <Fruits>{data.number} </Fruits>
-              <Number>{data.title} </Number>
+              <Fruits> {data.number} </Fruits>
+              <Number> {data.title} </Number>
             </div>
           ))}
       </div>
@@ -37,6 +37,6 @@ export default function map2Page() {
             </div>
           ))}
       </div>
-    </>
+    </div>
   );
 }

@@ -1,12 +1,5 @@
-import BoardMain from '../src/components/units/board/main/BoardMain.container'
+import BoardMain from "../src/components/units/board/main/BoardMain.container";
 
-
-
-
-
-
-export default function BoardMainPage () {
-
-
-  return <BoardMain/>
+export default function BoardMainPage() {
+  return <BoardMain />;
 }

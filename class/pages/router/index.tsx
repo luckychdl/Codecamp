@@ -1,6 +1,7 @@
 import { useQuery, useMutation, gql } from "@apollo/client";
 import styled from "@emotion/styled";
 import { getDate } from "../../src/commons/libraries/utils";
+import {MouseEvent} from 'react'
 
 const FETCH_BOARDS = gql`
   query fetchBoards {
@@ -31,11 +32,12 @@ const Column = styled.div`
   width: 20%;
 `;
 
+
 export default function Map3Page() {
   const { data } = useQuery(FETCH_BOARDS);
   const [deleteBoard] = useMutation(DELETE_BOARD);
 
-  async function onClickDelete(event) {
+  async function onClickDelete(event: MouseEvent<HTMLButtonElement, MouseEvent>) {
     alert("해당 글을 삭제합니다");
 
     try {
@@ -62,7 +64,7 @@ export default function Map3Page() {
         <Column>작성일</Column>
         <Column></Column>
       </Row>
-      {data?.fetchBoards.map((data, index) => (
+      {data?.fetchBoards.map((data:any, index) => (
         <Row key={data._id}>
           <Column>
             <input type="checkbox" />

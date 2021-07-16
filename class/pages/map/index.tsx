@@ -11,27 +11,26 @@ const fruits = [
   { number: 10, title: "귤" },
 ];
 
-export default function map2Page() {
+export default function mapPage() {
   return (
-    <>
+    <div>
       <div>
         {fruits.map((data) => (
-          <div>
+          <div key={data.number}>
             <span> {data.number}</span>
             <span> {data.title}</span>
           </div>
         ))}
       </div>
-
       <div>
         {fruits
           .filter((data) => data.number % 2 === 0)
           .map((data) => (
-            <div>
+            <div key={data.number}>
               {data.number} {data.title}
             </div>
           ))}
       </div>
-    </>
+    </div>
   );
 }
