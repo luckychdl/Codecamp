@@ -5,7 +5,9 @@ import {
   UPDATE_BOARD_COMMENT,
 } from "./CommentWrite.queries";
 import { useRouter } from "next/router";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, MouseEvent } from "react";
+import { FETCH_BOARD_COMMENTS } from "../list/CommentList.queries";
+import { IBoardComment } from "../../../../../../src/commons/types/generated/types";
 
 export const INPUTS_INIT = {
   writer: "",
@@ -14,8 +16,9 @@ export const INPUTS_INIT = {
   rating: 3.1,
 };
 interface ICommentWriteProps {
-  data: any;
+  data?: IBoardComment;
   isEdit: boolean;
+  setIsEdit?: (value: boolean) => void;
 }
 
 export default function CommentWrite(props: ICommentWriteProps) {
@@ -27,45 +30,46 @@ export default function CommentWrite(props: ICommentWriteProps) {
   function onChangeInputs(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
-    const newInputs = { ...inputs, [event.target.name]: event.target.value };
-    setInputs(newInputs);
+    setInputs({ ...inputs, [event.target.name]: event.target.value });
   }
 
   async function onClickSubmit() {
     try {
-      const result: any = await createBoardComment({
+      await createBoardComment({
         variables: {
-          boardId: String(router.query.boardId),
-          createBoardCommentInput: {
-            writer: inputs.writer,
-            password: inputs.password,
-            contents: inputs.contents,
-            rating: 3.1,
-          },
+          boardId: router.query.boardId,
+          createBoardCommentInput: { ...inputs },
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: { boardId: router.query.boardId },
+          },
+        ],
       });
-      alert("게시물이 성공적으로 등록되었습니다");
-
-      console.log(inputs);
-      console.log(result);
-      router.push(`/detail/${router.query.boardId}`);
+      setInputs(INPUTS_INIT);
     } catch (error) {
       alert(error.message);
     }
   }
 
-  async function onClickUpdate() {
+  async function onClickUpdate(event: MouseEvent<HTMLButtonElement>) {
     try {
       await updateBoardComment({
         variables: {
-          boardCommentId: router.query.boardId,
-          updateBoardCommentInput: {
-            contents: inputs.contents,
-          },
+          updateBoardCommentInput: { contents: inputs.contents },
+          password: inputs.password,
+          boardCommentId: (event.target as Element).id,
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: { boardId: router.query.boardId },
+          },
+        ],
       });
-      alert("댓글이 수정되었습니다.");
-      router.push(`/detail/${router.query.boardId}`);
+      setInputs(INPUTS_INIT);
+      props.setIsEdit?.(false);
     } catch (error) {
       alert(error.message);
     }
@@ -76,6 +80,7 @@ export default function CommentWrite(props: ICommentWriteProps) {
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
       isEdit={props.isEdit}
+      inputs={inputs}
     />
   );
 }

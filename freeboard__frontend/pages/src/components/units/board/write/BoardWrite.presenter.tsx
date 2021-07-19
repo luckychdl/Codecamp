@@ -63,8 +63,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             type="text"
             placeholder="이름을 적어주세요."
             onChange={props.onChangeInputs}
-            defaultValue={props.data?.fetchBoard.writer}
-            readOnly={props.data?.fetchBoard.writer}
           ></Box>
           <ErrorMessage>{props.inputsErrors.writer}</ErrorMessage>
         </Wrapper>
@@ -114,7 +112,12 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
       <YoutubeWrapper>
         <YoutubeName>유튜브</YoutubeName>
         <YoutubeSubWrapper>
-          <YoutubeBox placeholder="링크를 복사해주세요."></YoutubeBox>
+          <YoutubeBox
+            name="youtubeUrl"
+            type="text"
+            onChange={props.onChangeInputs}
+            placeholder="링크를 복사해주세요."
+          ></YoutubeBox>
         </YoutubeSubWrapper>
       </YoutubeWrapper>
       <PhotoWarpper>

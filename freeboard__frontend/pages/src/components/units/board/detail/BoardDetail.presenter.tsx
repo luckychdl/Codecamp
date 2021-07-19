@@ -1,3 +1,5 @@
+import ReactPlayer from "react-player";
+import { useState } from "react";
 import {
   Main,
   MainWrapper,
@@ -14,11 +16,13 @@ import {
   Title,
   Image,
   Content,
-  Youtube,
   Like,
   LikeMainWrapper,
   Button,
   ButtonWrapper,
+  LikeWrapper,
+  Score,
+  HateScore,
 } from "./BoardDetail.styles";
 
 interface IBoardDetailUIProps {
@@ -29,6 +33,14 @@ interface IBoardDetailUIProps {
 }
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
+  const [like, setLike] = useState(0);
+  const [dislike, setDislike] = useState(0);
+  function LikeDisLike() {
+    setLike(like + 1);
+  }
+  function DisLike() {
+    setDislike(dislike + 1);
+  }
   return (
     <Main>
       <MainWrapper>
@@ -50,11 +62,23 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         <Image src="/FreeBoard/Image.png" />
         <Content>{props.data?.fetchBoard.contents}</Content>
 
-        <Youtube></Youtube>
+        <ReactPlayer
+          url={props.data?.fetchBoard.youtubeUrl}
+          width="600px"
+          height="300px"
+          playing={true}
+          muted={true}
+        />
 
         <LikeMainWrapper>
-          <Like src="/FreeBoard/Like.png" />
-          <Like src="/FreeBoard/Hate.png" />
+          <LikeWrapper>
+            <Like src="/FreeBoard/Like.png" onClick={LikeDisLike} />
+            <Score>{like}</Score>
+          </LikeWrapper>
+          <LikeWrapper>
+            <Like src="/FreeBoard/DisLike.png" onClick={DisLike} />
+            <HateScore>{dislike}</HateScore>
+          </LikeWrapper>
         </LikeMainWrapper>
       </MainWrapper>
       <ButtonWrapper>

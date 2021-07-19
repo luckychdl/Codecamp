@@ -1,58 +1,16 @@
-import { MouseEvent } from "react";
-import {
-  ListWrapper,
-  Star,
-  FooterMainWrapper,
-  ReviewProfile,
-  FooterWrapper,
-  FooterSubWrapper,
-  ReviewName,
-  YellowStar,
-  ReviewContents,
-  FooterImg,
-  Mode,
-  Clear,
-  ReviewDate,
-  ContentsWrapper,
-  FooterBorder,
-  ListSubWrapper,
-} from "./CommentList.styles";
+import CommentListUIItem from "./commentList.PresentItem";
+import { IQuery } from "../../../../../../src/commons/types/generated/types";
 
-interface ICommentListUI {
-  data?: any;
-  onClickDelete: (event: MouseEvent<HTMLImageElement, MouseEvent>) => void;
-  onClickMoveEdit: () => void;
+interface ICommentListUIProps {
+  data?: IQuery;
 }
 
-export default function CommentListUI(props: ICommentListUI) {
+export default function CommentListUI(props: ICommentListUIProps) {
   return (
-    <ListWrapper>
-      {props.data?.fetchBoardComments.map((data: any) => (
-        <ListSubWrapper key={data._id}>
-          <FooterMainWrapper>
-            <FooterWrapper>
-              <ReviewProfile src="/FreeBoard/ReviewProfile.png" />
-              <ContentsWrapper>
-                <FooterSubWrapper>
-                  <ReviewName>{data.writer}</ReviewName>
-                  <YellowStar src="/FreeBoard/YellowStar.png" />
-                  <YellowStar src="/FreeBoard/YellowStar.png" />
-                  <YellowStar src="/FreeBoard/YellowStar.png" />
-                  <Star src="/FreeBoard/Star.png" />
-                  <Star src="/FreeBoard/Star.png" />
-                </FooterSubWrapper>
-                <ReviewContents id={data._id}>{data.contents}</ReviewContents>
-              </ContentsWrapper>
-            </FooterWrapper>
-            <FooterImg>
-              <Mode onClick={props.onClickMoveEdit} src="/FreeBoard/Mode.png" />
-              <Clear onClick={props.onClickDelete} src="/FreeBoard/Clear.png" />
-            </FooterImg>
-          </FooterMainWrapper>
-          <ReviewDate>{data.createdAt}</ReviewDate>
-          <FooterBorder></FooterBorder>
-        </ListSubWrapper>
+    <>
+      {props.data?.fetchBoardComments.map((data) => (
+        <CommentListUIItem key={data._id} data={data} />
       ))}
-    </ListWrapper>
+    </>
   );
 }

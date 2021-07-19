@@ -15,6 +15,7 @@ export const INPUTS_INIT = {
   password: "",
   title: "",
   contents: "",
+  youtubeUrl: "",
 };
 
 interface IBoardWriteProps {
@@ -24,6 +25,7 @@ interface IBoardWriteProps {
 interface INewInputs {
   title?: string;
   contents?: string;
+  youtubeUrl?: string;
 }
 export default function BoardWrite(props: IBoardWriteProps) {
   const [inputs, setInputs] = useState(INPUTS_INIT);
@@ -55,6 +57,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       password: inputs.password ? "" : "비밀번호를 입력해주세요",
       title: inputs.title ? "" : "제목을 입력해주세요",
       contents: inputs.contents ? "" : "내용을 입력해주세요",
+      youtubeUrl: inputs.youtubeUrl ? "" : "url을 입력해주세요",
     });
     if (Object.values(inputs).every((data) => data)) {
       try {
@@ -73,12 +76,14 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const newInputs: INewInputs = {};
     if (inputs.title) newInputs.title = inputs.title;
     if (inputs.contents) newInputs.contents = inputs.contents;
+    if (inputs.youtubeUrl) newInputs.youtubeUrl = inputs.youtubeUrl;
 
     setInputsErrors({
       writer: inputs.writer ? "" : "작성자를 입력해주세요",
       password: inputs.password ? "" : "비밀번호를 입력해주세요",
       title: newInputs.title ? "" : "제목을 입력해주세요",
       contents: newInputs.contents ? "" : "내용을 입력해주세요",
+      youtubeUrl: inputs.youtubeUrl ? "" : "url을 입력해주세요",
     });
     if (Object.values(inputs).every((data) => data)) {
       try {
