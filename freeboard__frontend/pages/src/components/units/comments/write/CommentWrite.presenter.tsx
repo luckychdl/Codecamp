@@ -20,6 +20,8 @@ interface ICommentWriteUIProps {
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ) => void;
   onClickSubmit: () => void;
+  isEdit: boolean;
+  onClickUpdate: () => void;
 }
 
 export default function CommentWriteUI(props: ICommentWriteUIProps) {
@@ -32,8 +34,15 @@ export default function CommentWriteUI(props: ICommentWriteUIProps) {
           <Review>댓글</Review>
         </ReviewWrapper>
         <WriterWrapper>
-          <ReviewWriter placeholder="작성자" onChange={props.onChangeInputs} />
+          <ReviewWriter
+            name="writer"
+            type="text"
+            placeholder="작성자"
+            onChange={props.onChangeInputs}
+          />
           <ReviewPassword
+            name="password"
+            type="password"
             placeholder="비밀번호"
             onChange={props.onChangeInputs}
           />
@@ -46,10 +55,15 @@ export default function CommentWriteUI(props: ICommentWriteUIProps) {
       </ReviewSubWrapper>
       <TextWrapper>
         <ReviewWrite
+          name="contents"
           onChange={props.onChangeInputs}
           placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
         />
-        <ReviewButton onClick={props.onClickSubmit}>등록하기</ReviewButton>
+        <ReviewButton
+          onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+        >
+          {props.isEdit ? "수정하기" : "등록하기"}
+        </ReviewButton>
         <Text>0/100</Text>
       </TextWrapper>
     </CommentWrapper>

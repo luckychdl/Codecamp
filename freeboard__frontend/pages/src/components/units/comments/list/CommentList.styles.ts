@@ -245,3 +245,4 @@ export const FooterBorder = styled.div`
 `;
 export const CommentWrapper = styled.div``;
 export const ListWrapper = styled.div``;
+export const ListSubWrapper = styled.div``;
