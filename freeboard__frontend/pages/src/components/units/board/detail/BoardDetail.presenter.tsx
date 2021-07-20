@@ -1,5 +1,4 @@
 import ReactPlayer from "react-player";
-import { useState } from "react";
 import {
   Main,
   MainWrapper,
@@ -23,6 +22,10 @@ import {
   LikeWrapper,
   Score,
   HateScore,
+  Address,
+  LinkSubWrapper,
+  Detail,
+  SubDetail,
 } from "./BoardDetail.styles";
 
 interface IBoardDetailUIProps {
@@ -30,17 +33,11 @@ interface IBoardDetailUIProps {
   onClickList: () => void;
   onClickEdit: () => void;
   onClickDelete: () => void;
+  onClickLike: () => void;
+  onClickDisLike: () => void;
 }
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
-  const [like, setLike] = useState(0);
-  const [dislike, setDislike] = useState(0);
-  function LikeDisLike() {
-    setLike(like + 1);
-  }
-  function DisLike() {
-    setDislike(dislike + 1);
-  }
   return (
     <Main>
       <MainWrapper>
@@ -53,8 +50,25 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             </SubWrapper>
           </NameWrapper>
           <LinkWrapper>
-            <Link src="/FreeBoard/Link.png" />
-            <Location src="/FreeBoard/Location.png" />
+            <Address>
+              <SubDetail>
+                {props.data?.fetchBoard.boardAddress?.zipcode}{" "}
+              </SubDetail>
+              <SubDetail>
+                {" "}
+                {props.data?.fetchBoard.boardAddress?.address}{" "}
+              </SubDetail>
+              <Detail>
+                {props.data?.fetchBoard.boardAddress?.addressDetail}
+              </Detail>
+            </Address>
+            <LinkSubWrapper>
+              <Link src="/FreeBoard/Link.png" />
+              <Location
+                src="/FreeBoard/Location.png"
+                // onMouseOver={props.onMouseOverImg}
+              ></Location>
+            </LinkSubWrapper>
           </LinkWrapper>
         </HeadWrapper>
         <Border></Border>
@@ -72,12 +86,12 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
 
         <LikeMainWrapper>
           <LikeWrapper>
-            <Like src="/FreeBoard/Like.png" onClick={LikeDisLike} />
-            <Score>{like}</Score>
+            <Like src="/FreeBoard/Like.png" onClick={props.onClickLike} />
+            <Score>{props.data?.fetchBoard.likeCount}</Score>
           </LikeWrapper>
           <LikeWrapper>
-            <Like src="/FreeBoard/DisLike.png" onClick={DisLike} />
-            <HateScore>{dislike}</HateScore>
+            <Like src="/FreeBoard/DisLike.png" onClick={props.onClickDisLike} />
+            <HateScore>{props.data?.fetchBoard.dislikeCount}</HateScore>
           </LikeWrapper>
         </LikeMainWrapper>
       </MainWrapper>

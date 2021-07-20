@@ -69,6 +69,7 @@ export const ContentBox = styled.textarea`
   margin-bottom: 10px;
 `;
 export const Adress = styled.div`
+  text-align: start;
   font-size: 16px;
   margin: 16px 0;
 `;
@@ -78,9 +79,10 @@ export const AdressBox = styled.input`
   text-align: center;
   border: 1px solid #bdbdbd;
   margin-right: 15px;
-  padding: 14px 16px;
 `;
-export const AdressWrapper = styled.div``;
+export const AdressWrapper = styled.div`
+  text-align: center;
+`;
 export const AdressSubWrapper = styled.div`
   display: flex;
   flex-direction: row;

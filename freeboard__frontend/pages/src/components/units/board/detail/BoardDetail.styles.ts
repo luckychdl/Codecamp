@@ -40,19 +40,45 @@ export const Date = styled.div`
 `;
 export const LinkWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
 `;
-export const Link = styled.img`
-  margin-right: 35.33px;
-  width: 32px;
-  height: 32px;
+export const Address = styled.div`
+  width: 376px;
+  height: 64px;
+  background-color: gray;
+  padding: 5px 10px 10px 0;
+  text-align: end;
+  /* display: none; */
 `;
 export const Location = styled.img`
   width: 32px;
   height: 32px;
+  :hover ~ Address {
+    display: block;
+  }
 `;
+export const Detail = styled.div`
+  font-size: 18px;
+  padding-bottom: 10px;
+`;
+export const SubDetail = styled.span`
+  font-size: 18px;
+  padding-top: 10px;
+`;
+export const LinkSubWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Link = styled.img`
+  margin-right: 25px;
+  width: 32px;
+  height: 32px;
+`;
+
 export const Border = styled.div`
   width: 996px;
   border: 1px solid #bdbdbd;

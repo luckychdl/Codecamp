@@ -1,5 +1,7 @@
 import { ChangeEvent } from "react";
 import { INPUTS_INIT } from "./BoardWrite.container";
+import DaumPostcode from "react-daum-postcode";
+import { Modal } from "antd";
 import {
   Title,
   Name,
@@ -45,10 +47,19 @@ interface IBoardWriteUIProps {
   ) => void;
   onClickUpdate: () => void;
   onClickSubmit: () => void;
+  onCompleteDetail: () => void;
+  onClickAddressDetail: () => void;
+  handleOkDetail: () => void;
+  handleCancelDetail: () => void;
+  onChangeInputsDetail: (event: ChangeEvent<HTMLInputElement>) => void;
   active: boolean;
   isEdit?: boolean;
   data: any;
+  isOpenDetail: boolean;
   inputsErrors: typeof INPUTS_INIT;
+  zoneCode: string;
+  address: string;
+  addressDetail: string;
 }
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
@@ -101,12 +112,27 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
       <AdressWrapper>
         <Adress>주소</Adress>
         <AdressSubWrapper>
-          <AdressBox placeholder="02750"></AdressBox>
-          <Search>우편번호 검색</Search>
+          <AdressBox type="text" value={props.zoneCode}></AdressBox>
+          <Search onClick={props.onCompleteDetail}>우편번호 검색</Search>
+          {props.isOpenDetail && (
+            <Modal
+              title="주소 검색하기"
+              visible={props.isOpenDetail}
+              onOk={props.handleOkDetail}
+              onCancel={props.handleCancelDetail}
+            >
+              <DaumPostcode onComplete={props.onClickAddressDetail} />
+            </Modal>
+          )}
         </AdressSubWrapper>
         <AdressBoxWrapper>
-          <AdressSubBox></AdressSubBox>
-          <AdressSubBox></AdressSubBox>
+          <AdressSubBox type="text" value={props.address}></AdressSubBox>
+          <AdressSubBox
+            name="addressDetail"
+            type="text"
+            onChange={props.onChangeInputsDetail}
+            value={props.addressDetail}
+          ></AdressSubBox>
         </AdressBoxWrapper>
       </AdressWrapper>
       <YoutubeWrapper>
