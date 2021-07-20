@@ -1,3 +1,4 @@
+~~~js
 function solution(numbers) {
   let answer = [];
   for (let i = 0; i < numbers.length; i++) {
@@ -16,7 +17,8 @@ function solution(numbers) {
     return a - b;
   });
 }
-
+~~~
+~~~js
 a = ["a"];
 a.indexOf("a"); //  = 0 해당 값이 있으면 0을 리턴
 a.indexOf("b"); // = -1 해당 값이 없으면 -1을 리턴
@@ -37,7 +39,8 @@ function solution(s) {
   }
   return answer;
 }
-
+~~~
+~~~js
 function solution(s) {
   let answer = "";
   answer = s
@@ -53,3 +56,4 @@ function solution(s) {
     .join(" ");
   return answer;
 }
+~~~
