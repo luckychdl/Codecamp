@@ -1,4 +1,4 @@
-import { MouseEvent, useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import { getDate } from "../../../../commons/libraries/utils";
