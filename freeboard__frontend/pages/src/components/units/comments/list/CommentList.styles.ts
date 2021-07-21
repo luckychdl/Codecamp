@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
 
 export const Main = styled.div`
   margin-bottom: 100px;
@@ -18,6 +19,9 @@ export const HeadWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+export const Star = styled(Rate)`
+  padding-left: 20px;
 `;
 export const SubWrapper = styled.div``;
 export const Profile = styled.img`
@@ -135,10 +139,7 @@ export const ReviewPassword = styled.input`
   border: 1px solid #bdbdbd;
   margin-right: 26px;
 `;
-export const Star = styled.img`
-  width: 20px;
-  height: 20px;
-`;
+
 export const ReviewWrite = styled.textarea`
   width: 1200px;
   height: 161px;
@@ -246,3 +247,7 @@ export const FooterBorder = styled.div`
 export const CommentWrapper = styled.div``;
 export const ListWrapper = styled.div``;
 export const ListSubWrapper = styled.div``;
+export const PasswordInput = styled.input`
+  width: 100%;
+  margin-top: 10px;
+`;

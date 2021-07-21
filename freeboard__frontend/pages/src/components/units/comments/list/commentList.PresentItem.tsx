@@ -1,9 +1,10 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import { getDate } from "../../../../commons/libraries/utils";
 import { IBoardComment } from "../../../../../../src/commons/types/generated/types";
 import CommentWrite from "../write/CommentWrite.container";
+import { Modal } from "antd";
 import {
   DELETE_BOARD_COMMENT,
   FETCH_BOARD_COMMENTS,
@@ -23,6 +24,8 @@ import {
   ContentsWrapper,
   FooterBorder,
   ListSubWrapper,
+  Star,
+  PasswordInput,
 } from "./CommentList.styles";
 
 interface ICommentListUIItemProps {
@@ -32,16 +35,22 @@ interface ICommentListUIItemProps {
 export default function CommentListUIItem(props: ICommentListUIItemProps) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const [password, setPassword] = useState("");
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
 
   function onClickUpdate() {
     setIsEdit(true);
   }
-
-  function onClickDelete(event: MouseEvent<HTMLImageElement>) {
-    const password = prompt("비밀번호를 입력해 주세요.");
+  function onClickOpenDeleteModal() {
+    setIsOpenDeleteModal(true);
+  }
+  function onChangeDeletePassword(event: ChangeEvent<HTMLInputElement>) {
+    setPassword(event.target.value);
+  }
+  function onClickDelete() {
     deleteBoardComment({
-      variables: { password, boardCommentId: (event.target as Element).id },
+      variables: { password, boardCommentId: props.data?._id },
       refetchQueries: [
         {
           query: FETCH_BOARD_COMMENTS,
@@ -49,10 +58,19 @@ export default function CommentListUIItem(props: ICommentListUIItemProps) {
         },
       ],
     });
+    Modal.confirm({
+      content: "댓글이 삭제되었습니다.",
+    });
   }
 
   return (
     <>
+      {isOpenDeleteModal && (
+        <Modal visible={true} onOk={onClickDelete}>
+          <div>비밀번호 입력: </div>
+          <PasswordInput type="password" onChange={onChangeDeletePassword} />
+        </Modal>
+      )}
       {!isEdit && (
         <ListWrapper>
           <ListSubWrapper>
@@ -62,6 +80,7 @@ export default function CommentListUIItem(props: ICommentListUIItemProps) {
                 <ContentsWrapper>
                   <FooterSubWrapper>
                     <ReviewName>{props.data.writer}</ReviewName>
+                    <Star value={props.data.rating} disabled />
                   </FooterSubWrapper>
                   <ReviewContents>{props.data.contents}</ReviewContents>
                 </ContentsWrapper>
@@ -69,8 +88,7 @@ export default function CommentListUIItem(props: ICommentListUIItemProps) {
               <FooterImg>
                 <Mode onClick={onClickUpdate} src="/FreeBoard/Mode.png" />
                 <Clear
-                  id={props.data._id}
-                  onClick={onClickDelete}
+                  onClick={onClickOpenDeleteModal}
                   src="/FreeBoard/Clear.png"
                 />
               </FooterImg>

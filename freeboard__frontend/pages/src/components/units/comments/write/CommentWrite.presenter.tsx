@@ -26,6 +26,7 @@ interface ICommentWriteUIProps {
   onClickUpdate: (event: MouseEvent<HTMLButtonElement>) => void;
   inputs: typeof INPUTS_INIT;
   data?: IBoardComment;
+  onChangeStar: (value: number) => void;
 }
 
 export default function CommentWriteUI(props: ICommentWriteUIProps) {
@@ -52,11 +53,7 @@ export default function CommentWriteUI(props: ICommentWriteUIProps) {
             value={props.inputs.password}
             onChange={props.onChangeInputs}
           />
-          <Star src="/FreeBoard/Star.png" />
-          <Star src="/FreeBoard/Star.png" />
-          <Star src="/FreeBoard/Star.png" />
-          <Star src="/FreeBoard/Star.png" />
-          <Star src="/FreeBoard/Star.png" />
+          <Star onChange={props.onChangeStar} />
         </WriterWrapper>
       </ReviewSubWrapper>
       <TextWrapper>

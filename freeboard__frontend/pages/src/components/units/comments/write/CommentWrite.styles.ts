@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
 
 export const Main = styled.div`
   margin-bottom: 100px;
@@ -135,10 +136,7 @@ export const ReviewPassword = styled.input`
   border: 1px solid #bdbdbd;
   margin-right: 26px;
 `;
-export const Star = styled.img`
-  width: 20px;
-  height: 20px;
-`;
+export const Star = styled(Rate)``;
 export const ReviewWrite = styled.textarea`
   width: 1200px;
   height: 161px;

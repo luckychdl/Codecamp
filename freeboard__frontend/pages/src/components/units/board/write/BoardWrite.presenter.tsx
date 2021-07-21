@@ -57,7 +57,7 @@ interface IBoardWriteUIProps {
   data: any;
   isOpenDetail: boolean;
   inputsErrors: typeof INPUTS_INIT;
-  zoneCode: string;
+  zipcode: string;
   address: string;
   addressDetail: string;
 }
@@ -112,7 +112,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
       <AdressWrapper>
         <Adress>주소</Adress>
         <AdressSubWrapper>
-          <AdressBox type="text" value={props.zoneCode}></AdressBox>
+          <AdressBox type="text" value={props.zipcode}></AdressBox>
           <Search onClick={props.onCompleteDetail}>우편번호 검색</Search>
           {props.isOpenDetail && (
             <Modal
@@ -131,7 +131,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             name="addressDetail"
             type="text"
             onChange={props.onChangeInputsDetail}
-            value={props.addressDetail}
           ></AdressSubBox>
         </AdressBoxWrapper>
       </AdressWrapper>

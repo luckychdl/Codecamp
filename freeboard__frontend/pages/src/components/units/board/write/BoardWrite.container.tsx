@@ -27,9 +27,7 @@ interface INewInputs {
   title?: string;
   contents?: string;
   youtubeUrl?: string;
-  boardAddress?: string;
 }
-export const INPUTS_DETAIL = { addressDetail: "" };
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,11 +35,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [inputsErrors, setInputsErrors] = useState(INPUTS_INIT);
   const [active, setActive] = useState(false);
   const [resultId, setResultId] = useState();
-  const [zoneCode, setZoneCode] = useState("");
+  const [zipcode, setZipCode] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
   const [isOpenDetail, setIsOpenDetail] = useState(false);
-  const [inputsDetail, setInputsDetail] = useState(INPUTS_DETAIL);
   function handleCancelDetail() {
     setIsOpenDetail(false);
   }
@@ -49,7 +46,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
     setIsOpenDetail(false);
   }
   function onClickAddressDetail(data: any) {
-    setZoneCode(data.zonecode);
+    setZipCode(data.zonecode);
     setAddress(data.address);
     setAddressDetail(data.addressDetail);
     setIsOpenDetail(false);
@@ -73,14 +70,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
     setInputsErrors({ ...inputsErrors, [event.target.name]: "" });
   }
   function onChangeInputsDetail(event: ChangeEvent<HTMLInputElement>) {
-    const newInputsDetail = {
-      ...inputsDetail,
-      [event?.target.name]: event?.target.value,
-    };
-    setInputsDetail(newInputsDetail);
-    Object.values(newInputsDetail).every((data) => data)
-      ? setActive(true)
-      : setActive(false);
+    setAddressDetail(event.target.value);
   }
   function handleOK() {
     setIsOpen(false);
@@ -104,9 +94,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
             createBoardInput: {
               ...inputs,
               boardAddress: {
-                zipcode: zoneCode,
-                address: address,
-                addressDetail: inputsDetail.addressDetail,
+                zipcode,
+                address,
+                addressDetail,
               },
             },
           },
@@ -149,7 +139,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   }
 
   function onClickAddress(data) {
-    setZoneCode(data.zonecode);
+    setZipCode(data.zonecode);
     setAddress(data.address);
     setAddressDetail(data.addressDetail);
     setIsOpen(false);
@@ -182,11 +172,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
       <BoardWriteUI
         onClickUpdate={onClickUpdate}
-        zoneCode={zoneCode}
+        zipcode={zipcode}
         address={address}
         handleOkDetail={handleOkDetail}
         handleCancelDetail={handleCancelDetail}
-        addressDetail={addressDetail}
         onClickAddress={onClickAddress}
         onClickAddressDetail={onClickAddressDetail}
         onCompleteDetail={onCompleteDetail}

@@ -8,12 +8,13 @@ import { useRouter } from "next/router";
 import { useState, ChangeEvent, MouseEvent } from "react";
 import { FETCH_BOARD_COMMENTS } from "../list/CommentList.queries";
 import { IBoardComment } from "../../../../../../src/commons/types/generated/types";
+import { Modal } from "antd";
 
 export const INPUTS_INIT = {
   writer: "",
   password: "",
   contents: "",
-  rating: 3.1,
+  rating: 0,
 };
 interface ICommentWriteProps {
   data?: IBoardComment;
@@ -32,13 +33,15 @@ export default function CommentWrite(props: ICommentWriteProps) {
   ) {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
   }
-
+  function onChangeStar(value: number) {
+    setInputs({ ...inputs, rating: value });
+  }
   async function onClickSubmit() {
     try {
       await createBoardComment({
         variables: {
-          boardId: router.query.boardId,
           createBoardCommentInput: { ...inputs },
+          boardId: router.query.boardId,
         },
         refetchQueries: [
           {
@@ -46,6 +49,9 @@ export default function CommentWrite(props: ICommentWriteProps) {
             variables: { boardId: router.query.boardId },
           },
         ],
+      });
+      Modal.confirm({
+        content: "댓글이 등록되었습니다.",
       });
       setInputs(INPUTS_INIT);
     } catch (error) {
@@ -68,6 +74,9 @@ export default function CommentWrite(props: ICommentWriteProps) {
           },
         ],
       });
+      Modal.confirm({
+        content: "댓글이 수정되었습니다.",
+      });
       setInputs(INPUTS_INIT);
       props.setIsEdit?.(false);
     } catch (error) {
@@ -79,8 +88,10 @@ export default function CommentWrite(props: ICommentWriteProps) {
       onChangeInputs={onChangeInputs}
       onClickSubmit={onClickSubmit}
       onClickUpdate={onClickUpdate}
+      onChangeStar={onChangeStar}
       isEdit={props.isEdit}
       inputs={inputs}
+      data={props.data}
     />
   );
 }

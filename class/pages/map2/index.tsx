@@ -20,7 +20,7 @@ export default function map2Page() {
         {fruits
           .filter((data) => data.number % 2 === 0)
           .map((data) => (
-            <div>
+            <div key={data.number}>
               <Fruits> {data.number} </Fruits>
               <Number> {data.title} </Number>
             </div>
@@ -31,7 +31,7 @@ export default function map2Page() {
         {fruits
           .filter((data) => data.number % 2 === 1)
           .map((data) => (
-            <div>
+            <div key={data.number}>
               <Fruits>{data.number} </Fruits>
               <Number>{data.title} </Number>
             </div>
