@@ -49,14 +49,10 @@ export const Address = styled.div`
   background-color: gray;
   padding: 5px 10px 10px 0;
   text-align: end;
-  /* display: none; */
 `;
 export const Location = styled.img`
   width: 32px;
   height: 32px;
-  :hover ~ Address {
-    display: block;
-  }
 `;
 export const Detail = styled.div`
   font-size: 18px;
