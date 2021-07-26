@@ -15,7 +15,7 @@ export default function BoardMain() {
   const [nextButton, setNextButton] = useState(false);
   const [prevButton, setPrevButton] = useState(true);
   const [nextActive, setNextActive] = useState(true);
-  const [prevActvie, setPrevActive] = useState(true);
+  const [prevActive, setPrevActive] = useState(false);
 
   function onClickregister() {
     router.push("/boards/new");
@@ -33,28 +33,35 @@ export default function BoardMain() {
     if (startPage + 10 > lastPage) {
       setNextButton(true);
       setNextActive(false);
+      setPrevActive(true);
       setPrevButton(false);
-      console.log(nextActive);
     } else if (startPage + 10 < lastPage) {
       setStartPage((prev) => prev + 10);
       setPrevButton(false);
+      setPrevActive(true);
+      setNextActive(true);
+    } else {
+      setPrevActive(false);
     }
   }
   function onClickPrevPage() {
-    if (startPage <= 1) {
-      setPrevButton("disabled");
+    if (startPage < 10) {
+      setPrevButton(true);
       setPrevActive(false);
-      setNextButton("");
+      setNextActive(true);
+      setNextButton(false);
     } else if (startPage < lastPage) {
       setStartPage((prev) => prev - 10);
-      setNextButton("");
+      setNextButton(false);
+      setPrevActive(true);
+      setNextActive(true);
     }
   }
 
   return (
     <BoardMainUI
       nextActive={nextActive}
-      prevActvie={prevActvie}
+      prevActive={prevActive}
       data={data}
       startPage={startPage}
       lastPage={lastPage}

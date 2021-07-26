@@ -1,4 +1,5 @@
 import ReactPlayer from "react-player";
+import { Tooltip } from "antd";
 import {
   Main,
   MainWrapper,
@@ -50,25 +51,16 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             </SubWrapper>
           </NameWrapper>
           <LinkWrapper>
-            <Address>
-              <SubDetail>
-                {props.data?.fetchBoard.boardAddress?.zipcode}{" "}
-              </SubDetail>
-              <SubDetail>
-                {" "}
-                {props.data?.fetchBoard.boardAddress?.address}{" "}
-              </SubDetail>
-              <Detail>
-                {props.data?.fetchBoard.boardAddress?.addressDetail}
-              </Detail>
-            </Address>
-            <LinkSubWrapper>
-              <Link src="/FreeBoard/Link.png" />
+            <Link src="/FreeBoard/Link.png" />
+            <Tooltip
+              placement="topRight"
+              title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
+            >
               <Location
                 src="/FreeBoard/Location.png"
                 // onMouseOver={props.onMouseOverImg}
               ></Location>
-            </LinkSubWrapper>
+            </Tooltip>
           </LinkWrapper>
         </HeadWrapper>
         <Border></Border>

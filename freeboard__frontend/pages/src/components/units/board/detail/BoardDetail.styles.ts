@@ -40,8 +40,9 @@ export const Date = styled.div`
 `;
 export const LinkWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
+  margin-bottom: 34px;
 `;
 export const Address = styled.div`
   width: 376px;

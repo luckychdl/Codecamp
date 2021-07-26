@@ -22,6 +22,8 @@ interface IBoardMainUIProps {
   lastPage: number;
   prevButton: any;
   nextButton: any;
+  nextActive: boolean;
+  prevActive: boolean;
   onClickMoveDetail: (event: MouseEvent<HTMLDivElement>) => void;
   onClickregister: () => void;
   onClickPrevPage: () => void;
@@ -51,7 +53,11 @@ export default function BoardMainUI(props: IBoardMainUIProps) {
         ))}
       </Wrapper>
       <PageWrapper>
-        <Prev onClick={props.onClickPrevPage} disabled={props.prevButton}>
+        <Prev
+          onClick={props.onClickPrevPage}
+          disabled={props.prevButton}
+          prevActive={props.prevActive}
+        >
           이전
         </Prev>
         {new Array(10).fill(1).map((_, index) => {
@@ -75,7 +81,6 @@ export default function BoardMainUI(props: IBoardMainUIProps) {
         >
           다음
         </Next>
-        <button disabled={true}>asdasd</button>;
       </PageWrapper>
       <ButtonWrapper>
         <Img src="/FreeBoard/Register.png" />

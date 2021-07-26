@@ -1,7 +1,5 @@
-import BoardWrite from '../../src/components/units/board/write/BoardWrite.container'
+import BoardWrite from "../../src/components/units/board/write/BoardWrite.container";
 
-export default function WritePage () {
-
-  return (<BoardWrite />)
+export default function WritePage() {
+  return <BoardWrite />;
 }
-  

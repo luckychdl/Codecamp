@@ -65,9 +65,9 @@ export const Page = styled.button`
   background-color: white;
   border: none;
   :active {
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
     position: relative;
     top: 2px;
+    border-radius: 10px;
   }
   :hover {
     color: blue;
@@ -76,32 +76,39 @@ export const Page = styled.button`
 export const Next = styled.button`
   margin: 0px 10px;
   cursor: pointer;
-  background-color: ${(props: { nextActive: boolean }) =>
-    props.nextActive ? "white" : "black"};
+  background-color: white;
   border: none;
+  text-align: center;
+  color: ${(props: { nextActive: boolean }) =>
+    props.nextActive ? "black" : "#e6e6e6"};
+
   :active {
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
     position: relative;
     top: 2px;
   }
 
   :hover {
-    color: blue;
+    color: ${(props: { nextActive: boolean }) =>
+      props.nextActive ? "blue" : "none"};
   }
 `;
 export const Prev = styled.button`
   margin: 0px 10px;
   cursor: pointer;
-  background-color: ${(props: { prevActive: boolean }) =>
-    props.prevActive ? "white" : "gray"};
+  background-color: white;
   border: none;
+  text-align: center;
+  color: ${(props: { prevActive: boolean }) =>
+    props.prevActive ? "black" : "#e6e6e6"};
+
   :active {
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
     position: relative;
     top: 2px;
   }
+
   :hover {
-    color: blue;
+    color: ${(props: { prevActive: boolean }) =>
+      props.prevActive ? "blue" : "none"};
   }
 `;
 export const PageWrapper = styled.div`
