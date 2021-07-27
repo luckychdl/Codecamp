@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const BannerWrapper = styled.div``;
 export const Banner = styled.div`
-  height: 300px;
+  height: 320px;
   width: 100%;
   background-color: #35c5f0;
 `;

@@ -15,6 +15,8 @@ import {
 } from "./BoardMain.styles";
 import { getDate } from "../../../../commons/libraries/utils";
 import { MouseEvent } from "react";
+import { ApolloQueryResult, OperationVariables } from "@apollo/client";
+import { IQuery } from "../../../../../../src/commons/types/generated/types";
 
 interface IBoardMainUIProps {
   data: any;
@@ -24,6 +26,9 @@ interface IBoardMainUIProps {
   nextButton: any;
   nextActive: boolean;
   prevActive: boolean;
+  refetch: (
+    variables?: Partial<OperationVariables> | undefined
+  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;
   onClickMoveDetail: (event: MouseEvent<HTMLDivElement>) => void;
   onClickregister: () => void;
   onClickPrevPage: () => void;
@@ -57,8 +62,9 @@ export default function BoardMainUI(props: IBoardMainUIProps) {
           onClick={props.onClickPrevPage}
           disabled={props.prevButton}
           prevActive={props.prevActive}
+          refetch={props.refetch}
         >
-          이전
+          {'<'}
         </Prev>
         {new Array(10).fill(1).map((_, index) => {
           const currentPage = props.startPage + index;
@@ -78,8 +84,9 @@ export default function BoardMainUI(props: IBoardMainUIProps) {
           onClick={props.onClickNextPage}
           disabled={props.nextButton}
           nextActive={props.nextActive}
+          refetch={props.refetch}
         >
-          다음
+          {'>'}
         </Next>
       </PageWrapper>
       <ButtonWrapper>

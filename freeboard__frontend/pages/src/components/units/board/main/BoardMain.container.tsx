@@ -4,7 +4,10 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { MouseEvent, useState } from "react";
 
-export default function BoardMain() {
+interface IBoardMainProps {
+  refetch: any;
+}
+export default function BoardMain(props: IBoardMainProps) {
   const { data, refetch } = useQuery(FETCH_BOARDS);
   const { data: count } = useQuery(FETCH_BOARDS_COUNT, {
     variables: { startPage: 1 },
@@ -41,8 +44,10 @@ export default function BoardMain() {
       setPrevActive(true);
       setNextActive(true);
     } else {
-      setPrevActive(false);
+      setNextActive(false)
+      setNextButton(true)
     }
+    
   }
   function onClickPrevPage() {
     if (startPage < 10) {
@@ -67,6 +72,7 @@ export default function BoardMain() {
       lastPage={lastPage}
       prevButton={prevButton}
       nextButton={nextButton}
+      refetch={refetch}
       onClickregister={onClickregister}
       onClickMoveDetail={onClickMoveDetail}
       onClickPage={onClickPage}
