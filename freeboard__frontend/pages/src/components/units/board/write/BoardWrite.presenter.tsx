@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, RefObject } from "react";
 import { INPUTS_INIT } from "./BoardWrite.container";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
@@ -39,6 +39,7 @@ import {
   Button,
   Word,
   RadioSubWrapper,
+  Img,
 } from "./BoardWrite.styles";
 
 interface IBoardWriteUIProps {
@@ -52,6 +53,10 @@ interface IBoardWriteUIProps {
   handleOkDetail: () => void;
   handleCancelDetail: () => void;
   onChangeInputsDetail: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClickBox: () => void;
+  onChangeUpFile: (event: ChangeEvent<HTMLInputElement>) => void;
+  fileRef: RefObject<HTMLInputElement>;
+  imgUrl: string;
   active: boolean;
   isEdit?: boolean;
   data: any;
@@ -148,18 +153,29 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
       <PhotoWarpper>
         <Photo>사진 첨부</Photo>
         <PhotoMainWrapper>
-          <PhotoSubWrapper>
-            <Plus>+</Plus>
-            <Upload>Upload</Upload>
-          </PhotoSubWrapper>
-          <PhotoSubWrapper>
-            <Plus>+</Plus>
-            <Upload>Upload</Upload>
-          </PhotoSubWrapper>
-          <PhotoSubWrapper>
-            <Plus>+</Plus>
-            <Upload>Upload</Upload>
-          </PhotoSubWrapper>
+          {new Array(3).fill(1).map((_) => {
+            return (
+              <>
+                <PhotoSubWrapper onClick={props.onClickBox}>
+                  <Plus>+</Plus>
+                  {props.imgUrl ? (
+                    <Img
+                      src={`https://storage.googleapis.com/${props.imgUrl}`}
+                    />
+                  ) : (
+                    <Upload>Upload</Upload>
+                  )}
+                  <input
+                    ref={props.fileRef}
+                    type="file"
+                    multiple
+                    onChange={props.onChangeUpFile}
+                    style={{ display: "none" }}
+                  />
+                </PhotoSubWrapper>
+              </>
+            );
+          })}
         </PhotoMainWrapper>
       </PhotoWarpper>
       <RadioWrapper>

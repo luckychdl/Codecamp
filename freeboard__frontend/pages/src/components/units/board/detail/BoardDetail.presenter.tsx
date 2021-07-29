@@ -23,10 +23,6 @@ import {
   LikeWrapper,
   Score,
   HateScore,
-  Address,
-  LinkSubWrapper,
-  Detail,
-  SubDetail,
 } from "./BoardDetail.styles";
 
 interface IBoardDetailUIProps {
@@ -65,7 +61,9 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         </HeadWrapper>
         <Border></Border>
         <Title>{props.data?.fetchBoard.title}</Title>
-        <Image src="/FreeBoard/Image.png" />
+        <Image
+          src={`https://storage.googleapis.com/${props.data?.fetchBoard.images}`}
+        />
         <Content>{props.data?.fetchBoard.contents}</Content>
 
         <ReactPlayer

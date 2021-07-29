@@ -12,7 +12,7 @@ const FETCH_BOARDS = gql`
   `;
 
 export default function BoardMainPagination() {
-  const { data, refetch } = useQuery<IQuery>(FETCH_BOARDS, {
+  const { data } = useQuery<IQuery>(FETCH_BOARDS, {
     variables: { page: 1 },
   });
 
@@ -22,7 +22,6 @@ export default function BoardMainPagination() {
         {data?.fetchBoards.map((data) => (
           <div key={data._id}></div>
         ))}
-        <Page></Page>
       </div>
     </>
   );

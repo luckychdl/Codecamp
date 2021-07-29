@@ -1,9 +1,9 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useRef } from "react";
 import { Modal } from "antd";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardWriteUI from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 import {
   IMutation,
   IMutationCreateBoardArgs,
@@ -39,6 +39,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
   const [isOpenDetail, setIsOpenDetail] = useState(false);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
+  const [imgUrl, setImgUrl] = useState();
+  const fileRef = useRef<HTMLInputElement>(null);
   function handleCancelDetail() {
     setIsOpenDetail(false);
   }
@@ -92,6 +95,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
         const result: any = await createBoard({
           variables: {
             createBoardInput: {
+              images: [imgUrl],
               ...inputs,
               boardAddress: {
                 zipcode,
@@ -101,14 +105,43 @@ export default function BoardWrite(props: IBoardWriteProps) {
             },
           },
         });
+        console.log(imgUrl);
         setIsOpen(true);
+        console.log(result.data.createBoard._id);
         setResultId(result.data.createBoard._id);
       } catch (error) {
         alert(error.message);
       }
     }
   }
+  const onChangeUpFile = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file?.size) {
+      alert("파일이 없습니다.");
+      return;
+    }
+    if (file?.size > 5 * 1024 * 1024) {
+      alert("파일 용량이 너무 큽니다. (제한 : 5MB)");
+      return;
+    }
+    if (!file?.type.includes("png") && !file?.type.includes("jpeg")) {
+      alert("png 또는 jpeg 파일만 업로드 가능합니다.");
+      return;
+    }
 
+    try {
+      const result = await uploadFile({
+        variables: { file: file },
+      });
+      console.log(result);
+      setImgUrl(result.data.uploadFile.url);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+  const onClickBox = () => {
+    fileRef.current?.click();
+  };
   async function onClickUpdate() {
     const newInputs: INewInputs = {};
     if (inputs.title) newInputs.title = inputs.title;
@@ -138,7 +171,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
     }
   }
 
-  function onClickAddress(data) {
+  function onClickAddress(data: any) {
     setZipCode(data.zonecode);
     setAddress(data.address);
     setAddressDetail(data.addressDetail);
@@ -172,6 +205,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
       <BoardWriteUI
         onClickUpdate={onClickUpdate}
+        onChangeUpFile={onChangeUpFile}
+        onClickBox={onClickBox}
+        imgUrl={imgUrl}
+        fileRef={fileRef}
         zipcode={zipcode}
         address={address}
         handleOkDetail={handleOkDetail}

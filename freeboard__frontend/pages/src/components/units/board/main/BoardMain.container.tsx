@@ -44,10 +44,9 @@ export default function BoardMain(props: IBoardMainProps) {
       setPrevActive(true);
       setNextActive(true);
     } else {
-      setNextActive(false)
-      setNextButton(true)
+      setNextActive(false);
+      setNextButton(true);
     }
-    
   }
   function onClickPrevPage() {
     if (startPage < 10) {

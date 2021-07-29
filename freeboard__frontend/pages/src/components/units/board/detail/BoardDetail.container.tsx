@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Modal } from "antd";
-// import { Address, SubDetail, Detail } from "./BoardDetail.styles";
 import {
   FETCH_BOARD,
   DELETE_BOARD,
@@ -61,17 +60,6 @@ export default function BoardDetail() {
     setIsOpen(false);
   }
 
-  // function onMouseOverImg() {
-  //   data?.fetchBoards.map((data) => {
-  //     return (
-  //       <Address key={data._id}>
-  //         <SubDetail>{data?.fetchBoard.boardAddress?.zipcode} </SubDetail>
-  //         <SubDetail> {data?.fetchBoard.boardAddress?.address} </SubDetail>
-  //         <Detail>{data?.fetchBoard.boardAddress?.addressDetail}</Detail>
-  //       </Address>
-  //     );
-  //   });
-  // }
   return (
     <>
       <Modal
@@ -89,7 +77,6 @@ export default function BoardDetail() {
         onClickList={onClickList}
         onClickDelete={onClickDelete}
         onClickEdit={onClickEdit}
-        // onMouseOverImg={onMouseOverImg}
       />
     </>
   );

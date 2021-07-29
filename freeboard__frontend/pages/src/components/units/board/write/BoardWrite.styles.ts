@@ -99,6 +99,7 @@ export const AdressSubBox = styled.input`
   width: 996px;
   height: 52px;
   margin: 10px 0px 12px 0px;
+  border: 1px solid #bdbdbd;
 `;
 export const AdressBoxWrapper = styled.div`
   display: flex;
@@ -117,6 +118,7 @@ export const YoutubeBox = styled.input`
   height: 45.78px;
   margin-bottom: 36px;
   padding: 10px;
+  border: 1px solid #bdbdbd;
 `;
 export const PhotoWarpper = styled.div``;
 export const Photo = styled.div`
@@ -125,12 +127,14 @@ export const Photo = styled.div`
 `;
 export const PhotoSubWrapper = styled.button`
   box-sizing: border-box;
-  border: 1px solid #bdbdbd;
+  /* border: 1px solid #bdbdbd; */
+  border: none;
   width: 78px;
   height: 78px;
   background-color: #bdbdbd;
   margin-right: 20px;
   cursor: pointer;
+  position: relative;
 `;
 export const PhotoMainWrapper = styled.div`
   width: 996px;
@@ -141,6 +145,18 @@ export const PhotoMainWrapper = styled.div`
 `;
 export const Plus = styled.div``;
 export const Upload = styled.div``;
+export const Img = styled.img`
+  box-sizing: border-box;
+  border: 1px solid #bdbdbd;
+  width: 78px;
+  height: 78px;
+  /* background-color: #bdbdbd; */
+  margin-right: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
 export const Set = styled.div`
   margin-top: 36px;
 `;

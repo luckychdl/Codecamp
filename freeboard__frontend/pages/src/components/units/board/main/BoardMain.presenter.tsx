@@ -62,9 +62,8 @@ export default function BoardMainUI(props: IBoardMainUIProps) {
           onClick={props.onClickPrevPage}
           disabled={props.prevButton}
           prevActive={props.prevActive}
-          refetch={props.refetch}
         >
-          {'<'}
+          {"<"}
         </Prev>
         {new Array(10).fill(1).map((_, index) => {
           const currentPage = props.startPage + index;
@@ -84,9 +83,8 @@ export default function BoardMainUI(props: IBoardMainUIProps) {
           onClick={props.onClickNextPage}
           disabled={props.nextButton}
           nextActive={props.nextActive}
-          refetch={props.refetch}
         >
-          {'>'}
+          {">"}
         </Next>
       </PageWrapper>
       <ButtonWrapper>
