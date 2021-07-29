@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useRef } from "react";
+import { useState, ChangeEvent } from "react";
 import { Modal } from "antd";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -39,9 +39,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
   const [isOpenDetail, setIsOpenDetail] = useState(false);
-  const [uploadFile] = useMutation(UPLOAD_FILE);
-  const [imgUrl, setImgUrl] = useState();
-  const fileRef = useRef<HTMLInputElement>(null);
+  // const [imgUrls, setImgUrls] = useState(["", "", ""]);
+  const [files, setFiles] = useState([]);
   function handleCancelDetail() {
     setIsOpenDetail(false);
   }
@@ -59,6 +58,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [createBoard] = useMutation<IMutation, IMutationCreateBoardArgs>(
     CREATE_BOARD
   );
+  const [uploadFile] = useMutation(UPLOAD_FILE);
   const [updateBoard] = useMutation<IMutation, IMutationUpdateBoardArgs>(
     UPDATE_BOARD
   );
@@ -72,7 +72,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       : setActive(false);
     setInputsErrors({ ...inputsErrors, [event.target.name]: "" });
   }
-  function onChangeInputsDetail(event: ChangeEvent<HTMLInputElement>) {
+  async function onChangeInputsDetail(event: ChangeEvent<HTMLInputElement>) {
     setAddressDetail(event.target.value);
   }
   function handleOK() {
@@ -92,56 +92,32 @@ export default function BoardWrite(props: IBoardWriteProps) {
     });
     if (Object.values(inputs).every((data) => data)) {
       try {
+        const resultFiles = await Promise.all(
+          files.map((data) => uploadFile({ variables: { file: data } }))
+        );
+        const newImages = resultFiles.map((el) => el.data.uploadFile.url);
+
         const result: any = await createBoard({
           variables: {
             createBoardInput: {
-              images: [imgUrl],
               ...inputs,
               boardAddress: {
                 zipcode,
                 address,
                 addressDetail,
               },
+              images: newImages,
             },
           },
         });
-        console.log(imgUrl);
         setIsOpen(true);
-        console.log(result.data.createBoard._id);
         setResultId(result.data.createBoard._id);
       } catch (error) {
         alert(error.message);
       }
     }
   }
-  const onChangeUpFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file?.size) {
-      alert("파일이 없습니다.");
-      return;
-    }
-    if (file?.size > 5 * 1024 * 1024) {
-      alert("파일 용량이 너무 큽니다. (제한 : 5MB)");
-      return;
-    }
-    if (!file?.type.includes("png") && !file?.type.includes("jpeg")) {
-      alert("png 또는 jpeg 파일만 업로드 가능합니다.");
-      return;
-    }
 
-    try {
-      const result = await uploadFile({
-        variables: { file: file },
-      });
-      console.log(result);
-      setImgUrl(result.data.uploadFile.url);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-  const onClickBox = () => {
-    fileRef.current?.click();
-  };
   async function onClickUpdate() {
     const newInputs: INewInputs = {};
     if (inputs.title) newInputs.title = inputs.title;
@@ -180,6 +156,13 @@ export default function BoardWrite(props: IBoardWriteProps) {
   function onCompleteDetail() {
     setIsOpenDetail(true);
   }
+
+  const onChangeFileUrl = (file: string, index: number) => {
+    const newFileUrl = [...files];
+    newFileUrl[index] = file;
+    setFiles(newFileUrl);
+    console.log(newFileUrl);
+  };
   return (
     <>
       {!props.isEdit && (
@@ -205,13 +188,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
       <BoardWriteUI
         onClickUpdate={onClickUpdate}
-        onChangeUpFile={onChangeUpFile}
-        onClickBox={onClickBox}
-        imgUrl={imgUrl}
-        fileRef={fileRef}
         zipcode={zipcode}
         address={address}
+        // imgUrls={imgUrls}
         handleOkDetail={handleOkDetail}
+        onChangeFileUrl={onChangeFileUrl}
         handleCancelDetail={handleCancelDetail}
         onClickAddress={onClickAddress}
         onClickAddressDetail={onClickAddressDetail}

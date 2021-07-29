@@ -52,18 +52,16 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
               placement="topRight"
               title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
             >
-              <Location
-                src="/FreeBoard/Location.png"
-                // onMouseOver={props.onMouseOverImg}
-              ></Location>
+              <Location src="/FreeBoard/Location.png"></Location>
             </Tooltip>
           </LinkWrapper>
         </HeadWrapper>
         <Border></Border>
         <Title>{props.data?.fetchBoard.title}</Title>
-        <Image
-          src={`https://storage.googleapis.com/${props.data?.fetchBoard.images}`}
-        />
+        {props.data?.fetchBoard.images?.map((data: string) => (
+          <Image key={data} src={`https://storage.googleapis.com/${data}`} />
+        ))}
+
         <Content>{props.data?.fetchBoard.contents}</Content>
 
         <ReactPlayer

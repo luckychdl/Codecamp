@@ -87,8 +87,8 @@ export const Title = styled.div`
   font-size: 36px;
 `;
 export const Image = styled.img`
-  width: 996px;
-  height: 480px;
+  width: 700px;
+  height: 400px;
   margin: 40px 0 40px 0;
 `;
 export const Content = styled.div`
