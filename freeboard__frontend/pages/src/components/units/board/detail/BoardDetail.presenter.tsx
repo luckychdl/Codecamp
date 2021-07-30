@@ -68,7 +68,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
           url={props.data?.fetchBoard.youtubeUrl}
           width="600px"
           height="300px"
-          playing={true}
+          controls={true}
           muted={true}
         />
 

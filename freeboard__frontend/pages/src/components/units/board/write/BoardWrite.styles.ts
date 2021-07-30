@@ -11,6 +11,7 @@ export const MainWrapper = styled.div`
 `;
 export const Title = styled.h1`
   font-size: 36px;
+  color: #757575;
 `;
 export const Name = styled.div`
   font-size: 16px;
@@ -91,9 +92,14 @@ export const AdressSubWrapper = styled.div`
 export const Search = styled.span`
   width: 124px;
   height: 52px;
-  background-color: black;
+  background-color: #35c5f0;
   color: white;
   padding: 14px 16px;
+  cursor: pointer;
+  :active {
+    position: relative;
+    top: 2px;
+  }
 `;
 export const AdressSubBox = styled.input`
   width: 996px;
@@ -182,12 +188,33 @@ export const Button = styled.button`
   height: 52px;
   font-weight: bold;
   background-color: ${(props: { active: boolean }) =>
-    props.active ? "#ffd600" : ""};
+    props.active ? "#35c5f0" : ""};
+  color: ${(props: { active: boolean }) => (props.active ? "white" : "")};
   border: 0px;
   margin-top: 30px;
   cursor: pointer;
+  :active {
+    position: relative;
+    top: 2px;
+  }
 `;
 export const ErrorMessage = styled.div`
   margin-bottom: 35px;
   color: red;
 `;
+export const Cancle = styled.button`
+  width: 179px;
+  height: 52px;
+  font-weight: bold;
+  background-color: #35c5f0;
+  border: 0px;
+  margin-top: 30px;
+  margin-left: 20px;
+  color: white;
+  cursor: pointer;
+  :active {
+    position: relative;
+    top: 2px;
+  }
+`;
+export const ButtonWrapper = styled.div``;

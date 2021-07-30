@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 export const FreeBoard = styled.div`
   font-size: 18px;
   width: 83px;
+  color: #616161;
   text-align: center;
   margin: 0 40px;
   cursor: pointer;

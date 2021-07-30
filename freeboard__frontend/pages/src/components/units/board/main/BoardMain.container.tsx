@@ -2,7 +2,8 @@ import BoardMainUI from "./BoardMain.presenter";
 import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardMain.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { MouseEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
+// import _ from "lodash";
 
 interface IBoardMainProps {
   refetch: any;
@@ -19,18 +20,31 @@ export default function BoardMain(props: IBoardMainProps) {
   const [prevButton, setPrevButton] = useState(true);
   const [nextActive, setNextActive] = useState(true);
   const [prevActive, setPrevActive] = useState(false);
+  const [search, setSearch] = useState();
+  // const [keyword, setKeyword] = useState("");
 
-  function onClickregister() {
+  const onClickregister = () => {
     router.push("/boards/new");
-  }
+  };
 
-  function onClickMoveDetail(event: MouseEvent<HTMLDivElement>) {
+  const onClickMoveDetail = (event: MouseEvent<HTMLDivElement>) => {
     router.push(`/detail/${(event.target as Element).id}`);
-  }
+  };
 
-  function onClickPage(event: MouseEvent<HTMLSpanElement>) {
+  const onClickPage = (event: MouseEvent<HTMLSpanElement>) => {
     refetch({ page: Number((event.target as Element).id) });
-  }
+  };
+
+  const onClickSearch = () => {
+    refetch({ search: search });
+  };
+  const onChangeSearch = (event: ChangeEvent) => {
+    setSearch(event.target.value);
+  };
+  // const getDebounce = _.debounce((data) => {
+  //   refetch({ search: data });
+  //   setKeyword(data);
+  // }, 1000);
 
   function onClickNextPage() {
     if (startPage + 10 > lastPage) {
@@ -64,6 +78,7 @@ export default function BoardMain(props: IBoardMainProps) {
 
   return (
     <BoardMainUI
+      // keyword={keyword}
       nextActive={nextActive}
       prevActive={prevActive}
       data={data}
@@ -71,6 +86,8 @@ export default function BoardMain(props: IBoardMainProps) {
       lastPage={lastPage}
       prevButton={prevButton}
       nextButton={nextButton}
+      onClickSearch={onClickSearch}
+      onChangeSearch={onChangeSearch}
       refetch={refetch}
       onClickregister={onClickregister}
       onClickMoveDetail={onClickMoveDetail}

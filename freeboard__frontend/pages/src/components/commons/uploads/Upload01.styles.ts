@@ -8,6 +8,10 @@ export const PhotoSubWrapper = styled.button`
   background-color: #bdbdbd;
   margin-right: 20px;
   cursor: pointer;
+  :active {
+    position: relative;
+    top: 2px;
+  }
 `;
 export const PhotoMainWrapper = styled.div`
   width: 996px;

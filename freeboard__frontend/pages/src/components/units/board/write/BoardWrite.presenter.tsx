@@ -36,7 +36,9 @@ import {
   Radio,
   Button,
   Word,
+  Cancle,
   RadioSubWrapper,
+  ButtonWrapper,
 } from "./BoardWrite.styles";
 
 interface IBoardWriteUIProps {
@@ -71,7 +73,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
       <Title>{props.isEdit ? "게시물 수정" : "게시물 등록"}</Title>
       <SubWrapper>
         <Wrapper>
-          <Name>작성자*</Name>
+          <Name>작성자</Name>
           <Box
             name="writer"
             type="text"
@@ -170,13 +172,15 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           <Word>사진</Word>
         </RadioSubWrapper>
       </RadioWrapper>
-
-      <Button
-        active={props?.active}
-        onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
-      >
-        {props.isEdit ? "수정하기" : "등록하기"}
-      </Button>
+      <ButtonWrapper>
+        <Button
+          active={props?.active}
+          onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+        >
+          {props.isEdit ? "수정하기" : "등록하기"}
+        </Button>
+        <Cancle>취소</Cancle>
+      </ButtonWrapper>
     </MainWrapper>
   );
 }

@@ -8,7 +8,7 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 1200px;
-  height: 1602px;
+  /* height: 1602px; */
   padding: 84px 102px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   margin: 100px 100px 80px 100px;
@@ -87,8 +87,8 @@ export const Title = styled.div`
   font-size: 36px;
 `;
 export const Image = styled.img`
-  width: 700px;
-  height: 400px;
+  width: 996px;
+  height: 480px;
   margin: 40px 0 40px 0;
 `;
 export const Content = styled.div`
@@ -108,6 +108,7 @@ export const LikeMainWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 120px;
+  margin-top: 50px;
 `;
 export const LikeWrapper = styled.div`
   display: flex;
@@ -127,6 +128,7 @@ export const Like = styled.img`
   height: 22px;
   margin: 20px;
   color: #828282;
+  cursor: pointer;
 `;
 export const ButtonWrapper = styled.div`
   width: 1400px;
@@ -138,12 +140,17 @@ export const Button = styled.button`
   border: 1px solid #bdbdbd;
   width: 179px;
   height: 45px;
+  color: #616161;
   text-align: center;
   font-weight: 500;
   font-size: 16px;
   margin-right: 24px;
   background-color: white;
   cursor: pointer;
+  :active {
+    position: relative;
+    top: 2px;
+  }
 `;
 export const ReviewImg = styled.img`
   width: 20px;

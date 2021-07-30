@@ -5,18 +5,22 @@ import {
   ListColumn,
   Column,
   ButtonWrapper,
-  Img,
   Button,
   Title,
   Page,
   PageWrapper,
   Next,
   Prev,
+  SearchWrapper,
+  Search,
+  SearchButton,
+  // Word,
 } from "./BoardMain.styles";
 import { getDate } from "../../../../commons/libraries/utils";
-import { MouseEvent } from "react";
+import { MouseEvent, ChangeEvent } from "react";
 import { ApolloQueryResult, OperationVariables } from "@apollo/client";
 import { IQuery } from "../../../../../../src/commons/types/generated/types";
+import { EditOutlined } from "@ant-design/icons";
 
 interface IBoardMainUIProps {
   data: any;
@@ -34,11 +38,21 @@ interface IBoardMainUIProps {
   onClickPrevPage: () => void;
   onClickNextPage: () => void;
   onClickPage: (event: MouseEvent<HTMLSpanElement>) => void;
+  onClickSearch: () => void;
+  onChangeSearch: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function BoardMainUI(props: IBoardMainUIProps) {
   return (
     <Main>
+      <SearchWrapper>
+        <Search
+          placeholder="제목을 검색해주세요."
+          type="text"
+          onChange={props.onChangeSearch}
+        />
+        <SearchButton onClick={props.onClickSearch}>검색하기</SearchButton>
+      </SearchWrapper>
       <Wrapper>
         <Row>
           <ListColumn>번호</ListColumn>
@@ -56,6 +70,14 @@ export default function BoardMainUI(props: IBoardMainUIProps) {
             <Column>{getDate(data.createdAt)}</Column>
           </Row>
         ))}
+        {/* {props.data?.fetchBoards.map((data, index) => (
+          <Row key={data._id}>
+            <Column>{index + 1}</Column>
+            <Column>{data.title}</Column>
+            <Column>{data.writer}</Column>
+            <Column>{index}</Column>
+          </Row>
+        ))} */}
       </Wrapper>
       <PageWrapper>
         <Prev
@@ -88,7 +110,10 @@ export default function BoardMainUI(props: IBoardMainUIProps) {
         </Next>
       </PageWrapper>
       <ButtonWrapper>
-        <Img src="/FreeBoard/Register.png" />
+        <EditOutlined
+          src="/FreeBoard/Register.png"
+          style={{ color: "white", marginRight: "10px", fontSize: "18px" }}
+        />
         <Button onClick={props.onClickregister}>게시물 등록하기</Button>
       </ButtonWrapper>
     </Main>
