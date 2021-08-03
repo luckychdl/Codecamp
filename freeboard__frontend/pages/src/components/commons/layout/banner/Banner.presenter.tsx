@@ -1,28 +1,39 @@
-import { Banner, BannerWrapper, Img } from "./Banner.styles";
+import {
+  Banner,
+  BannerWrapper,
+  LogoImg,
+  Img,
+  ImgWrapper,
+} from "./Banner.styles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 export default function LayoutBannerUI() {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 4000,
   };
   return (
     <BannerWrapper>
       <Banner>
         <Slider {...settings}>
-          <div>
-            <Img src="/FreeBoard/todayLogo.png" />
-          </div>
-          <div>
-            <Img src="/FreeBoard/todayLogo.png" />
-          </div>
-          <div>
-            <Img src="/FreeBoard/todayLogo.png" />
-          </div>
+          <ImgWrapper>
+            <LogoImg src="/FreeBoard/todayLogo.png" />
+          </ImgWrapper>
+          <ImgWrapper>
+            <Img src="/FreeBoard/banner2.png" />
+          </ImgWrapper>
+          <ImgWrapper>
+            <Img src="/FreeBoard/banner3.webp" />
+          </ImgWrapper>
+          <ImgWrapper>
+            <Img src="/FreeBoard/banner4.jpeg" />
+          </ImgWrapper>
         </Slider>
       </Banner>
     </BannerWrapper>
