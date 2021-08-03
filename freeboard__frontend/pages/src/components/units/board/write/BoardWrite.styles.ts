@@ -35,6 +35,7 @@ export const Box = styled.input`
   border: 1px solid #bdbdbd;
   margin-bottom: 10px;
   padding: 10px;
+  outline-color: #35c5f0;
 `;
 
 export const TitleWrapper = styled.div`
@@ -48,6 +49,7 @@ export const TitleBox = styled.input`
   border: 1px solid #bdbdbd;
   margin-bottom: 10px;
   padding: 10px;
+  outline-color: #35c5f0;
 `;
 export const TitleName = styled.div`
   font-size: 16px;
@@ -68,6 +70,7 @@ export const ContentBox = styled.textarea`
   resize: none;
   border: 1px solid #bdbdbd;
   margin-bottom: 10px;
+  outline-color: #35c5f0;
 `;
 export const Adress = styled.div`
   text-align: start;
@@ -80,6 +83,7 @@ export const AdressBox = styled.input`
   text-align: center;
   border: 1px solid #bdbdbd;
   margin-right: 15px;
+  outline-color: #35c5f0;
 `;
 export const AdressWrapper = styled.div`
   text-align: center;
@@ -106,6 +110,7 @@ export const AdressSubBox = styled.input`
   height: 52px;
   margin: 10px 0px 12px 0px;
   border: 1px solid #bdbdbd;
+  outline-color: #35c5f0;
 `;
 export const AdressBoxWrapper = styled.div`
   display: flex;
@@ -125,6 +130,7 @@ export const YoutubeBox = styled.input`
   margin-bottom: 36px;
   padding: 10px;
   border: 1px solid #bdbdbd;
+  outline-color: #35c5f0;
 `;
 export const PhotoWarpper = styled.div``;
 export const Photo = styled.div`
@@ -179,6 +185,7 @@ export const RadioSubWrapper = styled.div`
 `;
 export const Radio = styled.input`
   margin-right: 12px;
+  outline-color: #35c5f0;
 `;
 export const Word = styled.div`
   margin-right: 16px;

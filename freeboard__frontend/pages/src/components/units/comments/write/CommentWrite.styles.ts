@@ -128,6 +128,7 @@ export const ReviewWriter = styled.input`
   margin-right: 40px;
   border: 1px solid #bdbdbd;
   color: #828282;
+  outline-color: #35c5f0;
 `;
 export const ReviewPassword = styled.input`
   width: 180px;
@@ -135,6 +136,7 @@ export const ReviewPassword = styled.input`
   color: #828282;
   border: 1px solid #bdbdbd;
   margin-right: 26px;
+  outline-color: #35c5f0;
 `;
 export const Star = styled(Rate)``;
 export const ReviewWrite = styled.textarea`
@@ -147,6 +149,7 @@ export const ReviewWrite = styled.textarea`
   line-height: 24px;
   padding: 20px;
   border: 1px solid #bdbdbd;
+  outline-color: #35c5f0;
 `;
 export const ReviewBorder = styled.div`
   width: 1199px;
@@ -167,9 +170,10 @@ export const ReviewButton = styled.button`
   top: 108px;
   width: 91px;
   height: 52px;
-  background: #000000;
+  background: #35c5f0;
   color: white;
   cursor: pointer;
+  border: none;
 `;
 export const Text = styled.div`
   position: absolute;

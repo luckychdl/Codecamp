@@ -129,6 +129,11 @@ export const Like = styled.img`
   margin: 20px;
   color: #828282;
   cursor: pointer;
+  :active {
+    position: relative;
+    top: 2px;
+    border-radius: 10px;
+  }
 `;
 export const ButtonWrapper = styled.div`
   width: 1400px;

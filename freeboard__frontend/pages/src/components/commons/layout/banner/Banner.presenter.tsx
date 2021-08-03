@@ -23,7 +23,7 @@ export default function LayoutBannerUI() {
       <Banner>
         <Slider {...settings}>
           <ImgWrapper>
-            <LogoImg src="/FreeBoard/todayLogo.png" />
+            <LogoImg src="/FreeBoard/todayLogo.webp" />
           </ImgWrapper>
           <ImgWrapper>
             <Img src="/FreeBoard/banner2.png" />

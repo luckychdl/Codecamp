@@ -3,16 +3,18 @@ import styled from "@emotion/styled";
 export const MainWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 export const HeaderMain = styled.div`
   height: 100px;
-  width: 15%;
+  width: 200px;
 `;
 export const HeaderLogo = styled.img`
   width: 100%;
   height: 75%;
   margin: 20px;
   margin-left: 50px;
+  cursor: pointer;
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
@@ -28,6 +30,11 @@ export const LoginButton = styled.button`
   cursor: pointer;
   font-size: 18px;
   color: #757575;
+  :active {
+    position: relative;
+    top: 2px;
+    border-radius: 10px;
+  }
   :hover {
     color: #35c5f0;
   }

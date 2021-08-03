@@ -13,6 +13,7 @@ import { globalStyles } from "../src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { createContext, useState, SetStateAction, Dispatch } from "react";
 
 if (typeof window !== "undefined") {
   firebase.initializeApp({
@@ -23,10 +24,22 @@ if (typeof window !== "undefined") {
     storageBucket: "codecamp-01.appspot.com",
   });
 }
-
+interface IContext {
+  accessToken: string;
+  setAccessToken: Dispatch<SetStateAction<string>>;
+}
+export const GlobalContext = createContext<IContext>({});
 function MyApp({ Component, pageProps }: AppProps) {
+  const [accessToken, setAccessToken] = useState("");
+  const value = {
+    accessToken: accessToken,
+    setAccessToken: setAccessToken,
+  };
   const uploadLink = createUploadLink({
     uri: "http://backend02.codebootcamp.co.kr/graphql",
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+    },
   });
   const client = new ApolloClient({
     // uri: "http://backend02.codebootcamp.co.kr/graphql",
@@ -35,12 +48,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <ApolloProvider client={client}>
-      <Layout>
-        <Global styles={globalStyles} />
-        <Component {...pageProps} />
-      </Layout>
-    </ApolloProvider>
+    <GlobalContext.Provider value={value}>
+      <ApolloProvider client={client}>
+        <Layout>
+          <Global styles={globalStyles} />
+          <Component {...pageProps} />
+        </Layout>
+      </ApolloProvider>
+    </GlobalContext.Provider>
   );
 }
 

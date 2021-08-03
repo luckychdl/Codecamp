@@ -8,17 +8,26 @@ import {
   ShoppingCart,
 } from "./Header.styles";
 
-export default function LayoutHeaderUI() {
+interface ILayouHeaderProps {
+  onClickMoveToSingin: () => void;
+  onClickMoveToLogin: () => void;
+  onClickMoveToHome: () => void;
+}
+
+export default function LayoutHeaderUI(props: ILayouHeaderProps) {
   return (
     <MainWrapper>
       <HeaderMain>
-        <HeaderLogo src="/FreeBoard/headerLogo.png" />
+        <HeaderLogo
+          src="/FreeBoard/headerLogo.png"
+          onClick={props.onClickMoveToHome}
+        />
       </HeaderMain>
       <ButtonWrapper>
         <ShoppingCart></ShoppingCart>
-        <LoginButton>로그인</LoginButton>
+        <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
         <Border></Border>
-        <LoginButton>회원가입</LoginButton>
+        <LoginButton onClick={props.onClickMoveToSingin}>회원가입</LoginButton>
       </ButtonWrapper>
     </MainWrapper>
   );

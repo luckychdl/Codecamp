@@ -143,6 +143,7 @@ export const Search = styled.input`
   padding-left: 40px;
   border: none;
   border-bottom: 1px solid #616161;
+  outline-color: #35c5f0;
 `;
 export const SearchButton = styled.button`
   width: 94px;
