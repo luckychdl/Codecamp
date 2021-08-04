@@ -52,7 +52,7 @@ export default function SigninPageUI(props: ISigninPageUIProps) {
         <EmailAdress> @ </EmailAdress>
         <Select
           showSearch
-          // onChange={props.onChangeSelectEmail}
+          onChange={props.onChangeSelectEmail}
           style={{
             width: 215,
             height: 50,

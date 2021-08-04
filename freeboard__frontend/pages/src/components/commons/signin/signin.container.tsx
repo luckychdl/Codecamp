@@ -11,8 +11,8 @@ export default function SigninPage() {
   const [name, setName] = useState("");
   const [createUser] = useMutation(CREATE_USER);
   const [check, setCheck] = useState(false);
-  // const [selectEmail, setSelectEmail] = useState("");
-  // const [newEmail, setNewEmail] = useState("");
+  const [selectEmail, setSelectEmail] = useState("");
+  const [newEmail, setNewEmail] = useState("");
 
   const onClickSignin = async () => {
     try {
@@ -34,11 +34,11 @@ export default function SigninPage() {
       alert(err.message);
     }
   };
-  // const onChangeSelectEmail = (value) => {
-  //   setSelectEmail(value);
-  //   setNewEmail(`${email}@${selectEmail}`);
-  //   console.log(newEmail);
-  // };
+  const onChangeSelectEmail = (value) => {
+    setSelectEmail(value);
+    setNewEmail(`${email}@${selectEmail}`);
+    console.log(newEmail);
+  };
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
@@ -60,7 +60,7 @@ export default function SigninPage() {
   return (
     <SigninPageUI
       check={check}
-      // onChangeSelectEmail={onChangeSelectEmail}
+      onChangeSelectEmail={onChangeSelectEmail}
       onClickCheck={onClickCheck}
       onChangeEmail={onChangeEmail}
       onChangePassword={onChangePassword}
