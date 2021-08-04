@@ -32,7 +32,7 @@ export default function LoginPage() {
         },
       });
       setAccessToken(token.data?.loginUser.accessToken || "");
-      router.push("/quiz/login-success");
+      router.push("/quiz/hoc");
       alert("로그인 완료!");
     } catch (err) {
       alert(err.message);

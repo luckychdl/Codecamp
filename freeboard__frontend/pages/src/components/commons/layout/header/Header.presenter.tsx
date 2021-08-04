@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../../../../_app";
 import {
   MainWrapper,
   HeaderMain,
@@ -6,6 +8,7 @@ import {
   LoginButton,
   Border,
   ShoppingCart,
+  MyPageButton,
 } from "./Header.styles";
 
 interface ILayouHeaderProps {
@@ -15,6 +18,7 @@ interface ILayouHeaderProps {
 }
 
 export default function LayoutHeaderUI(props: ILayouHeaderProps) {
+  const { accessToken } = useContext(GlobalContext);
   return (
     <MainWrapper>
       <HeaderMain>
@@ -25,7 +29,14 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
       </HeaderMain>
       <ButtonWrapper>
         <ShoppingCart></ShoppingCart>
-        <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
+        {!accessToken ? (
+          <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
+        ) : (
+          <MyPageButton onClick={props.onClickMoveToLogin}>
+            마이페이지
+          </MyPageButton>
+        )}
+
         <Border></Border>
         <LoginButton onClick={props.onClickMoveToSingin}>회원가입</LoginButton>
       </ButtonWrapper>

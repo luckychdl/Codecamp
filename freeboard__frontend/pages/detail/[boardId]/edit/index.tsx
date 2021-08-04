@@ -1,6 +1,6 @@
 import BoardWrite from "../../../src/components/units/board/write/BoardWrite.container";
-import CommentWrite from "../../../src/components/units/comments/write/CommentWrite.container";
-import CommentList from "../../../src/components/units/comments/list/CommentList.container";
+import CommentWrite from "../../../src/components/units/boardComments/write/CommentWrite.container";
+import CommentList from "../../../src/components/units/boardComments/list/CommentList.container";
 import { useRouter } from "next/router";
 import { useQuery, gql } from "@apollo/client";
 import { IQuery } from "../../../../src/commons/types/generated/types";

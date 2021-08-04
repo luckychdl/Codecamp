@@ -11,10 +11,18 @@ export const Wrapper = styled.div`
 export const FreeBoard = styled.div`
   font-size: 18px;
   width: 83px;
-  color: #616161;
+  color: #9eb2b8;
   text-align: center;
   margin: 0 40px;
   cursor: pointer;
+  :hover {
+    color: #616161;
+  }
+  :active {
+    position: relative;
+    top: 2px;
+    border-radius: 10px;
+  }
 `;
 export const Market = styled.div`
   font-size: 18px;
@@ -23,6 +31,14 @@ export const Market = styled.div`
   margin: 0 40px;
   color: #9eb2b8;
   cursor: pointer;
+  :hover {
+    color: #616161;
+  }
+  :active {
+    position: relative;
+    top: 2px;
+    border-radius: 10px;
+  }
 `;
 export const MyPage = styled.div`
   margin: 0 40px;
@@ -31,6 +47,14 @@ export const MyPage = styled.div`
   width: 83px;
   color: #9eb2b8;
   cursor: pointer;
+  :hover {
+    color: #616161;
+  }
+  :active {
+    position: relative;
+    top: 2px;
+    border-radius: 10px;
+  }
 `;
 export const Line = styled.div`
   border: 1px solid #ffffff;
@@ -43,4 +67,12 @@ export const Gallery = styled.div`
   width: 83px;
   color: #9eb2b8;
   cursor: pointer;
+  :hover {
+    color: #616161;
+  }
+  :active {
+    position: relative;
+    top: 2px;
+    border-radius: 10px;
+  }
 `;

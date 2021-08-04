@@ -6,14 +6,19 @@ import {
   Line,
   Gallery,
 } from "./Navigation.styles";
-export default function LayoutNavigationUI() {
+
+interface ILayoutNavigationUIProps {
+  onClickMoveToBoard: () => void;
+  onClickMoveToMarket: () => void;
+}
+export default function LayoutNavigationUI(props: ILayoutNavigationUIProps) {
   return (
     <Wrapper>
       <Gallery>갤러리</Gallery>
       <Line></Line>
-      <FreeBoard>자유게시판</FreeBoard>
+      <FreeBoard onClick={props.onClickMoveToBoard}>자유게시판</FreeBoard>
       <Line></Line>
-      <Market>중고마켓</Market>
+      <Market onClick={props.onClickMoveToMarket}>중고마켓</Market>
       <Line></Line>
       <MyPage>마이페이지</MyPage>
     </Wrapper>

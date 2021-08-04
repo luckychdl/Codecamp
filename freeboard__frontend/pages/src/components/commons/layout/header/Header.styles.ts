@@ -58,3 +58,20 @@ export const ShoppingCart = styled.div`
     color: white;
   }
 `;
+export const MyPageButton = styled.button`
+  width: 120px;
+  height: 50px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #757575;
+  :active {
+    position: relative;
+    top: 2px;
+    border-radius: 10px;
+  }
+  :hover {
+    color: #35c5f0;
+  }
+`;

@@ -11,7 +11,6 @@ export default function SigninPage() {
   const [name, setName] = useState("");
   const [createUser] = useMutation(CREATE_USER);
   const [check, setCheck] = useState(false);
-  const [selectEmail, setSelectEmail] = useState("");
   const [newEmail, setNewEmail] = useState("");
 
   const onClickSignin = async () => {
@@ -19,7 +18,7 @@ export default function SigninPage() {
       const result = await createUser({
         variables: {
           createUserInput: {
-            email,
+            email: newEmail,
             password,
             name,
           },
@@ -35,9 +34,10 @@ export default function SigninPage() {
     }
   };
   const onChangeSelectEmail = (value) => {
-    setSelectEmail(value);
-    setNewEmail(`${email}@${selectEmail}`);
-    console.log(newEmail);
+    setNewEmail(`${email}@${value}`);
+    // let newVale = `${email}@${value}`;
+    // console.log(newVale);
+    // setState 는 함수가 종료된 후 값이 저장되기 때문에 함수안에서 console.log찍으면 한박자 늦게나옴
   };
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
