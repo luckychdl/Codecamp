@@ -1,58 +1,39 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { CREATE_USED_ITEM } from "./marketWrite.queries";
 import MarketWriteUI from "./marketWrite.presenter";
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
 import withAuth from "../../../commons/hocs/withAuth";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schemaWrite } from "../../../../commons/libraries/yup.validation";
 
 const MarketWrite = () => {
-  const [name, setName] = useState("");
-  const [remarks, setRemarks] = useState("");
-  const [contents, setContents] = useState("");
-  const [price, setPrice] = useState(0);
-  const [tags, setTags] = useState();
   const [files, setFiles] = useState([]);
-  const router = useRouter();
-  // const [inputs, setInputs] = useState();
-  // const newInputs = { ...input };
-  const [createUseditem] = useMutation(CREATE_USED_ITEM);
-  // const [uploadFile] = useMutation(UPLOAD_FILE);
-  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-  const onChangeRemarks = (event: ChangeEvent<HTMLInputElement>) => {
-    setRemarks(event.target.value);
-  };
-  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
-    setContents(event.target.value);
-  };
-  const onChangePrice = (event: ChangeEvent<HTMLInputElement>) => {
-    setPrice(event.target.value);
-  };
-  const onChangeTags = (event: ChangeEvent<HTMLInputElement>) => {
-    setTags(event.target.value);
-  };
 
-  const onClickItem = async () => {
+  const { register, handleSubmit, formState } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(schemaWrite),
+  });
+  const router = useRouter();
+  const [createUseditem] = useMutation(CREATE_USED_ITEM);
+  const onClickItem = async (data) => {
     try {
-      await createUseditem({
+      const result = await createUseditem({
         variables: {
-          createUseditemInput: {
-            name,
-            remarks,
-            contents,
-            price,
-            tags,
-          },
+          createUseditemInput: { ...data, price: Number(data.price) },
         },
       });
-      Modal.confirm({
+      console.log(result.data.createUseditem._id);
+      console.log(data);
+      Modal.success({
         content: "상품이 등록되었습니다!",
       });
-      router.push("/usedMarket");
+      router.push(`/detail/${result.data.createUseditem._id}`);
+      console.log(result.data.createUseditem._id);
     } catch (err) {
-      Modal.confirm({
+      Modal.error({
         content: err.message,
       });
     }
@@ -66,13 +47,12 @@ const MarketWrite = () => {
   return (
     <>
       <MarketWriteUI
+        isActive={formState.isValid}
+        errors={formState.errors}
+        register={register}
+        handleSubmit={handleSubmit}
         onChangeFileUrl={onChangeFileUrl}
         onClickItem={onClickItem}
-        onChangeName={onChangeName}
-        onChangeRemarks={onChangeRemarks}
-        onChangeContents={onChangeContents}
-        onChangePrice={onChangePrice}
-        onChangeTags={onChangeTags}
       />
     </>
   );

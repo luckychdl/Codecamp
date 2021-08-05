@@ -7,6 +7,7 @@ export const PhotoSubWrapper = styled.button`
   height: 78px;
   background-color: #bdbdbd;
   margin-right: 20px;
+  margin-bottom: 30px;
   cursor: pointer;
   :active {
     position: relative;
@@ -29,6 +30,7 @@ export const Img = styled.img`
   height: 78px;
   /* background-color: #bdbdbd; */
   margin-right: 20px;
+
   cursor: pointer;
   top: 0;
   left: 0;

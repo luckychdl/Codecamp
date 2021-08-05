@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
   width: 1200px;
-  height: 2100px;
+  height: 2000px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,9 +10,10 @@ export const MainWrapper = styled.div`
   padding-bottom: 50px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 `;
-export const Title = styled.div`
+export const Title = styled.h1`
   font-weight: bold;
   font-size: 36px;
+  color: #616161;
   margin: 80px 0 50px 0;
 `;
 export const MenuWrapper = styled.div`
@@ -126,4 +127,7 @@ export const Button = styled.button`
     position: relative;
     top: 2px;
   }
+`;
+export const Error = styled.div`
+  color: red;
 `;

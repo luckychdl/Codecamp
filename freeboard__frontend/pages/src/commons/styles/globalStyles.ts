@@ -4,12 +4,12 @@ export const globalStyles = css`
   * {
     margin: 0px;
     /* color: #616161; */
-    /* box-sizing: border-box;
-    font-family: "aaa"; */
+    /* box-sizing: border-box;*/
+    font-family: "Poor Story", cursive;
   }
-  /* 
+
   @font-face {
-    font-family: "aaa";
-    src: url("/fonts/scifibit.ttf");
-  } */
+    font-family: "Poor Story", cursive;
+    src: url("/fonts/PoorStory-Regular.ttf");
+  }
 `;

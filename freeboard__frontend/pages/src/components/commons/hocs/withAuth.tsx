@@ -14,6 +14,7 @@ const withAuth = (Component: ComponentType) => (props: any) => {
       router.push("/boards/login");
     }
   }, []);
+  if (!accessToken) return <></>;
   return <Component {...props} />;
 };
 

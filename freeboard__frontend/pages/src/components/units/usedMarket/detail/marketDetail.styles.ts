@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
   width: 1200px;
-  height: 100vh;
+  height: 2000px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,9 @@ export const ProfileWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const ProfileImg = styled.img``;
+export const ProfileImg = styled.img`
+  margin-right: 10px;
+`;
 export const SellerWrapper = styled.div``;
 export const SellerName = styled.div``;
 export const SellDate = styled.div``;

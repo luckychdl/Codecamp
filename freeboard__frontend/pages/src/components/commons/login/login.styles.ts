@@ -15,11 +15,11 @@ export const Logo = styled.img`
   width: 300px;
   height: 131px;
 `;
-export const InputBox1 = styled.input`
+export const InputBox = styled.input`
   width: 460px;
   height: 70px;
   padding-left: 20px;
-  border-radius: 7px 7px 0px 0px;
+  border-radius: 7px;
   border: 1px solid #bdbdbd;
   font-size: 18px;
   outline-color: #35c5f0;
@@ -27,20 +27,7 @@ export const InputBox1 = styled.input`
     color: #bdbdbd;
   }
 `;
-export const InputBox2 = styled.input`
-  width: 460px;
-  height: 70px;
-  padding-left: 20px;
-  border-top: none;
-  border-radius: 0 0px 7px 7px;
-  border: 1px solid #bdbdbd;
-  border-top: none;
-  font-size: 18px;
-  outline-color: #35c5f0;
-  ::placeholder {
-    color: #bdbdbd;
-  }
-`;
+
 export const LoginButton = styled.button`
   width: 460px;
   height: 70px;
@@ -71,4 +58,8 @@ export const SignInButton = styled.div`
     top: 2px;
     border-radius: 10px;
   }
+`;
+export const Error = styled.div`
+  color: red;
+  margin-bottom: 10px;
 `;

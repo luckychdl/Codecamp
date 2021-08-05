@@ -4,23 +4,27 @@ import SigninPageUI from "./signin.presenter";
 import { CREATE_USER } from "./signin.queries";
 import { Modal } from "antd";
 import router from "next/router";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schemaSign } from "../../../commons/libraries/yup.validation";
 
 export default function SigninPage() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const [createUser] = useMutation(CREATE_USER);
   const [check, setCheck] = useState(false);
   const [newEmail, setNewEmail] = useState("");
-
-  const onClickSignin = async () => {
+  const { register, handleSubmit, formState } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(schemaSign),
+  });
+  const onClickSignin = async (data) => {
     try {
       const result = await createUser({
         variables: {
           createUserInput: {
             email: newEmail,
-            password,
-            name,
+            password: data.password,
+            name: data.name,
           },
         },
       });
@@ -30,7 +34,10 @@ export default function SigninPage() {
       });
       router.push("/boards");
     } catch (err) {
-      alert(err.message);
+      console.log("ASDASasdfasdfsadfD");
+      Modal.error({
+        content: "asdasdasd",
+      });
     }
   };
   const onChangeSelectEmail = (value) => {
@@ -42,12 +49,12 @@ export default function SigninPage() {
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
-  const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
+  // const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setPassword(event.target.value);
+  // };
+  // const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setName(event.target.value);
+  // };
 
   const onClickMoveToLogin = () => {
     router.push("/boards/login");
@@ -60,11 +67,13 @@ export default function SigninPage() {
   return (
     <SigninPageUI
       check={check}
+      isActive={formState.isValid}
+      errors={formState.errors}
       onChangeSelectEmail={onChangeSelectEmail}
       onClickCheck={onClickCheck}
       onChangeEmail={onChangeEmail}
-      onChangePassword={onChangePassword}
-      onChangeName={onChangeName}
+      register={register}
+      handleSubmit={handleSubmit}
       onClickSignin={onClickSignin}
       onClickMoveToLogin={onClickMoveToLogin}
     />
