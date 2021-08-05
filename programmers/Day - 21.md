@@ -1,3 +1,5 @@
+```js
+// 소수찾기
 function solution(n) {
   let answer = 0;
   // 2부터 n 까지의 숫자들을 담아주는 배열
@@ -14,7 +16,9 @@ function solution(n) {
   answer = numbers.filter((data) => data !== false).length;
   return answer;
 }
+```
 
+```js
 function solution(n) {
   let answer = 0;
   // 2부터 n 까지의 숫자들을 담아주는 배열
@@ -34,3 +38,4 @@ function solution(n) {
   answer = numbers.filter((data) => data !== false).length;
   return answer;
 }
+```
