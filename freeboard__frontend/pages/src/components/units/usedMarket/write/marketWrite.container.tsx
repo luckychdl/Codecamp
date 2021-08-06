@@ -30,7 +30,7 @@ const MarketWrite = () => {
       Modal.success({
         content: "상품이 등록되었습니다!",
       });
-      router.push(`/detail/${result.data.createUseditem._id}`);
+      router.push(`/usedMarket/detail/${result.data.createUseditem._id}`);
       console.log(result.data.createUseditem._id);
     } catch (err) {
       Modal.error({

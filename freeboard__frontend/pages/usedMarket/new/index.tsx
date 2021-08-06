@@ -1,4 +1,4 @@
-import MarketWrite from "../../src/components/units/usedMarket/writer/marketWrite.container";
+import MarketWrite from "../../src/components/units/usedMarket/write/marketWrite.container";
 
 const MarketWritePage = () => {
   return (
