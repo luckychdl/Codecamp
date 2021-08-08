@@ -18,7 +18,7 @@ import {
   LikeScore,
   Price,
   ImgWrapper,
-  Img,
+  Image,
   Contents,
   Tags,
   ContentsWrapper,
@@ -67,7 +67,10 @@ const MarketDetailUI = (props) => {
       </MainNameWrapper>
       <Slider {...settings} style={{ width: 400 }}>
         <ImgWrapper>
-          <Img src="/FreeBoard/todayLogo.webp" />
+          {props.data?.fetchUseditem.images?.map((data: string) => (
+            <Image key={data} src={`https://storage.googleapis.com/${data}`} />
+          ))}
+          {/* <Img src="/FreeBoard/todayLogo.webp" />
         </ImgWrapper>
         <ImgWrapper>
           <Img src="/FreeBoard/banner2.png" />
@@ -76,7 +79,7 @@ const MarketDetailUI = (props) => {
           <Img src="/FreeBoard/banner3.webp" />
         </ImgWrapper>
         <ImgWrapper>
-          <Img src="/FreeBoard/banner4.jpeg" />
+          <Img src="/FreeBoard/banner4.jpeg" /> */}
         </ImgWrapper>
       </Slider>
       <ContentsWrapper>

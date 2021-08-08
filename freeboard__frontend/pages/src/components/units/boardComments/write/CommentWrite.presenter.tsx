@@ -69,7 +69,7 @@ export default function CommentWriteUI(props: ICommentWriteUIProps) {
         >
           {props.isEdit ? "수정하기" : "등록하기"}
         </ReviewButton>
-        <Text>0/100</Text>
+        <Text>0/200</Text>
       </TextWrapper>
     </CommentWrapper>
   );

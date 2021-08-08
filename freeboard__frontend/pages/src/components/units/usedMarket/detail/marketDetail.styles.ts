@@ -75,7 +75,7 @@ export const ImgWrapper = styled.div`
   width: 384px;
   height: 384px;
 `;
-export const Img = styled.img`
+export const Image = styled.img`
   background-size: cover;
 `;
 export const Price = styled.div`

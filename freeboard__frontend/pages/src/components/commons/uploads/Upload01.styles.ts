@@ -1,8 +1,12 @@
 import styled from "@emotion/styled";
-export const PhotoSubWrapper = styled.button`
+export const PhotoSubWrapper = styled.div`
   box-sizing: border-box;
   /* border: 1px solid #bdbdbd; */
   border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 78px;
   height: 78px;
   background-color: #bdbdbd;
