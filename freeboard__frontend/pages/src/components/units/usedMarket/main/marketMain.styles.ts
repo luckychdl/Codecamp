@@ -101,6 +101,7 @@ export const ListSecondWrapper = styled.div``;
 export const PriceWrapper = styled.div`
   display: flex;
   align-items: center;
+  width: 150px;
 `;
 export const PriceImg = styled.img`
   width: 20px;
@@ -114,5 +115,7 @@ export const Price = styled.div`
 export const ListMainWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 1050px;
 `;
 export const NameWrapper = styled.div``;

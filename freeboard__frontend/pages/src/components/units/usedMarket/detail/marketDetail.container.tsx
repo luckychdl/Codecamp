@@ -7,7 +7,15 @@ const MarketDetail = () => {
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.useditemId },
   });
-  return <MarketDetailUI data={data} />;
+
+  const onClickMove = () => {
+    router.push("/usedMarket");
+  };
+  return (
+    <>
+      <MarketDetailUI data={data} onClick={onClickMove} />
+    </>
+  );
 };
 
 export default MarketDetail;

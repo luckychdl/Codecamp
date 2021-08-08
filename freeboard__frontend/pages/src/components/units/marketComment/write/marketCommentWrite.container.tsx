@@ -7,13 +7,15 @@ import router from "next/router";
 const MarketCommentWrite = () => {
   const [createUseditemQuestion] = useMutation(CREATE_USEDITEM_QUESTION);
   const { register, handleSubmit } = useForm();
-
   const onClickSubmitComment = async (data: any) => {
     console.log(data);
     try {
       const result = await createUseditemQuestion({
         variables: {
-          createUseditemQuestionInput: { contents: data.contents },
+          createUseditemQuestionInput: {
+            contents: data.contents,
+            user: data.seller,
+          },
           useditemId: router.query.useditemId,
         },
       });

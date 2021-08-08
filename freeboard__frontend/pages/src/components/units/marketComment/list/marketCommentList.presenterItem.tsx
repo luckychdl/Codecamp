@@ -24,7 +24,7 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
         <InfoWrapper>
           <SubWrapper>
             <NameWrapper>
-              <Name>{props.data.user}</Name>
+              <Name>{props.data.user.name}</Name>
               <Contents>{props.data.contents}</Contents>
             </NameWrapper>
             <IconWrapper>

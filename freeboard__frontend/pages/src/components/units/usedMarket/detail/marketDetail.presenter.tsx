@@ -29,8 +29,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Button01 from "../../../commons/buttons/button01";
+import { IQuery } from "../../../../../../src/commons/types/generated/types";
 
-const MarketDetailUI = (props) => {
+interface IMarketDetailUIProps {
+  onClickMove: () => void;
+  data?: IQuery;
+}
+const MarketDetailUI = (props: IMarketDetailUIProps) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -44,7 +49,7 @@ const MarketDetailUI = (props) => {
         <ProfileWrapper>
           <ProfileImg src="/FreeBoard/Profile.png" />
           <SellerWrapper>
-            <SellerName>{props.data?.fetchUseditem.seller}</SellerName>
+            <SellerName>{props.data?.fetchUseditem.seller.name}</SellerName>
             <SellDate>{props.data?.fetchUseditem.createdAt}</SellDate>
           </SellerWrapper>
         </ProfileWrapper>
@@ -88,7 +93,10 @@ const MarketDetailUI = (props) => {
       </ContentsWrapper>
       <MapBox></MapBox>
       <ButtonWrapper>
-        <Button01 buttonName={"목록으로"}></Button01>
+        <Button01
+          buttonName={"목록으로"}
+          onClick={props.onClickMove}
+        ></Button01>
         <Button01 buttonName={"구매하기"}></Button01>
       </ButtonWrapper>
     </MainWrapper>

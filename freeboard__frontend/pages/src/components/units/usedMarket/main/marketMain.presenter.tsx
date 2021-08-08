@@ -56,29 +56,34 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
           </SearchWrapper>
         </SubWrapper>
       </MenuWrapper>
-      <ListMainWrapper>
-        <ListWrapper>
-          <Img></Img>
-          <InfoWrapper>
-            <NameWrapper>
-              <Name>삼성전자</Name>
-              <Remarks>LTE</Remarks>
-              <Tags>#삼성전자</Tags>
-            </NameWrapper>
-            <InfoSecondWrapper>
-              <Seller>판매자</Seller>
-              <HeartImage src="/FreeBoard/heart.png" />
-              <HeartScore>20</HeartScore>
-            </InfoSecondWrapper>
-          </InfoWrapper>
-        </ListWrapper>
-        <ListSecondWrapper>
-          <PriceWrapper>
-            <PriceImg src="/FreeBoard/money.png" />
-            <Price>131,313</Price>
-          </PriceWrapper>
-        </ListSecondWrapper>
-      </ListMainWrapper>
+      {props.data?.fetchUseditems.map((data) => (
+        <>
+          <ListMainWrapper key={data._id}>
+            <ListWrapper>
+              <Img></Img>
+              <InfoWrapper>
+                <NameWrapper>
+                  <Name>{data.name}</Name>
+                  <Remarks>{data.remarks}</Remarks>
+                  <Tags>{data.tags}</Tags>
+                </NameWrapper>
+                <InfoSecondWrapper>
+                  <Seller>{data.seller.name}</Seller>
+                  <HeartImage src="/FreeBoard/heart.png" />
+                  <HeartScore>20</HeartScore>
+                </InfoSecondWrapper>
+              </InfoWrapper>
+            </ListWrapper>
+            <ListSecondWrapper>
+              <PriceWrapper>
+                <PriceImg src="/FreeBoard/money.png" />
+                <Price>{data.price}</Price>
+              </PriceWrapper>
+            </ListSecondWrapper>
+          </ListMainWrapper>
+        </>
+      ))}
+
       <form onSubmit={props.handleSubmit(props.onClickMove)}>
         <Button01 buttonName={"상품 등록하기"}></Button01>
       </form>
