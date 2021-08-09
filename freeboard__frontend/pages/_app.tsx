@@ -12,6 +12,7 @@ import { Global } from "@emotion/react";
 import { globalStyles } from "./src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
 import { useState, Dispatch, SetStateAction, createContext } from "react";
+// import { useEffect } from "react";
 
 interface IContext {
   accessToken: string;
@@ -30,10 +31,18 @@ function MyApp({ Component, pageProps }: AppProps) {
     userInfo: userInfo,
     setUserInfo: setUserInfo,
   };
+
+  // useEffect(() => {
+  //     console.log(JSON.parse(localStorage.getItem("token")));
+  // }, []);
+
   const uploadLink = createUploadLink({
     uri: "http://backend02.codebootcamp.co.kr/graphql",
     headers: {
-      authorization: `Bearer ${accessToken}`,
+      authorization: `Bearer ${
+        typeof window !== "undefined" &&
+        JSON.parse(localStorage.getItem("token"))
+      }`,
     },
   });
   const client = new ApolloClient({

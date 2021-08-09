@@ -6,6 +6,7 @@ import {
   IMutationLoginUserArgs,
 } from "../../../src/commons/types/generated/types";
 import { useRouter } from "next/router";
+import { Modal } from "antd";
 const LOGIN_USER = gql`
   mutation loginUser($password: String!, $email: String!) {
     loginUser(password: $password, email: $email) {
@@ -32,7 +33,15 @@ export default function LoginPage() {
         },
       });
       setAccessToken(token.data?.loginUser.accessToken || "");
-      router.push("/quiz/hoc");
+      if (localStorage.getItem("baskets")) {
+        Modal.confirm({
+          content: "게시물 장바구니가 존재합니다. 이동하시겠습니까?",
+          onOk() {
+            router.push("/quiz/basketLoggedIn");
+          },
+        });
+      }
+      router.push("/quiz/basket");
       alert("로그인 완료!");
     } catch (err) {
       alert(err.message);

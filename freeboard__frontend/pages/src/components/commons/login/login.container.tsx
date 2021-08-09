@@ -34,7 +34,10 @@ export default function LoginPage() {
           password: String(data.password),
         },
       });
-      console.log(token.data?.loginUser.accessToken);
+      localStorage.setItem(
+        "token",
+        JSON.stringify(token.data?.loginUser.accessToken)
+      );
       setAccessToken(token.data?.loginUser.accessToken || "");
 
       Modal.confirm({
