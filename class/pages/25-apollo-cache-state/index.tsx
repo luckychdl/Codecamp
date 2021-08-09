@@ -26,23 +26,31 @@ export default function ApolloCacheStatePage() {
     try {
       await deleteBoard({
         variables: { boardId: boardId },
-        // refetchQueries: [{ query: FETCH_BOARDS }],
         update(cache, { data }) {
+          const deletedId = data.deleteBoard;
           cache.modify({
             fields: {
-              fetchBoards: (prev) => {
-                console.log(data);
-                console.log(prev);
-
+              fetchBoards: (prev, { readField }) => {
                 const newPrev = prev.filter((prevData) => {
-                  return prevData.__ref !== `Board:${data.deleteBoard}`;
+                  return readField("_id", prevData) !== deletedId;
                 });
-
                 return [...newPrev];
               },
             },
           });
         },
+        // createBoard({
+        //   variables: { createBoardInput : { ...inputs}},
+        //   update (cache, {data}) {
+        //     cache.modify({
+        //       fields: {
+        //         fetchBoards: (prev) => {
+        //           return [data.createBoard, ...prev]
+        //         }
+        //       }
+        //     })
+        //   }
+        // })
       });
     } catch (error) {
       Modal.error({ content: error.message });
