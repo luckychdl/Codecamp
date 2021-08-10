@@ -88,9 +88,9 @@ export default function SigninPageUI(props) {
         <Title01 divName={"비밀번호 확인"}> </Title01>
         <Input02
           inputName={"비밀번호 확인"}
-          type="password1"
-          register={{ ...props.register("password1") }}
-          errorMessage={props.errors.password1?.message}
+          type="password"
+          register={{ ...props.register("confirmPassword") }}
+          errorMessage={props.errors.confirmPassword?.message}
         />
         <Title01 divName={"닉네임"}></Title01>
         <SubTitle>
@@ -132,7 +132,7 @@ export default function SigninPageUI(props) {
             <TermsSubText>이벤트, 프로모션 알림 메일 및 SMS 수신</TermsSubText>
           </TermsSubWrapper>
         </TermsWrapper>
-        <SigninButton>회원가입하기</SigninButton>
+        <SigninButton type={"submit"}>회원가입하기</SigninButton>
         <FooterWrapper>
           <TermsSubText>이미 아이디가 있으신가요?</TermsSubText>
           <MoveLogIn onClick={props.onClickMoveToLogin}>로그인</MoveLogIn>

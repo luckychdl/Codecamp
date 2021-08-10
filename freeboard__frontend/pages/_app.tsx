@@ -40,8 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     uri: "http://backend02.codebootcamp.co.kr/graphql",
     headers: {
       authorization: `Bearer ${
-        typeof window !== "undefined" &&
-        JSON.parse(localStorage.getItem("token"))
+        (typeof window !== "undefined" && localStorage.getItem("token")) || ""
       }`,
     },
   });

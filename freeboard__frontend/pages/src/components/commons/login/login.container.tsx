@@ -36,10 +36,9 @@ export default function LoginPage() {
       });
       localStorage.setItem(
         "token",
-        JSON.stringify(token.data?.loginUser.accessToken)
+        JSON.stringify(token.data?.loginUser.accessToken || "")
       );
       setAccessToken(token.data?.loginUser.accessToken || "");
-
       Modal.confirm({
         content: "환영합니다!",
       });

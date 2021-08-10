@@ -19,6 +19,7 @@ export default function SigninPage() {
     resolver: yupResolver(schemaSign),
   });
   const onClickSignin = async (data) => {
+    console.log(data);
     try {
       const result = await createUser({
         variables: {
@@ -33,7 +34,7 @@ export default function SigninPage() {
       Modal.confirm({
         content: "회원가입을 축하합니다!",
       });
-      router.push("/boards");
+      router.push("/usedMarket/main");
     } catch (err) {
       console.log("ASDASasdfasdfsadfD");
       Modal.error({

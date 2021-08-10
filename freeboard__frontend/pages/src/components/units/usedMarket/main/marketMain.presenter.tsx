@@ -1,3 +1,4 @@
+import { getDate } from "../../../../commons/libraries/utils";
 import Button01 from "../../../commons/buttons/button01";
 import {
   MainWrapper,
@@ -51,7 +52,7 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
           </SelleWrapper>
           <SearchWrapper>
             <Search></Search>
-            <Date>20202020</Date>
+            <Date>{getDate(props.data?.fetchUseditems.createdAt)}</Date>
             <SearchBtn>검색</SearchBtn>
           </SearchWrapper>
         </SubWrapper>
@@ -60,7 +61,7 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
         <>
           <ListMainWrapper key={data._id}>
             <ListWrapper>
-              <Img></Img>
+              <Img src={data.images} />
               <InfoWrapper>
                 <NameWrapper>
                   <Name>{data.name}</Name>

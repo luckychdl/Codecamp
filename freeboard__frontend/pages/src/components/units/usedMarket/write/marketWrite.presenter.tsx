@@ -75,9 +75,10 @@ const MarketWriteUI = (props) => {
               {new Array(4).fill(1).map((data, index) => (
                 <Upload01
                   key={`${data}_${index}`}
+                  index={index}
                   imgUrl={data}
-                  {...props.register("file")}
-                  onChange={props.onChangeImage}
+                  {...props.register("images")}
+                  onChangeFileUrl={props.onChangeFileUrl}
                 />
               ))}
             </UploadWrapper>

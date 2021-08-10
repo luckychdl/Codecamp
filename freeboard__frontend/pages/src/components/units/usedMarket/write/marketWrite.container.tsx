@@ -1,5 +1,5 @@
-// import { useState } from "react";
-import { CREATE_USED_ITEM } from "./marketWrite.queries";
+import { useState } from "react";
+import { CREATE_USED_ITEM, UPLOAD_FILE } from "./marketWrite.queries";
 import MarketWriteUI from "./marketWrite.presenter";
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
@@ -8,11 +8,8 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaWrite } from "../../../../commons/libraries/yup.validation";
-// import { useContext } from "react";
-// import { UploadContext } from "../../../commons/uploads/Upload01.container";
-
 const MarketWrite = () => {
-  // const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState([]);
 
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
@@ -20,21 +17,29 @@ const MarketWrite = () => {
   });
   const router = useRouter();
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
-  // const [uploadFile] = useMutation(UPLOAD_FILE);
-  // const { imgUrl } = useContext(UploadContext);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
+
   const onClickItem = async (data) => {
     try {
-      // const resultFiles = await uploadFile({
-      //   variables: { file: data.url },
-      // });
-
-      // console.log(data.uploadFile);
-      // console.log("asd");
-      // console.log(resultFiles);
+      const uploadFiles = files
+        .filter((data) => data)
+        .map((data) => uploadFile({ variables: { file: data } }));
+      const resultFiles = await Promise.all(uploadFiles);
+      const images = resultFiles.map((data) => data.data?.uploadFile.url);
+      console.log(data.uploadFile);
+      console.log("asd");
+      console.log(resultFiles);
 
       const result = await createUseditem({
         variables: {
-          createUseditemInput: { ...data, price: Number(data.price) },
+          createUseditemInput: {
+            name: data.name,
+            remarks: data.remarks,
+            contents: data.contents,
+            price: Number(data.price),
+            tags: data.tags,
+            images: images,
+          },
         },
       });
 
@@ -51,25 +56,12 @@ const MarketWrite = () => {
     }
   };
 
-  // const onChangeImage = (data) => async () => {
-  //   try {
-  //     await uploadFile({
-  //       variables: { data },
-  //     });
-  //     console.log(data);
-  //   } catch (err) {
-  //     Modal.error({
-  //       content: err.message,
-  //     });
-  //   }
-  // };
-
-  // const onChangeFileUrl = async (file, index) => {
-  //   const newFileUrl = [...files];
-  //   newFileUrl[index] = file;
-  //   setFiles(newFileUrl);
-  //   console.log(newFileUrl);
-  // };
+  const onChangeFileUrl = (file: string, index: number) => {
+    const newFileUrl = [...files];
+    newFileUrl[index] = file;
+    setFiles(newFileUrl);
+    console.log(newFileUrl);
+  };
   return (
     <>
       <MarketWriteUI
@@ -78,11 +70,10 @@ const MarketWrite = () => {
         register={register}
         handleSubmit={handleSubmit}
         // onChangeImage={onChangeImage}
-        // onChangeFileUrl={onChangeFileUrl}
+        onChangeFileUrl={onChangeFileUrl}
         onClickItem={onClickItem}
       />
     </>
   );
 };
-
 export default MarketWrite;

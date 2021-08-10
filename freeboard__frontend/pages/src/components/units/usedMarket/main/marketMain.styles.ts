@@ -68,6 +68,7 @@ export const SearchWrapper = styled.div`
 export const ListWrapper = styled.div`
   width: 950px;
   display: flex;
+  margin-bottom: 10px;
 `;
 export const Img = styled.img`
   width: 160px;

@@ -1,5 +1,5 @@
 import Upload01UI from "./Upload01.presenter";
-import { ChangeEvent, useRef, useState, createContext } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { checkValidationFile } from "../../../commons/libraries/validations";
 // import { useForm } from "react-hook-form";
 
@@ -8,16 +8,13 @@ import { checkValidationFile } from "../../../commons/libraries/validations";
 //   index: number;
 //   onChangeFileUrl: (imgUrl: string, index: number) => void;
 // }
-export const UploadContext = createContext({});
-function Upload01() {
+function Upload01(props) {
   const fileRef = useRef<HTMLInputElement>(null);
   // const [imgUrls, setImgUrls] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
-  // const [file, setFile] = useState("");
+  const [file, setFile] = useState("");
   // const { register, handleSubmit } = useForm();
-  const value = {
-    imgUrl: imgUrl,
-  };
+
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (checkValidationFile(file));
@@ -28,9 +25,9 @@ function Upload01() {
       const imgArr = [...imgUrl];
       imgArr.push(data.target?.result);
 
-      // console.log(imgArr);
+      console.log(imgArr);
       setImgUrl(imgArr);
-      // setFile(file.target?.result);
+      setFile(file.target?.result);
 
       // props.onChangeFileUrl(file, props.index);
     };
@@ -44,8 +41,8 @@ function Upload01() {
       <Upload01UI
         onChangeFile={onChangeFile}
         onClickBox={onClickBox}
-        // imgUrls={props.imgUrls}
-        value={value}
+        imgUrls={props.imgUrls}
+        file={file}
         imgUrl={imgUrl}
         fileRef={fileRef}
       />

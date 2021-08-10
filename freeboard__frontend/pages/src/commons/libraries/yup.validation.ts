@@ -21,7 +21,7 @@ export const schemaSign = yup.object().shape({
     .min(8, "비밀번호는 8자 이상으로 입력해주세요.")
     .max(16, "비밀번호는 16자 이하로 입력해주세요.")
     .required("비밀번호를 입력해주세요."),
-  password1: yup
+  confirmPassword: yup
     .string()
     .min(8, "비밀번호는 8자 이상으로 입력해주세요.")
     .max(16, "비밀번호는 16자 이하로 입력해주세요.")
