@@ -10,8 +10,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaWrite } from "../../../../commons/libraries/yup.validation";
 const MarketWrite = () => {
   const [files, setFiles] = useState([]);
+  const [fileUrl, setFileUrl] = useState([]);
 
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, setValue, formState } = useForm({
     mode: "onChange",
     resolver: yupResolver(schemaWrite),
   });
@@ -20,15 +21,16 @@ const MarketWrite = () => {
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const onClickItem = async (data) => {
+    console.log(files);
+    console.log("asd", data);
     try {
-      const uploadFiles = files
-        .filter((data) => data)
-        .map((data) => uploadFile({ variables: { file: data } }));
-      const resultFiles = await Promise.all(uploadFiles);
-      const images = resultFiles.map((data) => data.data?.uploadFile.url);
-      console.log(data.uploadFile);
+      const resultFiles = await Promise.all(
+        files.map((data) => uploadFile({ variables: { file: data } }))
+      );
+      const newImages = resultFiles.map((el) => el.data.uploadFile.url);
+      console.log("qwe", data.uploadFile);
       console.log("asd");
-      console.log(resultFiles);
+      console.log("qwe1", resultFiles);
 
       const result = await createUseditem({
         variables: {
@@ -38,11 +40,12 @@ const MarketWrite = () => {
             contents: data.contents,
             price: Number(data.price),
             tags: data.tags,
-            images: images,
+            images: newImages,
           },
         },
       });
-
+      console.log("asdasd", result);
+      console.log("asdasd11", newImages);
       Modal.success({
         content: "상품이 등록되었습니다!",
         onOk() {
@@ -55,21 +58,30 @@ const MarketWrite = () => {
       });
     }
   };
-
-  const onChangeFileUrl = (file: string, index: number) => {
-    const newFileUrl = [...files];
-    newFileUrl[index] = file;
-    setFiles(newFileUrl);
+  const onChangeFiles = (file: File, index: number) => {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+  };
+  const onChangeFileUrl = (imgUrl: string, index: number) => {
+    const newFileUrl = [...imgUrl];
+    newFileUrl[index] = imgUrl;
+    setFileUrl(newFileUrl);
     console.log(newFileUrl);
+  };
+  const onChangeValue = (val) => {
+    setValue("contents", val);
   };
   return (
     <>
       <MarketWriteUI
         isActive={formState.isValid}
         errors={formState.errors}
+        fileUrl={fileUrl}
+        onChangeValue={onChangeValue}
         register={register}
         handleSubmit={handleSubmit}
-        // onChangeImage={onChangeImage}
+        onChangeFiles={onChangeFiles}
         onChangeFileUrl={onChangeFileUrl}
         onClickItem={onClickItem}
       />

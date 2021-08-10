@@ -6,7 +6,7 @@ const withAuth = (Component: ComponentType) => (props: any) => {
   const router = useRouter();
   const { accessToken } = useContext(GlobalContext);
   useEffect(() => {
-    if (!accessToken) {
+    if (!localStorage.getItem("token") || "") {
       alert("로그인이 필요한 페이지입니다.");
       router.push("/22-login");
     }

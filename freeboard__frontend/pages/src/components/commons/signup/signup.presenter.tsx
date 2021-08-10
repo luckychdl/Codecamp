@@ -15,9 +15,9 @@ import {
   SubText,
   FooterWrapper,
   MoveLogIn,
-} from "./signin.styles";
+} from "./signup.styles";
 import { Select } from "antd";
-import Input02 from "../inputs/input02.signin";
+import Input02 from "../inputs/input02.signUp";
 import Title01 from "../titles/title01.signin";
 const OPTION_VALUES = [
   "naver.com", //
@@ -26,13 +26,13 @@ const OPTION_VALUES = [
   "nate.com",
 ];
 
-export default function SigninPageUI(props) {
+export default function SignUpPageUI(props: any) {
   const { Option } = Select;
 
   return (
-    <form onSubmit={props.handleSubmit(props.onClickSignin)}>
-      <MainWrapper>
-        <MainTitle>회원가입</MainTitle>
+    <MainWrapper>
+      <MainTitle>회원가입</MainTitle>
+      <form onSubmit={props.handleSubmit(props.onClickSignin)}>
         <Title01 divName={"이메일"}></Title01>
         <EmailWrapper>
           <SigninEmail
@@ -132,12 +132,12 @@ export default function SigninPageUI(props) {
             <TermsSubText>이벤트, 프로모션 알림 메일 및 SMS 수신</TermsSubText>
           </TermsSubWrapper>
         </TermsWrapper>
-        <SigninButton type={"submit"}>회원가입하기</SigninButton>
-        <FooterWrapper>
-          <TermsSubText>이미 아이디가 있으신가요?</TermsSubText>
-          <MoveLogIn onClick={props.onClickMoveToLogin}>로그인</MoveLogIn>
-        </FooterWrapper>
-      </MainWrapper>
-    </form>
+        <SigninButton type="submit">회원가입하기</SigninButton>
+      </form>
+      <FooterWrapper>
+        <TermsSubText>이미 아이디가 있으신가요?</TermsSubText>
+        <MoveLogIn onClick={props.onClickMoveToLogin}>로그인</MoveLogIn>
+      </FooterWrapper>
+    </MainWrapper>
   );
 }

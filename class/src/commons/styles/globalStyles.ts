@@ -4,11 +4,11 @@ export const globalStyles = css`
   * {
     margin: 0px;
     box-sizing: border-box;
-    font-family: "aaa";
+    /* font-family: "aaa"; */
   }
 
-  @font-face {
+  /* @font-face {
     font-family: "aaa";
-    src: url("/fonts/scifibit.ttf");
+    src: url("/fonts/scifibit.ttf"); */
   }
 `;

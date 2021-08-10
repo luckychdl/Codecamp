@@ -14,9 +14,17 @@ const MarketMain = () => {
   const onClickMove = () => {
     router.push("/usedMarket/new");
   };
+  const onClickMoveDetail = (el) => () => {
+    console.log(el);
+    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+    baskets.push(el);
+    localStorage.setItem("baskets", JSON.stringify(baskets));
+    // router.push(`/usedMarket/detail/${id}`);
+  };
   return (
     <MarketMainUI
       handleSubmit={handleSubmit}
+      onClickMoveDetail={onClickMoveDetail}
       onClickMove={onClickMove}
       register={register}
       data={data}

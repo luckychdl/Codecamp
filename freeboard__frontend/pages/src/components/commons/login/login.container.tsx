@@ -34,10 +34,7 @@ export default function LoginPage() {
           password: String(data.password),
         },
       });
-      localStorage.setItem(
-        "token",
-        JSON.stringify(token.data?.loginUser.accessToken || "")
-      );
+      localStorage.setItem("token", token.data?.loginUser.accessToken || "");
       setAccessToken(token.data?.loginUser.accessToken || "");
       Modal.confirm({
         content: "환영합니다!",
@@ -51,7 +48,7 @@ export default function LoginPage() {
   };
 
   const onClickMoveToSignin = () => {
-    router.push("/boards/signin");
+    router.push("/boards/signup");
   };
   return (
     <LoginPageUI

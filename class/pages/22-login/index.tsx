@@ -40,7 +40,9 @@ export default function LoginPage() {
           password,
         },
       });
+
       setAccessToken(token.data?.loginUser.accessToken || "");
+      localStorage.setItem("token", token.data?.loginUser.accessToken || "");
       // router.push("/22-login-success");
       router.push("/23-hoc");
     } catch (err) {

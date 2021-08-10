@@ -5,7 +5,7 @@ export default function LayoutHeader() {
   const router = useRouter();
 
   const onClickMoveToSingin = () => {
-    router.push("../boards/signin");
+    router.push("../boards/signup");
   };
 
   const onClickMoveToLogin = () => {

@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
-
+export const TotalWrapper = styled.div`
+  display: flex;
+`;
 export const MainWrapper = styled.div`
   width: 1200px;
   display: flex;

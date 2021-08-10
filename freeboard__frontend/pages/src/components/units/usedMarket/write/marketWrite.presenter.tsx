@@ -2,7 +2,6 @@ import {
   MainWrapper,
   Title,
   MenuWrapper,
-  ContentsDetailInput,
   LocationWrapper,
   LocationMap,
   RowWrapper,
@@ -17,6 +16,10 @@ import Upload01 from "../../../commons/uploads/Upload01.container";
 import Title02 from "../../../commons/titles/title02.marketWrite";
 import Input03 from "../../../commons/inputs/input03.marketWrite";
 import Button01 from "../../../commons/buttons/button01";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const MarketWriteUI = (props) => {
   return (
     <form onSubmit={props.handleSubmit(props.onClickItem)}>
@@ -42,9 +45,20 @@ const MarketWriteUI = (props) => {
         </MenuWrapper>
         <MenuWrapper>
           <Title02 divName={"상품 설명"}></Title02>
-          <ContentsDetailInput
+          <ReactQuill
             placeholder="상품을 설명해주세요"
-            {...props.register("contents")}
+            onChange={props.onChangeValue}
+            style={{
+              width: "996px",
+              height: "300px",
+              borderRadius: "10px",
+              fontSize: "16px",
+              marginBottom: "20px",
+              // border: "1px solid #bdbdbd",
+              outlineColor: "#35c5f0",
+              // ::placeholder {
+              //   color: "#bdbdbd"
+            }}
           />
           <Error>{props.errors.contents?.message}</Error>
         </MenuWrapper>
@@ -78,6 +92,7 @@ const MarketWriteUI = (props) => {
                   index={index}
                   imgUrl={data}
                   {...props.register("images")}
+                  onChangeFiles={props.onChangeFiles}
                   onChangeFileUrl={props.onChangeFileUrl}
                 />
               ))}

@@ -25,11 +25,12 @@ function Upload01(props) {
       const imgArr = [...imgUrl];
       imgArr.push(data.target?.result);
 
-      console.log(imgArr);
+      console.log("fgh", imgArr);
       setImgUrl(imgArr);
       setFile(file.target?.result);
 
-      // props.onChangeFileUrl(file, props.index);
+      props.onChangeFileUrl(imgUrl, props.index);
+      props.onChangeFiles(file, props.index);
     };
   };
   const onClickBox = () => {
@@ -41,7 +42,7 @@ function Upload01(props) {
       <Upload01UI
         onChangeFile={onChangeFile}
         onClickBox={onClickBox}
-        imgUrls={props.imgUrls}
+        // imgUrls={props.imgUrls}
         file={file}
         imgUrl={imgUrl}
         fileRef={fileRef}

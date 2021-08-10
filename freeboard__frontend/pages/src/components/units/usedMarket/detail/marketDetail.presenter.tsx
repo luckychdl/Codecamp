@@ -18,31 +18,30 @@ import {
   LikeScore,
   Price,
   ImgWrapper,
-  Image,
+  Picture,
   Contents,
   Tags,
   ContentsWrapper,
   MapBox,
   ButtonWrapper,
 } from "./marketDetail.styles";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import Button01 from "../../../commons/buttons/button01";
 import { IQuery } from "../../../../../../src/commons/types/generated/types";
+import DOMPurify from "dompurify";
 
 interface IMarketDetailUIProps {
   onClickMove: () => void;
   data?: IQuery;
 }
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  // };
+  if (typeof window === "undefined") return <></>;
   return (
     <MainWrapper>
       <SubWrapper>
@@ -70,25 +69,17 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
           12
         </LikeWrapper>
       </MainNameWrapper>
-      <Slider {...settings} style={{ width: 400 }}>
-        <ImgWrapper>
-          {props.data?.fetchUseditem.images?.map((data: string) => (
-            <Image key={data} src={`https://storage.googleapis.com/${data}`} />
-          ))}
-          {/* <Img src="/FreeBoard/todayLogo.webp" />
-        </ImgWrapper>
-        <ImgWrapper>
-          <Img src="/FreeBoard/banner2.png" />
-        </ImgWrapper>
-        <ImgWrapper>
-          <Img src="/FreeBoard/banner3.webp" />
-        </ImgWrapper>
-        <ImgWrapper>
-          <Img src="/FreeBoard/banner4.jpeg" /> */}
-        </ImgWrapper>
-      </Slider>
+      <ImgWrapper>
+        {props.data?.fetchUseditem.images?.map((data: any) => (
+          <Picture key={data} src={`https://storage.googleapis.com/${data}`} />
+        ))}
+      </ImgWrapper>
       <ContentsWrapper>
-        <Contents>{props.data?.fetchUseditem.contents}</Contents>
+        <Contents
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
+          }}
+        ></Contents>
         <Tags>{props.data?.fetchUseditem.tags}</Tags>
       </ContentsWrapper>
       <MapBox></MapBox>

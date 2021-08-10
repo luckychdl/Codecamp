@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
   width: 1200px;
-  height: 2000px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,11 +71,12 @@ export const Like = styled.img`
 `;
 export const LikeScore = styled.img``;
 export const ImgWrapper = styled.div`
-  width: 384px;
-  height: 384px;
+  justify-content: center;
+  width: 200px;
 `;
-export const Image = styled.img`
-  background-size: cover;
+export const Picture = styled.img`
+  width: 200px;
+  height: 200px;
 `;
 export const Price = styled.div`
   width: 200px;
