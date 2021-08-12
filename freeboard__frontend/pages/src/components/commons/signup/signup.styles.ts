@@ -34,7 +34,7 @@ export const EmailWrapper = styled.div`
   align-items: center;
   margin-bottom: 30px;
 `;
-export const SigninEmail = styled.input`
+export const SignUpEmail = styled.input`
   /* font-size: 20px; */
   /* font-weight: bold; */
   margin-bottom: 15px;
@@ -48,7 +48,7 @@ export const SigninEmail = styled.input`
     color: #bdbdbd;
   }
 `;
-export const Signin = styled.input`
+export const SignUp = styled.input`
   margin-bottom: 30px;
   width: 460px;
   height: 50px;
@@ -102,7 +102,7 @@ export const TermsSubText = styled.div`
   font-size: 20px;
   margin-left: 15px;
 `;
-export const SigninButton = styled.button`
+export const SignUpButton = styled.button`
   margin: 30px 0;
   width: 460px;
   height: 70px;

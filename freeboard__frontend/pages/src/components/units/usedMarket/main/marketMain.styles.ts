@@ -1,13 +1,15 @@
 import styled from "@emotion/styled";
 export const TotalWrapper = styled.div`
   display: flex;
+  justify-content: space-evenly;
 `;
 export const MainWrapper = styled.div`
   width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 80px;
+  margin-bottom: 80px;
   padding-bottom: 50px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 `;
@@ -29,16 +31,17 @@ export const Best = styled.div`
   background-color: skyblue;
 `;
 export const MenuWrapper = styled.div`
-  width: 950px;
+  width: 1050px;
 `;
 export const SubWrapper = styled.div`
   display: flex;
-  width: 950px;
+  width: 1050px;
   justify-content: flex-start;
+  margin-bottom: 50px;
 `;
-export const SelleWrapper = styled.div`
+export const SellWrapper = styled.div`
   display: flex;
-  width: 990px;
+  width: 1050px;
   justify-content: flex-start;
 `;
 export const SellOn = styled.div`
@@ -93,13 +96,19 @@ export const Remarks = styled.div`
 export const Tags = styled.div``;
 export const InfoSecondWrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
-export const Seller = styled.div``;
+export const Seller = styled.div`
+  margin-right: 20px;
+`;
 export const HeartImage = styled.img`
   width: 20px;
   height: 20px;
+  margin-right: 5px;
 `;
-export const HeartScore = styled.div``;
+export const HeartScore = styled.div`
+  font-size: 18px;
+`;
 export const ListSecondWrapper = styled.div``;
 export const PriceWrapper = styled.div`
   display: flex;
@@ -119,6 +128,8 @@ export const ListMainWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
   width: 1050px;
+  border-top: 1px solid #bdbdbd;
 `;
 export const NameWrapper = styled.div``;

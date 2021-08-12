@@ -1,7 +1,7 @@
 import {
   MainWrapper,
   EmailWrapper,
-  SigninEmail,
+  SignUpEmail,
   MainTitle,
   SubTitle,
   EmailAdress,
@@ -11,7 +11,7 @@ import {
   TermsSubWrapper,
   TermsText,
   TermsSubText,
-  SigninButton,
+  SignUpButton,
   SubText,
   FooterWrapper,
   MoveLogIn,
@@ -32,10 +32,10 @@ export default function SignUpPageUI(props: any) {
   return (
     <MainWrapper>
       <MainTitle>회원가입</MainTitle>
-      <form onSubmit={props.handleSubmit(props.onClickSignin)}>
+      <form onSubmit={props.handleSubmit(props.onClickSignUp)}>
         <Title01 divName={"이메일"}></Title01>
         <EmailWrapper>
-          <SigninEmail
+          <SignUpEmail
             placeholder="이메일"
             type="text"
             onChange={props.onChangeEmail}
@@ -132,7 +132,7 @@ export default function SignUpPageUI(props: any) {
             <TermsSubText>이벤트, 프로모션 알림 메일 및 SMS 수신</TermsSubText>
           </TermsSubWrapper>
         </TermsWrapper>
-        <SigninButton type="submit">회원가입하기</SigninButton>
+        <SignUpButton type="submit">회원가입하기</SignUpButton>
       </form>
       <FooterWrapper>
         <TermsSubText>이미 아이디가 있으신가요?</TermsSubText>

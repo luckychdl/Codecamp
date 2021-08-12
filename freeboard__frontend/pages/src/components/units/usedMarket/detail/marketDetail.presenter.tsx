@@ -24,23 +24,48 @@ import {
   ContentsWrapper,
   MapBox,
   ButtonWrapper,
+  SliderDiv,
+  SliderUl,
 } from "./marketDetail.styles";
 import Button01 from "../../../commons/buttons/button01";
 import { IQuery } from "../../../../../../src/commons/types/generated/types";
 import DOMPurify from "dompurify";
-
+import Slider from "react-slick";
 interface IMarketDetailUIProps {
   onClickMove: () => void;
   data?: IQuery;
 }
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
-  // const settings = {
-  //   dots: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  // };
+  const settings = {
+    customPaging: function (i) {
+      return (
+        <>
+          <img
+            src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[i]}`}
+          />
+        </>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    appendDots: (dots) => (
+      <div
+        style={{
+          // backgroundColor: "#ddd",
+          borderRadius: "10px",
+          padding: "10px",
+        }}
+      >
+        <SliderDiv>
+          <SliderUl>{dots}</SliderUl>
+        </SliderDiv>
+      </div>
+    ),
+  };
   if (typeof window === "undefined") return <></>;
   return (
     <MainWrapper>
@@ -53,8 +78,8 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
           </SellerWrapper>
         </ProfileWrapper>
         <LocationWrapper>
-          <Link src="/FreeBoard/Link.png" />
-          <Location src="/FreeBoard/Location.png" />
+          <Link src="/FreeBoard/link.svg" />
+          <Location src="/FreeBoard/location.svg" />
         </LocationWrapper>
       </SubWrapper>
       <MainNameWrapper>
@@ -64,16 +89,22 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
           <Price>{props.data?.fetchUseditem.price}원</Price>
         </NameWrapper>
         <LikeWrapper>
-          <Like src="/FreeBoard/heart.png" />
+          <Like src="/FreeBoard/heart.svg" onClick={props.onClickToggle} />
           <LikeScore />
-          12
+          {props.data?.fetchUseditem.pickedCount}
         </LikeWrapper>
       </MainNameWrapper>
+
       <ImgWrapper>
-        {props.data?.fetchUseditem.images?.map((data: any) => (
-          <Picture key={data} src={`https://storage.googleapis.com/${data}`} />
-        ))}
+        <Slider {...settings}>
+          {props.data?.fetchUseditem.images?.map((data: any, index) => (
+            <div key={index} style={{ width: 100 }}>
+              <Picture src={`https://storage.googleapis.com/${data}`} />
+            </div>
+          ))}
+        </Slider>
       </ImgWrapper>
+
       <ContentsWrapper>
         <Contents
           dangerouslySetInnerHTML={{

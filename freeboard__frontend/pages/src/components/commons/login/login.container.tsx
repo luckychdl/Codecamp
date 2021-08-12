@@ -39,7 +39,7 @@ export default function LoginPage() {
       Modal.confirm({
         content: "환영합니다!",
       });
-      router.push("/usedMarket/main");
+      router.push("/usedMarket");
     } catch (err) {
       Modal.error({
         content: err.message,

@@ -8,7 +8,8 @@ const Button01 = styled.button`
   color: white;
   border: none;
   border-radius: 10px;
-  margin-top: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   margin-right: 24px;
   cursor: pointer;
   :active {

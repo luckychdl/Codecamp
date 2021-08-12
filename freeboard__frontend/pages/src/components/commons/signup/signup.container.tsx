@@ -18,7 +18,7 @@ export default function SignUpPage() {
     mode: "onChange",
     resolver: yupResolver(schemaSign),
   });
-  const onClickSignin = async (data: any) => {
+  const onClickSignUp = async (data: any) => {
     console.log(data);
     try {
       const result = await createUser({
@@ -34,9 +34,8 @@ export default function SignUpPage() {
       Modal.confirm({
         content: "회원가입을 축하합니다!",
       });
-      router.push("/usedMarket/main");
+      router.push("/usedMarket");
     } catch (err) {
-      console.log("ASDASasdfasdfsadfD");
       Modal.error({
         content: err.message,
       });
@@ -79,7 +78,7 @@ export default function SignUpPage() {
       onChangeEmail={onChangeEmail}
       register={register}
       handleSubmit={handleSubmit}
-      onClickSignin={onClickSignin}
+      onClickSignUp={onClickSignUp}
       onClickMoveToLogin={onClickMoveToLogin}
     />
   );

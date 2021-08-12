@@ -14,12 +14,12 @@ const MarketMain = () => {
   const onClickMove = () => {
     router.push("/usedMarket/new");
   };
-  const onClickMoveDetail = (el) => () => {
+  const onClickMoveDetail = (el: any) => () => {
     console.log(el);
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
     baskets.push(el);
     localStorage.setItem("baskets", JSON.stringify(baskets));
-    // router.push(`/usedMarket/detail/${id}`);
+    router.push(`/usedMarket/detail/${el._id}`);
   };
   return (
     <MarketMainUI

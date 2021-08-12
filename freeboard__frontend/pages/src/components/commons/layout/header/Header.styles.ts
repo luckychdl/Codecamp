@@ -4,6 +4,7 @@ export const MainWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 120px;
 `;
 export const HeaderMain = styled.div`
   height: 100px;

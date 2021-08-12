@@ -1,14 +1,20 @@
 import styled from "@emotion/styled";
 export const TodayProductWrapper = styled.div`
-  width: 196px;
-  height: 300px;
+  width: 210px;
+  /* height: 100%; */
   margin-left: 20px;
-  margin-top: 500px;
+  margin-top: 80px;
   border: 1px solid #bdbdbd;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: none;
+  top: 0px;
+  /* right: 3%; */
+  position: sticky;
+  background-color: white;
+  z-index: 9999;
 `;
 export const TodayTitle = styled.div`
   font-weight: bold;
@@ -23,8 +29,8 @@ export const TodayWrapper = styled.div`
   padding: 20px;
 `;
 export const TodayImg = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   margin: 10px;
 `;
 export const TodayName = styled.div`

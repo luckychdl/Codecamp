@@ -2,9 +2,6 @@ import { getDate } from "../../../../commons/libraries/utils";
 import Button01 from "../../../commons/buttons/button01";
 import {
   MainWrapper,
-  MainTitle,
-  BestWrapper,
-  Best,
   MenuWrapper,
   SubWrapper,
   SellOn,
@@ -12,7 +9,7 @@ import {
   Date,
   SearchBtn,
   SearchWrapper,
-  SelleWrapper,
+  SellWrapper,
   ListWrapper,
   Img,
   InfoWrapper,
@@ -32,27 +29,24 @@ import {
   TotalWrapper,
 } from "./marketMain.styles";
 import Today from "../today/today.container";
+import BestItem from "../bestItem/bestItem.container";
 
 interface IMarketMainUIProps {
   onClickMove: () => void;
+
+  data?: any;
 }
 const MarketMainUI = (props: IMarketMainUIProps) => {
   return (
     <TotalWrapper>
       <MainWrapper>
-        <MainTitle>베스트상품</MainTitle>
-        <BestWrapper>
-          <Best></Best>
-          <Best></Best>
-          <Best></Best>
-          <Best></Best>
-        </BestWrapper>
+        <BestItem />
         <MenuWrapper>
           <SubWrapper>
-            <SelleWrapper>
+            <SellWrapper>
               <SellOn>판매중상품</SellOn>
               <SellOn>판매된상품</SellOn>
-            </SelleWrapper>
+            </SellWrapper>
             <SearchWrapper>
               <Search></Search>
               <Date>{getDate(props.data?.fetchUseditems.createdAt)}</Date>
@@ -60,30 +54,31 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
             </SearchWrapper>
           </SubWrapper>
         </MenuWrapper>
-        {props.data?.fetchUseditems.map((data) => (
+        {props.data?.fetchUseditems.map((data: any) => (
           <>
             <ListMainWrapper
               key={data._id}
               onClick={props.onClickMoveDetail(data)}
             >
               <ListWrapper>
-                <Img src={`https://storage.googleapis.com/${data.images}`} />
+                <Img src={`https://storage.googleapis.com/${data.images[0]}`} />
                 <InfoWrapper>
                   <NameWrapper>
                     <Name>{data.name}</Name>
                     <Remarks>{data.remarks}</Remarks>
-                    <Tags>{data.tags}</Tags>
+                    <Tags>{`#${data.tags}`}</Tags>
                   </NameWrapper>
                   <InfoSecondWrapper>
+                    <HeartImage src="/FreeBoard/profileMain.png" />
                     <Seller>{data.seller.name}</Seller>
-                    <HeartImage src="/FreeBoard/heart.png" />
-                    <HeartScore>20</HeartScore>
+                    <HeartImage src="/FreeBoard/heart.svg" />
+                    <HeartScore>{data.pickedCount}</HeartScore>
                   </InfoSecondWrapper>
                 </InfoWrapper>
               </ListWrapper>
               <ListSecondWrapper>
                 <PriceWrapper>
-                  <PriceImg src="/FreeBoard/money.png" />
+                  <PriceImg src="/FreeBoard/money.svg" />
                   <Price>{data.price}</Price>
                 </PriceWrapper>
               </ListSecondWrapper>
@@ -95,7 +90,7 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
           <Button01 buttonName={"상품 등록하기"}></Button01>
         </form>
       </MainWrapper>
-      <Today></Today>
+      <Today />
     </TotalWrapper>
   );
 };

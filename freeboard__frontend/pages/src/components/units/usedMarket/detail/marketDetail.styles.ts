@@ -54,7 +54,7 @@ export const Remarks = styled.div`
   margin-bottom: 5px;
 `;
 export const Name = styled.div`
-  width: 254px;
+  width: 500px;
   height: 36px;
   font-weight: bold;
   font-size: 24px;
@@ -71,13 +71,12 @@ export const Like = styled.img`
 `;
 export const LikeScore = styled.img``;
 export const ImgWrapper = styled.div`
+  /* display: flex; */
   justify-content: center;
-  width: 200px;
+  width: 350px;
+  height: 300px;
 `;
-export const Picture = styled.img`
-  width: 200px;
-  height: 200px;
-`;
+
 export const Price = styled.div`
   width: 200px;
   height: 53px;
@@ -122,5 +121,23 @@ export const Button = styled.button`
   :active {
     position: relative;
     top: 2px;
+  }
+`;
+export const Picture = styled.img`
+  width: 350px;
+  height: 350px;
+`;
+export const SliderDiv = styled.div`
+  height: 0px;
+`;
+export const SliderUl = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  height: 300px;
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0;
   }
 `;

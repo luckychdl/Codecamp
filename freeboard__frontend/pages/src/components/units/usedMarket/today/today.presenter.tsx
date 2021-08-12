@@ -12,13 +12,12 @@ const TodayUI = (props) => {
   return (
     <TodayProductWrapper>
       <TodayTitle>오늘 본 상품</TodayTitle>
-      {props.basketData?.map((data) => (
+      {props.basketData?.slice(0, 3).map((data) => (
         <>
           <TodayImg
-            src={`https://storage.googleapis.com/${data.images}`}
+            src={`https://storage.googleapis.com/${data.images[0]}`}
             key={data._id}
           />
-
           <TodayWrapper>
             <TodayName>{data.name}</TodayName>
             <TodayRemarks>{data.remarks}</TodayRemarks>
