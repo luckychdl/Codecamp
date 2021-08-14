@@ -26,6 +26,7 @@ import {
   ButtonWrapper,
   SliderDiv,
   SliderUl,
+  Image,
 } from "./marketDetail.styles";
 import Button01 from "../../../commons/buttons/button01";
 import { IQuery } from "../../../../../../src/commons/types/generated/types";
@@ -38,34 +39,39 @@ interface IMarketDetailUIProps {
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
   const settings = {
     customPaging: function (i) {
+      <div
+        style={{
+          width: "30px",
+          color: "blue",
+          border: "1px blue solid",
+        }}
+      >
+        {i + 1}
+      </div>;
       return (
-        <>
-          <img
+        <SliderDiv>
+          <Image
             src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[i]}`}
           />
-        </>
+        </SliderDiv>
       );
     },
     dots: true,
     dotsClass: "slick-dots slick-thumb",
+    className: "slider variable-width",
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     appendDots: (dots) => (
-      <div
-        style={{
-          // backgroundColor: "#ddd",
-          borderRadius: "10px",
-          padding: "10px",
-        }}
-      >
+      <div>
         <SliderDiv>
           <SliderUl>{dots}</SliderUl>
         </SliderDiv>
       </div>
     ),
   };
+
   if (typeof window === "undefined") return <></>;
   return (
     <MainWrapper>
@@ -98,7 +104,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
       <ImgWrapper>
         <Slider {...settings}>
           {props.data?.fetchUseditem.images?.map((data: any, index) => (
-            <div key={index} style={{ width: 100 }}>
+            <div key={index}>
               <Picture src={`https://storage.googleapis.com/${data}`} />
             </div>
           ))}
@@ -113,7 +119,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
         ></Contents>
         <Tags>{props.data?.fetchUseditem.tags}</Tags>
       </ContentsWrapper>
-      <MapBox></MapBox>
+      <MapBox>{props.data?.fetchUseditem.useditemAddress}</MapBox>
       <ButtonWrapper>
         <Button01
           buttonName={"목록으로"}

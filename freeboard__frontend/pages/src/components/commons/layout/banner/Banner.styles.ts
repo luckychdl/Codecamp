@@ -14,10 +14,10 @@ export const ImgWrapper = styled.div`
 export const LogoImg = styled.img`
   height: 100%;
   background-color: #35c5f0;
-  background-size: cover;
+  /* background-size: cover; */
   text-align: center;
   width: 100%;
-  padding: 0 320px;
+  /* padding: 0 320px; */
   display: block;
 `;
 export const Img = styled.img`

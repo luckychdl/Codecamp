@@ -170,7 +170,7 @@ export const ReviewButton = styled.button`
   top: 108px;
   width: 91px;
   height: 52px;
-  background: #35c5f0;
+  background: #212121;
   color: white;
   cursor: pointer;
   border: none;

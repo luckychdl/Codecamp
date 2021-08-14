@@ -59,7 +59,7 @@ export const SearchBtn = styled.button`
   margin-right: 10px;
   width: 78px;
   height: 52px;
-  background-color: #35c5f0;
+  background-color: #212121;
   color: white;
   border: none;
   border-radius: 7px;
@@ -130,6 +130,8 @@ export const ListMainWrapper = styled.div`
   justify-content: space-between;
   cursor: pointer;
   width: 1050px;
+  padding-top: 10px;
   border-top: 1px solid #bdbdbd;
 `;
 export const NameWrapper = styled.div``;
+export const TodayWrapper = styled.div``;

@@ -32,7 +32,7 @@ export const ContentsInput = styled.input`
   padding-left: 15px;
   font-size: 16px;
   border: 1px solid #bdbdbd;
-  outline-color: #35c5f0;
+  outline-color: #757575;
   ::placeholder {
     color: #bdbdbd;
   }
@@ -51,7 +51,7 @@ export const ContentsDetailInput = styled.textarea`
   padding: 15px 0 0 15px;
   font-size: 17px;
   border: 1px solid #bdbdbd;
-  outline-color: #35c5f0;
+  outline-color: #757575;
   ::placeholder {
     color: #bdbdbd;
   }
@@ -64,16 +64,21 @@ export const RowWrapper = styled.div`
 export const LocationWrapper = styled.div`
   margin-top: 20px;
 `;
-export const Location = styled.div`
+export const Location = styled.input`
   width: 108px;
   height: 52px;
-  margin-right: 56px;
-  background-color: lightcoral;
-  cursor: pointer;
-  :active {
-    position: relative;
-    top: 2px;
+  font-size: 18px;
+  padding: auto 0;
+  margin-right: 10px;
+  text-align: center;
+  border: 1px solid #bdbdbd;
+  outline-color: #757575;
+  ::placeholder {
+    color: #212121;
   }
+`;
+export const LocationImg = styled.img`
+  margin-right: 10px;
 `;
 export const AddressWrapper = styled.div`
   display: flex;
@@ -85,7 +90,7 @@ export const AddressInput = styled.input`
   height: 52px;
   margin-bottom: 15px;
   border: 1px solid #bdbdbd;
-  outline-color: #35c5f0;
+  outline-color: #757575;
   border-radius: 7px;
 `;
 export const LocationMap = styled.div`

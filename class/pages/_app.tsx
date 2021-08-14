@@ -14,7 +14,7 @@ import { createUploadLink } from "apollo-upload-client";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import { createContext, useState, SetStateAction, Dispatch } from "react";
-
+// import Head from "next/head";
 if (typeof window !== "undefined") {
   firebase.initializeApp({
     apiKey: "AIzaSyB2AZodzgw35GmS8qlyy3Z22jFI3Du2GH8",
@@ -58,6 +58,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>
+        {/* <Head>
+          <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f7c32ed029b0a9345341d56c3631807f"
+          ></script>
+        </Head> */}
         <Layout>
           <Global styles={globalStyles} />
           <Component {...pageProps} />

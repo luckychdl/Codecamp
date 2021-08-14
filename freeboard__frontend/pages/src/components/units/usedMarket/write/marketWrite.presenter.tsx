@@ -3,12 +3,7 @@ import {
   Title,
   MenuWrapper,
   LocationWrapper,
-  LocationMap,
   RowWrapper,
-  AddressInput,
-  AddressWrapper,
-  Location,
-  SubWrapper,
   UploadWrapper,
   Error,
 } from "./marketWrite.styles";
@@ -18,6 +13,7 @@ import Input03 from "../../../commons/inputs/input03.marketWrite";
 import Button01 from "../../../commons/buttons/button01";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+import KakaoMap from "../../../commons/kakaoMap/kakaoMap.container";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const MarketWriteUI = (props) => {
@@ -82,8 +78,9 @@ const MarketWriteUI = (props) => {
         </MenuWrapper>
         <RowWrapper>
           <LocationWrapper>
-            <Title02 divName={"거래위치"}></Title02>
-            <LocationMap></LocationMap>
+            <KakaoMap />
+            {/* <Title02 divName={"거래위치"}></Title02>
+            <LocationMap></LocationMap> */}
             <Title02 divName={"사진 첨부"}></Title02>
             <UploadWrapper>
               {new Array(4).fill(1).map((data, index) => (
@@ -99,16 +96,17 @@ const MarketWriteUI = (props) => {
             </UploadWrapper>
             <Title02 divName={"메인 사진 설정"}></Title02>
           </LocationWrapper>
-          <AddressWrapper>
+          {/* <AddressWrapper>
             <Title02 divName={"GPS"}></Title02>
             <SubWrapper>
-              <Location></Location>
-              <Location></Location>
+              <Location placeholder="위도(LAT)" />
+              <LocationImg src="/FreeBoard/Location.svg" />
+              <Location placeholder="경도(LNG)" />
             </SubWrapper>
             <Title02 divName={"주소"}></Title02>
             <AddressInput></AddressInput>
             <AddressInput></AddressInput>
-          </AddressWrapper>
+          </AddressWrapper> */}
         </RowWrapper>
 
         <Button01 buttonName={"등록하기"} isActive={props.isActive}></Button01>

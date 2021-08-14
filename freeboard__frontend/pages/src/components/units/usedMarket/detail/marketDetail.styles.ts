@@ -70,12 +70,6 @@ export const Like = styled.img`
   margin-bottom: 5px;
 `;
 export const LikeScore = styled.img``;
-export const ImgWrapper = styled.div`
-  /* display: flex; */
-  justify-content: center;
-  width: 350px;
-  height: 300px;
-`;
 
 export const Price = styled.div`
   width: 200px;
@@ -101,7 +95,6 @@ export const ContentsWrapper = styled.div`
 export const MapBox = styled.div`
   width: 792px;
   height: 360px;
-  background-color: skyblue;
   border-bottom: 1px solid #bdbdbd;
   padding-bottom: 40px;
 `;
@@ -123,21 +116,42 @@ export const Button = styled.button`
     top: 2px;
   }
 `;
+export const ImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 300px;
+  width: 300px;
+  height: 300px;
+`;
 export const Picture = styled.img`
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
+  margin: 0px;
 `;
 export const SliderDiv = styled.div`
-  height: 0px;
+  display: flex;
+  justify-content: space-evenly;
+  height: 300px;
+  width: 300px;
+  margin: 0px;
+`;
+export const Image = styled.img`
+  height: 300px;
+  margin: 300px;
+  margin-bottom: 100px;
 `;
 export const SliderUl = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: 300px;
+  margin: 0px;
   height: 300px;
   li {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 0;
+    width: 300px;
+    height: 300px;
   }
 `;

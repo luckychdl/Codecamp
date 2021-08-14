@@ -27,6 +27,7 @@ import {
   ListMainWrapper,
   NameWrapper,
   TotalWrapper,
+  TodayWrapper,
 } from "./marketMain.styles";
 import Today from "../today/today.container";
 import BestItem from "../bestItem/bestItem.container";
@@ -90,7 +91,9 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
           <Button01 buttonName={"상품 등록하기"}></Button01>
         </form>
       </MainWrapper>
-      <Today />
+      <TodayWrapper>
+        <Today />
+      </TodayWrapper>
     </TotalWrapper>
   );
 };

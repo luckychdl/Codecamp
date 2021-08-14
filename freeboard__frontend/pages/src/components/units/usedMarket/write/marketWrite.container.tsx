@@ -11,6 +11,8 @@ import { schemaWrite } from "../../../../commons/libraries/yup.validation";
 const MarketWrite = () => {
   const [files, setFiles] = useState([]);
   const [fileUrl, setFileUrl] = useState([]);
+  const [lats, setLats] = useState();
+  const [lngs, setLngs] = useState();
 
   const { register, handleSubmit, setValue, formState } = useForm({
     mode: "onChange",
@@ -31,7 +33,8 @@ const MarketWrite = () => {
       console.log("qwe", data.uploadFile);
       console.log("asd");
       console.log("qwe1", resultFiles);
-
+      const newLats = lats;
+      const newLngs = lngs;
       const result = await createUseditem({
         variables: {
           createUseditemInput: {
@@ -41,6 +44,7 @@ const MarketWrite = () => {
             price: Number(data.price),
             tags: data.tags,
             images: newImages,
+            UseditemAddress: { lat: newLats, lng: newLngs },
           },
         },
       });
@@ -72,6 +76,15 @@ const MarketWrite = () => {
   const onChangeValue = (val) => {
     setValue("contents", val);
   };
+  // const onChangeLocationLat = (lat) => {
+  //   const newLat = lat;
+  //   setLats(newLat);
+  //   console.log(newLat);
+  // };
+  // const onChangeLocationLng = (lng) => {
+  //   const newLng = lng;
+  //   setLngs(newLng);
+  // };
   return (
     <>
       <MarketWriteUI
@@ -84,6 +97,8 @@ const MarketWrite = () => {
         onChangeFiles={onChangeFiles}
         onChangeFileUrl={onChangeFileUrl}
         onClickItem={onClickItem}
+        // onChangeLocationLat={onChangeLocationLat}
+        // onChangeLocationLat={onChangeLocationLng}
       />
     </>
   );

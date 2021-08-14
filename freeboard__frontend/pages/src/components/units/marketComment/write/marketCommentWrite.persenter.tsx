@@ -13,7 +13,7 @@ const MarketCommentWriteUI = (props: any) => {
     <MainWrapper>
       <form onSubmit={props.handleSubmit(props.onClickSubmitComment)}>
         <TitleWrapper>
-          <Image src="/FreeBoard/question.png"></Image>
+          <Image src="/FreeBoard/review.svg"></Image>
           <Title02 divName={"문의하기"}></Title02>
         </TitleWrapper>
         <TextArea01

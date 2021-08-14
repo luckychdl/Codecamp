@@ -15,11 +15,21 @@ const MarketMain = () => {
     router.push("/usedMarket/new");
   };
   const onClickMoveDetail = (el: any) => () => {
-    console.log(el);
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+    let isExists = false;
+    baskets.forEach((data) => {
+      if (data._id === el._id) isExists = true;
+    });
+
+    // if (isExists) router.push(`/usedMarket/detail/${el._id}`);
     baskets.push(el);
+    if (JSON.parse(localStorage.getItem("baskets")) > 3) {
+      const remove = localStorage.removeItem("baskets");
+      const newRemove = remove.pop();
+      console.log(newRemove);
+    }
     localStorage.setItem("baskets", JSON.stringify(baskets));
-    router.push(`/usedMarket/detail/${el._id}`);
+    // router.push(`/usedMarket/detail/${el._id}`);
   };
   return (
     <MarketMainUI

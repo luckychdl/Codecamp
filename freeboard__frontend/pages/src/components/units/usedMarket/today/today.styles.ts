@@ -48,3 +48,10 @@ export const TodayTags = styled.div`
   color: #bdbdbd;
   font-size: 10px;
 `;
+export const Wrapper = styled.div`
+  /* border: 1px solid #757575; */
+  display: flex;
+  width: 180px;
+  flex-direction: column;
+  align-items: center;
+`;

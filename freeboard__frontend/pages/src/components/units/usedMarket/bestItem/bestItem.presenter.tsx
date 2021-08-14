@@ -14,12 +14,13 @@ import {
   ColumnSubWrapper,
   ContentsWrapper,
 } from "./bestItem.styles";
+
 const BestItemUI = (props) => {
   return (
     <MainWrapper>
       <MainTitle>베스트상품</MainTitle>
       <BestWrapper>
-        {props.data?.fetchUseditemsOfTheBest.map((el, index) => (
+        {props.data?.fetchUseditemsOfTheBest.map((el: any, index: number) => (
           <>
             <ColumnWrapper onClick={props.onClickMove(el._id)}>
               <Best

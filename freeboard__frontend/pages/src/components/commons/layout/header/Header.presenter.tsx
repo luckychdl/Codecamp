@@ -23,12 +23,12 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
     <MainWrapper>
       <HeaderMain>
         <HeaderLogo
-          src="/FreeBoard/headerLogo.png"
+          src="/FreeBoard/simbol.png"
           onClick={props.onClickMoveToHome}
         />
       </HeaderMain>
       <ButtonWrapper>
-        <ShoppingCart></ShoppingCart>
+        {/* <ShoppingCart></ShoppingCart> */}
         {!accessToken ? (
           <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
         ) : (

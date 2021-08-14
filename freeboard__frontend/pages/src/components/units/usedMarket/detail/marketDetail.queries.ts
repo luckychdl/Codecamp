@@ -15,6 +15,10 @@ export const FETCH_USED_ITEM = gql`
       tags
       images
       pickedCount
+      useditemAddress {
+        lat
+        lng
+      }
     }
   }
 `;
