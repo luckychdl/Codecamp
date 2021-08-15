@@ -32,7 +32,7 @@ export const ButtonWrapper = styled.div`
   align-items: center;
   width: 171px;
   height: 52px;
-  background-color: #212121;
+  background-color: #5f0080;
   border: 1px solid #f2f2f2;
   border-radius: 10px;
   cursor: pointer;
@@ -50,6 +50,7 @@ export const ButtonWrapper = styled.div`
 export const Button = styled.div`
   font-weight: 500;
   font-size: 16px;
+
   color: white;
 `;
 export const Column = styled.div`
@@ -98,7 +99,7 @@ export const Next = styled.button`
   }
   :hover {
     color: ${(props: { nextActive: boolean }) =>
-      props.nextActive ? "blue" : "none"};
+      props.nextActive ? "#5f0080" : "none"};
   }
 `;
 export const Prev = styled.button`
@@ -115,7 +116,7 @@ export const Prev = styled.button`
   }
   :hover {
     color: ${(props: { prevActive: boolean }) =>
-      props.prevActive ? "blue" : "none"};
+      props.prevActive ? "#5f0080" : "none"};
   }
 `;
 export const PageWrapper = styled.div`
@@ -139,12 +140,12 @@ export const Search = styled.input`
   padding-left: 40px;
   border: none;
   border-bottom: 1px solid #616161;
-  outline-color: #35c5f0;
+  outline-color: #5f0080;
 `;
 export const SearchButton = styled.button`
   width: 94px;
   height: 52px;
-  background-color: #212121;
+  background-color: #5f0080;
   font-size: 16px;
   color: white;
   border-radius: 10px;

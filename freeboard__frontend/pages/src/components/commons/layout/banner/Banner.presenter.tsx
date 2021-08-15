@@ -24,16 +24,16 @@ export default function LayoutBannerUI() {
       <Banner>
         <Slider {...settings}>
           <ImgWrapper>
-            <LogoImg src="/FreeBoard/musinsa.png" />
+            <LogoImg src="/FreeBoard/marketBanner1.webp" />
           </ImgWrapper>
           <ImgWrapper>
-            <Img src="/FreeBoard/musinsa1.png" />
+            <Img src="/FreeBoard/marketBanner2.webp" />
           </ImgWrapper>
           <ImgWrapper>
-            <Img src="/FreeBoard/musinsa2.png" />
+            <Img src="/FreeBoard/marketBanner3.webp" />
           </ImgWrapper>
           <ImgWrapper>
-            <Img src="/FreeBoard/musinsa3.png" />
+            <Img src="/FreeBoard/marketBanner4.webp" />
           </ImgWrapper>
         </Slider>
       </Banner>

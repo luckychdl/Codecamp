@@ -6,12 +6,12 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 64px;
-  background-color: #212121;
+  background-color: #5f0080;
 `;
 export const FreeBoard = styled.div`
   font-size: 18px;
   width: 83px;
-  color: #9eb2b8;
+  color: #ffffff;
   text-align: center;
   margin: 0 40px;
   cursor: pointer;
@@ -29,7 +29,7 @@ export const Market = styled.div`
   width: 83px;
   text-align: center;
   margin: 0 40px;
-  color: #9eb2b8;
+  color: #ffffff;
   cursor: pointer;
   :hover {
     color: #616161;
@@ -45,7 +45,7 @@ export const MyPage = styled.div`
   text-align: center;
   font-size: 18px;
   width: 83px;
-  color: #9eb2b8;
+  color: #ffffff;
   cursor: pointer;
   :hover {
     color: #616161;
@@ -65,7 +65,7 @@ export const Gallery = styled.div`
   text-align: center;
   font-size: 18px;
   width: 83px;
-  color: #9eb2b8;
+  color: #ffffff;
   cursor: pointer;
   :hover {
     color: #616161;

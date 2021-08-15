@@ -51,6 +51,7 @@ export const Search = styled.input`
   margin-right: 10px;
   width: 282px;
   height: 52px;
+  outline-color: #5f0080;
 `;
 export const Date = styled.div`
   margin-right: 10px;
@@ -59,7 +60,7 @@ export const SearchBtn = styled.button`
   margin-right: 10px;
   width: 78px;
   height: 52px;
-  background-color: #212121;
+  background-color: #5f0080;
   color: white;
   border: none;
   border-radius: 7px;

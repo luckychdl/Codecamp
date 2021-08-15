@@ -22,7 +22,7 @@ export default function LoginPageUI(props: ILoginPageUIProps) {
       <form onSubmit={props.handleSubmit(props.onClickLogin)}>
         <MainWrapper>
           <SubWrapper>
-            <Logo src="/FreeBoard/logoicon.jpeg"></Logo>
+            <Logo src="/FreeBoard/marketLogo.webp"></Logo>
 
             <Input01
               inputName={"이메일"}

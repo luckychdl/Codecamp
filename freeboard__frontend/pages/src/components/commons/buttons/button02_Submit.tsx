@@ -5,7 +5,7 @@ const Button02 = styled.button`
   bottom: 8px;
   width: 91px;
   height: 52px;
-  background: #212121;
+  background: #5f0080;
   color: white;
   cursor: pointer;
   border: none;

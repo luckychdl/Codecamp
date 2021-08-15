@@ -12,8 +12,8 @@ export const SubWrapper = styled.div`
   margin-top: 30px;
 `;
 export const Logo = styled.img`
-  width: 300px;
-  height: 131px;
+  width: 200px;
+  height: 150px;
 `;
 export const InputBox = styled.input`
   width: 460px;
@@ -33,7 +33,7 @@ export const LoginButton = styled.button`
   height: 70px;
   margin-top: 20px;
   border-radius: 7px;
-  background-color: #35c5f0;
+  background-color: #5f0080;
   color: white;
   font-size: 26px;
   border: none;

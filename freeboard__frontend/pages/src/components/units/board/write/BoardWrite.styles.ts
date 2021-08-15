@@ -33,9 +33,10 @@ export const Box = styled.input`
   width: 486px;
   height: 52px;
   border: 1px solid #bdbdbd;
+  border-radius: 7px;
   margin-bottom: 10px;
   padding: 10px;
-  outline-color: #35c5f0;
+  outline-color: #5f0080;
 `;
 
 export const TitleWrapper = styled.div`
@@ -47,9 +48,10 @@ export const TitleBox = styled.input`
   width: 996px;
   height: 52px;
   border: 1px solid #bdbdbd;
+  border-radius: 7px;
   margin-bottom: 10px;
   padding: 10px;
-  outline-color: #35c5f0;
+  outline-color: #5f0080;
 `;
 export const TitleName = styled.div`
   font-size: 16px;
@@ -69,12 +71,14 @@ export const ContentBox = styled.textarea`
   padding: 10px;
   resize: none;
   border: 1px solid #bdbdbd;
+  border-radius: 7px;
   margin-bottom: 10px;
-  outline-color: #35c5f0;
+  outline-color: #5f0080;
 `;
 export const Adress = styled.div`
   text-align: start;
   font-size: 16px;
+  border-radius: 7px;
   margin: 16px 0;
 `;
 export const AdressBox = styled.input`
@@ -82,8 +86,9 @@ export const AdressBox = styled.input`
   height: 52px;
   text-align: center;
   border: 1px solid #bdbdbd;
+  border-radius: 7px;
   margin-right: 15px;
-  outline-color: #35c5f0;
+  outline-color: #5f0080;
 `;
 export const AdressWrapper = styled.div`
   text-align: center;
@@ -94,10 +99,11 @@ export const AdressSubWrapper = styled.div`
   width: 498px;
 `;
 export const Search = styled.span`
-  width: 124px;
+  width: 110px;
   height: 52px;
-  background-color: #212121;
+  background-color: #5f0080;
   color: white;
+  border-radius: 7px;
   padding: 14px 16px;
   cursor: pointer;
   :active {
@@ -110,7 +116,8 @@ export const AdressSubBox = styled.input`
   height: 52px;
   margin: 10px 0px 12px 0px;
   border: 1px solid #bdbdbd;
-  outline-color: #35c5f0;
+  border-radius: 7px;
+  outline-color: #5f0080;
 `;
 export const AdressBoxWrapper = styled.div`
   display: flex;
@@ -130,7 +137,8 @@ export const YoutubeBox = styled.input`
   margin-bottom: 36px;
   padding: 10px;
   border: 1px solid #bdbdbd;
-  outline-color: #35c5f0;
+  border-radius: 7px;
+  outline-color: #5f0080;
 `;
 export const PhotoWarpper = styled.div``;
 export const Photo = styled.div`
@@ -191,13 +199,14 @@ export const Word = styled.div`
   margin-right: 16px;
 `;
 export const Button = styled.button`
-  width: 179px;
+  width: 150px;
   height: 52px;
   font-weight: bold;
   background-color: ${(props: { active: boolean }) =>
-    props.active ? "#35c5f0" : ""};
+    props.active ? "#5f0080" : ""};
   color: ${(props: { active: boolean }) => (props.active ? "white" : "")};
   border: 0px;
+  border-radius: 7px;
   margin-top: 30px;
   cursor: pointer;
   :active {
@@ -210,11 +219,13 @@ export const ErrorMessage = styled.div`
   color: red;
 `;
 export const Cancle = styled.button`
-  width: 179px;
+  width: 150px;
   height: 52px;
   font-weight: bold;
-  background-color: #35c5f0;
+  font-size: 16px;
+  background-color: #5f0080;
   border: 0px;
+  border-radius: 7px;
   margin-top: 30px;
   margin-left: 20px;
   color: white;

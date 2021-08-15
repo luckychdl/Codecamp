@@ -7,7 +7,7 @@ const Input03 = styled.input`
   padding-left: 15px;
   font-size: 16px;
   border: 1px solid #bdbdbd;
-  outline-color: #757575;
+  outline-color: #5f0080;
   ::placeholder {
     color: #bdbdbd;
   }

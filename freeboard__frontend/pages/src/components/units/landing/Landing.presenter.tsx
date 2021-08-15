@@ -3,13 +3,13 @@ export default function LandingUI() {
   return (
     <MainWrapper>
       <SubWrapper>
-        <FirstPage src="/FreeBoard/firstPage.png" />
+        <FirstPage src="/FreeBoard/landing.webp" />
       </SubWrapper>
       <SubWrapper>
-        <FirstPage src="/FreeBoard/secondPage.png" />
+        <FirstPage src="/FreeBoard/landing1.webp" />
       </SubWrapper>
       <SubWrapper>
-        <FirstPage src="/FreeBoard/thirdPage.png" />
+        <FirstPage src="/FreeBoard/landing2.webp" />
       </SubWrapper>
     </MainWrapper>
   );

@@ -7,7 +7,6 @@ import {
   ButtonWrapper,
   LoginButton,
   Border,
-  ShoppingCart,
   MyPageButton,
 } from "./Header.styles";
 
@@ -23,23 +22,25 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
     <MainWrapper>
       <HeaderMain>
         <HeaderLogo
-          src="/FreeBoard/simbol.png"
+          src="/FreeBoard/marketLogo.webp"
           onClick={props.onClickMoveToHome}
         />
-      </HeaderMain>
-      <ButtonWrapper>
-        {/* <ShoppingCart></ShoppingCart> */}
-        {!accessToken ? (
-          <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
-        ) : (
-          <MyPageButton onClick={props.onClickMoveToLogin}>
-            마이페이지
-          </MyPageButton>
-        )}
 
-        <Border></Border>
-        <LoginButton onClick={props.onClickMoveToSingin}>회원가입</LoginButton>
-      </ButtonWrapper>
+        <ButtonWrapper>
+          {!accessToken ? (
+            <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
+          ) : (
+            <MyPageButton onClick={props.onClickMoveToLogin}>
+              마이페이지
+            </MyPageButton>
+          )}
+
+          <Border></Border>
+          <LoginButton onClick={props.onClickMoveToSingin}>
+            회원가입
+          </LoginButton>
+        </ButtonWrapper>
+      </HeaderMain>
     </MainWrapper>
   );
 }

@@ -10,7 +10,7 @@ const TextArea01 = styled.textarea`
   padding: 20px;
   border: 1px solid #bdbdbd;
   color: #757575;
-  outline-color: #35c5f0;
+  outline-color: #5f0080;
   ::placeholder {
     color: #bdbdbd;
   }

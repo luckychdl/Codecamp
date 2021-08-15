@@ -12,7 +12,7 @@ export default function LayoutHeader() {
     router.push("../boards/login");
   };
   const onClickMoveToHome = () => {
-    router.push("../boards");
+    router.push("/usedMarket");
   };
   return (
     <LayoutHeaderUI

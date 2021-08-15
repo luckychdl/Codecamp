@@ -2,20 +2,24 @@ import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  height: 150px;
-  background-color: black;
+  height: 158px;
+  background-color: #ffffff;
+  text-align: center;
 `;
 export const HeaderMain = styled.div`
-  height: 200px;
-  width: 100%;
+  height: 158px;
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
 `;
 export const HeaderLogo = styled.img`
   width: 200px;
   height: 150px;
-  /* margin: 20px;
-  margin-left: 50px; */
+  text-align: center;
   cursor: pointer;
 `;
 export const ButtonWrapper = styled.div`
@@ -28,19 +32,19 @@ export const LoginButton = styled.button`
   width: 80px;
   height: 50px;
   /* background-color: #9eb2b8; */
-  color: #000000;
+  color: #616161;
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: white;
-  background-color: black;
+
+  background-color: #ffffff;
   :active {
     position: relative;
     top: 2px;
     border-radius: 10px;
   }
   :hover {
-    color: #616161;
+    color: #5f0080;
   }
 `;
 export const Border = styled.div`
@@ -66,18 +70,17 @@ export const MyPageButton = styled.button`
   width: 120px;
   height: 50px;
   /* background-color: #9eb2b8; */
-  color: #000000;
+  color: #616161;
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: white;
-  background-color: black;
+  background-color: #ffffff;
   :active {
     position: relative;
     top: 2px;
     border-radius: 10px;
   }
   :hover {
-    color: #616161;
+    color: #5f0080;
   }
 `;

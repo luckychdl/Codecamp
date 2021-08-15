@@ -7,7 +7,7 @@ const LoginInput = styled.input`
   border-radius: 7px;
   border: 1px solid #bdbdbd;
   font-size: 18px;
-  outline-color: #757575;
+  outline-color: #5f0080;
   ::placeholder {
     color: #bdbdbd;
   }

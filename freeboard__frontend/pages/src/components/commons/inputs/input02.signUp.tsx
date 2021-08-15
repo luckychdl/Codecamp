@@ -8,7 +8,7 @@ const Input02 = styled.input`
   padding-left: 15px;
   color: #9e9e9e;
   border: 1px solid #bdbdbd;
-  outline-color: #757575;
+  outline-color: #5f0080;
   ::placeholder {
     color: #bdbdbd;
   }
