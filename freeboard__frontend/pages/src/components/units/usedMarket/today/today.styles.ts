@@ -14,7 +14,7 @@ export const TodayProductWrapper = styled.div`
   /* right: 3%; */
   position: sticky;
   background-color: white;
-  z-index: 9999;
+  z-index: 10;
 `;
 export const TodayTitle = styled.div`
   font-weight: bold;

@@ -1,5 +1,6 @@
 import { getDate } from "../../../../commons/libraries/utils";
 import Button01 from "../../../commons/buttons/button01";
+import Top from "../../../commons/toTop/toTop";
 import {
   MainWrapper,
   MenuWrapper,
@@ -28,6 +29,7 @@ import {
   NameWrapper,
   TotalWrapper,
   TodayWrapper,
+  TopWrapper,
 } from "./marketMain.styles";
 import Today from "../today/today.container";
 import BestItem from "../bestItem/bestItem.container";
@@ -91,9 +93,13 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
           <Button01 buttonName={"상품 등록하기"}></Button01>
         </form>
       </MainWrapper>
+
       <TodayWrapper>
         <Today />
       </TodayWrapper>
+      <TopWrapper>
+        <Top></Top>
+      </TopWrapper>
     </TotalWrapper>
   );
 };

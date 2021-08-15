@@ -136,3 +136,10 @@ export const ListMainWrapper = styled.div`
 `;
 export const NameWrapper = styled.div``;
 export const TodayWrapper = styled.div``;
+export const TopWrapper = styled.div`
+  display: flex;
+  width: 50px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  /* position: fixed; */
+`;
