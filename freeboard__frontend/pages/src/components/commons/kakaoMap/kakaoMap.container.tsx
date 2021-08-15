@@ -5,63 +5,96 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 const KakaoMap = (props) => {
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
+  const [isOpen, setIsOpen] = useState(false);
+  const [address, setAddress] = useState();
+  const [addressDetail, setAddressDetail] = useState();
+  // const [createUsedItem] = useMutation(CREATE_USED_ITEM);
   const onChangeLAT = (event) => {
     setLat(event.target.value);
-    // props.onChangeLocationLat(lat);
   };
   const onChangeLNG = (event) => {
     setLng(event.target.value);
-    // props.onChangeLocationLng(lng);
+  };
+
+  const onClickOpenModal = () => {
+    setIsOpen(true);
+    console.log(isOpen);
+  };
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
+  const onClickAddressDetail = () => {
+    setIsOpen(false);
+  };
+  const onComplete = (data) => {
+    setAddress(data.address);
+    setIsOpen(false);
+    console.log("qwe", address);
+  };
+  const onChangeAddressDetail = (event) => {
+    setAddressDetail(event.target.value);
+    console.log(event.target.value);
   };
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=f7c32ed029b0a9345341d56c3631807f&autoload=false";
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=f7c32ed029b0a9345341d56c3631807f&libraries=services,clusterer,drawing&autoload=false";
     document.head.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(() => {
-        // v3가 모두 로드된 후, 이 콜백 함수가 실행됩니다.
-        const container = document.getElementById("map"); // 지도를 담을 영역의 DOM 레퍼런스
-        const options = {
-          // 지도를 생성할 때 필요한 기본 옵션
-          center: new window.kakao.maps.LatLng(lat, lng), // 지도의 중심좌표.
-          level: 3, // 지도의 레벨(확대, 축소 정도)
-        };
+        let mapContainer = document.getElementById("map"), // 지도를 표시할 div
+          mapOption = {
+            center: new kakao.maps.LatLng(37.485298, 126.900966), // 지도의 중심좌표
+            level: 3, // 지도의 확대 레벨
+          };
 
-        const map = new window.kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+        // 지도를 생성합니다
+        const map = new kakao.maps.Map(mapContainer, mapOption);
 
-        const markerPosition = new window.kakao.maps.LatLng(lat, lng);
+        // 주소-좌표 변환 객체를 생성합니다
+        const geocoder = new kakao.maps.services.Geocoder();
 
-        // 마커를 생성합니다
-        const marker = new window.kakao.maps.Marker({
-          position: markerPosition,
-        });
-        // 마커가 지도 위에 표시되도록 설정합니다
-        marker.setMap(map);
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(address, function (result, status) {
+          // 정상적으로 검색이 완료됐으면
+          if (status === kakao.maps.services.Status.OK) {
+            const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-        window.kakao.maps.event.addListener(
-          map,
-          "click",
-          function (mouseEvent) {
-            // 클릭한 위도, 경도 정보를 가져옵니다
-            const latlng = mouseEvent.latLng;
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            const marker = new kakao.maps.Marker({
+              map: map,
+              position: coords,
+            });
 
-            // 마커 위치를 클릭한 위치로 옮깁니다
-            marker.setPosition(latlng);
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            const infowindow = new kakao.maps.InfoWindow({
+              content: addressDetail,
+            });
+            infowindow.open(map, marker);
 
-            // var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";
-            // message += "경도는 " + latlng.getLng() + " 입니다";
-
-            // var resultDiv = document.getElementById("clickLatlng");
-            // resultDiv.innerHTML = message;
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+            console.log("asd", address);
+            props.onChangeAddress(address);
           }
-        );
+        });
       });
     };
-  }, [lng]);
-  return <KakaoMapPage onChangeLAT={onChangeLAT} onChangeLNG={onChangeLNG} />;
+  }, [address]);
+  return (
+    <KakaoMapPage
+      isOpen={isOpen}
+      address={address}
+      addressDetail={addressDetail}
+      onComplete={onComplete}
+      handleCancel={handleCancel}
+      onChangeLAT={onChangeLAT}
+      onChangeLNG={onChangeLNG}
+      onClickAddressDetail={onClickAddressDetail}
+      onClickOpenModal={onClickOpenModal}
+      onChangeAddressDetail={onChangeAddressDetail}
+    />
+  );
 };
 
 export default KakaoMap;

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import MarketCommentListUIItem from "./marketCommentList.presenter";
+import MarketCommentListUI from "./marketCommentList.presenter";
 import { FETCH_USEDITEM_QUESTIONS } from "./marketCommentList.queries";
 const MarketCommentList = () => {
   const router = useRouter();
@@ -14,7 +14,7 @@ const MarketCommentList = () => {
   };
   return (
     <>
-      <MarketCommentListUIItem data={data} />
+      <MarketCommentListUI data={data} />
       <button onClick={onClick}>asd</button>
     </>
   );

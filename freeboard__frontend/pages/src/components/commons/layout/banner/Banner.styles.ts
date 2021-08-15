@@ -23,7 +23,7 @@ export const LogoImg = styled.img`
 export const Img = styled.img`
   height: 100%;
   background-position: center;
-  object-fit: cover;
+  /* object-fit: cover; */
   width: 100%;
   display: block;
 `;

@@ -11,8 +11,8 @@ import { schemaWrite } from "../../../../commons/libraries/yup.validation";
 const MarketWrite = () => {
   const [files, setFiles] = useState([]);
   const [fileUrl, setFileUrl] = useState([]);
-  const [lats, setLats] = useState();
-  const [lngs, setLngs] = useState();
+  const [addressInfo, setAddressInfo] = useState(0);
+  // const [lngs, setLngs] = useState(0);
 
   const { register, handleSubmit, setValue, formState } = useForm({
     mode: "onChange",
@@ -30,11 +30,8 @@ const MarketWrite = () => {
         files.map((data) => uploadFile({ variables: { file: data } }))
       );
       const newImages = resultFiles.map((el) => el.data.uploadFile.url);
-      console.log("qwe", data.uploadFile);
-      console.log("asd");
-      console.log("qwe1", resultFiles);
-      const newLats = lats;
-      const newLngs = lngs;
+      // const newLats = lats;
+      // const newLngs = lngs;
       const result = await createUseditem({
         variables: {
           createUseditemInput: {
@@ -44,12 +41,12 @@ const MarketWrite = () => {
             price: Number(data.price),
             tags: data.tags,
             images: newImages,
-            UseditemAddress: { lat: newLats, lng: newLngs },
+            useditemAddress: { address: addressInfo },
           },
         },
       });
-      console.log("asdasd", result);
       console.log("asdasd11", newImages);
+      console.log("qweqwe111qwe", addressInfo);
       Modal.success({
         content: "상품이 등록되었습니다!",
         onOk() {
@@ -76,15 +73,11 @@ const MarketWrite = () => {
   const onChangeValue = (val) => {
     setValue("contents", val);
   };
-  // const onChangeLocationLat = (lat) => {
-  //   const newLat = lat;
-  //   setLats(newLat);
-  //   console.log(newLat);
-  // };
-  // const onChangeLocationLng = (lng) => {
-  //   const newLng = lng;
-  //   setLngs(newLng);
-  // };
+  const onChangeAddress = (address) => {
+    const newAddress = address;
+    console.log("qweqwe", newAddress);
+    setAddressInfo(newAddress);
+  };
   return (
     <>
       <MarketWriteUI
@@ -97,8 +90,7 @@ const MarketWrite = () => {
         onChangeFiles={onChangeFiles}
         onChangeFileUrl={onChangeFileUrl}
         onClickItem={onClickItem}
-        // onChangeLocationLat={onChangeLocationLat}
-        // onChangeLocationLat={onChangeLocationLng}
+        onChangeAddress={onChangeAddress}
       />
     </>
   );

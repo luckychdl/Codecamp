@@ -45,6 +45,7 @@ export const AddressInput = styled.input`
   width: 588px;
   height: 52px;
   margin-bottom: 15px;
+  padding-left: 10px;
   border: 1px solid #bdbdbd;
   outline-color: #757575;
   border-radius: 7px;

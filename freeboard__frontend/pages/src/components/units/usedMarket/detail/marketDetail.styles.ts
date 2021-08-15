@@ -117,41 +117,19 @@ export const Button = styled.button`
   }
 `;
 export const ImgWrapper = styled.div`
+  width: 600px;
+  height: 600px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 300px;
-  width: 300px;
-  height: 300px;
 `;
 export const Picture = styled.img`
-  width: 300px;
-  height: 300px;
-  margin: 0px;
-`;
-export const SliderDiv = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  height: 300px;
-  width: 300px;
-  margin: 0px;
-`;
-export const Image = styled.img`
-  height: 300px;
-  margin: 300px;
   margin-bottom: 100px;
+  margin: auto;
 `;
 export const SliderUl = styled.ul`
-  display: flex;
-  justify-content: space-evenly;
-  width: 300px;
-  margin: 0px;
-  height: 300px;
-  li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 300px;
+  width: 600px;
+  > li {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
   }
 `;

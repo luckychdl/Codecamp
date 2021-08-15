@@ -65,17 +65,19 @@ export const Border = styled.div`
 export const MyPageButton = styled.button`
   width: 120px;
   height: 50px;
-  background-color: white;
+  /* background-color: #9eb2b8; */
+  color: #000000;
   border: none;
   cursor: pointer;
-  font-size: 18px;
-  color: #9eb2b8;
+  font-size: 20px;
+  color: white;
+  background-color: black;
   :active {
     position: relative;
     top: 2px;
     border-radius: 10px;
   }
   :hover {
-    color: #35c5f0;
+    color: #616161;
   }
 `;

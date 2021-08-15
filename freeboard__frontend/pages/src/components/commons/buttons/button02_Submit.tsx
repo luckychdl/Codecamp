@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 const Button02 = styled.button`
   position: absolute;
   right: 0px;
-  bottom: 6px;
+  bottom: 8px;
   width: 91px;
   height: 52px;
   background: #212121;

@@ -24,9 +24,7 @@ import {
   ContentsWrapper,
   MapBox,
   ButtonWrapper,
-  SliderDiv,
   SliderUl,
-  Image,
 } from "./marketDetail.styles";
 import Button01 from "../../../commons/buttons/button01";
 import { IQuery } from "../../../../../../src/commons/types/generated/types";
@@ -39,37 +37,22 @@ interface IMarketDetailUIProps {
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
   const settings = {
     customPaging: function (i) {
-      <div
-        style={{
-          width: "30px",
-          color: "blue",
-          border: "1px blue solid",
-        }}
-      >
-        {i + 1}
-      </div>;
       return (
-        <SliderDiv>
-          <Image
+        <a>
+          <img
+            style={{ width: "100px", height: "100px" }}
             src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[i]}`}
           />
-        </SliderDiv>
+        </a>
       );
     },
     dots: true,
     dotsClass: "slick-dots slick-thumb",
-    className: "slider variable-width",
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    appendDots: (dots) => (
-      <div>
-        <SliderDiv>
-          <SliderUl>{dots}</SliderUl>
-        </SliderDiv>
-      </div>
-    ),
+    appendDots: (dots) => <SliderUl> {dots} </SliderUl>,
   };
 
   if (typeof window === "undefined") return <></>;
@@ -102,13 +85,23 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
       </MainNameWrapper>
 
       <ImgWrapper>
-        <Slider {...settings}>
-          {props.data?.fetchUseditem.images?.map((data: any, index) => (
-            <div key={index}>
-              <Picture src={`https://storage.googleapis.com/${data}`} />
-            </div>
-          ))}
-        </Slider>
+        <div style={{ width: "600px", height: "600px", margin: "auto" }}>
+          <Slider {...settings}>
+            {props.data?.fetchUseditem.images?.map((data: any, index) => (
+              <div key={index}>
+                <img
+                  style={{
+                    width: "400px",
+                    height: "400px",
+                    margin: "auto",
+                    marginBottom: "100px",
+                  }}
+                  src={`https://storage.googleapis.com/${data}`}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </ImgWrapper>
 
       <ContentsWrapper>
@@ -119,7 +112,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
         ></Contents>
         <Tags>{props.data?.fetchUseditem.tags}</Tags>
       </ContentsWrapper>
-      <MapBox>{props.data?.fetchUseditem.useditemAddress}</MapBox>
+      <MapBox id="map"></MapBox>
       <ButtonWrapper>
         <Button01
           buttonName={"목록으로"}

@@ -9,6 +9,8 @@ import {
   AddressInput,
 } from "./kakaoMap.styles";
 import Title02 from "../titles/title02.marketWrite";
+import DaumPostcode from "react-daum-postcode";
+import { Modal } from "antd";
 const KakaoMapPage = (props) => {
   return (
     <MainWrapper>
@@ -19,13 +21,27 @@ const KakaoMapPage = (props) => {
       <AddressWrapper>
         <Title02 divName={"GPS"}></Title02>
         <SubWrapper>
-          <Location placeholder="위도(LAT)" onChange={props.onChangeLAT} />
+          <Location placeholder="위도(LAT)" />
           <LocationImg src="/FreeBoard/Location.svg" />
-          <Location placeholder="경도(LNG)" onChange={props.onChangeLNG} />
+          <Location placeholder="경도(LNG)" />
         </SubWrapper>
         <Title02 divName={"주소"}></Title02>
-        <AddressInput></AddressInput>
-        <AddressInput></AddressInput>
+        <AddressInput
+          type="text"
+          onClick={props.onClickOpenModal}
+          value={props.address}
+        />
+        {props.isOpen && (
+          <Modal
+            title="주소 검색하기"
+            visible={props.isOpen}
+            onOk={props.handleCancel}
+            onCancel={props.handleCancel}
+          >
+            <DaumPostcode onComplete={props.onComplete} />
+          </Modal>
+        )}
+        <AddressInput type="text" onChange={props.onChangeAddressDetail} />
       </AddressWrapper>
     </MainWrapper>
   );

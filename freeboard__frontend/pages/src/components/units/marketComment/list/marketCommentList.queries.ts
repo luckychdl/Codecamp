@@ -5,7 +5,6 @@ export const FETCH_USEDITEM_QUESTIONS = gql`
       contents
       _id
       user {
-        _id
         name
         email
       }

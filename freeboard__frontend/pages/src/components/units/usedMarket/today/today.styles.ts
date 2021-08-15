@@ -54,4 +54,5 @@ export const Wrapper = styled.div`
   width: 180px;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 `;

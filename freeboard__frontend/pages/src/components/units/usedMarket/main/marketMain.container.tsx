@@ -21,7 +21,7 @@ const MarketMain = () => {
       if (data._id === el._id) isExists = true;
     });
 
-    // if (isExists) router.push(`/usedMarket/detail/${el._id}`);
+    if (isExists) router.push(`/usedMarket/detail/${el._id}`);
     baskets.push(el);
     if (JSON.parse(localStorage.getItem("baskets")) > 3) {
       const remove = localStorage.removeItem("baskets");
@@ -29,7 +29,7 @@ const MarketMain = () => {
       console.log(newRemove);
     }
     localStorage.setItem("baskets", JSON.stringify(baskets));
-    // router.push(`/usedMarket/detail/${el._id}`);
+    router.push(`/usedMarket/detail/${el._id}`);
   };
   return (
     <MarketMainUI
