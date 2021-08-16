@@ -12,6 +12,7 @@ const MarketWrite = () => {
   const [files, setFiles] = useState([]);
   const [fileUrl, setFileUrl] = useState([]);
   const [addressInfo, setAddressInfo] = useState(0);
+  const [addressDetailInfo, setAddressDetailInfo] = useState(0);
   // const [lngs, setLngs] = useState(0);
 
   const { register, handleSubmit, setValue, formState } = useForm({
@@ -41,12 +42,15 @@ const MarketWrite = () => {
             price: Number(data.price),
             tags: data.tags,
             images: newImages,
-            useditemAddress: { address: addressInfo },
+            useditemAddress: {
+              address: addressInfo,
+              addressDetail: addressDetailInfo,
+            },
           },
         },
       });
       console.log("asdasd11", newImages);
-      console.log("qweqwe111qwe", addressInfo);
+      console.log("qweqwe111qwe", addressInfo, addressDetailInfo);
       Modal.success({
         content: "상품이 등록되었습니다!",
         onOk() {
@@ -78,6 +82,11 @@ const MarketWrite = () => {
     console.log("qweqwe", newAddress);
     setAddressInfo(newAddress);
   };
+  const onChangeAddressDetailContents = (addressDetail) => {
+    const newAddressDetail = addressDetail;
+    setAddressDetailInfo(newAddressDetail);
+    console.log("qweqwe12", newAddressDetail);
+  };
   return (
     <>
       <MarketWriteUI
@@ -91,6 +100,7 @@ const MarketWrite = () => {
         onChangeFileUrl={onChangeFileUrl}
         onClickItem={onClickItem}
         onChangeAddress={onChangeAddress}
+        onChangeAddressDetailContents={onChangeAddressDetailContents}
       />
     </>
   );

@@ -33,7 +33,6 @@ const KakaoMap = (props) => {
   };
   const onChangeAddressDetail = (event) => {
     setAddressDetail(event.target.value);
-    console.log(event.target.value);
   };
   useEffect(() => {
     const script = document.createElement("script");
@@ -66,16 +65,17 @@ const KakaoMap = (props) => {
               position: coords,
             });
 
-            // 인포윈도우로 장소에 대한 설명을 표시합니다
-            const infowindow = new kakao.maps.InfoWindow({
-              content: addressDetail,
-            });
-            infowindow.open(map, marker);
+            // // 인포윈도우로 장소에 대한 설명을 표시합니다
+            // const infowindow = new kakao.maps.InfoWindow({
+            //   content: `${addressDetail}`,
+            // });
+            // infowindow.open(map, marker);
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
             console.log("asd", address);
             props.onChangeAddress(address);
+            props.onChangeAddressDetailContents(addressDetail);
           }
         });
       });

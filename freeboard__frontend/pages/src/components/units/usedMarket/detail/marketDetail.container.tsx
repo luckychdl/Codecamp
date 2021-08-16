@@ -26,6 +26,7 @@ const MarketDetail = () => {
   };
   const onClickMove = () => {
     router.push("/usedMarket");
+    console.log("sdsd");
   };
   useEffect(() => {
     const script = document.createElement("script");
@@ -48,7 +49,7 @@ const MarketDetail = () => {
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(
-          data?.fetchUsedItem.address,
+          // data?.fetchUsedItem.address,
           function (result, status) {
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {
