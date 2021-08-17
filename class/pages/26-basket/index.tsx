@@ -23,7 +23,7 @@ const BasketPage = () => {
     console.log(basketData);
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
     let isExists = false;
-    baskets.forEach((data) => {
+    baskets.filter((data) => {
       if (data._id === basketData._id) isExists = true;
     });
 

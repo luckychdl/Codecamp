@@ -19,7 +19,7 @@ export default function LoginSuccessPage() {
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
 
   useEffect(() => {
-    if (!accessToken) router.push("/22-login");
+    if (!localStorage.getItem("refreshToken")) router.push("/22-login");
   }, []);
   return (
     <>

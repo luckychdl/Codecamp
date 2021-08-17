@@ -4,6 +4,7 @@ import {
   ApolloProvider,
   InMemoryCache,
 } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import "../styles/globals.css";
 import "antd/dist/antd.css";
@@ -13,7 +14,14 @@ import { globalStyles } from "../src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { createContext, useState, SetStateAction, Dispatch } from "react";
+import {
+  createContext,
+  useState,
+  SetStateAction,
+  Dispatch,
+  useEffect,
+} from "react";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 // import Head from "next/head";
 if (typeof window !== "undefined") {
   firebase.initializeApp({
@@ -41,17 +49,37 @@ function MyApp({ Component, pageProps }: AppProps) {
     userInfo: userInfo,
     setUserInfo: setUserInfo,
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
+  }, []);
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        if (err.extensions.code === "UNAUTHENTICATED") {
+          // 2. 발급받은 accessToken으로 방금 실패했던 쿼리 재실행하기
+          operation.setContext({
+            headers: {
+              ...operation.getContext().headers,
+              authorization: `bearer ${getAccessToken(setAccessToken)}`,
+            },
+          });
+          return forward(operation);
+        }
+      }
+    }
+  });
+
   const uploadLink = createUploadLink({
-    uri: "http://backend02.codebootcamp.co.kr/graphql",
+    uri: "https://backend02.codebootcamp.co.kr/graphql",
     headers: {
-      authorization: `Bearer ${
-        (typeof window !== "undefined" && localStorage.getItem("token")) || ""
-      }`,
+      authorization: `Bearer ${accessToken || null}`,
     },
+    credentials: "include",
   });
   const client = new ApolloClient({
     // uri: "http://backend02.codebootcamp.co.kr/graphql",
-    link: ApolloLink.from([uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink]),
     cache: new InMemoryCache(),
   });
 

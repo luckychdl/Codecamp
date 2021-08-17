@@ -8,8 +8,8 @@ import {
 import { GlobalContext } from "../_app";
 
 const LOGIN_USER = gql`
-  mutation loginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
+  mutation loginUserExample($email: String!, $password: String!) {
+    loginUserExample(email: $email, password: $password) {
       accessToken
     }
   }
@@ -41,10 +41,11 @@ export default function LoginPage() {
         },
       });
 
-      setAccessToken(token.data?.loginUser.accessToken || "");
-      localStorage.setItem("token", token.data?.loginUser.accessToken || "");
-      // router.push("/22-login-success");
-      router.push("/23-hoc");
+      setAccessToken(token.data?.loginUserExample.accessToken || "");
+      localStorage.setItem("refreshToken", "true");
+      // localStorage.setItem("token", token.data?.loginUser.accessToken || "");
+      router.push("/22-login-success");
+      // router.push("/23-hoc");
     } catch (err) {
       alert(err.message);
     }
@@ -56,7 +57,9 @@ export default function LoginPage() {
       <br />
       비밀번호 : <input type="password" onChange={onChangePassword}></input>
       <br />
-      <button onClick={onClickLogin}>로그인</button>
+      <button onClick={onClickLogin} style={{ width: "100px", height: "50px" }}>
+        로그인 1
+      </button>
     </>
   );
 }
