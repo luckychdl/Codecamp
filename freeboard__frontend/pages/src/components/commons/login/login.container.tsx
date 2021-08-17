@@ -34,8 +34,10 @@ export default function LoginPage() {
           password: String(data.password),
         },
       });
-      localStorage.setItem("token", token.data?.loginUser.accessToken || "");
+
       setAccessToken(token.data?.loginUser.accessToken || "");
+      localStorage.setItem("refreshToken", "true");
+      // localStorage.setItem("token", token.data?.loginUser.accessToken || "");
       Modal.confirm({
         content: "환영합니다!",
       });

@@ -7,14 +7,14 @@ const withAuth = (Component: ComponentType) => (props: any) => {
   // const { accessToken } = useContext(GlobalContext);
   const router = useRouter();
   useEffect(() => {
-    if (!(localStorage.getItem("token") || "")) {
+    if (!(localStorage.getItem("refreshToken") || "")) {
       Modal.confirm({
         content: "로그인이 필요합니다!",
       });
       router.push("/boards/login");
     }
   }, []);
-  if (!(localStorage.getItem("token") || "")) return <></>;
+  if (!(localStorage.getItem("refreshToken") || "")) return <></>;
   return <Component {...props} />;
 };
 

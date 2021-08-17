@@ -8,14 +8,9 @@ const MarketCommentList = () => {
     variables: { useditemId: router.query.useditemId },
   });
 
-  const onClick = () => {
-    console.log(router.query.useditemId);
-    console.log(data);
-  };
   return (
     <>
       <MarketCommentListUI data={data} />
-      <button onClick={onClick}>asd</button>
     </>
   );
 };

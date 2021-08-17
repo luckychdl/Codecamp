@@ -1,34 +1,72 @@
+import { useMutation } from "@apollo/client";
+import { useForm } from "react-hook-form";
+import CommentAnswerUI from "./commentAnswer.presenter";
 import {
-  MainWrapper,
-  TitleWrapper,
-  Image,
-  Text,
-  ButtonWrapper,
-} from "./commentAnswer.styles";
-import Button02 from "../../../commons/buttons/button02_Submit";
-import Title02 from "../../../commons/titles/title02.marketWrite";
-import TextArea01 from "../../../commons/textAreas/textAreaComment01";
-const MarketCommentWriteUI = (props: any) => {
+  CREATE_USED_ITEM_QUESTION_ANSWER,
+  UPDATE_USEDITEM_QUESTION,
+} from "./commentAnswer.queries";
+import { Modal } from "antd";
+import { FETCH_USED_ITEM_QUESTION_ANSWERS } from "../commentAnswerList/commentAnswerList.queries";
+const CommentAnswer = (props) => {
+  const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEM_QUESTION);
+  const [createUseditemQuestionAnswer] = useMutation(
+    CREATE_USED_ITEM_QUESTION_ANSWER
+  );
+  const { register, handleSubmit } = useForm();
+  const onClickSubmit = async (el) => {
+    try {
+      await createUseditemQuestionAnswer({
+        variables: {
+          createUseditemQuestionAnswerInput: { ...el },
+          useditemQuestionId: props.data._id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEM_QUESTION_ANSWERS,
+            variables: {
+              useditemQuestionId: props.data._id,
+            },
+          },
+        ],
+      });
+      props.setIsAnswer(false);
+      Modal.success({
+        content: "댓글이 등록되었습니다.",
+      });
+    } catch (err) {
+      Modal.error({
+        content: err.message,
+      });
+    }
+  };
+  const onClickUpdateComment = async (data) => {
+    // console.log("qrqr", el.contents);
+    try {
+      const result = await updateUseditemQuestion({
+        variables: {
+          useditemQuestionId: props.data._id,
+          updateUseditemQuestionInput: { ...data },
+        },
+      });
+      console.log(result);
+      Modal.success({
+        content: "댓글이 수정되었습니다.",
+      });
+    } catch (err) {
+      Modal.error({
+        content: err.message,
+      });
+    }
+  };
   return (
-    <MainWrapper>
-      <form onSubmit={props.handleSubmit(props.onClickSubmitComment)}>
-        <TitleWrapper>
-          <Image src="/FreeBoard/review.svg"></Image>
-          <Title02 divName={"문의하기"}></Title02>
-        </TitleWrapper>
-        <TextArea01
-          register={{ ...props.register("contents") }}
-          textareaName={
-            "개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-          }
-        />
-        <ButtonWrapper>
-          <Text>0/200</Text>
-          <Button02 buttonName={"등록하기"}></Button02>
-        </ButtonWrapper>
-      </form>
-    </MainWrapper>
+    <CommentAnswerUI
+      isEdit={props.isEdit}
+      register={register}
+      handleSubmit={handleSubmit}
+      onClickSubmit={onClickSubmit}
+      onClickUpdateComment={onClickUpdateComment}
+    />
   );
 };
 
-export default MarketCommentWriteUI;
+export default CommentAnswer;

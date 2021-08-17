@@ -133,6 +133,9 @@ export const ListMainWrapper = styled.div`
   width: 1050px;
   padding-top: 10px;
   border-top: 1px solid #bdbdbd;
+  :hover {
+    background-color: #ede7f6;
+  }
 `;
 export const NameWrapper = styled.div``;
 export const TodayWrapper = styled.div``;

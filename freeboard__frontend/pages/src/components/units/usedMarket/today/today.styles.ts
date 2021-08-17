@@ -55,4 +55,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 10px;
+  :hover {
+    background-color: #ede7f6;
+  }
 `;

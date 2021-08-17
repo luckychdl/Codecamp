@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { GlobalContext } from "../../../../../_app";
 import {
   MainWrapper,
   HeaderMain,
@@ -17,7 +15,6 @@ interface ILayouHeaderProps {
 }
 
 export default function LayoutHeaderUI(props: ILayouHeaderProps) {
-  const { accessToken } = useContext(GlobalContext);
   return (
     <MainWrapper>
       <HeaderMain>
@@ -27,7 +24,7 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
         />
 
         <ButtonWrapper>
-          {!accessToken ? (
+          {!props.token ? (
             <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
           ) : (
             <MyPageButton onClick={props.onClickMoveToLogin}>

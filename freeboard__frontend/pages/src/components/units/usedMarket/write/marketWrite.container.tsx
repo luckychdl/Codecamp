@@ -3,7 +3,7 @@ import { CREATE_USED_ITEM, UPLOAD_FILE } from "./marketWrite.queries";
 import MarketWriteUI from "./marketWrite.presenter";
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
-// import withAuth from "../../../commons/hocs/withAuth";
+import withAuth from "../../../commons/hocs/withAuth";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,6 +12,8 @@ const MarketWrite = () => {
   const [files, setFiles] = useState([]);
   const [fileUrl, setFileUrl] = useState([]);
   const [addressInfo, setAddressInfo] = useState(0);
+  const [lngInfo, setLngInfo] = useState();
+  const [latInfo, setLatInfo] = useState();
   const [addressDetailInfo, setAddressDetailInfo] = useState(0);
   // const [lngs, setLngs] = useState(0);
 
@@ -45,6 +47,8 @@ const MarketWrite = () => {
             useditemAddress: {
               address: addressInfo,
               addressDetail: addressDetailInfo,
+              lat: latInfo,
+              lng: lngInfo,
             },
           },
         },
@@ -82,6 +86,14 @@ const MarketWrite = () => {
     console.log("qweqwe", newAddress);
     setAddressInfo(newAddress);
   };
+  const onChangeLng = (lng) => {
+    const newLng = lng;
+    setLngInfo(newLng);
+  };
+  const onChangeLat = (lat) => {
+    const newLat = lat;
+    setLatInfo(newLat);
+  };
   const onChangeAddressDetailContents = (addressDetail) => {
     const newAddressDetail = addressDetail;
     setAddressDetailInfo(newAddressDetail);
@@ -93,6 +105,8 @@ const MarketWrite = () => {
         isActive={formState.isValid}
         errors={formState.errors}
         fileUrl={fileUrl}
+        onChangeLng={onChangeLng}
+        onChangeLat={onChangeLat}
         onChangeValue={onChangeValue}
         register={register}
         handleSubmit={handleSubmit}

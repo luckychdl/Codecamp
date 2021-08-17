@@ -1,6 +1,9 @@
 import { useMutation } from "@apollo/client";
 import MarketCommentWriteUI from "./marketCommentWrite.persenter";
-import { CREATE_USEDITEM_QUESTION } from "./marketCommentWrite.queries";
+import {
+  CREATE_USEDITEM_QUESTION,
+  UPDATE_USEDITEM_QUESTION,
+} from "./marketCommentWrite.queries";
 import { FETCH_USEDITEM_QUESTIONS } from "../list/marketCommentList.queries";
 import { Modal } from "antd";
 import { useForm } from "react-hook-form";
@@ -9,7 +12,9 @@ import { useState } from "react";
 const MarketCommentWrite = () => {
   const [isComment, setIsComment] = useState(false);
   const [createUseditemQuestion] = useMutation(CREATE_USEDITEM_QUESTION);
+  const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEM_QUESTION);
   const { register, handleSubmit } = useForm();
+
   const onClickSubmitComment = async (data: any) => {
     console.log(data);
     try {
@@ -39,6 +44,26 @@ const MarketCommentWrite = () => {
     }
   };
 
+  const onClickUpdateComment = async (data) => {
+    try {
+      await updateUseditemQuestion({
+        variables: {
+          updateUseditemQuestionInput: {
+            contents: data.contents,
+            user: { name: data.name },
+          },
+        },
+      });
+      Modal.success({
+        content: "댓글이 수정되었습니다.",
+      });
+    } catch (err) {
+      Modal.error({
+        content: err.message,
+      });
+    }
+  };
+
   const onClickIsComment = () => {
     setIsComment(true);
   };
@@ -50,6 +75,7 @@ const MarketCommentWrite = () => {
       register={register}
       handleSubmit={handleSubmit}
       onClickIsComment={onClickIsComment}
+      onClickUpdateComment={onClickUpdateComment}
     />
   );
 };

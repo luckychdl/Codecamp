@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 export const MainWrapper = styled.div`
-  width: 1200px;
-  border-bottom: 1px solid #bdbdbd;
+  width: 100%;
+  /* border-bottom: 1px solid #bdbdbd; */
   margin-bottom: 30px;
+  display: flex;
+  justify-content: flex-end;
 `;
 export const ProfileWrapper = styled.div`
   display: flex;
@@ -16,11 +18,10 @@ export const Profile = styled.img`
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100px;
-  height: 120px;
+  width: 500px;
 `;
 export const Name = styled.div`
-  width: 100px;
+  width: 500px;
   height: 24px;
   font-weight: 500;
   font-size: 20px;
@@ -29,9 +30,9 @@ export const Name = styled.div`
 export const Contents = styled.div`
   font-size: 16px;
   margin-bottom: 10px;
-  width: 900px;
+  width: 500px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-break: normal;
   white-space: nowrap;
   color: #757575;
 `;
@@ -39,10 +40,10 @@ export const CreatedAt = styled.div`
   margin-bottom: 10px;
 `;
 export const SubWrapper = styled.div`
-  width: 1150px;
+  width: 1050px;
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  /* height: 80px; */
 `;
 export const NameWrapper = styled.div``;
 export const Icon = styled.img`
@@ -51,4 +52,7 @@ export const Icon = styled.img`
   height: 18px;
   cursor: pointer;
 `;
-export const IconWrapper = styled.div``;
+export const IconWrapper = styled.div`
+  display: flex;
+`;
+export const Arrow = styled.img``;

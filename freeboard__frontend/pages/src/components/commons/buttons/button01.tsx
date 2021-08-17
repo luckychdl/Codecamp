@@ -19,7 +19,11 @@ const Button01 = styled.button`
 `;
 
 const ButtonWrite = (props) => {
-  return <Button01>{props.buttonName}</Button01>;
+  return (
+    <Button01 type={props.buttonType} onClick={props.onClick}>
+      {props.buttonName}
+    </Button01>
+  );
 };
 
 export default ButtonWrite;

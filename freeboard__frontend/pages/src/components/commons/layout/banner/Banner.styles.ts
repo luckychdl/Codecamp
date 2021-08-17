@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 
 export const BannerWrapper = styled.div`
-  height: 370px;
+  height: 400px;
 `;
 export const Banner = styled.div`
-  height: 370px;
+  height: 400px;
   width: 100%;
   background-color: white;
 `;
 export const ImgWrapper = styled.div`
   width: 100%;
-  height: 370px;
+  height: 400px;
   text-align: center;
 `;
 export const LogoImg = styled.img`

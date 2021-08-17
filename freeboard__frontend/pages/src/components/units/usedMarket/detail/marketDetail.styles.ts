@@ -47,7 +47,7 @@ export const NameWrapper = styled.div`
   margin-bottom: 80px;
 `;
 export const Remarks = styled.div`
-  width: 200px;
+  /* width: 200px; */
   height: 27px;
   font-size: 18px;
   color: #bdbdbd;
@@ -98,24 +98,28 @@ export const MapBox = styled.div`
   border-bottom: 1px solid #bdbdbd;
   padding-bottom: 40px;
 `;
-export const ButtonWrapper = styled.div``;
-export const Button = styled.button`
-  width: 170px;
-  height: 60px;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: #35c5f0;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  margin-top: 30px;
-  margin-right: 24px;
-  cursor: pointer;
-  :active {
-    position: relative;
-    top: 2px;
-  }
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
+// export const Button = styled.button`
+//   width: 170px;
+//   height: 60px;
+//   font-size: 18px;
+//   font-weight: bold;
+//   background-color: #35c5f0;
+//   color: white;
+//   border: none;
+//   border-radius: 10px;
+//   margin-top: 30px;
+//   margin-right: 24px;
+//   cursor: pointer;
+//   :active {
+//     position: relative;
+//     top: 2px;
+//   }
+// `;
 export const ImgWrapper = styled.div`
   width: 600px;
   height: 600px;

@@ -48,6 +48,9 @@ export const ColumnWrapper = styled.div`
   justify-content: flex-start;
   padding: 20px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  :hover {
+    background-color: #ede7f6;
+  }
   /* background-color: black; */
 `;
 export const Heart = styled.img``;

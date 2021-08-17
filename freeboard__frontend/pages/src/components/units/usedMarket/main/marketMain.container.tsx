@@ -15,20 +15,15 @@ const MarketMain = () => {
     router.push("/usedMarket/new");
   };
   const onClickMoveDetail = (el: any) => () => {
-    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
-    let isExists = false;
-    baskets.forEach((data) => {
-      if (data._id === el._id) isExists = true;
-    });
+    const newBaskets = [el];
+    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]").filter(
+      (data) => data._id !== el._id
+    );
+    localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
 
-    if (isExists) router.push(`/usedMarket/detail/${el._id}`);
-    baskets.push(el);
-    if (JSON.parse(localStorage.getItem("baskets")) > 3) {
-      const remove = localStorage.removeItem("baskets");
-      const newRemove = remove.pop();
-      console.log(newRemove);
-    }
-    localStorage.setItem("baskets", JSON.stringify(baskets));
+    // if (isExists) {
+    //   router.push(`/usedMarket/detail/${el._id}`);
+    // }
     router.push(`/usedMarket/detail/${el._id}`);
   };
   return (

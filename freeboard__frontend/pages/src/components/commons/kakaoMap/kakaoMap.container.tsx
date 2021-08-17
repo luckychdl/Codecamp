@@ -7,14 +7,10 @@ declare const window: typeof globalThis & {
 const KakaoMap = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [address, setAddress] = useState();
+  const [lng, setLng] = useState();
+  const [lat, setLat] = useState();
   const [addressDetail, setAddressDetail] = useState();
   // const [createUsedItem] = useMutation(CREATE_USED_ITEM);
-  const onChangeLAT = (event) => {
-    setLat(event.target.value);
-  };
-  const onChangeLNG = (event) => {
-    setLng(event.target.value);
-  };
 
   const onClickOpenModal = () => {
     setIsOpen(true);
@@ -73,23 +69,28 @@ const KakaoMap = (props) => {
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
-            console.log("asd", address);
+
+            setLng(coords.Ma);
+            setLat(coords.La);
             props.onChangeAddress(address);
             props.onChangeAddressDetailContents(addressDetail);
+            props.onChangeLng(lng);
+            props.onChangeLat(lat);
           }
         });
       });
     };
   }, [address]);
+
   return (
     <KakaoMapPage
       isOpen={isOpen}
       address={address}
       addressDetail={addressDetail}
+      lng={lng}
+      lat={lat}
       onComplete={onComplete}
       handleCancel={handleCancel}
-      onChangeLAT={onChangeLAT}
-      onChangeLNG={onChangeLNG}
       onClickAddressDetail={onClickAddressDetail}
       onClickOpenModal={onClickOpenModal}
       onChangeAddressDetail={onChangeAddressDetail}

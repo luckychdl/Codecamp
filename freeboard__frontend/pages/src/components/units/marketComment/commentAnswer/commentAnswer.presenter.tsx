@@ -1,41 +1,40 @@
 import {
   MainWrapper,
-  ProfileWrapper,
-  Profile,
-  InfoWrapper,
-  Name,
-  Contents,
-  CreatedAt,
-  SubWrapper,
-  NameWrapper,
-  Icon,
-  IconWrapper,
+  TitleWrapper,
+  Image,
+  Text,
+  ButtonWrapper,
+  TextWrapper,
 } from "./commentAnswer.styles";
-import { getDate } from "../../../../commons/libraries/utils";
-import { IUseditemQuestion } from "../../../../../../src/commons/types/generated/types";
-interface IMarketCommentListUIItemProps {
-  data: IUseditemQuestion;
-}
-const CommentAnswerUI = (props: IMarketCommentListUIItemProps) => {
+import Button02 from "../../../commons/buttons/button02_Submit";
+import TextArea01 from "../../../commons/textAreas/textAreaComment01";
+
+const CommentAnswerUI = (props: any) => {
   return (
     <MainWrapper>
-      <ProfileWrapper>
-        <Profile src="/FreeBoard/Profile.png" />
-        <InfoWrapper>
-          <SubWrapper>
-            <NameWrapper>
-              <Name>{props.data.user.name}</Name>
-              <Contents>{props.data.contents}</Contents>
-            </NameWrapper>
-            <IconWrapper>
-              <Icon src="/FreeBoard/edit.png" />
-              <Icon src="/FreeBoard/delete.png" />
-            </IconWrapper>
-          </SubWrapper>
-          <CreatedAt>{getDate(props.data.createdAt)}</CreatedAt>
-        </InfoWrapper>
-      </ProfileWrapper>
+      <form
+        onSubmit={props.handleSubmit(
+          props.isEdit ? props.onClickUpdateComment : props.onClickSubmit
+        )}
+      >
+        <TextWrapper>
+          <TitleWrapper>
+            <Image src="/FreeBoard/subdirectoryArrow.svg"></Image>
+          </TitleWrapper>
+          <TextArea01
+            register={{ ...props.register("contents") }}
+            textareaName={"답글을 등록해주세요."}
+          />
+        </TextWrapper>
+        <ButtonWrapper>
+          <Text>0/200</Text>
+          <Button02
+            buttonName={props.isEdit ? "수정하기" : "등록하기"}
+          ></Button02>
+        </ButtonWrapper>
+      </form>
     </MainWrapper>
   );
 };
+
 export default CommentAnswerUI;

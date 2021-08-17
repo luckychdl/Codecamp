@@ -4,7 +4,6 @@ const TextArea01 = styled.textarea`
   width: 1200px;
   height: 161px;
   resize: none;
-  position: relative;
   font-size: 14px;
   line-height: 24px;
   padding: 20px;

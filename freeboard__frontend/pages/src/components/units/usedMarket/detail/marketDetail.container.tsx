@@ -12,11 +12,10 @@ const MarketDetail = () => {
   const [toggleUseditemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
   const onClickToggle = async () => {
     try {
-      const result = await toggleUseditemPick({
+      await toggleUseditemPick({
         variables: { useditemId: router.query.useditemId },
       });
-      console.log(result.data);
-      console.log(data);
+
       refetch();
     } catch (err) {
       Modal.error({
@@ -26,7 +25,6 @@ const MarketDetail = () => {
   };
   const onClickMove = () => {
     router.push("/usedMarket");
-    console.log("sdsd");
   };
   useEffect(() => {
     const script = document.createElement("script");
@@ -49,7 +47,7 @@ const MarketDetail = () => {
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(
-          // data?.fetchUsedItem.address,
+          data?.fetchUseditem.useditemAddress.address,
           function (result, status) {
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {
@@ -69,18 +67,19 @@ const MarketDetail = () => {
 
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               map.setCenter(coords);
+              console.log("qwe", data?.fetchUseditem.useditemAddress.address);
+              console.log("qwe123", coords);
             }
           }
         );
       });
     };
-    console.log("qwe", data);
   }, []);
   return (
     <>
       <MarketDetailUI
         data={data}
-        onClick={onClickMove}
+        onClickMove={onClickMove}
         onClickToggle={onClickToggle}
       />
     </>

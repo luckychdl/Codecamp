@@ -18,7 +18,6 @@ import {
   LikeScore,
   Price,
   ImgWrapper,
-  Picture,
   Contents,
   Tags,
   ContentsWrapper,
@@ -91,8 +90,8 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
               <div key={index}>
                 <img
                   style={{
-                    width: "400px",
-                    height: "400px",
+                    width: "600px",
+                    height: "600px",
                     margin: "auto",
                     marginBottom: "100px",
                   }}
@@ -117,6 +116,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
         <Button01
           buttonName={"목록으로"}
           onClick={props.onClickMove}
+          buttonType="button"
         ></Button01>
         <Button01 buttonName={"구매하기"}></Button01>
       </ButtonWrapper>

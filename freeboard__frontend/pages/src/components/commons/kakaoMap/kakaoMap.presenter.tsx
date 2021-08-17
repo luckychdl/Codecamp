@@ -20,10 +20,11 @@ const KakaoMapPage = (props) => {
       </LocationWrapper>
       <AddressWrapper>
         <Title02 divName={"GPS"}></Title02>
+
         <SubWrapper>
-          <Location placeholder="위도(LAT)" />
+          <Location placeholder={props.lng} readOnly />
           <LocationImg src="/FreeBoard/Location.svg" />
-          <Location placeholder="경도(LNG)" />
+          <Location placeholder={props.lat} readOnly />
         </SubWrapper>
         <Title02 divName={"주소"}></Title02>
         <AddressInput
