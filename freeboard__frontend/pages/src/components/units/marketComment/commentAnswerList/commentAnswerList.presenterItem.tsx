@@ -2,7 +2,6 @@ import {
   MainWrapper,
   ProfileWrapper,
   Profile,
-  InfoWrapper,
   Name,
   Contents,
   SubWrapper,
@@ -25,9 +24,18 @@ const CommentAnswerListUIItem = (props: any) => {
           <Contents>{props.data.contents}</Contents>
         </NameWrapper>
         <IconWrapper>
-          <Icon src="/FreeBoard/question.svg" />
-          <Icon src="/FreeBoard/mode.svg" />
-          <Icon src="/FreeBoard/clear.svg" />
+          {props.userData?.fetchUserLoggedIn._id === props.data?.user._id ? (
+            <>
+              <Icon src="/FreeBoard/mode.svg" />
+              <Icon
+                src="/FreeBoard/clear.svg"
+                id={props.data._id}
+                onClick={props.onClickDeleteAnswer}
+              />
+            </>
+          ) : (
+            <></>
+          )}
         </IconWrapper>
       </SubWrapper>
       {/* </InfoWrapper> */}

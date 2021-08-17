@@ -54,7 +54,6 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
     appendDots: (dots) => <SliderUl> {dots} </SliderUl>,
   };
 
-  if (typeof window === "undefined") return <></>;
   return (
     <MainWrapper>
       <SubWrapper>
@@ -104,11 +103,13 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
       </ImgWrapper>
 
       <ContentsWrapper>
-        <Contents
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
-          }}
-        ></Contents>
+        {typeof window !== "undefined" && (
+          <Contents
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
+            }}
+          ></Contents>
+        )}
         <Tags>{props.data?.fetchUseditem.tags}</Tags>
       </ContentsWrapper>
       <MapBox id="map"></MapBox>

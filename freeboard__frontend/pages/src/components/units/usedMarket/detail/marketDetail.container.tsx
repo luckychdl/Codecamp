@@ -4,6 +4,10 @@ import { useRouter } from "next/router";
 import MarketDetailUI from "./marketDetail.presenter";
 import { FETCH_USED_ITEM, TOGGLE_USED_ITEM_PICK } from "./marketDetail.queries";
 import { Modal } from "antd";
+
+declare const window: typeof globalThis & {
+  kakao: any;
+};
 const MarketDetail = () => {
   const router = useRouter();
   const { data, refetch } = useQuery(FETCH_USED_ITEM, {
@@ -54,10 +58,10 @@ const MarketDetail = () => {
               const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
               // 결과값으로 받은 위치를 마커로 표시합니다
-              const marker = new kakao.maps.Marker({
-                map: map,
-                position: coords,
-              });
+              // const marker = new kakao.maps.Marker({
+              //   map: map,
+              //   position: coords,
+              // });
 
               // // 인포윈도우로 장소에 대한 설명을 표시합니다
               // const infowindow = new kakao.maps.InfoWindow({

@@ -7,7 +7,12 @@ const MarketCommentListUI = (props: IMarketCommentListUIProps) => {
   return (
     <>
       {props.data?.fetchUseditemQuestions.map((data) => (
-        <MarketCommentListUIItem key={data._id} data={data} />
+        <MarketCommentListUIItem
+          key={data._id}
+          data={data}
+          onClickDelete={props.onClickDelete}
+          userData={props.userData}
+        />
       ))}
     </>
   );

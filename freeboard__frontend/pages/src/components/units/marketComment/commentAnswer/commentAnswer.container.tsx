@@ -7,7 +7,10 @@ import {
 } from "./commentAnswer.queries";
 import { Modal } from "antd";
 import { FETCH_USED_ITEM_QUESTION_ANSWERS } from "../commentAnswerList/commentAnswerList.queries";
+import { useRouter } from "next/router";
+import { FETCH_USEDITEM_QUESTIONS } from "../list/marketCommentList.queries";
 const CommentAnswer = (props) => {
+  const router = useRouter();
   const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEM_QUESTION);
   const [createUseditemQuestionAnswer] = useMutation(
     CREATE_USED_ITEM_QUESTION_ANSWER
@@ -20,6 +23,7 @@ const CommentAnswer = (props) => {
           createUseditemQuestionAnswerInput: { ...el },
           useditemQuestionId: props.data._id,
         },
+
         refetchQueries: [
           {
             query: FETCH_USED_ITEM_QUESTION_ANSWERS,
@@ -47,6 +51,12 @@ const CommentAnswer = (props) => {
           useditemQuestionId: props.data._id,
           updateUseditemQuestionInput: { ...data },
         },
+        refetchQueries: [
+          {
+            query: FETCH_USEDITEM_QUESTIONS,
+            variables: { useditemId: router.query.useditemId },
+          },
+        ],
       });
       console.log(result);
       Modal.success({

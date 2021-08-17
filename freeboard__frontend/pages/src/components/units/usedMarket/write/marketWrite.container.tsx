@@ -3,7 +3,7 @@ import { CREATE_USED_ITEM, UPLOAD_FILE } from "./marketWrite.queries";
 import MarketWriteUI from "./marketWrite.presenter";
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
-import withAuth from "../../../commons/hocs/withAuth";
+// import withAuth from "../../../commons/hocs/withAuth";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

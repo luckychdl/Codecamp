@@ -44,15 +44,34 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
             </NameWrapper>
             <IconWrapper>
               <Icon src="/FreeBoard/question.svg" onClick={onClickAnswer} />
-              <Icon src="/FreeBoard/mode.svg" onClick={onClickEdit} />
-              <Icon src="/FreeBoard/clear.svg" />
+              {props.userData?.fetchUserLoggedIn._id !==
+              props.data?.user._id ? (
+                <></>
+              ) : (
+                <>
+                  <Icon src="/FreeBoard/mode.svg" onClick={onClickEdit} />
+                  <Icon
+                    src="/FreeBoard/clear.svg"
+                    id={props.data.user._id}
+                    onClick={props.onClickDelete}
+                  />
+                </>
+              )}
             </IconWrapper>
           </SubWrapper>
           <CreatedAt>{getDate(props.data.createdAt)}</CreatedAt>
         </InfoWrapper>
       </ProfileWrapper>
       <CommentAnswerList data={props.data} />
-      {isEdit ? <CommentAnswer data={props.data} isEdit={isEdit} /> : <></>}
+      {isEdit ? (
+        <CommentAnswer
+          data={props.data}
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
+        />
+      ) : (
+        <></>
+      )}
       {isAnswer ? (
         <CommentAnswer data={props.data} setIsAnswer={setIsAnswer} />
       ) : (
