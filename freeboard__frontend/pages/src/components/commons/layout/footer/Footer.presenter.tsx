@@ -1,3 +1,9 @@
+import { MainWrapper, Footer } from "./Footer.styles";
+
 export default function LayoutFooterUI() {
-  return <div></div>;
+  return (
+    <MainWrapper>
+      <Footer></Footer>
+    </MainWrapper>
+  );
 }

@@ -58,18 +58,10 @@ const MarketDetail = () => {
               const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
               // 결과값으로 받은 위치를 마커로 표시합니다
-              // const marker = new kakao.maps.Marker({
-              //   map: map,
-              //   position: coords,
-              // });
-
-              // // 인포윈도우로 장소에 대한 설명을 표시합니다
-              // const infowindow = new kakao.maps.InfoWindow({
-              //   content: addressDetail,
-              // });
-              // infowindow.open(map, marker);
-
-              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+              const marker = new kakao.maps.Marker({
+                map: map,
+                position: coords,
+              });
               map.setCenter(coords);
               console.log("qwe", data?.fetchUseditem.useditemAddress.address);
               console.log("qwe123", coords);
@@ -78,7 +70,8 @@ const MarketDetail = () => {
         );
       });
     };
-  }, []);
+  }, [data]);
+  console.log("qwe", data?.fetchUseditem.useditemAddress);
   return (
     <>
       <MarketDetailUI

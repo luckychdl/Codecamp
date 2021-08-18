@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 export const MainWrapper = styled.div`
   width: 100%;
   /* border-bottom: 1px solid #bdbdbd; */
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: flex-end;
 `;

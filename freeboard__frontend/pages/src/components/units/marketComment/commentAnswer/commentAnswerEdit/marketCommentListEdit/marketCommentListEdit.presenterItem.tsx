@@ -10,20 +10,18 @@ import {
   NameWrapper,
   Icon,
   IconWrapper,
-} from "./marketCommentList.styles";
-import CommentAnswer from "../commentAnswer/commentAnswer.container";
-import CommentAnswerList from "../commentAnswerList/commentAnswerList.container";
+} from "./marketCommentListEdit.styles";
 
-import { getDate } from "../../../../commons/libraries/utils";
-import { IUseditemQuestion } from "../../../../../../src/commons/types/generated/types";
+import CommentAnswerList from "../../../commentAnswerList/commentAnswerList.container";
+
+import { getDate } from "../../../../../../commons/libraries/utils";
+import { IUseditemQuestion } from "../../../../../../../../src/commons/types/generated/types";
 import { useState } from "react";
-import MarketCommentWrite from "../write/marketCommentWrite.container";
-import CommentAnswerEdit from "../commentAnswer/commentAnswerEdit/commentAnswerEdit.container";
-import MarketCommentWriteEdit from "../write/marketCommentWriteEdit/marketCommentWriteEdit.container";
+import MarketCommentWriteEdit from "../../../write/marketCommentWriteEdit/marketCommentWriteEdit.container";
 interface IMarketCommentListUIItemProps {
   data: IUseditemQuestion;
 }
-const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
+const MarketCommentListEditUIItem = (props: IMarketCommentListUIItemProps) => {
   const [isAnswer, setIsAnswer] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [isComment, setIsComment] = useState(false);
@@ -77,13 +75,11 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
                 <CreatedAt>{getDate(props.data.updatedAt)}</CreatedAt>
               </InfoWrapper>
             </ProfileWrapper>
-
             <CommentAnswerList
               data={props.data}
               setIsComment={setIsComment}
               isComment={isComment}
             />
-            {isComment ? <CommentAnswer data={props.data} /> : <></>}
           </>
         ) : (
           <>
@@ -97,4 +93,4 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
     </>
   );
 };
-export default MarketCommentListUIItem;
+export default MarketCommentListEditUIItem;

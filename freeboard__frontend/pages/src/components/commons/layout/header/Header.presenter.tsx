@@ -12,6 +12,7 @@ interface ILayouHeaderProps {
   onClickMoveToSingin: () => void;
   onClickMoveToLogin: () => void;
   onClickMoveToHome: () => void;
+  onClickMoveToMyPage: () => void;
 }
 
 export default function LayoutHeaderUI(props: ILayouHeaderProps) {
@@ -27,7 +28,7 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
           {!props.token ? (
             <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
           ) : (
-            <MyPageButton onClick={props.onClickMoveToLogin}>
+            <MyPageButton onClick={props.onClickMoveToMyPage}>
               마이페이지
             </MyPageButton>
           )}

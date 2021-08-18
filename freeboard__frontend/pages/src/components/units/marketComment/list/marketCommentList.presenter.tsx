@@ -3,6 +3,7 @@ import MarketCommentListUIItem from "./marketCommentList.presenterItem";
 interface IMarketCommentListUIProps {
   data?: IQuery;
 }
+
 const MarketCommentListUI = (props: IMarketCommentListUIProps) => {
   return (
     <>

@@ -30,7 +30,13 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const ClearBtn = styled.img``;
 export const ClearWrapper = styled.div``;
+export const SubWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 // export const Text = styled.div``
 // export const Text = styled.div``
 // export const Text = styled.div``

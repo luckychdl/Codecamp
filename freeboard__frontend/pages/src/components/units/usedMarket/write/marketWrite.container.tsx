@@ -26,8 +26,6 @@ const MarketWrite = () => {
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const onClickItem = async (data) => {
-    console.log(files);
-    console.log("asd", data);
     try {
       const resultFiles = await Promise.all(
         files.map((data) => uploadFile({ variables: { file: data } }))
@@ -53,8 +51,7 @@ const MarketWrite = () => {
           },
         },
       });
-      console.log("asdasd11", newImages);
-      console.log("qweqwe111qwe", addressInfo, addressDetailInfo);
+      console.log("qweqwe111qwe", latInfo, lngInfo);
       Modal.success({
         content: "상품이 등록되었습니다!",
         onOk() {

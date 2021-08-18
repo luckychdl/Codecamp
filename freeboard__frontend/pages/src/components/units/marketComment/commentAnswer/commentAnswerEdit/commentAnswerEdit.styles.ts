@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
-  /* border-top: 1px solid #bdbdbd; */
-  margin: 0px 0px 40px 0;
+  border-top: 1px solid #bdbdbd;
 `;
 export const TitleWrapper = styled.div`
+  height: 30px;
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -16,21 +16,21 @@ export const Image = styled.img`
 
 export const Text = styled.div`
   color: #bdbdbd;
-  padding-left: 20px;
+  margin-left: 20px;
 `;
 export const ButtonWrapper = styled.div`
-  width: 1200px;
+  width: 1166px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin-left: 34px;
+  margin-bottom: 20px;
   border-left: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
 `;
+export const ProfileWrapper = styled.div``;
+export const Profile = styled.div``;
 export const TextWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  margin-top: 20px;
 `;
-export const ClearWrapper = styled.div``;
-// export const Text = styled.div``
-// export const Text = styled.div``
-// export const Text = styled.div``

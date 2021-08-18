@@ -1,13 +1,13 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import MarketCommentListUI from "./marketCommentList.presenter";
+import MarketCommentListUI from "./marketCommentListEdit.presenter";
 import {
   FETCH_USEDITEM_QUESTIONS,
   DELETE_USED_ITEM_QUESTION,
   FETCH_USER_LOGGED_IN,
-} from "./marketCommentList.queries";
+} from "./marketCommentListEdit.queries";
 import { Modal } from "antd";
-const MarketCommentList = () => {
+const MarketCommentListEdit = () => {
   const router = useRouter();
   const [deleteUseditemQuestion] = useMutation(DELETE_USED_ITEM_QUESTION);
   const { data, refetch } = useQuery(FETCH_USEDITEM_QUESTIONS, {
@@ -40,4 +40,4 @@ const MarketCommentList = () => {
     </>
   );
 };
-export default MarketCommentList;
+export default MarketCommentListEdit;

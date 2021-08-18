@@ -12,12 +12,12 @@ const CommentAnswerList = (props) => {
   const [deleteUseditemQuestionAnswer] = useMutation(
     DELETE_USED_ITEM_QUESTION_ANSWER
   );
+
   const { data, refetch } = useQuery(FETCH_USED_ITEM_QUESTION_ANSWERS, {
     variables: { useditemQuestionId: props.data._id },
   });
   const { data: userData } = useQuery(FETCH_USER_LOGGED_IN);
   const onClickDeleteAnswer = async (event) => {
-    console.log(data);
     try {
       await deleteUseditemQuestionAnswer({
         variables: {
@@ -25,7 +25,7 @@ const CommentAnswerList = (props) => {
         },
       });
       refetch();
-      console.log("asd", data, userData);
+
       Modal.success({
         content: "댓글이 삭제되었습니다.",
       });
@@ -35,11 +35,19 @@ const CommentAnswerList = (props) => {
       });
     }
   };
+  const onClickOpenUpdateAnswer = () => {
+    console.log("대댓글 수정하기");
+    props.setIsComment((prev) => !prev);
+  };
   return (
     <CommentAnswerListUI
       data={data}
+      dataId={props.data}
       userData={userData}
+      isComment={props.isComment}
+      setIsComment={props.setIsComment}
       onClickDeleteAnswer={onClickDeleteAnswer}
+      onClickOpenUpdateAnswer={onClickOpenUpdateAnswer}
     />
   );
 };

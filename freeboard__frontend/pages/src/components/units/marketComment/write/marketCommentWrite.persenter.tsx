@@ -27,14 +27,7 @@ const MarketCommentWriteUI = (props: any) => {
         </TextWrapper>
         <ButtonWrapper>
           <Text>0/200</Text>
-          {!props.isComment ? (
-            <Button02 buttonName={"등록하기"}></Button02>
-          ) : (
-            <Button02
-              buttonName={"수정하기"}
-              onClick={props.onClickUpdateComment}
-            ></Button02>
-          )}
+          <Button02 buttonName={"등록하기"}></Button02>
         </ButtonWrapper>
       </form>
     </MainWrapper>

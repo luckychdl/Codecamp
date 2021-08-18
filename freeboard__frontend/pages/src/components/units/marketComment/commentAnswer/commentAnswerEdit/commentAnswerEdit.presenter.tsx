@@ -5,14 +5,14 @@ import {
   Text,
   ButtonWrapper,
   TextWrapper,
-} from "./commentAnswer.styles";
-import Button02 from "../../../commons/buttons/button02_Submit";
-import TextArea01 from "../../../commons/textAreas/textAreaComment01";
+} from "./commentAnswerEdit.styles";
+import Button02 from "../../../../commons/buttons/button02_Submit";
+import TextArea01 from "../../../../commons/textAreas/textAreaComment01";
 
-const CommentAnswerUI = (props: any) => {
+const CommentAnswerEditUI = (props: any) => {
   return (
     <MainWrapper>
-      <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+      <form onSubmit={props.handleSubmit(props.onClickUpdateCommentAnswer)}>
         <TextWrapper>
           <TitleWrapper>
             <Image src="/FreeBoard/subdirectoryArrow.svg"></Image>
@@ -24,11 +24,11 @@ const CommentAnswerUI = (props: any) => {
         </TextWrapper>
         <ButtonWrapper>
           <Text>0/200</Text>
-          <Button02 buttonName={"등록하기"}></Button02>
+          <Button02 buttonName={"수정하기"}></Button02>
         </ButtonWrapper>
       </form>
     </MainWrapper>
   );
 };
 
-export default CommentAnswerUI;
+export default CommentAnswerEditUI;
