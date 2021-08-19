@@ -22,6 +22,10 @@ import {
   useEffect,
 } from "react";
 import { getAccessToken } from "../src/commons/libraries/getAccessToken";
+import * as Sentry from "@sentry/nextjs";
+Sentry.init({
+  dsn: "https://940a3c9ced9244c6aacb8ed5aca0bca4@o965497.ingest.sentry.io/5916341",
+});
 // import Head from "next/head";
 if (typeof window !== "undefined") {
   firebase.initializeApp({
@@ -61,7 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           operation.setContext({
             headers: {
               ...operation.getContext().headers,
-              authorization: `bearer ${getAccessToken(setAccessToken)}`,
+              authorization: `Bearer ${getAccessToken(setAccessToken)}`,
             },
           });
           return forward(operation);
@@ -73,7 +77,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const uploadLink = createUploadLink({
     uri: "https://backend02.codebootcamp.co.kr/graphql",
     headers: {
-      authorization: `Bearer ${accessToken || null}`,
+      authorization: `Bearer ${accessToken}`,
     },
     credentials: "include",
   });
@@ -81,6 +85,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     // uri: "http://backend02.codebootcamp.co.kr/graphql",
     link: ApolloLink.from([errorLink, uploadLink]),
     cache: new InMemoryCache(),
+    connectToDevTools: true,
   });
 
   return (

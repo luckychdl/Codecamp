@@ -8,8 +8,8 @@ import {
 import { GlobalContext } from "../_app";
 
 const LOGIN_USER = gql`
-  mutation loginUserExample($email: String!, $password: String!) {
-    loginUserExample(email: $email, password: $password) {
+  mutation loginUser($email: String!, $password: String!) {
+    loginUser(email: $email, password: $password) {
       accessToken
     }
   }
@@ -41,7 +41,7 @@ export default function LoginPage() {
         },
       });
 
-      setAccessToken(token.data?.loginUserExample.accessToken || "");
+      setAccessToken(token.data?.loginUser.accessToken || "");
       localStorage.setItem("refreshToken", "true");
       // localStorage.setItem("token", token.data?.loginUser.accessToken || "");
       router.push("/22-login-success");
