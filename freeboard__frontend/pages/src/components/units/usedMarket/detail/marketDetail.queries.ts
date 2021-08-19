@@ -16,6 +16,7 @@ export const FETCH_USED_ITEM = gql`
       images
       pickedCount
       useditemAddress {
+        _id
         address
         addressDetail
         lat

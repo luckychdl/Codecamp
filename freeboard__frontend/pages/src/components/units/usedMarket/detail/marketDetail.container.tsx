@@ -21,6 +21,7 @@ const MarketDetail = () => {
       });
 
       refetch();
+      console.log("asd", data?.fetchUseditem.useditemAddress);
     } catch (err) {
       Modal.error({
         content: err.message,
@@ -63,8 +64,6 @@ const MarketDetail = () => {
                 position: coords,
               });
               map.setCenter(coords);
-              console.log("qwe", data?.fetchUseditem.useditemAddress.address);
-              console.log("qwe123", coords);
             }
           }
         );
