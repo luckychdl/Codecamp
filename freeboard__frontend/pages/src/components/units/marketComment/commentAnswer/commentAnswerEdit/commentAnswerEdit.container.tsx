@@ -30,6 +30,7 @@ const CommentAnswerEdit = (props) => {
         ],
       });
       props.setIsEdit((prev) => !prev);
+      console.log(props.data.contents);
       Modal.success({
         content: "댓글이 수정되었습니다.",
       });
@@ -41,6 +42,7 @@ const CommentAnswerEdit = (props) => {
   };
   return (
     <CommentAnswerEditUI
+      data={props.data}
       register={register}
       handleSubmit={handleSubmit}
       onClickUpdateCommentAnswer={onClickUpdateCommentAnswer}

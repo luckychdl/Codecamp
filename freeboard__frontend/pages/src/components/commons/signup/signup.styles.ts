@@ -43,7 +43,7 @@ export const SignUpEmail = styled.input`
   height: 50px;
   border-radius: 4px;
   border: 1px solid #bdbdbd;
-  outline-color: #5f0080;
+  outline-color: #512771;
   ::placeholder {
     color: #bdbdbd;
   }
@@ -56,7 +56,7 @@ export const SignUp = styled.input`
   padding-left: 15px;
   color: #9e9e9e;
   border: 1px solid #bdbdbd;
-  outline-color: #5f0080;
+  outline-color: #512771;
   ::placeholder {
     color: #bdbdbd;
   }
@@ -80,7 +80,7 @@ export const TotalTerms = styled.input`
   border: 1px solid #bdbdbd;
   border-radius: 15px;
   :checked {
-    background-color: #5f0080;
+    background-color: #512771;
   }
 `;
 export const SubTerms = styled.input`
@@ -89,7 +89,7 @@ export const SubTerms = styled.input`
   border: 1px solid #bdbdbd;
   border-radius: 40px;
   :checked {
-    background-color: #5f0080;
+    background-color: #512771;
   }
 `;
 
@@ -106,7 +106,7 @@ export const SignUpButton = styled.button`
   margin: 30px 0;
   width: 460px;
   height: 70px;
-  background-color: #5f0080;
+  background-color: #512771;
   color: white;
   font-size: 24px;
   border: none;
@@ -120,7 +120,7 @@ export const SignUpButton = styled.button`
 `;
 export const SubText = styled.div`
   font-size: 20px;
-  color: #5f0080;
+  color: #512771;
   text-align: center;
   margin-left: 5px;
 `;

@@ -3,6 +3,8 @@ import Head from "next/head";
 import { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { GlobalContext } from "../../../_app";
 
 const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
   mutation createPointTransactionOfLoading($impUid: ID!) {
@@ -12,6 +14,7 @@ const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
   }
 `;
 const PaymentLoading = () => {
+  const { userInfo, setUserInfo } = useContext(GlobalContext);
   const { Option } = Select;
   const [amount, setAmount] = useState(0);
   const router = useRouter();
@@ -31,18 +34,17 @@ const PaymentLoading = () => {
         amount: amount,
         buyer_email: "luckysksk@naver.com",
         buyer_name: "신동원",
-        buyer_tel: "010-4112-2653",
-        buyer_addr: "서울특별시 강남구 신사동",
-        buyer_postcode: "01181",
+
         m_redirect_url: "/quiz/payment/complete",
       },
       async (rsp) => {
         console.log("asd", rsp);
         // callback
         if (rsp.success) {
-          await createPointTransactionOfLoading({
+          const result = await createPointTransactionOfLoading({
             variables: { impUid: rsp.imp_uid },
           });
+          setUserInfo(result.data.createPointTransactionOfLoading.amount);
           alert("결제 성공 !!");
           router.push("/quiz/payment/complete");
         } else {

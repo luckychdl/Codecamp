@@ -79,12 +79,10 @@ const MarketWriteUI = (props) => {
         <RowWrapper>
           <LocationWrapper>
             <KakaoMap
-              onChangeAddress={props.onChangeAddress}
-              onChangeLng={props.onChangeLng}
-              onChangeLat={props.onChangeLat}
-              onChangeAddressDetailContents={
-                props.onChangeAddressDetailContents
-              }
+              setLng={props.setLng}
+              setLat={props.setLat}
+              setAddress={props.setAddress}
+              setAddressDetail={props.setAddressDetail}
             />
             {/* <Title02 divName={"거래위치"}></Title02>
             <LocationMap></LocationMap> */}

@@ -14,7 +14,7 @@ import { schema } from "../../../commons/libraries/yup.validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function LoginPage() {
-  const { setAccessToken } = useContext(GlobalContext);
+  const { setAccessToken, userInfo, setUserInfo } = useContext(GlobalContext);
   const router = useRouter();
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",

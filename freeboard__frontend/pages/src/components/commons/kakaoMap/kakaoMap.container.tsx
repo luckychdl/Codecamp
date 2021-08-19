@@ -14,7 +14,6 @@ const KakaoMap = (props) => {
 
   const onClickOpenModal = () => {
     setIsOpen(true);
-    console.log(isOpen);
   };
   const handleCancel = () => {
     setIsOpen(false);
@@ -25,10 +24,9 @@ const KakaoMap = (props) => {
   const onComplete = (data) => {
     setAddress(data.address);
     setIsOpen(false);
-    console.log("qwe", address);
   };
   const onChangeAddressDetail = (event) => {
-    setAddressDetail(event.target.value);
+    props.setAddressDetail(event.target.value);
   };
   useEffect(() => {
     const script = document.createElement("script");
@@ -69,18 +67,18 @@ const KakaoMap = (props) => {
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
-
-            setLng(coords.Ma);
-            setLat(coords.La);
-            props.onChangeAddress(address);
-            props.onChangeAddressDetailContents(addressDetail);
-            props.onChangeLng(lng);
-            props.onChangeLat(lat);
+            setLng(coords.La);
+            setLat(coords.Ma);
+            props.setAddress(address);
+            props.setAddressDetail(addressDetail);
+            props.setLng(coords.La);
+            props.setLat(coords.Ma);
+            console.log("sdsdsdsd", addressDetail);
           }
         });
       });
     };
-  }, [address]);
+  }, [address, props.setLng]);
 
   return (
     <KakaoMapPage

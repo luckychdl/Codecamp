@@ -83,7 +83,11 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
               setIsComment={setIsComment}
               isComment={isComment}
             />
-            {isComment ? <CommentAnswer data={props.data} /> : <></>}
+            {isComment ? (
+              <CommentAnswer data={props.data} setIsComment={setIsComment} />
+            ) : (
+              <></>
+            )}
           </>
         ) : (
           <>

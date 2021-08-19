@@ -30,6 +30,7 @@ const CommentAnswer = (props) => {
           },
         ],
       });
+      props.setIsComment((prev) => !prev);
       Modal.success({
         content: "댓글이 등록되었습니다.",
       });

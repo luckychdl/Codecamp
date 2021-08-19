@@ -19,7 +19,7 @@ const CommentAnswerEditUI = (props: any) => {
           </TitleWrapper>
           <TextArea01
             register={{ ...props.register("contents") }}
-            textareaName={"답글을 등록해주세요."}
+            textareaName={props.data.contents}
           />
         </TextWrapper>
         <ButtonWrapper>

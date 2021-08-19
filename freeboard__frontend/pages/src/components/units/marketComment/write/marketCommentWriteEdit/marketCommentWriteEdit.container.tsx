@@ -37,6 +37,7 @@ const MarketCommentWriteEdit = (props) => {
   return (
     <MarketCommentWriteUI
       isAnswer={props.isAnswer}
+      data={props.data}
       register={register}
       handleSubmit={handleSubmit}
       onClickClear={onClickClear}

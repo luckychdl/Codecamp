@@ -100,9 +100,9 @@ export const MapBox = styled.div`
   padding-bottom: 40px;
 `;
 export const ButtonWrapper = styled.div`
-  width: 100%;
+  width: 380px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 `;
 // export const Button = styled.button`
 //   width: 170px;

@@ -4,7 +4,8 @@ import LayoutNavigation from "./layout/navigation/Navigation.container";
 import LayoutFooter from "./layout/footer/Footer.container";
 import styled from "@emotion/styled";
 const Body = styled.div`
-  height: 500px;
+  /* height: 500px; */
+  min-height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;

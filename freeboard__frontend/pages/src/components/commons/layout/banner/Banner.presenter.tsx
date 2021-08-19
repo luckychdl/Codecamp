@@ -11,6 +11,7 @@ import Slider from "react-slick";
 export default function LayoutBannerUI() {
   const settings = {
     dots: false,
+    arrows: false,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,

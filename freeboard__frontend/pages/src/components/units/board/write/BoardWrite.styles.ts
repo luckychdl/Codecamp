@@ -36,7 +36,7 @@ export const Box = styled.input`
   border-radius: 7px;
   margin-bottom: 10px;
   padding: 10px;
-  outline-color: #5f0080;
+  outline-color: #512771;
 `;
 
 export const TitleWrapper = styled.div`
@@ -51,7 +51,7 @@ export const TitleBox = styled.input`
   border-radius: 7px;
   margin-bottom: 10px;
   padding: 10px;
-  outline-color: #5f0080;
+  outline-color: #512771;
 `;
 export const TitleName = styled.div`
   font-size: 16px;
@@ -73,7 +73,7 @@ export const ContentBox = styled.textarea`
   border: 1px solid #bdbdbd;
   border-radius: 7px;
   margin-bottom: 10px;
-  outline-color: #5f0080;
+  outline-color: #512771;
 `;
 export const Adress = styled.div`
   text-align: start;
@@ -88,7 +88,7 @@ export const AdressBox = styled.input`
   border: 1px solid #bdbdbd;
   border-radius: 7px;
   margin-right: 15px;
-  outline-color: #5f0080;
+  outline-color: #512771;
 `;
 export const AdressWrapper = styled.div`
   text-align: center;
@@ -101,7 +101,7 @@ export const AdressSubWrapper = styled.div`
 export const Search = styled.span`
   width: 110px;
   height: 52px;
-  background-color: #5f0080;
+  background-color: #512771;
   color: white;
   border-radius: 7px;
   padding: 14px 16px;
@@ -117,7 +117,7 @@ export const AdressSubBox = styled.input`
   margin: 10px 0px 12px 0px;
   border: 1px solid #bdbdbd;
   border-radius: 7px;
-  outline-color: #5f0080;
+  outline-color: #512771;
 `;
 export const AdressBoxWrapper = styled.div`
   display: flex;
@@ -138,7 +138,7 @@ export const YoutubeBox = styled.input`
   padding: 10px;
   border: 1px solid #bdbdbd;
   border-radius: 7px;
-  outline-color: #5f0080;
+  outline-color: #512771;
 `;
 export const PhotoWarpper = styled.div``;
 export const Photo = styled.div`
@@ -203,7 +203,7 @@ export const Button = styled.button`
   height: 52px;
   font-weight: bold;
   background-color: ${(props: { active: boolean }) =>
-    props.active ? "#5f0080" : ""};
+    props.active ? "#512771" : ""};
   color: ${(props: { active: boolean }) => (props.active ? "white" : "")};
   border: 0px;
   border-radius: 7px;
@@ -223,7 +223,7 @@ export const Cancle = styled.button`
   height: 52px;
   font-weight: bold;
   font-size: 16px;
-  background-color: #5f0080;
+  background-color: #512771;
   border: 0px;
   border-radius: 7px;
   margin-top: 30px;

@@ -69,7 +69,7 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
                   <NameWrapper>
                     <Name>{data.name}</Name>
                     <Remarks>{data.remarks}</Remarks>
-                    <Tags>{`#${data.tags}`}</Tags>
+                    <Tags>{data.tags}</Tags>
                   </NameWrapper>
                   <InfoSecondWrapper>
                     <HeartImage src="/FreeBoard/profileMain.png" />

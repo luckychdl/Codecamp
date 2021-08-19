@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 const Button02 = styled.button`
   width: 91px;
   height: 52px;
-  background: #5f0080;
+  background: #512771;
   color: white;
   cursor: pointer;
   border: none;

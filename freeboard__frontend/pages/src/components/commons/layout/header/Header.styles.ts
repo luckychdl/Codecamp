@@ -30,13 +30,12 @@ export const ButtonWrapper = styled.div`
 `;
 export const LoginButton = styled.button`
   width: 80px;
-  height: 50px;
-  /* background-color: #9eb2b8; */
+  /* height: 50px; */
   color: #616161;
   border: none;
   cursor: pointer;
   font-size: 20px;
-
+  /* border-right: 1px solid #bdbdbd; */
   background-color: #ffffff;
   :active {
     position: relative;
@@ -44,43 +43,40 @@ export const LoginButton = styled.button`
     border-radius: 10px;
   }
   :hover {
-    color: #5f0080;
+    color: #512771;
   }
 `;
-export const Border = styled.div`
-  height: 15px;
-  margin-right: 10px;
-  border-right: 1px solid gray;
-`;
-// export const ShoppingCart = styled.div`
-//   background-image: url("/FreeBoard/shoppingCart.png");
-//   background-size: 32px;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   width: 42px;
-//   height: 42px;
-//   color: #e6e6e6;
+
+// export const MyPageButton = styled.button`
+//   width: 120px;
+//   height: 50px;
+//   color: #616161;
+//   border: none;
+//   cursor: pointer;
+//   font-size: 20px;
+//   background-color: #ffffff;
+//   :active {
+//     position: relative;
+//     top: 2px;
+//     border-radius: 10px;
+//   }
 //   :hover {
-//     background-color: #35c5f0;
-//     border-radius: 100px;
-//     color: white;
+//     color: #512771;
 //   }
 // `;
-export const MyPageButton = styled.button`
-  width: 120px;
-  height: 50px;
-  /* background-color: #9eb2b8; */
-  color: #616161;
-  border: none;
-  cursor: pointer;
+export const ProfileImg = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+`;
+export const TooltipImg = styled.img`
+  width: 20px;
+`;
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const UserName = styled.div`
   font-size: 20px;
-  background-color: #ffffff;
-  :active {
-    position: relative;
-    top: 2px;
-    border-radius: 10px;
-  }
-  :hover {
-    color: #5f0080;
-  }
+  margin-right: 10px;
 `;

@@ -32,7 +32,7 @@ export const ButtonWrapper = styled.div`
   align-items: center;
   width: 171px;
   height: 52px;
-  background-color: #5f0080;
+  background-color: #512771;
   border: 1px solid #f2f2f2;
   border-radius: 10px;
   cursor: pointer;
@@ -99,7 +99,7 @@ export const Next = styled.button`
   }
   :hover {
     color: ${(props: { nextActive: boolean }) =>
-      props.nextActive ? "#5f0080" : "none"};
+      props.nextActive ? "#512771" : "none"};
   }
 `;
 export const Prev = styled.button`
@@ -116,7 +116,7 @@ export const Prev = styled.button`
   }
   :hover {
     color: ${(props: { prevActive: boolean }) =>
-      props.prevActive ? "#5f0080" : "none"};
+      props.prevActive ? "#512771" : "none"};
   }
 `;
 export const PageWrapper = styled.div`
@@ -140,12 +140,12 @@ export const Search = styled.input`
   padding-left: 40px;
   border: none;
   border-bottom: 1px solid #616161;
-  outline-color: #5f0080;
+  outline-color: #512771;
 `;
 export const SearchButton = styled.button`
   width: 94px;
   height: 52px;
-  background-color: #5f0080;
+  background-color: #512771;
   font-size: 16px;
   color: white;
   border-radius: 10px;

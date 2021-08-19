@@ -12,7 +12,7 @@ const CREATE_BOARD = gql`
 
 const SafetyPage = () => {
   const [createBoard] = useMutation(CREATE_BOARD);
-  const { formState } = useForm();
+  const { handleSubmit, formState } = useForm();
   const [inputs, setInputs] = useState({
     writer: "",
     password: "",
@@ -41,21 +41,21 @@ const SafetyPage = () => {
   };
   return (
     <>
-      <div>
-        작성자: <input type="text" onChange={onChangeInput("writer")} />
-      </div>
-      <div>
-        비밀번호: <input type="text" onChange={onChangeInput("password")} />
-      </div>
-      <div>
-        제목: <input type="text" onChange={onChangeInput("title")} />
-      </div>
-      <div>
-        내용: <input type="text" onChange={onChangeInput("contents")} />
-      </div>
-      <button disabled={formState.isSubmitting} onClick={onClickSubmit}>
-        등록하기
-      </button>
+      <form onSubmit={handleSubmit(onClickSubmit)}>
+        <div>
+          작성자: <input type="text" onChange={onChangeInput("writer")} />
+        </div>
+        <div>
+          비밀번호: <input type="text" onChange={onChangeInput("password")} />
+        </div>
+        <div>
+          제목: <input type="text" onChange={onChangeInput("title")} />
+        </div>
+        <div>
+          내용: <input type="text" onChange={onChangeInput("contents")} />
+        </div>
+        <button disabled={formState.isSubmitting}>등록하기</button>
+      </form>
     </>
   );
 };

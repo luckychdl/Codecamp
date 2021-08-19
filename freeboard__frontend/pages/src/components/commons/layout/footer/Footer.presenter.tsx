@@ -3,7 +3,7 @@ import { MainWrapper, Footer } from "./Footer.styles";
 export default function LayoutFooterUI() {
   return (
     <MainWrapper>
-      <Footer></Footer>
+      <Footer src="/FreeBoard/img.jpeg" />
     </MainWrapper>
   );
 }

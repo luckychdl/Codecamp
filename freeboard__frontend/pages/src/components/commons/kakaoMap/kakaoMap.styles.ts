@@ -33,7 +33,7 @@ export const Location = styled.input`
   text-align: center;
   border: 1px solid #bdbdbd;
   border-radius: 7px;
-  outline-color: #5f0080;
+  outline-color: #512771;
   ::placeholder {
     color: #bdbdbd;
   }
@@ -47,7 +47,7 @@ export const AddressInput = styled.input`
   margin-bottom: 15px;
   padding-left: 10px;
   border: 1px solid #bdbdbd;
-  outline-color: #5f0080;
+  outline-color: #512771;
   border-radius: 7px;
 `;
 // export const Location = styled.div``;

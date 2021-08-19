@@ -9,13 +9,19 @@ const TextArea01 = styled.textarea`
   padding: 20px;
   border: 1px solid #bdbdbd;
   color: #757575;
-  outline-color: #5f0080;
+  outline-color: #512771;
   ::placeholder {
     color: #bdbdbd;
   }
 `;
 
 const TextAreaComment = (props: any) => {
-  return <TextArea01 {...props.register} placeholder={props.textareaName} />;
+  return (
+    <TextArea01
+      {...props.register}
+      placeholder={props.textareaName}
+      defaultValue={props.defaultValue}
+    />
+  );
 };
 export default TextAreaComment;

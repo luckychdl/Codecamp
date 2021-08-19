@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 64px;
-  background-color: #5f0080;
+  background-color: #512771;
 `;
 export const FreeBoard = styled.div`
   font-size: 18px;

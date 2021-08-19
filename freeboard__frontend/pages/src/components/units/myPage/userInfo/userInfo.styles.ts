@@ -5,6 +5,7 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
+  margin-bottom: 100px;
   width: 150px;
 `;
 export const Title = styled.div`
