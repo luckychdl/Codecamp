@@ -41,8 +41,8 @@ const MarketDetail = () => {
         let mapContainer = document.getElementById("map"), // 지도를 표시할 div
           mapOption = {
             center: new kakao.maps.LatLng(
-              data?.fetchUseditem.useditemAddress.lat,
-              data?.fetchUseditem.useditemAddress.lng
+              data?.fetchUseditem.useditemAddress?.lat,
+              data?.fetchUseditem.useditemAddress?.lng
             ), // 지도의 중심좌표
             level: 3, // 지도의 확대 레벨
           };
@@ -55,7 +55,7 @@ const MarketDetail = () => {
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(
-          data?.fetchUseditem.useditemAddress.address,
+          data?.fetchUseditem.useditemAddress?.address,
           function (result, status) {
             // 정상적으로 검색이 완료됐으면
             if (status === kakao.maps.services.Status.OK) {

@@ -40,8 +40,10 @@ export default function LoginPage() {
       // localStorage.setItem("token", token.data?.loginUser.accessToken || "");
       Modal.confirm({
         content: "환영합니다!",
+        onOk() {
+          router.push("/usedMarket");
+        },
       });
-      router.push("/usedMarket");
     } catch (err) {
       Modal.error({
         content: err.message,

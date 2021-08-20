@@ -71,6 +71,8 @@ export const ProfileImg = styled.img`
 `;
 export const TooltipImg = styled.img`
   width: 20px;
+  transform: ${(props: { isMore: boolean }) =>
+    props.isMore ? "rotate(0.5turn)" : ""};
 `;
 export const Wrapper = styled.div`
   display: flex;

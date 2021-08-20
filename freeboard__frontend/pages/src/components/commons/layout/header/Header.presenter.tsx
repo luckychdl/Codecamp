@@ -11,6 +11,7 @@ import {
 } from "./Header.styles";
 import { Menu, Dropdown, Button } from "antd";
 import DropDownPage from "../../dropDown/dropDown";
+import { useState } from "react";
 
 interface ILayouHeaderProps {
   onClickMoveToSingin: () => void;
@@ -20,10 +21,13 @@ interface ILayouHeaderProps {
 }
 
 export default function LayoutHeaderUI(props: ILayouHeaderProps) {
-  console.log(props.data?.fetchUserLoggedIn);
+  const [isMore, setIsMore] = useState(false);
+  const onClickIsMore = () => {
+    setIsMore((prev) => !prev);
+  };
   const menu = (
-    <Menu style={{ borderRadius: "30px" }}>
-      <DropDownPage />
+    <Menu style={{ borderRadius: "30px" }} onClick={onClickIsMore}>
+      <DropDownPage onClick={onClickIsMore} />
     </Menu>
   );
 
@@ -50,9 +54,9 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
                 trigger={["click"]}
                 arrow
               >
-                <Button style={{ border: "none", width: "5px;" }}>
+                <Button style={{ border: "none" }} onClick={onClickIsMore}>
                   <ProfileImg src="/FreeBoard/profile.svg" />
-                  <TooltipImg src="/FreeBoard/more.svg" />
+                  <TooltipImg src="/FreeBoard/more.svg" isMore={isMore} />
                 </Button>
               </Dropdown>
               {/* <MyPageButton onClick={props.onClickMoveToMyPage}>

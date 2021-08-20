@@ -7,6 +7,7 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 10px;
 `;
 export const ProfileImg = styled.img`
   width: 70px;

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 export const TodayProductWrapper = styled.div`
   width: 210px;
-  /* height: 100%; */
+  height: 855.33px;
   margin-left: 20px;
   margin-top: 80px;
   border: 1px solid #bdbdbd;
@@ -15,6 +15,7 @@ export const TodayProductWrapper = styled.div`
   position: sticky;
   background-color: white;
   z-index: 10;
+  overflow: auto;
 `;
 export const TodayTitle = styled.div`
   font-weight: bold;
