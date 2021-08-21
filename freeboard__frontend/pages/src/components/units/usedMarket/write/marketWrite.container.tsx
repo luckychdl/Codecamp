@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CREATE_USED_ITEM, UPLOAD_FILE } from "./marketWrite.queries";
 import MarketWriteUI from "./marketWrite.presenter";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 // import withAuth from "../../../commons/hocs/withAuth";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaWrite } from "../../../../commons/libraries/yup.validation";
-const MarketWrite = () => {
+import { FETCH_USED_ITEM } from "../detail/marketDetail.queries";
+const MarketWrite = (props) => {
   const [files, setFiles] = useState([]);
   const [fileUrl, setFileUrl] = useState([]);
   const [address, setAddress] = useState(0);
@@ -24,7 +25,9 @@ const MarketWrite = () => {
   const router = useRouter();
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
-
+  const { data } = useQuery(FETCH_USED_ITEM, {
+    variables: { useditemId: router.query.useditemId },
+  });
   const onClickItem = async (data) => {
     try {
       const resultFiles = await Promise.all(
@@ -51,6 +54,7 @@ const MarketWrite = () => {
           },
         },
       });
+
       Modal.success({
         content: "상품이 등록되었습니다!",
         onOk() {
@@ -63,6 +67,11 @@ const MarketWrite = () => {
       });
     }
   };
+  useEffect(() => {
+    setFileUrl(
+      `https://storage.googleapis.com/${data?.fetchUseditem.images[0]}`
+    );
+  }, []);
   const onChangeFiles = (file: File, index: number) => {
     const newFiles = [...files];
     newFiles[index] = file;
@@ -76,30 +85,15 @@ const MarketWrite = () => {
   const onChangeValue = (val) => {
     setValue("contents", val);
   };
-  // const onChangeAddress = (address) => {
-  //   const newAddress = address;
-  //   console.log("qweqwe", newAddress);
-  //   setAddressInfo(newAddress);
-  // };
-  // const onChangeLng = (lng) => {
-  //   const newLng = lng;
-  //   setLngInfo(newLng);
-  // };
-  // const onChangeLat = (lat) => {
-  //   const newLat = lat;
-  //   setLatInfo(newLat);
-  // };
-  // const onChangeAddressDetailContents = (addressDetail) => {
-  //   const newAddressDetail = addressDetail;
-  //   setAddressDetailInfo(newAddressDetail);
-  //   console.log("qweqwe12", newAddressDetail);
-  // };
+
   return (
     <>
       <MarketWriteUI
         isActive={formState.isValid}
         errors={formState.errors}
         fileUrl={fileUrl}
+        data={data}
+        isEditWrite={props.isEditWrite}
         setLng={setLng}
         setLat={setLat}
         setAddress={setAddress}

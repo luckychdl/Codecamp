@@ -1,16 +1,18 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import MarketMainUI from "./marketMain.presenter";
 import { FETCH_USED_ITEMS } from "./marketMain.queries";
 
 const MarketMain = () => {
+  const [search, setSearch] = useState();
   const router = useRouter();
   const { register, handleSubmit } = useForm();
-  const { data } = useQuery(FETCH_USED_ITEMS, {
+  const { data, refetch } = useQuery(FETCH_USED_ITEMS, {
     variables: router.query.useditemId,
   });
-
+  // const { data: buyData } = useQuery(FETCH_USED_ITEMS_I_BOUGHT);
   const onClickMove = () => {
     router.push("/usedMarket/new");
   };
@@ -26,8 +28,16 @@ const MarketMain = () => {
     // }
     router.push(`/usedMarket/detail/${el._id}`);
   };
+  const onClickSearch = () => {
+    refetch({ search: search });
+  };
+  const onChangeSearch = (event: ChangeEvent) => {
+    setSearch(event.target.value);
+  };
   return (
     <MarketMainUI
+      onClickSearch={onClickSearch}
+      onChangeSearch={onChangeSearch}
       handleSubmit={handleSubmit}
       onClickMoveDetail={onClickMoveDetail}
       onClickMove={onClickMove}

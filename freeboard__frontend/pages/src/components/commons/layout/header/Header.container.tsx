@@ -10,6 +10,7 @@ export default function LayoutHeader() {
 
   const router = useRouter();
   useEffect(() => {
+    console.log(localStorage.getItem("refreshToken"));
     setToken(localStorage.getItem("refreshToken"));
   }, []);
 

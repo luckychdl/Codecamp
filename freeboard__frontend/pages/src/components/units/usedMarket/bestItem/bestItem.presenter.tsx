@@ -22,11 +22,11 @@ const BestItemUI = (props) => {
       <BestWrapper>
         {props.data?.fetchUseditemsOfTheBest.map((el: any, index: number) => (
           <>
-            <ColumnWrapper onClick={props.onClickMove(el._id)}>
-              <Best
-                key={`${el}_${index}`}
-                src={`https://storage.googleapis.com/${el.images[0]}`}
-              />
+            <ColumnWrapper
+              onClick={props.onClickMove(el._id)}
+              key={`${el}_${index}`}
+            >
+              <Best src={`https://storage.googleapis.com/${el.images[0]}`} />
               <ContentsWrapper>
                 <ColumnSubWrapper>
                   <Name>{el.name}</Name>

@@ -16,16 +16,18 @@ import "react-quill/dist/quill.snow.css";
 import KakaoMap from "../../../commons/kakaoMap/kakaoMap.container";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-const MarketWriteUI = (props) => {
+const MarketWriteUI = (props: any) => {
+  console.log(props.data);
   return (
     <form onSubmit={props.handleSubmit(props.onClickItem)}>
       <MainWrapper>
-        <Title>상품 등록하기</Title>
+        <Title>게시물 등록</Title>
         <MenuWrapper>
           <Title02 divName={"상품명"}></Title02>
           <Input03
             type="text"
             inputName={"상품명을 작성해주세요"}
+            defaultValue={props.data?.fetchUseditem.name}
             register={{ ...props.register("name") }}
             errorMessage={props.errors.name?.message}
           />
@@ -36,6 +38,7 @@ const MarketWriteUI = (props) => {
             type="text"
             inputName={"상품요약을 작성해주세요"}
             register={{ ...props.register("remarks") }}
+            defaultValue={props.data?.fetchUseditem.remarks}
             errorMessage={props.errors.remarks?.message}
           />
         </MenuWrapper>
@@ -56,6 +59,7 @@ const MarketWriteUI = (props) => {
               //   color: "#bdbdbd"
             }}
           />
+
           <Error>{props.errors.contents?.message}</Error>
         </MenuWrapper>
         <MenuWrapper>
@@ -63,6 +67,7 @@ const MarketWriteUI = (props) => {
           <Input03
             type="text"
             inputName={"판매가격을 입력해주세요"}
+            defaultValue={props.data?.fetchUseditem.price}
             register={{ ...props.register("price") }}
             errorMessage={props.errors.price?.message}
           />
@@ -73,6 +78,7 @@ const MarketWriteUI = (props) => {
             type="text"
             inputName={"#태그 #태그 #태그"}
             register={{ ...props.register("tags") }}
+            defaultValue={props.data?.fetchUseditem.tags}
             errorMessage={props.errors.tags?.message}
           />
         </MenuWrapper>
@@ -83,17 +89,20 @@ const MarketWriteUI = (props) => {
               setLat={props.setLat}
               setAddress={props.setAddress}
               setAddressDetail={props.setAddressDetail}
+              data={props.data}
             />
             {/* <Title02 divName={"거래위치"}></Title02>
             <LocationMap></LocationMap> */}
             <Title02 divName={"사진 첨부"}></Title02>
             <UploadWrapper>
-              {new Array(4).fill(1).map((data, index) => (
+              {new Array(4).fill(1).map((url, index) => (
                 <Upload01
-                  key={`${data}_${index}`}
+                  key={`${url}_${index}`}
                   index={index}
-                  imgUrl={data}
+                  imgUrl={url}
                   {...props.register("images")}
+                  data={props.data}
+                  isEditWrite={props.isEditWrite}
                   onChangeFiles={props.onChangeFiles}
                   onChangeFileUrl={props.onChangeFileUrl}
                 />
@@ -114,7 +123,10 @@ const MarketWriteUI = (props) => {
           </AddressWrapper> */}
         </RowWrapper>
 
-        <Button01 buttonName={"등록하기"} isActive={props.isActive}></Button01>
+        <Button01
+          buttonName={props.isEditWrite ? "수정하기" : "등록하기"}
+          isActive={props.isActive}
+        ></Button01>
       </MainWrapper>
     </form>
   );

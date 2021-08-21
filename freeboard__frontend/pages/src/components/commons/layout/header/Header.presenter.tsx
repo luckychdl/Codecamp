@@ -11,17 +11,20 @@ import {
 } from "./Header.styles";
 import { Menu, Dropdown, Button } from "antd";
 import DropDownPage from "../../dropDown/dropDown";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { GlobalContext } from "../../../../../_app";
 
 interface ILayouHeaderProps {
   onClickMoveToSingin: () => void;
   onClickMoveToLogin: () => void;
   onClickMoveToHome: () => void;
   onClickMoveToMyPage: () => void;
+  onClickIsMore: () => void;
 }
 
 export default function LayoutHeaderUI(props: ILayouHeaderProps) {
   const [isMore, setIsMore] = useState(false);
+  const { userInfo } = useContext(GlobalContext);
   const onClickIsMore = () => {
     setIsMore((prev) => !prev);
   };
@@ -30,7 +33,7 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
       <DropDownPage onClick={onClickIsMore} />
     </Menu>
   );
-
+  console.log("qweqwe", userInfo);
   return (
     <MainWrapper>
       <HeaderMain>
@@ -44,9 +47,7 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
             <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
           ) : (
             <Wrapper>
-              <UserName>
-                {props.data?.fetchUserLoggedIn.name} 님 환영합니다.
-              </UserName>
+              <UserName>{userInfo.name} 님 환영합니다.</UserName>
 
               <Dropdown
                 overlay={menu}

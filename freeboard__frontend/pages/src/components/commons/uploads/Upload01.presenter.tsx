@@ -11,7 +11,13 @@ export default function Upload01UI(props: IUpload01UIProps) {
   return (
     <>
       {props.imgUrl ? (
-        <Img src={props.imgUrl} />
+        <Img
+          src={
+            props.isEditWrite
+              ? `https://storage.googleapis.com/${props.imgUrl}`
+              : props.imgUrl
+          }
+        />
       ) : (
         <PhotoSubWrapper onClick={props.onClickBox}>
           <Plus>+</Plus>

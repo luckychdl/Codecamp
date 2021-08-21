@@ -9,7 +9,7 @@ const KakaoMap = (props) => {
   const [address, setAddress] = useState();
   const [lng, setLng] = useState();
   const [lat, setLat] = useState();
-  const [addressDetail, setAddressDetail] = useState();
+  const [addressDetail] = useState();
   // const [createUsedItem] = useMutation(CREATE_USED_ITEM);
 
   const onClickOpenModal = () => {
@@ -35,35 +35,38 @@ const KakaoMap = (props) => {
     document.head.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(() => {
-        let mapContainer = document.getElementById("map"), // 지도를 표시할 div
-          mapOption = {
-            center: new kakao.maps.LatLng(37.485298, 126.900966), // 지도의 중심좌표
-            level: 3, // 지도의 확대 레벨
-          };
+        const mapContainer = document.getElementById("map"); // 지도를 표시할 div
+        const mapOption = {
+          center: new window.kakao.maps.LatLng(37.485298, 126.900966), // 지도의 중심좌표
+          level: 3, // 지도의 확대 레벨
+        };
 
         // 지도를 생성합니다
-        const map = new kakao.maps.Map(mapContainer, mapOption);
+        const map = new window.kakao.maps.Map(mapContainer, mapOption);
 
         // 주소-좌표 변환 객체를 생성합니다
-        const geocoder = new kakao.maps.services.Geocoder();
+        const geocoder = new window.kakao.maps.services.Geocoder();
 
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(address, function (result, status) {
           // 정상적으로 검색이 완료됐으면
-          if (status === kakao.maps.services.Status.OK) {
-            const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          if (status === window.kakao.maps.services.Status.OK) {
+            const coords = new window.kakao.maps.LatLng(
+              result[0].y,
+              result[0].x
+            );
 
             // 결과값으로 받은 위치를 마커로 표시합니다
-            const marker = new kakao.maps.Marker({
+            const marker = new window.kakao.maps.Marker({
               map: map,
               position: coords,
             });
 
             // // 인포윈도우로 장소에 대한 설명을 표시합니다
-            // const infowindow = new kakao.maps.InfoWindow({
-            //   content: `${addressDetail}`,
-            // });
-            // infowindow.open(map, marker);
+            const infowindow = new window.kakao.maps.InfoWindow({
+              // content: `${addressDetail}`,
+            });
+            infowindow.open(map, marker);
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
@@ -87,6 +90,7 @@ const KakaoMap = (props) => {
       addressDetail={addressDetail}
       lng={lng}
       lat={lat}
+      data={props.data}
       onComplete={onComplete}
       handleCancel={handleCancel}
       onClickAddressDetail={onClickAddressDetail}

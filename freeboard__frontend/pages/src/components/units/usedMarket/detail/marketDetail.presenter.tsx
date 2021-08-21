@@ -27,15 +27,21 @@ import {
 } from "./marketDetail.styles";
 import Button01 from "../../../commons/buttons/button01";
 import { IQuery } from "../../../../../../src/commons/types/generated/types";
-import DOMPurify from "dompurify";
+// import DOMPurify from "dompurify";
 import Slider from "react-slick";
+import { useContext } from "react";
+import { GlobalContext } from "../../../../../_app";
 interface IMarketDetailUIProps {
   onClickMove: () => void;
   data?: IQuery;
+  onClickToggle: () => void;
+  onClickEdit: () => void;
 }
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
+  const { userInfo } = useContext(GlobalContext);
+  console.log("fgdg", userInfo);
   const settings = {
-    customPaging: function (i) {
+    customPaging: function (i: any) {
       return (
         <a>
           <img
@@ -51,7 +57,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    appendDots: (dots) => <SliderUl> {dots} </SliderUl>,
+    appendDots: (dots: any) => <SliderUl> {dots} </SliderUl>,
   };
 
   return (
@@ -103,12 +109,14 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
       </ImgWrapper>
 
       <ContentsWrapper>
-        {typeof window !== "undefined" && (
+        {typeof window !== "undefined" && props.data ? (
           <Contents
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
+              __html: props.data?.fetchUseditem.contents,
             }}
           ></Contents>
+        ) : (
+          <div />
         )}
         <Tags>{props.data?.fetchUseditem.tags}</Tags>
       </ContentsWrapper>
@@ -119,7 +127,17 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
           onClick={props.onClickMove}
           buttonType="button"
         ></Button01>
-        <Button01 buttonName={"구매하기"}></Button01>
+        {props.data?.fetchUseditem.seller._id !== userInfo._id ? (
+          <Button01
+            buttonName={"구매하기"}
+            onClick={props.onClickBuying}
+          ></Button01>
+        ) : (
+          <Button01
+            buttonName={"수정하기"}
+            onClick={props.onClickEdit}
+          ></Button01>
+        )}
       </ButtonWrapper>
     </MainWrapper>
   );

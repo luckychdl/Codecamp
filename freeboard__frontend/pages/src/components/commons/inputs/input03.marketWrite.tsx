@@ -23,6 +23,7 @@ const InputMarket = (props) => {
         type={props.type}
         {...props.register}
         placeholder={props.inputName}
+        defaultValue={props.defaultValue}
       />
       <ErrorMessage>{props.errorMessage}</ErrorMessage>
     </>

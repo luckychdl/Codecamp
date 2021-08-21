@@ -8,7 +8,7 @@ import { checkValidationFile } from "../../../commons/libraries/validations";
 //   index: number;
 //   onChangeFileUrl: (imgUrl: string, index: number) => void;
 // }
-function Upload01(props) {
+function Upload01(props: any) {
   const fileRef = useRef<HTMLInputElement>(null);
   // const [imgUrls, setImgUrls] = useState([]);
   const [imgUrl, setImgUrl] = useState("");
@@ -33,6 +33,7 @@ function Upload01(props) {
       props.onChangeFiles(file, props.index);
     };
   };
+
   const onClickBox = () => {
     fileRef.current?.click();
   };

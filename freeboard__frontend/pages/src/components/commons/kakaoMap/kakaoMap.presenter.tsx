@@ -22,15 +22,24 @@ const KakaoMapPage = (props) => {
         <Title02 divName={"GPS"}></Title02>
 
         <SubWrapper>
-          <Location placeholder={props.lng} readOnly />
+          <Location
+            placeholder={props.lat}
+            readOnly
+            defaultValue={props.data?.fetchUseditem.useditemAddress.lat}
+          />
           <LocationImg src="/FreeBoard/Location.svg" />
-          <Location placeholder={props.lat} readOnly />
+          <Location
+            placeholder={props.lng}
+            readOnly
+            defaultValue={props.data?.fetchUseditem.useditemAddress.lng}
+          />
         </SubWrapper>
         <Title02 divName={"주소"}></Title02>
         <AddressInput
           type="text"
           onClick={props.onClickOpenModal}
           value={props.address}
+          defaultValue={props.data?.fetchUseditem.useditemAddress.address}
         />
         {props.isOpen && (
           <Modal
@@ -42,7 +51,11 @@ const KakaoMapPage = (props) => {
             <DaumPostcode onComplete={props.onComplete} />
           </Modal>
         )}
-        <AddressInput type="text" onChange={props.onChangeAddressDetail} />
+        <AddressInput
+          type="text"
+          onChange={props.onChangeAddressDetail}
+          defaultValue={props.data?.fetchUseditem.useditemAddress.addressDetail}
+        />
       </AddressWrapper>
     </MainWrapper>
   );

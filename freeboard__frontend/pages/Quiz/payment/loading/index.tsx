@@ -1,9 +1,8 @@
 import { Select } from "antd";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useContext } from "react";
 import { GlobalContext } from "../../../_app";
 
 const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
@@ -14,7 +13,7 @@ const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
   }
 `;
 const PaymentLoading = () => {
-  const { userInfo, setUserInfo } = useContext(GlobalContext);
+  const { setUserInfo } = useContext(GlobalContext);
   const { Option } = Select;
   const [amount, setAmount] = useState(0);
   const router = useRouter();
@@ -24,6 +23,9 @@ const PaymentLoading = () => {
   );
   const onClickPayment = () => {
     console.log(typeof amount);
+    // @ts-ignore
+    const IMP = window.IMP;
+
     IMP.init("imp49910675");
     IMP.request_pay(
       {

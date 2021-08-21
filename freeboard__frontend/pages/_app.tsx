@@ -41,11 +41,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
+    if (localStorage.getItem("userInfo"))
+      setUserInfo(JSON.parse(localStorage.getItem("userInfo") || "{}"));
   }, []);
+
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
-        if (err.extensions?.code === "UNAUTHENTICATED") {
+        if (err.extensions.code === "UNAUTHENTICATED") {
           operation.setContext({
             headers: {
               ...operation.getContext().headers,
@@ -70,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     link: ApolloLink.from([errorLink, uploadLink]),
     cache: new InMemoryCache(),
   });
-
+  console.log("QRWQr", userInfo);
   return (
     <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>

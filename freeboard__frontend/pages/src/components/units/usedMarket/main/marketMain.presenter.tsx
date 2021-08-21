@@ -51,9 +51,9 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
               <SellOn>판매된상품</SellOn>
             </SellWrapper>
             <SearchWrapper>
-              <Search></Search>
+              <Search onChange={props.onChangeSearch}></Search>
               <Date>{getDate(props.data?.fetchUseditems.createdAt)}</Date>
-              <SearchBtn>검색</SearchBtn>
+              <SearchBtn onClick={props.onClickSearch}>검색</SearchBtn>
             </SearchWrapper>
           </SubWrapper>
         </MenuWrapper>
