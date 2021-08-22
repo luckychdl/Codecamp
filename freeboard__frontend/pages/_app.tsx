@@ -73,7 +73,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     link: ApolloLink.from([errorLink, uploadLink]),
     cache: new InMemoryCache(),
   });
-  console.log("QRWQr", userInfo);
   return (
     <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>

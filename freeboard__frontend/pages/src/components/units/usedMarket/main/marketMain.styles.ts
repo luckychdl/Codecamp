@@ -32,6 +32,7 @@ export const Best = styled.div`
 `;
 export const MenuWrapper = styled.div`
   width: 1050px;
+  border-bottom: 1px solid #bdbdbd;
 `;
 export const SubWrapper = styled.div`
   display: flex;
@@ -80,6 +81,7 @@ export const Img = styled.img`
   width: 160px;
   height: 160px;
   margin-right: 40px;
+  margin-left: 10px;
 `;
 export const InfoWrapper = styled.div`
   display: flex;
@@ -132,12 +134,28 @@ export const ListMainWrapper = styled.div`
   cursor: pointer;
   width: 1050px;
   padding-top: 10px;
-  border-top: 1px solid #bdbdbd;
+  /* border-top: 1px solid #bdbdbd; */
+  border-bottom: 1px solid #bdbdbd;
   :hover {
     background-color: #ede7f6;
+
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  :active {
+    position: relative;
+    top: 2px;
   }
 `;
-export const NameWrapper = styled.div``;
+export const NameWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120px;
+`;
+export const NameSubWrapper = styled.div``;
 export const TodayWrapper = styled.div``;
 export const TopWrapper = styled.div`
   display: flex;

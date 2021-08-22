@@ -7,9 +7,10 @@ import { FETCH_USED_ITEMS } from "./marketMain.queries";
 
 const MarketMain = () => {
   const [search, setSearch] = useState();
+  const [hasMore, setHasMore] = useState(true);
   const router = useRouter();
   const { register, handleSubmit } = useForm();
-  const { data, refetch } = useQuery(FETCH_USED_ITEMS, {
+  const { data, refetch, fetchMore } = useQuery(FETCH_USED_ITEMS, {
     variables: router.query.useditemId,
   });
   // const { data: buyData } = useQuery(FETCH_USED_ITEMS_I_BOUGHT);
@@ -34,14 +35,31 @@ const MarketMain = () => {
   const onChangeSearch = (event: ChangeEvent) => {
     setSearch(event.target.value);
   };
+  const onLoadMore = () => {
+    if (!data) return;
+    fetchMore({
+      variables: { page: Math.floor(data?.fetchUseditems.length / 10) + 1 },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.fetchUseditems.length) setHasMore(false);
+        return {
+          fetchUseditems: [
+            ...prev.fetchUseditems,
+            ...fetchMoreResult.fetchUseditems,
+          ],
+        };
+      },
+    });
+  };
   return (
     <MarketMainUI
+      onLoadMore={onLoadMore}
       onClickSearch={onClickSearch}
       onChangeSearch={onChangeSearch}
       handleSubmit={handleSubmit}
       onClickMoveDetail={onClickMoveDetail}
       onClickMove={onClickMove}
       register={register}
+      hasMore={hasMore}
       data={data}
     />
   );

@@ -1,5 +1,9 @@
-import { useState, useEffect } from "react";
-import { CREATE_USED_ITEM, UPLOAD_FILE } from "./marketWrite.queries";
+import { useState } from "react";
+import {
+  CREATE_USED_ITEM,
+  // UPDATE_USED_ITEM,
+  UPLOAD_FILE,
+} from "./marketWrite.queries";
 import MarketWriteUI from "./marketWrite.presenter";
 import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
@@ -24,6 +28,7 @@ const MarketWrite = (props) => {
   });
   const router = useRouter();
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
+  // const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.useditemId },
@@ -67,20 +72,61 @@ const MarketWrite = (props) => {
       });
     }
   };
-  useEffect(() => {
-    setFileUrl(
-      `https://storage.googleapis.com/${data?.fetchUseditem.images[0]}`
-    );
-  }, []);
+  // const onClickUpdate = async (data) => {
+  //   const resultFiles = await Promise.all(
+  //     files.map((data) => {
+  //       return uploadFile({ variables: { file: data } });
+  //     })
+  //   );
+  //   const newImages = resultFiles.map((data) => {
+  //     return data.data.uploadFile.url;
+  //   });
+  //   try {
+  //     await updateUseditem({
+  //       variables: {
+  //         updateUseditemInput: {
+  //           name: data.name || props.data?.name,
+  //           remarks: data.remarks || props.data?.remarks,
+  //           contents: data.contents || props.data?.contents,
+  //           price: Number(data.price) || Number(props.data?.price),
+  //           tags: data.tags || props.data?.tags,
+  //           images: [
+  //             ...fileUrl
+  //               .filter((data) =>
+  //                 data.includes("https://storage.googleapis.com/")
+  //               )
+  //               .map((data) =>
+  //                 data.replace("https://storage.googleapis.com/", "")
+  //               ),
+  //             ...newImages,
+  //           ],
+  //           useditemAddress: {
+  //             address: address || props.data?.address,
+  //             addressDetail: addressDetail || props.data?.addressDetail,
+  //             lat: lat || props.data?.lat,
+  //             lng: lng || props.data?.lng,
+  //           },
+  //         },
+  //         useditemId: router.query.useditemId,
+  //       },
+  //     });
+  //   } catch (err) {
+  //     Modal.error({
+  //       content: err.message,
+  //     });
+  //   }
+  // };
   const onChangeFiles = (file: File, index: number) => {
-    const newFiles = [...files];
+    const newFiles = [{ ...files }];
     newFiles[index] = file;
     setFiles(newFiles);
+    console.log(files);
   };
   const onChangeFileUrl = (imgUrl: string, index: number) => {
-    const newFileUrl = [...imgUrl];
+    const newFileUrl = [{ ...imgUrl }];
     newFileUrl[index] = imgUrl;
     setFileUrl(newFileUrl);
+    console.log(fileUrl);
   };
   const onChangeValue = (val) => {
     setValue("contents", val);

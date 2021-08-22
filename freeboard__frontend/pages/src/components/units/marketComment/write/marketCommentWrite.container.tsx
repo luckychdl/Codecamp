@@ -12,7 +12,7 @@ const MarketCommentWrite = (props) => {
   const onClickSubmitComment = async (data: any) => {
     console.log(data);
     try {
-      const result = await createUseditemQuestion({
+      await createUseditemQuestion({
         // 댓글 등록
         variables: {
           createUseditemQuestionInput: {

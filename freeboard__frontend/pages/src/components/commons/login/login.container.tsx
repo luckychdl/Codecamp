@@ -26,7 +26,7 @@ export default function LoginPage() {
     IMutationLoginUserArgs
   >(LOGGED_IN_USER);
 
-  const onClickLogin = async (data) => {
+  const onClickLogin = async (data: any) => {
     try {
       const token = await loginUser({
         variables: {
@@ -48,11 +48,11 @@ export default function LoginPage() {
         JSON.stringify(resultUser.data.fetchUserLoggedIn)
       );
       setAccessToken(token.data?.loginUser.accessToken || "");
-      // localStorage.setItem("refreshToken", "true");
-      localStorage.setItem(
-        "refreshToken",
-        token.data.loginUser.accessToken || ""
-      );
+      localStorage.setItem("refreshToken", "true");
+      // localStorage.setItem(
+      //   "refreshToken",
+      //   token.data?.loginUser.accessToken || ""
+      // );
       Modal.confirm({
         content: "환영합니다!",
         onOk() {

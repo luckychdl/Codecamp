@@ -16,12 +16,18 @@ export const TodayProductWrapper = styled.div`
   background-color: white;
   z-index: 10;
   overflow: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const TodayTitle = styled.div`
   font-weight: bold;
   font-size: 18px;
   text-align: center;
   padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #bdbdbd;
 `;
 export const TodayWrapper = styled.div`
   display: flex;
@@ -52,12 +58,19 @@ export const TodayTags = styled.div`
 export const Wrapper = styled.div`
   /* border: 1px solid #757575; */
   display: flex;
-  width: 180px;
+  width: 190px;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
   margin-bottom: 10px;
   :hover {
     background-color: #ede7f6;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  :active {
+    top: 2px;
+    position: relative;
   }
 `;

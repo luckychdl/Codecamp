@@ -16,6 +16,10 @@ import {
   FETCH_USER_LOGGED_IN,
 } from "./payment.queries";
 import Button01 from "../buttons/button01";
+
+declare const window: typeof globalThis & {
+  IMP: any;
+};
 const PaymentPageUI = (props) => {
   const { Option } = Select;
   const [amount, setAmount] = useState(0);
@@ -24,9 +28,8 @@ const PaymentPageUI = (props) => {
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
   const onClickPayment = () => {
-    console.log(typeof amount);
-    IMP.init("imp49910675");
-    IMP.request_pay(
+    window.IMP.init("imp49910675");
+    window.IMP.request_pay(
       {
         // param
         pg: "html5_inicis",
@@ -46,7 +49,6 @@ const PaymentPageUI = (props) => {
           await createPointTransactionOfLoading({
             variables: { impUid: rsp.imp_uid },
           });
-          console.log("afaffqw", rsp.imp_uid);
           Modal.success({
             content: "결제가 완료되었습니다.",
           });
@@ -60,9 +62,7 @@ const PaymentPageUI = (props) => {
   };
 
   const handleChange = (value) => {
-    console.log(`${value}`);
     setAmount(`${value}`);
-    console.log(data);
   };
   return (
     <>

@@ -1,4 +1,9 @@
-import { ChangeEvent, FormEvent } from "react";
+import {
+  ChangeEvent,
+  DetailedHTMLProps,
+  FormEvent,
+  FormHTMLAttributes,
+} from "react";
 import Input01 from "../inputs/input01.login";
 import {
   MainWrapper,
@@ -10,7 +15,13 @@ import {
 } from "./login.styles";
 
 interface ILoginPageUIProps {
-  onClickLogin: () => void;
+  onClickLogin: (event: FormEvent<HTMLFormElement>) => void;
+  register: any;
+  errors: any;
+  onSubmit: DetailedHTMLProps<
+    FormHTMLAttributes<HTMLFormElement>,
+    HTMLFormElement
+  >;
   onChangeEmail: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickMoveToSignin: () => void;

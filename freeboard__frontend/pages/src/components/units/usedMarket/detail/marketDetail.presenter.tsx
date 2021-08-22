@@ -36,6 +36,7 @@ interface IMarketDetailUIProps {
   data?: IQuery;
   onClickToggle: () => void;
   onClickEdit: () => void;
+  onClickBuying: () => void;
 }
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
   const { userInfo } = useContext(GlobalContext);

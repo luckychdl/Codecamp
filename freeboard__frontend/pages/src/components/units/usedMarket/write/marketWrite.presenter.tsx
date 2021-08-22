@@ -17,7 +17,6 @@ import KakaoMap from "../../../commons/kakaoMap/kakaoMap.container";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const MarketWriteUI = (props: any) => {
-  console.log(props.data);
   return (
     <form onSubmit={props.handleSubmit(props.onClickItem)}>
       <MainWrapper>

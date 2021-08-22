@@ -44,12 +44,19 @@ export const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 250px;
-
+  background-color: #ffffff;
   justify-content: flex-start;
   padding: 20px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; */
   :hover {
     background-color: #ede7f6;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
   /* background-color: black; */
 `;

@@ -30,9 +30,11 @@ import {
   TotalWrapper,
   TodayWrapper,
   TopWrapper,
+  NameSubWrapper,
 } from "./marketMain.styles";
 import Today from "../today/today.container";
 import BestItem from "../bestItem/bestItem.container";
+import InfiniteScroll from "react-infinite-scroller";
 
 interface IMarketMainUIProps {
   onClickMove: () => void;
@@ -57,37 +59,56 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
             </SearchWrapper>
           </SubWrapper>
         </MenuWrapper>
-        {props.data?.fetchUseditems.map((data: any) => (
-          <>
-            <ListMainWrapper
-              key={data._id}
-              onClick={props.onClickMoveDetail(data)}
-            >
-              <ListWrapper>
-                <Img src={`https://storage.googleapis.com/${data.images[0]}`} />
-                <InfoWrapper>
-                  <NameWrapper>
-                    <Name>{data.name}</Name>
-                    <Remarks>{data.remarks}</Remarks>
-                    <Tags>{data.tags}</Tags>
-                  </NameWrapper>
-                  <InfoSecondWrapper>
-                    <HeartImage src="/FreeBoard/profileMain.png" />
-                    <Seller>{data.seller.name}</Seller>
-                    <HeartImage src="/FreeBoard/heart.svg" />
-                    <HeartScore>{data.pickedCount}</HeartScore>
-                  </InfoSecondWrapper>
-                </InfoWrapper>
-              </ListWrapper>
-              <ListSecondWrapper>
-                <PriceWrapper>
-                  <PriceImg src="/FreeBoard/money.svg" />
-                  <Price>{data.price}</Price>
-                </PriceWrapper>
-              </ListSecondWrapper>
-            </ListMainWrapper>
-          </>
-        ))}
+
+        <div
+          style={{
+            overflow: "auto",
+            height: "1000px",
+          }}
+        >
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={props.onLoadMore}
+            hasMore={props.hasMore}
+            useWindow={false}
+          >
+            {props.data?.fetchUseditems.map((data: any) => (
+              <>
+                <ListMainWrapper
+                  key={data._id}
+                  onClick={props.onClickMoveDetail(data)}
+                >
+                  <ListWrapper>
+                    <Img
+                      src={`https://storage.googleapis.com/${data.images[0]}`}
+                    />
+                    <InfoWrapper>
+                      <NameWrapper>
+                        <Name>{data.name}</Name>
+                        <NameSubWrapper>
+                          <Remarks>{data.remarks}</Remarks>
+                          <Tags>{data.tags}</Tags>
+                        </NameSubWrapper>
+                      </NameWrapper>
+                      <InfoSecondWrapper>
+                        <HeartImage src="/FreeBoard/profileMain.png" />
+                        <Seller>{data.seller.name}</Seller>
+                        <HeartImage src="/FreeBoard/heart.svg" />
+                        <HeartScore>{data.pickedCount}</HeartScore>
+                      </InfoSecondWrapper>
+                    </InfoWrapper>
+                  </ListWrapper>
+                  <ListSecondWrapper>
+                    <PriceWrapper>
+                      <PriceImg src="/FreeBoard/money.svg" />
+                      <Price>{data.price}</Price>
+                    </PriceWrapper>
+                  </ListSecondWrapper>
+                </ListMainWrapper>
+              </>
+            ))}
+          </InfiniteScroll>
+        </div>
 
         <form onSubmit={props.handleSubmit(props.onClickMove)}>
           <Button01 buttonName={"상품 등록하기"}></Button01>

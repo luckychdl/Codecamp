@@ -81,7 +81,7 @@ const MarketDetail = () => {
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(
           data?.fetchUseditem.useditemAddress?.address,
-          function (result, status) {
+          function (result: any, status: any) {
             // 정상적으로 검색이 완료됐으면
             if (status === window.kakao.maps.services.Status.OK) {
               const coords = new window.kakao.maps.LatLng(
@@ -96,10 +96,11 @@ const MarketDetail = () => {
                 position: coords,
               });
               // // 인포윈도우로 장소에 대한 설명을 표시합니다
-              const infowindow = new window.kakao.maps.InfoWindow({
-                // content: `${addressDetail}`,
-              });
-              infowindow.open(map, marker);
+              // const infowindow = new window.kakao.maps.InfoWindow({
+              //   // content: `${addressDetail}`,
+              // });
+              // infowindow.open(map, marker);
+              marker.setMap(map);
               map.setCenter(coords);
             }
           }

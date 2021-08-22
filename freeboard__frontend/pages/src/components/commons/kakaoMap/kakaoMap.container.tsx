@@ -4,7 +4,7 @@ import KakaoMapPage from "./kakaoMap.presenter";
 declare const window: typeof globalThis & {
   kakao: any;
 };
-const KakaoMap = (props) => {
+const KakaoMap = (props: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [address, setAddress] = useState();
   const [lng, setLng] = useState();
@@ -21,11 +21,11 @@ const KakaoMap = (props) => {
   const onClickAddressDetail = () => {
     setIsOpen(false);
   };
-  const onComplete = (data) => {
+  const onComplete = (data: any) => {
     setAddress(data.address);
     setIsOpen(false);
   };
-  const onChangeAddressDetail = (event) => {
+  const onChangeAddressDetail = (event: any) => {
     props.setAddressDetail(event.target.value);
   };
   useEffect(() => {
@@ -48,7 +48,7 @@ const KakaoMap = (props) => {
         const geocoder = new window.kakao.maps.services.Geocoder();
 
         // 주소로 좌표를 검색합니다
-        geocoder.addressSearch(address, function (result, status) {
+        geocoder.addressSearch(address, function (result: any, status: any) {
           // 정상적으로 검색이 완료됐으면
           if (status === window.kakao.maps.services.Status.OK) {
             const coords = new window.kakao.maps.LatLng(
@@ -63,12 +63,13 @@ const KakaoMap = (props) => {
             });
 
             // // 인포윈도우로 장소에 대한 설명을 표시합니다
-            const infowindow = new window.kakao.maps.InfoWindow({
-              // content: `${addressDetail}`,
-            });
-            infowindow.open(map, marker);
+            // const infowindow = new window.kakao.maps.InfoWindow({
+            //   // content: `${addressDetail}`,
+            // });
+            // infowindow.open(map, marker);
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            marker.setMap(map);
             map.setCenter(coords);
             setLng(coords.La);
             setLat(coords.Ma);

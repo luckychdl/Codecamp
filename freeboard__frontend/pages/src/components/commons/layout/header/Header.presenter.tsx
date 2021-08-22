@@ -20,11 +20,12 @@ interface ILayouHeaderProps {
   onClickMoveToHome: () => void;
   onClickMoveToMyPage: () => void;
   onClickIsMore: () => void;
+  token: any;
 }
 
 export default function LayoutHeaderUI(props: ILayouHeaderProps) {
   const [isMore, setIsMore] = useState(false);
-  const { userInfo } = useContext(GlobalContext);
+  const { userInfo, accessToken } = useContext(GlobalContext);
   const onClickIsMore = () => {
     setIsMore((prev) => !prev);
   };
@@ -33,7 +34,6 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
       <DropDownPage onClick={onClickIsMore} />
     </Menu>
   );
-  console.log("qweqwe", userInfo);
   return (
     <MainWrapper>
       <HeaderMain>
@@ -43,7 +43,7 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
         />
 
         <ButtonWrapper>
-          {!props.token ? (
+          {!accessToken ? (
             <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
           ) : (
             <Wrapper>
@@ -53,9 +53,10 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
                 overlay={menu}
                 placement="bottomCenter"
                 trigger={["click"]}
+                onVisibleChange={onClickIsMore}
                 arrow
               >
-                <Button style={{ border: "none" }} onClick={onClickIsMore}>
+                <Button style={{ border: "none" }}>
                   <ProfileImg src="/FreeBoard/profile.svg" />
                   <TooltipImg src="/FreeBoard/more.svg" isMore={isMore} />
                 </Button>
@@ -66,7 +67,7 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
             </Wrapper>
           )}
 
-          {!props.token ? (
+          {!accessToken ? (
             <LoginButton onClick={props.onClickMoveToSingin}>
               회원가입
             </LoginButton>

@@ -6,24 +6,18 @@ interface IUpload01UIProps {
   imgUrl: string;
   onChangeFile: (event: ChangeEvent<HTMLInputElement>) => void;
   onClickBox: () => void;
+  onClickDeleteImg: () => void;
 }
 export default function Upload01UI(props: IUpload01UIProps) {
   return (
     <>
-      {props.imgUrl ? (
-        <Img
-          src={
-            props.isEditWrite
-              ? `https://storage.googleapis.com/${props.imgUrl}`
-              : props.imgUrl
-          }
-        />
-      ) : (
-        <PhotoSubWrapper onClick={props.onClickBox}>
-          <Plus>+</Plus>
-          <Upload>Upload</Upload>
-        </PhotoSubWrapper>
+      {!props.imgUrl && (
+        <Img src={props.imgUrl} onClick={props.onClickDeleteImg} />
       )}
+      <PhotoSubWrapper onClick={props.onClickBox}>
+        <Plus>+</Plus>
+        <Upload>Upload</Upload>
+      </PhotoSubWrapper>
       <input
         ref={props.fileRef}
         type="file"

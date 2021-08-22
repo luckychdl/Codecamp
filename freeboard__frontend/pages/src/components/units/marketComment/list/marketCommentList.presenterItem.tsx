@@ -17,23 +17,18 @@ import CommentAnswerList from "../commentAnswerList/commentAnswerList.container"
 import { getDate } from "../../../../commons/libraries/utils";
 import { IUseditemQuestion } from "../../../../../../src/commons/types/generated/types";
 import { useState } from "react";
-import MarketCommentWrite from "../write/marketCommentWrite.container";
-import CommentAnswerEdit from "../commentAnswer/commentAnswerEdit/commentAnswerEdit.container";
 import MarketCommentWriteEdit from "../write/marketCommentWriteEdit/marketCommentWriteEdit.container";
 interface IMarketCommentListUIItemProps {
   data: IUseditemQuestion;
 }
 const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
   const [isAnswer, setIsAnswer] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
   const [isComment, setIsComment] = useState(false);
   const onClickAnswer = () => {
     console.log("댓글 수정하기");
     setIsAnswer((prev) => !prev);
   };
-  const onClickEdit = () => {
-    setIsEdit((prev) => !prev);
-  };
+
   const onClickComment = () => {
     setIsComment((prev) => !prev);
     console.log(isComment);
