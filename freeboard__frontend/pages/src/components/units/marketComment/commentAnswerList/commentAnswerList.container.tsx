@@ -8,7 +8,7 @@ import {
 } from "./commentAnswerList.queries";
 import { Modal } from "antd";
 
-const CommentAnswerList = (props) => {
+const CommentAnswerList = (props: any) => {
   const [deleteUseditemQuestionAnswer] = useMutation(
     DELETE_USED_ITEM_QUESTION_ANSWER
   );
@@ -17,7 +17,7 @@ const CommentAnswerList = (props) => {
     variables: { useditemQuestionId: props.data._id },
   });
   const { data: userData } = useQuery(FETCH_USER_LOGGED_IN);
-  const onClickDeleteAnswer = async (event) => {
+  const onClickDeleteAnswer = async (event: any) => {
     try {
       await deleteUseditemQuestionAnswer({
         variables: {
@@ -36,8 +36,7 @@ const CommentAnswerList = (props) => {
     }
   };
   const onClickOpenUpdateAnswer = () => {
-    console.log("대댓글 수정하기");
-    props.setIsComment((prev) => !prev);
+    props.setIsComment((prev: any) => !prev);
   };
   return (
     <CommentAnswerListUI

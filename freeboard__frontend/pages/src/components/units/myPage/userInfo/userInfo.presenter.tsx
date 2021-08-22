@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../../../../_app";
+// import MyMarket from "../myMarket/myMarket.container";
 import {
   MainWrapper,
   Title,
@@ -17,14 +20,15 @@ import {
   MyProfileWrapper,
 } from "./userInfo.styles";
 const UserInfoUI = () => {
+  const { userInfo } = useContext(GlobalContext);
   return (
     <MainWrapper>
       <Title>MY PAGE</Title>
       <ProfileImg src="/FreeBoard/mainProfile.svg" />
-      <UserName>NAME</UserName>
+      <UserName>{userInfo.name}</UserName>
       <MyPageWrapper>
         <PointImg src="/FreeBoard/savings.svg" />
-        <PointAmount>100,000</PointAmount>
+        <PointAmount>{userInfo.userPoint?.amount}</PointAmount>
       </MyPageWrapper>
       <MyMarketWrapper>
         <MoveMyMarketImg src="/FreeBoard/cart.svg" />

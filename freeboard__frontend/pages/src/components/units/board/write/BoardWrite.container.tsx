@@ -4,12 +4,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardWriteUI from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
-import {
-  IMutation,
-  IMutationCreateBoardArgs,
-  IMutationUpdateBoardArgs,
-  IQuery,
-} from "../../../../../../src/commons/types/generated/types";
+import { IQuery } from "../../../../../../src/commons/types/generated/types";
 
 export const INPUTS_INIT = {
   writer: "",
@@ -22,6 +17,8 @@ export const INPUTS_INIT = {
 interface IBoardWriteProps {
   isEdit?: boolean;
   data?: IQuery;
+  zipcode: string;
+  address: string;
 }
 interface INewInputs {
   title?: string;
@@ -55,13 +52,9 @@ export default function BoardWrite(props: IBoardWriteProps) {
   }
 
   const router = useRouter();
-  const [createBoard] = useMutation<IMutation, IMutationCreateBoardArgs>(
-    CREATE_BOARD
-  );
+  const [createBoard] = useMutation(CREATE_BOARD);
   const [uploadFile] = useMutation(UPLOAD_FILE);
-  const [updateBoard] = useMutation<IMutation, IMutationUpdateBoardArgs>(
-    UPDATE_BOARD
-  );
+  const [updateBoard] = useMutation(UPDATE_BOARD);
   function onChangeInputs(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
@@ -161,7 +154,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const newFileUrl = [...files];
     newFileUrl[index] = file;
     setFiles(newFileUrl);
-    console.log(newFileUrl);
   };
   return (
     <>

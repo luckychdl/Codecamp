@@ -37,15 +37,7 @@ const Today = () => {
       new Date().getMonth() + 1
     ).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`;
 
-    console.log("ad", newDate);
-    console.log("qw", getYear);
-    console.log(newDate.includes(getYear));
-
     if (newDate.includes(getYear)) setDate(getYear);
-
-    console.log(date);
-    console.log(typeof getYear);
-    console.log(typeof date);
   }, []);
   return (
     <>

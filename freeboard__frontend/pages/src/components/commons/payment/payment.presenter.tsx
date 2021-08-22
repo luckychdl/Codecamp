@@ -9,7 +9,7 @@ import {
 } from "./payment.styles";
 import { Select, Modal } from "antd";
 import Head from "next/head";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import {
   CREATE_POINT_TRANSACTION_OF_LOADING,
@@ -19,8 +19,9 @@ import Button01 from "../buttons/button01";
 
 declare const window: typeof globalThis & {
   IMP: any;
+  setAmount: (value: SetStateAction<number>) => void;
 };
-const PaymentPageUI = (props) => {
+const PaymentPageUI = (props: any) => {
   const { Option } = Select;
   const [amount, setAmount] = useState(0);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
@@ -43,7 +44,7 @@ const PaymentPageUI = (props) => {
         // buyer_postcode: "01181",
         m_redirect_url: "/quiz/payment/complete",
       },
-      async (rsp) => {
+      async (rsp: any) => {
         // callback
         if (rsp.success) {
           await createPointTransactionOfLoading({
@@ -51,6 +52,9 @@ const PaymentPageUI = (props) => {
           });
           Modal.success({
             content: "결제가 완료되었습니다.",
+            onOk() {
+              props.onClickIsClear();
+            },
           });
         } else {
           Modal.error({
@@ -61,7 +65,7 @@ const PaymentPageUI = (props) => {
     );
   };
 
-  const handleChange = (value) => {
+  const handleChange = (value: any) => {
     setAmount(`${value}`);
   };
   return (

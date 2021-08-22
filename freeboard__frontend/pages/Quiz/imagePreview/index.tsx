@@ -65,7 +65,7 @@ export default function ImgPreview() {
 
       const newImages = resultFiles.map((data) => data.data.uploadFile.url);
 
-      const result = await createBoard({
+      await createBoard({
         variables: {
           createBoardInput: {
             ...inputs,
@@ -73,7 +73,6 @@ export default function ImgPreview() {
           },
         },
       });
-      console.log(result.data.createBoard._id);
       alert("게시물이 등록되었습니다.");
     } catch (err) {
       alert(err.message);

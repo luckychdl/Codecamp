@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CommentAnswer from "../commentAnswer/commentAnswer.container";
 import CommentAnswerEdit from "../commentAnswer/commentAnswerEdit/commentAnswerEdit.container";
 import {
   MainWrapper,

@@ -27,7 +27,6 @@ export default function ModalPost() {
     setZoneCode(data.zonecode);
     setAddress(data.address);
     setIsOpen(false);
-    console.log(data);
   }
 
   function handleOk() {

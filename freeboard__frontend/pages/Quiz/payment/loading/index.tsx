@@ -22,7 +22,6 @@ const PaymentLoading = () => {
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
   const onClickPayment = () => {
-    console.log(typeof amount);
     // @ts-ignore
     const IMP = window.IMP;
 
@@ -40,7 +39,6 @@ const PaymentLoading = () => {
         m_redirect_url: "/quiz/payment/complete",
       },
       async (rsp) => {
-        console.log("asd", rsp);
         // callback
         if (rsp.success) {
           const result = await createPointTransactionOfLoading({
@@ -57,7 +55,6 @@ const PaymentLoading = () => {
   };
 
   const handleChange = (value) => {
-    console.log(`${value}`);
     setAmount(`${value}`);
   };
   return (

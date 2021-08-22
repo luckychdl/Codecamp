@@ -7,17 +7,18 @@ import {
   FETCH_USER_LOGGED_IN,
 } from "./marketCommentListEdit.queries";
 import { Modal } from "antd";
+import { IQuery } from "../../../../../../../../src/commons/types/generated/types";
 const MarketCommentListEdit = () => {
   const router = useRouter();
   const [deleteUseditemQuestion] = useMutation(DELETE_USED_ITEM_QUESTION);
   const { data, refetch } = useQuery(FETCH_USEDITEM_QUESTIONS, {
     variables: { useditemId: router.query.useditemId },
   });
-  const { data: userData } = useQuery(FETCH_USER_LOGGED_IN);
-  const onClickDelete = async (event) => {
+  const { data: userData } = useQuery<IQuery>(FETCH_USER_LOGGED_IN);
+  const onClickDelete = async (event: any) => {
     try {
       await deleteUseditemQuestion({
-        variables: { useditemQuestionId: event.target.id },
+        variables: { useditemQuestionId: (event.target as Element).id },
       });
       refetch();
       Modal.success({
@@ -29,7 +30,6 @@ const MarketCommentListEdit = () => {
       });
     }
   };
-  console.log(data?.fetchUseditemQuestions._id);
   return (
     <>
       <MarketCommentListUI

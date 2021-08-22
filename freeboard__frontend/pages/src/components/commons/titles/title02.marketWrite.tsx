@@ -7,7 +7,7 @@ const Title02 = styled.div`
   margin-bottom: 20px;
 `;
 
-const TitleMarketWrite = (props) => {
+const TitleMarketWrite = (props: any) => {
   return <Title02>{props.divName}</Title02>;
 };
 

@@ -1,67 +1,47 @@
 import Upload01UI from "./Upload01.presenter";
-import { ChangeEvent, useRef, useState, useEffect } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { checkValidationFile } from "../../../commons/libraries/validations";
 // import { useForm } from "react-hook-form";
 
-// interface IUpload01Props {
-//   imgUrl: string;
-//   index: number;
-//   onChangeFileUrl: (imgUrl: string, index: number) => void;
-// }
-function Upload01(props: any) {
-  const fileRef = useRef<HTMLInputElement>(null);
-  // const [imgUrls, setImgUrls] = useState([]);
-  const [imgUrl, setImgUrl] = useState([]);
-  const [file, setFile] = useState([]);
-  // const [fileEdit, setFileEdit] = useState([]);
-  // const { register, handleSubmit } = useForm();
+interface IUpload01Props {
+  index: number;
+  data?: any;
+  onChangeFiles: (file: File, index: number) => void;
+}
 
-  const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (checkValidationFile(file));
+function Upload01(props: IUpload01Props) {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [imgUrl, setImgUrl] = useState("");
+
+  async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
+    const file: any = event.target.files?.[0];
+    if (!checkValidationFile(file)) return;
 
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
-    fileReader.onload = (e) => {
-      const imgArr = [...imgUrl];
-      imgArr.push(e.target?.result);
-      setImgUrl(imgArr);
-      const newImg = [...file];
-      newImg.push(file);
-      setFile(newImg);
-      console.log("1", imgUrl, "2", imgArr, "3", file);
-      props.onChangeFileUrl(imgUrl, props.index);
+    fileReader.onload = (data) => {
+      setImgUrl(data.target?.result as string);
       props.onChangeFiles(file, props.index);
     };
-  };
+  }
 
-  useEffect(() => {
-    if (props.data?.fetchUseditem.images.length)
-      setImgUrl(
-        [...props.data?.fetchUseditem.images].map(
-          (data) => `https://storage.googleapis.com/${data}`
-        )
-      );
-  }, [props.data?.fetchUseditem.images]);
+  // useEffect(() => {
+  //   const newImgUrl = props.data?.fetchUseditem.images
+  //     ?.map((data: any) => `https://storage.googleapis.com/${data}`)
+  //     .concat(imgUrl)
+  //     .slice(0, 4);
+  //   console.log("imgUrl", newImgUrl);
 
-  // console.log("414141", props.data);
-
-  const onClickBox = (e) => {
-    fileRef.current?.click(e.target.id);
-  };
-  const onClickDeleteImg = (index) => {
-    const imgArr = [...imgUrl];
-    imgArr.splice(index, 1);
-    setImgUrl(imgArr);
+  //   setImgUrl(newImgUrl);
+  // }, [props.data]);
+  const onClickBox = () => {
+    fileRef.current?.click();
   };
   return (
     <>
       <Upload01UI
         onChangeFile={onChangeFile}
         onClickBox={onClickBox}
-        onClickDeleteImg={onClickDeleteImg}
-        // imgUrls={props.imgUrls}
-        file={file}
         imgUrl={imgUrl}
         fileRef={fileRef}
       />

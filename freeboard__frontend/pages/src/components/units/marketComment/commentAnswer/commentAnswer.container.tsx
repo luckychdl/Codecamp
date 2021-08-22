@@ -4,15 +4,13 @@ import CommentAnswerUI from "./commentAnswer.presenter";
 import { CREATE_USED_ITEM_QUESTION_ANSWER } from "./commentAnswer.queries";
 import { Modal } from "antd";
 import { FETCH_USED_ITEM_QUESTION_ANSWERS } from "../commentAnswerList/commentAnswerList.queries";
-import { useRouter } from "next/router";
-const CommentAnswer = (props) => {
-  const router = useRouter();
+
+const CommentAnswer = (props: any) => {
   const [createUseditemQuestionAnswer] = useMutation(
     CREATE_USED_ITEM_QUESTION_ANSWER
   );
   const { register, handleSubmit } = useForm();
-  const onClickSubmit = async (el) => {
-    console.log(props.data);
+  const onClickSubmit = async (el: any) => {
     try {
       await createUseditemQuestionAnswer({
         // 대댓글 등록
@@ -30,7 +28,7 @@ const CommentAnswer = (props) => {
           },
         ],
       });
-      props.setIsComment((prev) => !prev);
+      props.setIsComment((prev: any) => !prev);
       Modal.success({
         content: "댓글이 등록되었습니다.",
       });

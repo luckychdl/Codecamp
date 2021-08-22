@@ -6,7 +6,7 @@ const Title01 = styled.div`
   margin: 15px 0;
 `;
 
-const TitleSignIn = (props) => {
+const TitleSignIn = (props: any) => {
   return <Title01>{props.divName}</Title01>;
 };
 

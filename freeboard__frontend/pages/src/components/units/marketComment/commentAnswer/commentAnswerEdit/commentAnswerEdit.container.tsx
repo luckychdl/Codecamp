@@ -7,12 +7,12 @@ import {
 } from "./commentAnswerEdit.queries";
 
 import { Modal } from "antd";
-const CommentAnswerEdit = (props) => {
+const CommentAnswerEdit = (props: any) => {
   const [updateUseditemQuestionAnswer] = useMutation(
     UPDATE_USEDITEM_QUESTION_ANSWER
   );
   const { register, handleSubmit } = useForm();
-  const onClickUpdateCommentAnswer = async (data) => {
+  const onClickUpdateCommentAnswer = async (data: any) => {
     // 대댓글 수정
     try {
       await updateUseditemQuestionAnswer({
@@ -29,8 +29,7 @@ const CommentAnswerEdit = (props) => {
           },
         ],
       });
-      props.setIsEdit((prev) => !prev);
-      console.log(props.data.contents);
+      props.setIsEdit((prev: any) => !prev);
       Modal.success({
         content: "댓글이 수정되었습니다.",
       });

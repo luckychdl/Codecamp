@@ -2,6 +2,7 @@ import { IQuery } from "../../../../../../src/commons/types/generated/types";
 import MarketCommentListUIItem from "./marketCommentList.presenterItem";
 interface IMarketCommentListUIProps {
   data?: IQuery;
+  onClickDelete: () => void;
 }
 
 const MarketCommentListUI = (props: IMarketCommentListUIProps) => {

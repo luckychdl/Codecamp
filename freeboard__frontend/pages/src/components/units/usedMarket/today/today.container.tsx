@@ -8,7 +8,7 @@ const Today = () => {
     const basket = JSON.parse(localStorage.getItem("baskets"));
     setBasketData(basket);
   }, []);
-  const onClickMove = (el) => () => {
+  const onClickMove = (el: any) => () => {
     router.push(`/usedMarket/detail/${el._id}`);
   };
   return <TodayUI basketData={basketData} onClickMove={onClickMove} />;

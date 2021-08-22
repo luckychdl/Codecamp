@@ -9,10 +9,14 @@ export default function LayoutNavigation() {
   const onClickMoveToMarket = () => {
     router.push("../../../../../usedMarket");
   };
+  const onClickMoveToMypage = () => {
+    router.push("../../../../../myPage");
+  };
   return (
     <LayoutNavigationUI
       onClickMoveToBoard={onClickMoveToBoard}
       onClickMoveToMarket={onClickMoveToMarket}
+      onClickMoveToMypage={onClickMoveToMypage}
     />
   );
 }

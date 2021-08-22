@@ -46,7 +46,6 @@ export default function ImgUpload() {
       const result = await uploadFile({
         variables: { file: file },
       });
-      console.log(result.data.uploadFile.url);
       setImgUpload(result.data.uploadFile.url);
     } catch (error) {
       alert(error.message);
@@ -72,7 +71,7 @@ export default function ImgUpload() {
 
   const onClickInput = async () => {
     try {
-      const result = await createBoard({
+      await createBoard({
         variables: {
           createBoardInput: {
             writer: writer,
@@ -83,7 +82,6 @@ export default function ImgUpload() {
           },
         },
       });
-      console.log(result.data.createBoard._id);
       alert("게시물이 등록되었습니다.");
     } catch (error) {
       alert(error.message);

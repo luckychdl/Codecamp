@@ -35,10 +35,19 @@ import {
 import Today from "../today/today.container";
 import BestItem from "../bestItem/bestItem.container";
 import InfiniteScroll from "react-infinite-scroller";
+import { ChangeEvent, FormEvent, MouseEvent } from "react";
 
 interface IMarketMainUIProps {
   onClickMove: () => void;
-
+  onChangeSearch: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClickSearch: () => void;
+  onLoadMore: (page: number) => void;
+  onClickMoveDetail: (
+    event: MouseEvent<HTMLDivElement, MouseEvent>
+  ) => () => void;
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  onSubmit: FormEvent<HTMLFormElement>;
+  hasMore: boolean;
   data?: any;
 }
 const MarketMainUI = (props: IMarketMainUIProps) => {

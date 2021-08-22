@@ -3,13 +3,12 @@ import MarketCommentWriteUI from "./marketCommentWriteEdit.presenter";
 import { UPDATE_USEDITEM_QUESTION } from "./marketCommentWriteEdit.queries";
 import { Modal } from "antd";
 import { useForm } from "react-hook-form";
-const MarketCommentWriteEdit = (props) => {
+const MarketCommentWriteEdit = (props: any) => {
   const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEM_QUESTION);
   const { register, handleSubmit } = useForm();
 
-  const onClickUpdateComment = async (data) => {
+  const onClickUpdateComment = async (data: any) => {
     // 댓글 수정
-    console.log("ddd", data);
     try {
       await updateUseditemQuestion({
         variables: {
@@ -31,7 +30,7 @@ const MarketCommentWriteEdit = (props) => {
   };
 
   const onClickClear = () => {
-    props.setIsAnswer((prev) => !prev);
+    props.setIsAnswer((prev: any) => !prev);
   };
 
   return (

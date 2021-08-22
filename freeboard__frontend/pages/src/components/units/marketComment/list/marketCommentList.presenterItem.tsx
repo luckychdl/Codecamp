@@ -25,13 +25,11 @@ const MarketCommentListUIItem = (props: IMarketCommentListUIItemProps) => {
   const [isAnswer, setIsAnswer] = useState(false);
   const [isComment, setIsComment] = useState(false);
   const onClickAnswer = () => {
-    console.log("댓글 수정하기");
     setIsAnswer((prev) => !prev);
   };
 
   const onClickComment = () => {
     setIsComment((prev) => !prev);
-    console.log(isComment);
   };
   return (
     <>

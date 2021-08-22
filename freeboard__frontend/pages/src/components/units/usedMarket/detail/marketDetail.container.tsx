@@ -28,7 +28,6 @@ const MarketDetail = () => {
       });
 
       refetch();
-      console.log("asd", data?.fetchUseditem.useditemAddress);
     } catch (err) {
       Modal.error({
         content: err.message,

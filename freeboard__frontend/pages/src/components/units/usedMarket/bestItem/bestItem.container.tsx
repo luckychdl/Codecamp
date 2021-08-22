@@ -8,7 +8,7 @@ const BestItem = () => {
     variables: router.query.useditemId,
   });
 
-  const onClickMove = (id) => () => {
+  const onClickMove = (id: any) => () => {
     router.push(`/usedMarket/detail/${id}`);
   };
   return <BestItemUI data={data} onClickMove={onClickMove} />;

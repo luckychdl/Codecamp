@@ -19,7 +19,6 @@ const ApolloCachePage = () => {
   const { data } = useQuery(FETCH_BOARDS);
   const [deleteBoard] = useMutation(DELETE_BOARD);
   const onClickDelete = (boardId: string) => async () => {
-    console.log(boardId);
     try {
       await deleteBoard({
         variables: { boardId: boardId },

@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-
 export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  width: 150px;
+  margin-right: 50px;
+  border-right: 1px solid #eceff1;
+  width: 300px;
+  height: 100vh;
 `;
 export const Title = styled.div`
   font-size: 42px;
@@ -22,6 +22,7 @@ export const UserName = styled.div`
 `;
 export const MyPageWrapper = styled.div`
   display: flex;
+  align-items: center;
   width: 105px;
   font-size: 20px;
   margin-bottom: 75px;
@@ -50,9 +51,11 @@ export const MyProfileWrapper = styled.div`
   cursor: pointer;
 `;
 export const PointImg = styled.img`
-  margin-right: 10px;
+  margin-right: 20px;
 `;
-export const PointAmount = styled.div``;
+export const PointAmount = styled.div`
+  font-size: 24px;
+`;
 export const MoveMyMarketImg = styled.img`
   margin-right: 10px;
 `;

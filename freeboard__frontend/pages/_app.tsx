@@ -22,10 +22,10 @@ import {
 import { getAccessToken } from "./src/commons/libraries/getAccessToken";
 
 interface IContext {
-  accessToken: string;
-  setAccessToken: Dispatch<SetStateAction<string>>;
-  userInfo: any;
-  setUserInfo: any;
+  accessToken?: string;
+  setAccessToken?: Dispatch<SetStateAction<string>>;
+  userInfo?: any;
+  setUserInfo?: any;
 }
 export const GlobalContext = createContext<IContext>({});
 
@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {
       for (const err of graphQLErrors) {
-        if (err.extensions.code === "UNAUTHENTICATED") {
+        if (err.extensions?.code === "UNAUTHENTICATED") {
           operation.setContext({
             headers: {
               ...operation.getContext().headers,

@@ -19,9 +19,8 @@ export default function SignUpPage() {
     resolver: yupResolver(schemaSign),
   });
   const onClickSignUp = async (data: any) => {
-    console.log(data);
     try {
-      const result = await createUser({
+      await createUser({
         variables: {
           createUserInput: {
             email: newEmail,
@@ -30,7 +29,6 @@ export default function SignUpPage() {
           },
         },
       });
-      console.log(result);
       Modal.confirm({
         content: "회원가입을 축하합니다!",
       });
@@ -46,11 +44,9 @@ export default function SignUpPage() {
     setValue("email", `${email}@${value}`);
     trigger("email");
     // let newVale = `${email}@${value}`;
-    // console.log(newVale);
     // setState 는 함수가 종료된 후 값이 저장되기 때문에 함수안에서 console.log찍으면 한박자 늦게나옴
   };
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(formState.errors);
     setEmail(event.target.value);
   };
   // const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {

@@ -5,12 +5,11 @@ import { FETCH_USEDITEM_QUESTIONS } from "../list/marketCommentList.queries";
 import { Modal } from "antd";
 import { useForm } from "react-hook-form";
 import router from "next/router";
-const MarketCommentWrite = (props) => {
+const MarketCommentWrite = (props: any) => {
   const [createUseditemQuestion] = useMutation(CREATE_USEDITEM_QUESTION);
   const { register, handleSubmit } = useForm();
 
   const onClickSubmitComment = async (data: any) => {
-    console.log(data);
     try {
       await createUseditemQuestion({
         // 댓글 등록
@@ -39,7 +38,7 @@ const MarketCommentWrite = (props) => {
   };
 
   const onClickClear = () => {
-    props.setIsAnswer((prev) => !prev);
+    props.setIsAnswer((prev: any) => !prev);
   };
 
   return (

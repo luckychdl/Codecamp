@@ -77,7 +77,6 @@ const KakaoMap = (props: any) => {
             props.setAddressDetail(addressDetail);
             props.setLng(coords.La);
             props.setLat(coords.Ma);
-            console.log("sdsdsdsd", addressDetail);
           }
         });
       });

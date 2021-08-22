@@ -117,6 +117,7 @@ export const Upload = styled.div`
 `;
 export const UploadWrapper = styled.div`
   display: flex;
+  margin-bottom: 30px;
 `;
 export const Button = styled.button`
   width: 179px;

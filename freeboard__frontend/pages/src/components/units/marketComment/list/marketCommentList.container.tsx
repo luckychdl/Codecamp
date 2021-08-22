@@ -14,7 +14,7 @@ const MarketCommentList = () => {
     variables: { useditemId: router.query.useditemId },
   });
   const { data: userData } = useQuery(FETCH_USER_LOGGED_IN);
-  const onClickDelete = async (event) => {
+  const onClickDelete = async (event: any) => {
     try {
       await deleteUseditemQuestion({
         variables: { useditemQuestionId: event.target.id },
@@ -29,7 +29,6 @@ const MarketCommentList = () => {
       });
     }
   };
-  console.log(data?.fetchUseditemQuestions._id);
   return (
     <>
       <MarketCommentListUI

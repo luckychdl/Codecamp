@@ -20,21 +20,21 @@ import { useState } from "react";
 import MarketCommentWriteEdit from "../../../write/marketCommentWriteEdit/marketCommentWriteEdit.container";
 interface IMarketCommentListUIItemProps {
   data: IUseditemQuestion;
+  onClickDelete: () => void;
+  userData: any;
 }
 const MarketCommentListEditUIItem = (props: IMarketCommentListUIItemProps) => {
   const [isAnswer, setIsAnswer] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
+  // const [isEdit, setIsEdit] = useState(false);
   const [isComment, setIsComment] = useState(false);
   const onClickAnswer = () => {
-    console.log("댓글 수정하기");
     setIsAnswer((prev) => !prev);
   };
-  const onClickEdit = () => {
-    setIsEdit((prev) => !prev);
-  };
+  // const onClickEdit = () => {
+  //   setIsEdit((prev) => !prev);
+  // };
   const onClickComment = () => {
     setIsComment((prev) => !prev);
-    console.log(isComment);
   };
   return (
     <>

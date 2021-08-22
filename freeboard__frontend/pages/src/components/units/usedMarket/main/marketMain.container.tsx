@@ -20,7 +20,7 @@ const MarketMain = () => {
   const onClickMoveDetail = (el: any) => () => {
     const newBaskets = [el];
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]").filter(
-      (data) => data._id !== el._id
+      (data: any) => data._id !== el._id
     );
     localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
 
@@ -33,7 +33,7 @@ const MarketMain = () => {
     refetch({ search: search });
   };
   const onChangeSearch = (event: ChangeEvent) => {
-    setSearch(event.target.value);
+    setSearch((event.target as Element).value);
   };
   const onLoadMore = () => {
     if (!data) return;

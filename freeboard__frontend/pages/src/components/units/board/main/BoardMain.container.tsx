@@ -7,6 +7,7 @@ import { ChangeEvent, MouseEvent, useState } from "react";
 
 interface IBoardMainProps {
   refetch: any;
+  value: any;
 }
 export default function BoardMain(props: IBoardMainProps) {
   const { data, refetch } = useQuery(FETCH_BOARDS);
@@ -38,8 +39,8 @@ export default function BoardMain(props: IBoardMainProps) {
   const onClickSearch = () => {
     refetch({ search: search });
   };
-  const onChangeSearch = (event: ChangeEvent) => {
-    setSearch(event.target.value);
+  const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearch((event.target as Element).value);
   };
   // const getDebounce = _.debounce((data) => {
   //   refetch({ search: data });

@@ -15,7 +15,7 @@ import {
   ContentsWrapper,
 } from "./bestItem.styles";
 
-const BestItemUI = (props) => {
+const BestItemUI = (props: any) => {
   return (
     <MainWrapper>
       <MainTitle>베스트상품</MainTitle>

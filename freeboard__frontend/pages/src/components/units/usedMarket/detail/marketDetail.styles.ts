@@ -91,13 +91,12 @@ export const Tags = styled.div`
 export const ContentsWrapper = styled.div`
   margin-top: 150px;
   width: 792px;
-  height: 360px;
 `;
 export const MapBox = styled.div`
   width: 792px;
   height: 360px;
   border-bottom: 1px solid #bdbdbd;
-  padding-bottom: 40px;
+  margin-bottom: 30px;
 `;
 export const ButtonWrapper = styled.div`
   width: 380px;

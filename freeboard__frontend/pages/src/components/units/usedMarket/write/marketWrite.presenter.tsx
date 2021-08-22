@@ -18,7 +18,11 @@ import KakaoMap from "../../../commons/kakaoMap/kakaoMap.container";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const MarketWriteUI = (props: any) => {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickItem)}>
+    <form
+      onSubmit={props.handleSubmit(
+        !props.isEditWrite ? props.onClickItem : props.onClickUpdate
+      )}
+    >
       <MainWrapper>
         <Title>게시물 등록</Title>
         <MenuWrapper>
@@ -101,7 +105,6 @@ const MarketWriteUI = (props: any) => {
                   imgUrl={url}
                   {...props.register("images")}
                   data={props.data}
-                  isEditWrite={props.isEditWrite}
                   onChangeFiles={props.onChangeFiles}
                   onChangeFileUrl={props.onChangeFileUrl}
                 />

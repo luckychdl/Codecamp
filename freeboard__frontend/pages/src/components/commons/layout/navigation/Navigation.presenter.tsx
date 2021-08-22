@@ -10,6 +10,7 @@ import {
 interface ILayoutNavigationUIProps {
   onClickMoveToBoard: () => void;
   onClickMoveToMarket: () => void;
+  onClickMoveToMypage: () => void;
 }
 export default function LayoutNavigationUI(props: ILayoutNavigationUIProps) {
   return (
@@ -20,7 +21,7 @@ export default function LayoutNavigationUI(props: ILayoutNavigationUIProps) {
       <Line></Line>
       <Market onClick={props.onClickMoveToMarket}>중고마켓</Market>
       <Line></Line>
-      <MyPage>마이페이지</MyPage>
+      <MyPage onClick={props.onClickMoveToMypage}>마이페이지</MyPage>
     </Wrapper>
   );
 }

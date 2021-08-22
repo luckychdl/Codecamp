@@ -31,16 +31,18 @@ import { IQuery } from "../../../../../../src/commons/types/generated/types";
 import Slider from "react-slick";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../_app";
+import { Menu, Dropdown } from "antd";
 interface IMarketDetailUIProps {
   onClickMove: () => void;
   data?: IQuery;
   onClickToggle: () => void;
   onClickEdit: () => void;
   onClickBuying: () => void;
+  pickedCount: Number;
 }
+
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
   const { userInfo } = useContext(GlobalContext);
-  console.log("fgdg", userInfo);
   const settings = {
     customPaging: function (i: any) {
       return (
@@ -60,6 +62,26 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
     slidesToScroll: 1,
     appendDots: (dots: any) => <SliderUl> {dots} </SliderUl>,
   };
+  const menu = (
+    <Menu style={{ backgroundColor: "#512771", padding: "10px" }}>
+      <Menu.Item>
+        {props.data?.fetchUseditem.useditemAddress?.address ? (
+          <a style={{ color: "#FFFFFF", fontSize: "16px" }}>
+            {props.data?.fetchUseditem.useditemAddress?.address}
+          </a>
+        ) : (
+          <a style={{ color: "#FFFFFF", fontSize: "16px" }}>
+            주소를 입력해주세요
+          </a>
+        )}
+      </Menu.Item>
+      <Menu.Item>
+        <a style={{ color: "#FFFFFF", fontSize: "16px" }}>
+          {props.data?.fetchUseditem.useditemAddress?.addressDetail}
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <MainWrapper>
@@ -71,9 +93,16 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
             <SellDate>{props.data?.fetchUseditem.createdAt}</SellDate>
           </SellerWrapper>
         </ProfileWrapper>
+
         <LocationWrapper>
           <Link src="/FreeBoard/link.svg" />
-          <Location src="/FreeBoard/location.svg" />
+          <Dropdown
+            overlay={menu}
+            placement="topRight"
+            overlayStyle={{ backgroundColor: "#512771" }}
+          >
+            <Location src="/FreeBoard/location.svg" />
+          </Dropdown>
         </LocationWrapper>
       </SubWrapper>
       <MainNameWrapper>

@@ -10,11 +10,11 @@ import {
   Wrapper,
 } from "./today.styles";
 
-const TodayUI = (props) => {
+const TodayUI = (props: any) => {
   return (
     <TodayProductWrapper>
       <TodayTitle>오늘 본 상품</TodayTitle>
-      {props.basketData?.map((data) => (
+      {props.basketData?.map((data: any) => (
         <Wrapper key={data._id}>
           <TodayImg
             src={`https://storage.googleapis.com/${data.images[0]}`}
