@@ -152,6 +152,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
 
   const onChangeFileUrl = (file: string, index: number) => {
     const newFileUrl = [...files];
+    // @ts-ignore
     newFileUrl[index] = file;
     setFiles(newFileUrl);
   };
@@ -184,9 +185,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
         address={address}
         // imgUrls={imgUrls}
         handleOkDetail={handleOkDetail}
+        // @ts-ignore
         onChangeFileUrl={onChangeFileUrl}
         handleCancelDetail={handleCancelDetail}
         onClickAddress={onClickAddress}
+        // @ts-ignore
         onClickAddressDetail={onClickAddressDetail}
         onCompleteDetail={onCompleteDetail}
         onClickSubmit={onClickSubmit}

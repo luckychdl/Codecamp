@@ -157,6 +157,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             <Upload01
               key={`${data}_${index}`}
               index={index}
+              // @ts-ignore
               imgUrl={data}
               onChangeFileUrl={props.onChangeFileUrl}
             />

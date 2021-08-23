@@ -64,8 +64,9 @@ const PaymentPageUI = (props: any) => {
       }
     );
   };
-
-  const handleChange = (value: any) => {
+  // @ts-ignore
+  const handleChange = (value) => {
+    // @ts-ignore
     setAmount(`${value}`);
   };
   return (

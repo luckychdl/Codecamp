@@ -59,6 +59,7 @@ export default function SignUpPageUI(props: any) {
             placeholder="도메인을 선택하세요."
             optionFilterProp="children"
             filterOption={(input, option) =>
+              // @ts-ignore
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
             }
             filterSort={(optionA, optionB) =>

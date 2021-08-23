@@ -40,6 +40,7 @@ export default function BoardMain(props: IBoardMainProps) {
     refetch({ search: search });
   };
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    // @ts-ignore
     setSearch((event.target as Element).value);
   };
   // const getDebounce = _.debounce((data) => {

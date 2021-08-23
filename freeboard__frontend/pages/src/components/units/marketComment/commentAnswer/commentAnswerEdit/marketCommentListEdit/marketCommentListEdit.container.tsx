@@ -34,6 +34,7 @@ const MarketCommentListEdit = () => {
     <>
       <MarketCommentListUI
         data={data}
+        // @ts-ignore
         onClickDelete={onClickDelete}
         userData={userData}
       />
