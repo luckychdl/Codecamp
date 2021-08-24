@@ -1,6 +1,6 @@
-import MyMarket from "../src/components/units/myPage/myMarket/myMarket.container";
+import MyPageMainPage from "../../src/components/units/myPage/myPageMain/myPageMain.container";
 const MyPage = () => {
-  return <MyMarket />;
+  return <MyPageMainPage />;
 };
 
 export default MyPage;

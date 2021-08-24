@@ -5,12 +5,12 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { AppProps } from "next/dist/next-server/lib/router/router";
-import Layout from "./src/components/commons";
+import Layout from "../src/components/commons";
 import "../styles/globals.css";
 import "antd/dist/antd.css";
 import { Global } from "@emotion/react";
 import { onError } from "@apollo/client/link/error";
-import { globalStyles } from "./src/commons/styles/globalStyles";
+import { globalStyles } from "../src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
 import {
   useState,
@@ -19,7 +19,7 @@ import {
   createContext,
   useEffect,
 } from "react";
-import { getAccessToken } from "./src/commons/libraries/getAccessToken";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 
 interface IContext {
   accessToken?: string;
@@ -70,7 +70,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
   const client = new ApolloClient({
     // uri: "http://backend02.codebootcamp.co.kr/graphql",
-    link: ApolloLink.from([errorLink, uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
   return (

@@ -1,4 +1,4 @@
-import MarketMain from "../src/components/units/usedMarket/main/marketMain.container";
+import MarketMain from "../../src/components/units/usedMarket/main/marketMain.container";
 const UsedMarket = () => {
   return <MarketMain />;
 };
