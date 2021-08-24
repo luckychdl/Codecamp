@@ -8,7 +8,6 @@ import {
   Title,
 } from "./myPointPay.styles";
 const MyPointPayPageUI = (props: any) => {
-  console.log(props.data?.fetchPointTransactionsOfLoading);
   return (
     <MainWrapper>
       <Wrapper>
@@ -18,17 +17,14 @@ const MyPointPayPageUI = (props: any) => {
           <ListColumn>충전 내역</ListColumn>
           <ListColumn>충전 후 잔액</ListColumn>
         </Row>
-        {props.data?.fetchPointTransactionsOfLoading
-
-          .map((data: any) => (
-            <Row key={data._id}>
-              <Column>{getDate(data.updatedAt)}</Column>
-              <Title id={data._id}>{data.impUid}</Title>
-              <Column>{data.amount}</Column>
-              <Column>{data.balance}</Column>
-            </Row>
-          ))
-          .reverse()}
+        {props.data?.fetchPointTransactionsOfLoading.map((data: any) => (
+          <Row key={data._id}>
+            <Column>{getDate(data.updatedAt)}</Column>
+            <Title id={data._id}>{data.impUid}</Title>
+            <Column>{data.amount}</Column>
+            <Column>{data.balance}</Column>
+          </Row>
+        ))}
       </Wrapper>
     </MainWrapper>
   );

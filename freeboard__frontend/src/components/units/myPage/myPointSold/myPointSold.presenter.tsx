@@ -7,7 +7,7 @@ import {
   Column,
   Title,
 } from "./myPointSold.styles";
-const MyPointSoldPageUI = (props: any) => {
+const MyPointSellingPageUI = (props: any) => {
   return (
     <MainWrapper>
       <Wrapper>
@@ -24,7 +24,7 @@ const MyPointSoldPageUI = (props: any) => {
               <Column>{getDate(data.updatedAt)}</Column>
               <Title id={data._id}>{data.useditem.name}</Title>
 
-              <Column>{data.statusDetail}</Column>
+              <Column>{data.amount}</Column>
               <Column>{data.balance}</Column>
             </Row>
           ))
@@ -33,4 +33,4 @@ const MyPointSoldPageUI = (props: any) => {
     </MainWrapper>
   );
 };
-export default MyPointSoldPageUI;
+export default MyPointSellingPageUI;

@@ -42,6 +42,9 @@ const MarketDetail = () => {
           useritemId: router.query.useditemId,
         },
       });
+      Modal.success({
+        content: "구매가 완료되었습니다.",
+      });
     } catch (err) {
       Modal.error({
         content: err.message,

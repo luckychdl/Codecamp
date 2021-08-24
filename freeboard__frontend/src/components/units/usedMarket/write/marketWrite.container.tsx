@@ -78,7 +78,7 @@ const MarketWrite = (props: any) => {
     const images = results.map((el) => el.data.uploadFile.url);
     console.log(images);
     try {
-      await updateUseditem({
+      const result = await updateUseditem({
         variables: {
           updateUseditemInput: {
             name: data.name,
@@ -99,6 +99,9 @@ const MarketWrite = (props: any) => {
       });
       Modal.success({
         content: "수정이 완료되었습니다.",
+        onOk() {
+          router.push(`/usedMarket/detail/${result.data?.createUseditem._id}`);
+        },
       });
     } catch (err) {
       Modal.error({
@@ -106,6 +109,7 @@ const MarketWrite = (props: any) => {
       });
     }
   };
+
   const onChangeFiles = (file: File, index: number) => {
     const newFiles = [...files];
     newFiles[index] = file;

@@ -25,7 +25,7 @@ interface IContext {
   accessToken?: string;
   setAccessToken?: Dispatch<SetStateAction<string>>;
   userInfo?: any;
-  setUserInfo?: any;
+  setUserInfo?: Dispatch<SetStateAction<any>>;
 }
 export const GlobalContext = createContext<IContext>({});
 

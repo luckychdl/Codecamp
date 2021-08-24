@@ -7,7 +7,7 @@ import {
   Column,
   Title,
 } from "./myPointBought.styles";
-const MyPointBoughtPageUI = (props: any) => {
+const MyPointBuyingtPageUI = (props: any) => {
   console.log(props.data);
   return (
     <MainWrapper>
@@ -26,9 +26,9 @@ const MyPointBoughtPageUI = (props: any) => {
               <Column>{getDate(data.updatedAt)}</Column>
               <Title id={data._id}>{data.useditem.name}</Title>
 
-              <Column>{data.status}</Column>
-              <Column>{data.statusDetail}</Column>
-              <Column>{data.user.seller}</Column>
+              <Column>{data.amount}</Column>
+              <Column>{data.balance}</Column>
+              <Column></Column>
             </Row>
           ))
           .reverse()}
@@ -36,4 +36,4 @@ const MyPointBoughtPageUI = (props: any) => {
     </MainWrapper>
   );
 };
-export default MyPointBoughtPageUI;
+export default MyPointBuyingtPageUI;

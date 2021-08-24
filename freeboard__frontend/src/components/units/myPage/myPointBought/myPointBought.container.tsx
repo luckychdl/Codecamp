@@ -1,9 +1,10 @@
 import { useQuery } from "@apollo/client";
-import MyPointBoughtPageUI from "./myPointBought.presenter";
+import MyPointBuyingtPageUI from "./myPointBought.presenter";
 import { FETCH_POINT_TRANSACTIONS_OF_BUYING } from "./myPointBought.queries";
-const MyPointBoughtPage = () => {
+const MyPointBuyingPage = () => {
   const { data } = useQuery(FETCH_POINT_TRANSACTIONS_OF_BUYING);
-  return <MyPointBoughtPageUI data={data} />;
+  console.log("123123", data);
+  return <MyPointBuyingtPageUI data={data} />;
 };
 
-export default MyPointBoughtPage;
+export default MyPointBuyingPage;

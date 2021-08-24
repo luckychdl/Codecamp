@@ -1,8 +1,10 @@
-import { useQuery } from "@apollo/client";
+import { useApolloClient, useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../../../pages/_app";
 import PaymentPageUI from "../payment/payment.presenter";
-import { FETCH_USER_LOGGED_IN } from "./dropDown.queries";
+import { FETCH_USER_LOGGED_IN, LOGOUT_USER } from "./dropDown.queries";
 import {
   MainWrapper,
   ProfileImg,
@@ -18,14 +20,40 @@ import {
   LogOutWrapper,
 } from "./dropDown.styles";
 const DropDownPage = () => {
+  const { setAccessToken, setUserInfo } = useContext(GlobalContext);
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
+  const [logoutUser] = useMutation(LOGOUT_USER);
+  const client = useApolloClient();
+  const onClickLogout = async () => {
+    try {
+      await logoutUser();
+      await client.clearStore();
+      if (setAccessToken) setAccessToken("");
+      if (setUserInfo) setUserInfo({});
+      // await client.clearStore().then(() => {
+      //   client.resetStore();
+      // });
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("userInfo");
+      Modal.success({
+        content: "로그아웃 돼었습니다.",
+      });
+    } catch (err) {
+      Modal.error({
+        content: err.message,
+      });
+    }
+  };
   const onClickIsOpen = () => {
     setIsOpen((prev) => !prev);
   };
   const onClickIsClear = () => {
     setIsOpen((prev) => !prev);
+  };
+  const onClickMyPage = () => {
+    router.push("/myPage");
   };
   return (
     <>
@@ -47,9 +75,9 @@ const DropDownPage = () => {
       </Modal>
       <MainWrapper>
         <ProfileWrapper>
-          <ProfileImg src="/FreeBoard/profile.svg" />
+          <ProfileImg src="/FreeBoard/profile.svg" onClick={onClickMyPage} />
           <NameWrapper>
-            <Name>{data?.fetchUserLoggedIn.name}</Name>
+            <Name onClick={onClickMyPage}>{data?.fetchUserLoggedIn.name}</Name>
             <Point>{data?.fetchUserLoggedIn.userPoint.amount} P</Point>
           </NameWrapper>
         </ProfileWrapper>
@@ -59,7 +87,7 @@ const DropDownPage = () => {
         </SubWrapper>
         <LogOutWrapper>
           <LogoutImg src="/FreeBoard/logout.svg" />
-          <LogoutMenu>로그아웃</LogoutMenu>
+          <LogoutMenu onClick={onClickLogout}>로그아웃</LogoutMenu>
         </LogOutWrapper>
       </MainWrapper>
     </>

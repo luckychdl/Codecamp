@@ -12,6 +12,7 @@ export const MainWrapper = styled.div`
 export const ProfileImg = styled.img`
   width: 70px;
   margin-right: 30px;
+  cursor: pointer;
 `;
 export const ProfileWrapper = styled.div`
   display: flex;
@@ -27,6 +28,7 @@ export const NameWrapper = styled.div`
 `;
 export const Name = styled.div`
   font-size: 22px;
+  cursor: pointer;
 `;
 export const Point = styled.div`
   font-size: 22px;

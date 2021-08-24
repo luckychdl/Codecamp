@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+
 export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,6 +20,8 @@ export const ProfileImg = styled.img`
 `;
 export const UserName = styled.div`
   font-size: 28px;
+  width: 100px;
+  text-align: center;
   font-weight: bold;
 `;
 export const MyPageWrapper = styled.div`
@@ -60,12 +63,24 @@ export const PointAmount = styled.div`
 export const MoveMyMarketImg = styled.img`
   margin-right: 10px;
 `;
-export const MoveMyMarketPage = styled.div``;
+interface IProps {
+  isMarket: boolean;
+  isOpen: boolean;
+  isInfo: boolean;
+}
+export const MoveMyMarketPage = styled.div`
+  color: ${(props: IProps) => (props.isMarket ? "#512771" : "#BDBDBD")};
+`;
 export const MyPointImg = styled.img`
   margin-right: 10px;
 `;
-export const MoveMyPointPage = styled.div``;
+export const MoveMyPointPage = styled.div`
+  color: ${(props: IProps) => (props.isOpen ? "#512771" : "#BDBDBD")};
+`;
 export const MyProfileImg = styled.img`
   margin-right: 10px;
 `;
-export const MoveMyProfilePage = styled.div``;
+export const MoveMyProfilePage = styled.div`
+  color: ${(props: IProps) => (props.isInfo ? "#512771" : "#BDBDBD")};
+`;
+export const SubWrapper = styled.div``;

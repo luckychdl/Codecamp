@@ -1,4 +1,3 @@
-// import MyMarket from "../myMarket/myMarket.container";
 import {
   MainWrapper,
   Title,
@@ -16,31 +15,74 @@ import {
   MyMarketWrapper,
   MyPointWrapper,
   MyProfileWrapper,
+  SubWrapper,
 } from "./userInfo.styles";
-const UserInfoUI = (props: any) => {
+interface IUserInfoUIProps {
+  onClickMyMarket: () => void;
+  onClickMoveToMenu: () => void;
+  onClickMyInfo: () => void;
+  isMarket: boolean;
+  isInfo: boolean;
+  isOpen: boolean;
+  data?: any;
+}
+const UserInfoUI = (props: IUserInfoUIProps) => {
   return (
     <MainWrapper>
-      <Title>MY PAGE</Title>
-      <ProfileImg src="/FreeBoard/mainProfile.svg" />
-      <UserName>{props.data?.fetchUserLoggedIn.name}</UserName>
-      <MyPageWrapper>
-        <PointImg src="/FreeBoard/savings.svg" />
-        <PointAmount>
-          {props.data?.fetchUserLoggedIn.userPoint?.amount}
-        </PointAmount>
-      </MyPageWrapper>
-      <MyMarketWrapper>
-        <MoveMyMarketImg src="/FreeBoard/cart.svg" />
-        <MoveMyMarketPage>내 장터</MoveMyMarketPage>
-      </MyMarketWrapper>
-      <MyPointWrapper>
-        <MyPointImg src="/FreeBoard/savingsBDBDBD.svg" />
-        <MoveMyPointPage>내 포인트</MoveMyPointPage>
-      </MyPointWrapper>
-      <MyProfileWrapper>
-        <MyProfileImg src="/FreeBoard/profile.svg" />
-        <MoveMyProfilePage>내 프로필</MoveMyProfilePage>
-      </MyProfileWrapper>
+      <SubWrapper>
+        <Title>MY PAGE</Title>
+        <ProfileImg src="/FreeBoard/mainProfile.svg" />
+        <UserName>{props.data?.fetchUserLoggedIn.name}</UserName>
+        <MyPageWrapper>
+          <PointImg src="/FreeBoard/savings.svg" />
+          <PointAmount>
+            {props.data?.fetchUserLoggedIn.userPoint?.amount}
+          </PointAmount>
+        </MyPageWrapper>
+        <MyMarketWrapper>
+          {props.isMarket ? (
+            <MoveMyMarketImg src="/FreeBoard/cart.svg" />
+          ) : (
+            <MoveMyMarketImg src="/FreeBoard/cartBDBDBD.svg" />
+          )}
+
+          <MoveMyMarketPage
+            onClick={props.onClickMyMarket}
+            isMarket={props.isMarket}
+          >
+            내 장터
+          </MoveMyMarketPage>
+        </MyMarketWrapper>
+        <MyPointWrapper>
+          {props.isOpen ? (
+            <MyPointImg src="/FreeBoard/savings.svg" />
+          ) : (
+            <MyPointImg src="/FreeBoard/savingsBDBDBD.svg" />
+          )}
+
+          <MoveMyPointPage
+            onClick={props.onClickMoveToMenu}
+            id="myPointTotal"
+            isOpen={props.isOpen}
+          >
+            내 포인트
+          </MoveMyPointPage>
+        </MyPointWrapper>
+        <MyProfileWrapper>
+          {props.isInfo ? (
+            <MyProfileImg src="/FreeBoard/profile.svg" />
+          ) : (
+            <MyProfileImg src="/FreeBoard/profileBDBDBD.svg" />
+          )}
+
+          <MoveMyProfilePage
+            onClick={props.onClickMyInfo}
+            isInfo={props.isInfo}
+          >
+            내 프로필
+          </MoveMyProfilePage>
+        </MyProfileWrapper>
+      </SubWrapper>
     </MainWrapper>
   );
 };
