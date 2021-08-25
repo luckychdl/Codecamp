@@ -50,8 +50,4 @@ export const Title = styled.div`
   font-size: 18px;
   border-top: 1px solid #e0e0e0;
   cursor: pointer;
-  :active {
-    position: relative;
-    top: 2px;
-  }
 `;

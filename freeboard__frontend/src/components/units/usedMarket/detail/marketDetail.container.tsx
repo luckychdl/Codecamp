@@ -44,6 +44,9 @@ const MarketDetail = () => {
       });
       Modal.success({
         content: "구매가 완료되었습니다.",
+        onOk() {
+          router.push("/usedMarket");
+        },
       });
     } catch (err) {
       Modal.error({

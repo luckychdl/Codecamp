@@ -15,9 +15,10 @@ export const SubWrapper = styled.div`
 `;
 export const MyWrapper = styled.div`
   display: flex;
+  width: 800px;
   justify-content: flex-start;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin-top: 70px;
+  margin-bottom: 30px;
 `;
 export const TotalPoint = styled.div`
   font-size: 24px;
@@ -69,3 +70,30 @@ export const SellingPoint = styled.div`
   }
 `;
 export const ContentsWrapper = styled.div``;
+export const SearchWrapper = styled.div`
+  display: flex;
+  width: 1200px;
+  height: 40px;
+  margin-top: 70px;
+  justify-content: flex-end;
+`;
+export const Search = styled.input`
+  width: 350px;
+  height: 50px;
+  background-image: url("/FreeBoard/search.svg");
+  background-repeat: no-repeat;
+  background-size: 35px;
+  background-position-y: center;
+  background-position-x: 10px;
+  padding-left: 50px;
+  font-size: 20px;
+  outline-color: #512771;
+`;
+export const SearchBtn = styled.button`
+  margin-left: 20px;
+  width: 80px;
+  height: 50px;
+  cursor: pointer;
+  background-color: #512771;
+  color: #ffffff;
+`;

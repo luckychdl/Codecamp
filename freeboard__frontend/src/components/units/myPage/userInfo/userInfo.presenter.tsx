@@ -34,7 +34,12 @@ const UserInfoUI = (props: IUserInfoUIProps) => {
         <ProfileImg src="/FreeBoard/mainProfile.svg" />
         <UserName>{props.data?.fetchUserLoggedIn.name}</UserName>
         <MyPageWrapper>
-          <PointImg src="/FreeBoard/savings.svg" />
+          {props.data?.fetchUserLoggedIn.name ? (
+            <PointImg src="/FreeBoard/savings.svg" />
+          ) : (
+            <></>
+          )}
+
           <PointAmount>
             {props.data?.fetchUserLoggedIn.userPoint?.amount}
           </PointAmount>

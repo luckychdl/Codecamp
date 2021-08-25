@@ -7,6 +7,9 @@ import {
   BuyingPoint,
   SellingPoint,
   ContentsWrapper,
+  SearchWrapper,
+  Search,
+  SearchBtn,
 } from "./myPointMain.styles";
 // import MyPointMainPage from "../myPointMain/myPointMain.container";
 import MyPointTotalPage from "../myPointTotal/myPointTotal.container";
@@ -48,6 +51,10 @@ const MyPointMainPageUI = (props: any) => {
             판매내역
           </SellingPoint>
         </MyWrapper>
+        <SearchWrapper>
+          <Search />
+          <SearchBtn>검색</SearchBtn>
+        </SearchWrapper>
       </SubWrapper>
       <ContentsWrapper>
         {/* {props.myMenu === "myPointMain" && <MyPointMainPage />} */}

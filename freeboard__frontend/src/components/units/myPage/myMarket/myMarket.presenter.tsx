@@ -1,3 +1,4 @@
+import { Pagination } from "antd";
 import { getDate } from "../../../../commons/libraries/utils";
 
 import {
@@ -32,6 +33,7 @@ const MyMarketUI = (props: any) => {
           ))
           .reverse()}
       </Wrapper>
+      <Pagination />
     </MainWrapper>
   );
 };

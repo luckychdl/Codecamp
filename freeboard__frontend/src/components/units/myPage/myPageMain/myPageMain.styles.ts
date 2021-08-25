@@ -8,6 +8,10 @@ export const MyProduct = styled.div`
   :hover {
     border-bottom: 1px solid #512771;
   }
+  :active {
+    position: relative;
+    top: 2px;
+  }
 `;
 export const MyPick = styled.div`
   cursor: pointer;
@@ -16,6 +20,10 @@ export const MyPick = styled.div`
     props.isPicked ? "#512771" : "#BDBDBD"};
   :hover {
     border-bottom: 1px solid #512771;
+  }
+  :active {
+    position: relative;
+    top: 2px;
   }
 `;
 export const MyWrapper = styled.div`

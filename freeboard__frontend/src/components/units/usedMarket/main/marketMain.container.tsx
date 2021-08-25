@@ -2,16 +2,19 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
+import { IQuery } from "../../../../commons/types/generated/types";
 import MarketMainUI from "./marketMain.presenter";
 import { FETCH_USED_ITEMS } from "./marketMain.queries";
 
 const MarketMain = () => {
   const [search, setSearch] = useState();
   const [hasMore, setHasMore] = useState(true);
+  const [isSold, setIsSold] = useState(false);
+  const [isSelling, setIsSelling] = useState(true);
   const router = useRouter();
   const { register, handleSubmit } = useForm();
-  const { data, refetch, fetchMore } = useQuery(FETCH_USED_ITEMS, {
-    variables: router.query.useditemId,
+  const { data, refetch, fetchMore } = useQuery<IQuery>(FETCH_USED_ITEMS, {
+    variables: { isSoldout: false },
   });
   // const { data: buyData } = useQuery(FETCH_USED_ITEMS_I_BOUGHT);
   const onClickMove = () => {
@@ -54,6 +57,16 @@ const MarketMain = () => {
       },
     });
   };
+  const onClickSoldout = () => {
+    setIsSold(true);
+    setIsSelling(false);
+    refetch({ isSoldout: true });
+  };
+  const onClickSelling = () => {
+    setIsSelling(true);
+    setIsSold(false);
+    refetch({ isSoldout: false });
+  };
   return (
     <MarketMainUI
       onLoadMore={onLoadMore}
@@ -64,6 +77,10 @@ const MarketMain = () => {
       onClickMoveDetail={onClickMoveDetail}
       onClickMove={onClickMove}
       register={register}
+      onClickSoldout={onClickSoldout}
+      onClickSelling={onClickSelling}
+      isSold={isSold}
+      isSelling={isSelling}
       hasMore={hasMore}
       data={data}
     />

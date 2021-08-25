@@ -1,4 +1,4 @@
-import { getDate } from "../../../../commons/libraries/utils";
+// import { getDate } from "../../../../commons/libraries/utils";
 import Button01 from "../../../commons/buttons/button01";
 import Top from "../../../commons/toTop/toTop";
 import {
@@ -6,8 +6,8 @@ import {
   MenuWrapper,
   SubWrapper,
   SellOn,
+  SoldOut,
   Search,
-  Date,
   SearchBtn,
   SearchWrapper,
   SellWrapper,
@@ -35,7 +35,8 @@ import {
 import Today from "../today/today.container";
 import BestItem from "../bestItem/bestItem.container";
 import InfiniteScroll from "react-infinite-scroller";
-import { ChangeEvent, FormEvent, MouseEvent } from "react";
+import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
+import { DatePicker } from "antd";
 
 interface IMarketMainUIProps {
   onClickMove: () => void;
@@ -46,11 +47,36 @@ interface IMarketMainUIProps {
     event: MouseEvent<HTMLDivElement, MouseEvent>
   ) => () => void;
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  onClickSelling: () => void;
+  onClickSoldout: () => void;
+  isSelling: boolean;
+  isSold: boolean;
   onSubmit: FormEvent<HTMLFormElement>;
   hasMore: boolean;
   data?: any;
 }
+const { RangePicker } = DatePicker;
 const MarketMainUI = (props: IMarketMainUIProps) => {
+  const [dates, setDates] = useState([]);
+  const [hackValue, setHackValue] = useState();
+  const [value, setValue] = useState();
+  const disabledDate = (current) => {
+    if (!dates || dates.length === 0) {
+      return false;
+    }
+    const tooLate = dates[0] && current.diff(dates[0], "days") > 7;
+    const tooEarly = dates[1] && dates[1].diff(current, "days") > 7;
+    return tooEarly || tooLate;
+  };
+  const onOpenChange = (open) => {
+    if (open) {
+      setHackValue([]);
+      setDates([]);
+    } else {
+      setHackValue(undefined);
+    }
+  };
+  console.log(props.data?.fetchUseditems);
   return (
     <TotalWrapper>
       <MainWrapper>
@@ -58,12 +84,32 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
         <MenuWrapper>
           <SubWrapper>
             <SellWrapper>
-              <SellOn>판매중상품</SellOn>
-              <SellOn>판매된상품</SellOn>
+              <SellOn
+                onClick={props.onClickSelling}
+                isSelling={props.isSelling}
+              >
+                판매중상품
+              </SellOn>
+              <SoldOut onClick={props.onClickSoldout} isSold={props.isSold}>
+                판매된상품
+              </SoldOut>
             </SellWrapper>
             <SearchWrapper>
               <Search onChange={props.onChangeSearch}></Search>
-              <Date>{getDate(props.data?.fetchUseditems.createdAt)}</Date>
+              <RangePicker
+                value={hackValue || value}
+                disabledDate={disabledDate}
+                onCalendarChange={(val) => setDates(val)}
+                onChange={(val) => setValue(val)}
+                onOpenChange={onOpenChange}
+                style={{
+                  width: "210px",
+                  height: "50px",
+                  border: "none",
+                  outlineColor: "#FFFFFF",
+                }}
+              />
+              {/* <Date>{getDate(props.data?.fetchUseditems.createdAt)}</Date> */}
               <SearchBtn onClick={props.onClickSearch}>검색</SearchBtn>
             </SearchWrapper>
           </SubWrapper>
@@ -81,6 +127,7 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
             hasMore={props.hasMore}
             useWindow={false}
           >
+            {}
             {props.data?.fetchUseditems.map((data: any) => (
               <>
                 <ListMainWrapper

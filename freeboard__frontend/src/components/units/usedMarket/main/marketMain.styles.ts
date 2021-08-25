@@ -45,14 +45,48 @@ export const SellWrapper = styled.div`
   width: 1050px;
   justify-content: flex-start;
 `;
+interface IProps {
+  isSelling: boolean;
+  isSold: boolean;
+}
 export const SellOn = styled.div`
   margin: 10px;
+  font-size: 16px;
+  color: ${(props: IProps) => (props.isSelling ? "#512771" : "#757575")};
+  border-bottom: ${(props: IProps) =>
+    props.isSelling ? "3px solid #512771;" : "none"};
+  :active {
+    position: relative;
+    top: 2px;
+  }
+`;
+export const SoldOut = styled.div`
+  margin: 10px;
+  font-size: 16px;
+  color: ${(props: IProps) => (props.isSold ? "#512771" : "#757575")};
+  border-bottom: ${(props: IProps) =>
+    props.isSold ? "3px solid #512771;" : "none"};
+  :active {
+    position: relative;
+    top: 2px;
+  }
 `;
 export const Search = styled.input`
   margin-right: 10px;
-  width: 282px;
-  height: 52px;
+  width: 210px;
+  height: 45px;
+  border: 1px solid #bdbdbd;
+  padding-left: 40px;
   outline-color: #512771;
+  background-image: url("/FreeBoard/search.svg");
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 10px;
+`;
+export const SearchImg = styled.img`
+  position: fixed;
+  z-index: 2;
+  right: 925px;
 `;
 export const Date = styled.div`
   margin-right: 10px;

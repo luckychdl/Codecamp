@@ -33,7 +33,7 @@ export const MyPageWrapper = styled.div`
 `;
 export const MyMarketWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   font-size: 20px;
   margin-bottom: 20px;
   width: 105px;
@@ -41,7 +41,7 @@ export const MyMarketWrapper = styled.div`
 `;
 export const MyPointWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   font-size: 20px;
   width: 105px;
   margin-bottom: 20px;
@@ -49,7 +49,7 @@ export const MyPointWrapper = styled.div`
 `;
 export const MyProfileWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   width: 105px;
   font-size: 20px;
   cursor: pointer;
@@ -83,4 +83,9 @@ export const MyProfileImg = styled.img`
 export const MoveMyProfilePage = styled.div`
   color: ${(props: IProps) => (props.isInfo ? "#512771" : "#BDBDBD")};
 `;
-export const SubWrapper = styled.div``;
+export const SubWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
