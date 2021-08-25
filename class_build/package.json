@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build:ssg": "next build && next export",
-    "build:ssr": "next build",
+    "build:dev:ssg": "cp .env-dev .env && next build && next export",
+    "build:local:ssg": "cp .env-local .env && next build && next export",
+    "build:prod:ssg": "cp .env-prod .env && next build && next export",
+    "build:stage:ssg": "cp .env-stage .env next build && next export",
+    "build:dev:ssr": "cp .env-dev .env && next build",
+    "build:local:ssr": "cp .env-local .env && next build",
+    "build:prod:ssr": "cp .env-prod .env && next build",
+    "build:stage:ssr": "cp .env-stage .env && next build",
+    "dev": "cp .env-local .env && next dev",
     "start": "next start",
     "lint": "next lint"
   },
