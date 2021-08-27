@@ -19,16 +19,16 @@ const UpdateUserUI = (props) => {
         <SubWrapper>
           <PresentPassword>현재 비밀번호</PresentPassword>
 
-          <PresentPasswordInput />
+          <PresentPasswordInput type="password" />
         </SubWrapper>
         <SubWrapper>
           <NewPassword>새 비밀번호</NewPassword>
 
-          <NewPasswordInput {...props.register("password")} />
+          <NewPasswordInput type="password" {...props.register("password")} />
         </SubWrapper>
         <SubWrapper>
           <ConfirmNewPassword>새 비밀번호 확인</ConfirmNewPassword>
-          <ConfirmNewPasswordInput />
+          <ConfirmNewPasswordInput type="password" />
         </SubWrapper>
         <Wrapper>
           <UpdateButton>비밀번호 변경</UpdateButton>

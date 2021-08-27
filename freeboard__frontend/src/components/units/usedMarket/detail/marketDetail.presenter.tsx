@@ -169,6 +169,14 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
             onClick={props.onClickEdit}
           ></Button01>
         )}
+        {props.data?.fetchUseditem.seller._id === userInfo._id ? (
+          <Button01
+            buttonName={"삭제하기"}
+            onClick={props.onClickDelete}
+          ></Button01>
+        ) : (
+          <></>
+        )}
       </ButtonWrapper>
     </MainWrapper>
   );

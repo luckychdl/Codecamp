@@ -1,4 +1,5 @@
 import { MouseEvent, useState } from "react";
+import withAuth from "../../../commons/hocs/withAuth";
 import MyPageMainPageUI from "./myPageMain.presenter";
 
 const MyPageMainPage = () => {
@@ -52,4 +53,4 @@ const MyPageMainPage = () => {
   );
 };
 
-export default MyPageMainPage;
+export default withAuth(MyPageMainPage);

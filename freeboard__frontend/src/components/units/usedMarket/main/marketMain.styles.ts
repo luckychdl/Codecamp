@@ -52,6 +52,7 @@ interface IProps {
 export const SellOn = styled.div`
   margin: 10px;
   font-size: 16px;
+  cursor: pointer;
   color: ${(props: IProps) => (props.isSelling ? "#512771" : "#757575")};
   border-bottom: ${(props: IProps) =>
     props.isSelling ? "3px solid #512771;" : "none"};
@@ -63,6 +64,7 @@ export const SellOn = styled.div`
 export const SoldOut = styled.div`
   margin: 10px;
   font-size: 16px;
+  cursor: pointer;
   color: ${(props: IProps) => (props.isSold ? "#512771" : "#757575")};
   border-bottom: ${(props: IProps) =>
     props.isSold ? "3px solid #512771;" : "none"};
@@ -95,6 +97,7 @@ export const SearchBtn = styled.button`
   margin-right: 10px;
   width: 78px;
   height: 52px;
+  cursor: pointer;
   background-color: #512771;
   color: white;
   border: none;

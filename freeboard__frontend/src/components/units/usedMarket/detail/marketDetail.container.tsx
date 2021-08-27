@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import MarketDetailUI from "./marketDetail.presenter";
 import {
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
+  DELETE_USED_ITEM,
   FETCH_USED_ITEM,
   TOGGLE_USED_ITEM_PICK,
 } from "./marketDetail.queries";
@@ -14,6 +15,7 @@ declare const window: typeof globalThis & {
 };
 const MarketDetail = () => {
   const router = useRouter();
+  const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
   const { data, refetch } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.useditemId },
   });
@@ -35,6 +37,25 @@ const MarketDetail = () => {
     }
   };
 
+  const onClickDelete = async () => {
+    try {
+      await deleteUseditem({
+        variables: {
+          useditemId: router.query.useditemId,
+        },
+      });
+      Modal.success({
+        content: "삭제가 완료되었습니다.",
+        onOk() {
+          router.push("/usedMarket");
+        },
+      });
+    } catch (err) {
+      Modal.error({
+        content: err.message,
+      });
+    }
+  };
   const onClickBuying = async () => {
     try {
       await createPointTransactionOfBuyingAndSelling({
@@ -121,6 +142,7 @@ const MarketDetail = () => {
         onClickMove={onClickMove}
         onClickEdit={onClickEdit}
         onClickToggle={onClickToggle}
+        onClickDelete={onClickDelete}
       />
     </>
   );

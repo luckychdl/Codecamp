@@ -10,7 +10,7 @@ const UpdateUser = () => {
   const onClickReset = async (data) => {
     try {
       await resetUserPassword({
-        variables: { password: String(data) },
+        variables: { password: String(data.password) },
       });
       Modal.success({
         content: "비밀번호가 변경되었습니다.",
