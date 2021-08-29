@@ -10,11 +10,13 @@ const withAuth = (Component: ComponentType) => (props: any) => {
     if (!(localStorage.getItem("refreshToken") || "")) {
       Modal.confirm({
         content: "로그인이 필요합니다!",
+        onOk() {
+          router.push("/boards/login");
+        },
       });
-      router.push("/boards/login");
     }
   }, []);
-  if (!(localStorage.getItem("refreshToken") || "")) return <></>;
+  // if (!localStorage.getItem("refreshToken") || "") return <></>;
   return <Component {...props} />;
 };
 

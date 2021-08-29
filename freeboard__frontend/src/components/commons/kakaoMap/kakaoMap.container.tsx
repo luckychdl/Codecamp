@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import KakaoMapPage from "./kakaoMap.presenter";
 
 declare const window: typeof globalThis & {
@@ -7,9 +7,11 @@ declare const window: typeof globalThis & {
 const KakaoMap = (props: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [address, setAddress] = useState();
+  const addressRef = useRef<HTMLInputElement>(null);
   const [lng, setLng] = useState();
   const [lat, setLat] = useState();
   const [addressDetail] = useState();
+
   // const [createUsedItem] = useMutation(CREATE_USED_ITEM);
 
   const onClickOpenModal = () => {
@@ -83,6 +85,9 @@ const KakaoMap = (props: any) => {
     };
   }, [address, props.setLng]);
 
+  const onClickBox = () => {
+    addressRef.current?.click();
+  };
   return (
     <KakaoMapPage
       isOpen={isOpen}
@@ -91,6 +96,9 @@ const KakaoMap = (props: any) => {
       lng={lng}
       lat={lat}
       data={props.data}
+      defaultAddress={props.defaultAddress}
+      addressRef={addressRef}
+      onClickBox={onClickBox}
       onComplete={onComplete}
       handleCancel={handleCancel}
       onClickAddressDetail={onClickAddressDetail}

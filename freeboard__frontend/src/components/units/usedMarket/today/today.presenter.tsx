@@ -1,3 +1,4 @@
+import { getComma } from "../../../../commons/libraries/utils";
 import {
   TodayProductWrapper,
   TodayTitle,
@@ -23,7 +24,7 @@ const TodayUI = (props: any) => {
           <TodayWrapper>
             <TodayName>{data.name}</TodayName>
             <TodayRemarks>{data.remarks}</TodayRemarks>
-            <TodayPrice>{data.price}원</TodayPrice>
+            <TodayPrice>{getComma(data.price)}원</TodayPrice>
             <TodayTags>{data.tags}</TodayTags>
           </TodayWrapper>
         </Wrapper>

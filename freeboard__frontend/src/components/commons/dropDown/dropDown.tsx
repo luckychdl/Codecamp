@@ -3,6 +3,7 @@ import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../../../pages/_app";
+import { getComma } from "../../../commons/libraries/utils";
 import PaymentPageUI from "../payment/payment.presenter";
 import { FETCH_USER_LOGGED_IN, LOGOUT_USER } from "./dropDown.queries";
 import {
@@ -38,7 +39,7 @@ const DropDownPage = () => {
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("userInfo");
       Modal.success({
-        content: "로그아웃 돼었습니다.",
+        content: "로그아웃 되었습니다.",
       });
     } catch (err) {
       Modal.error({
@@ -78,7 +79,9 @@ const DropDownPage = () => {
           <ProfileImg src="/FreeBoard/profile.svg" onClick={onClickMyPage} />
           <NameWrapper>
             <Name onClick={onClickMyPage}>{data?.fetchUserLoggedIn.name}</Name>
-            <Point>{data?.fetchUserLoggedIn.userPoint.amount} P</Point>
+            <Point>
+              {getComma(data?.fetchUserLoggedIn.userPoint.amount)} P
+            </Point>
           </NameWrapper>
         </ProfileWrapper>
         <SubWrapper onClick={onClickIsOpen}>

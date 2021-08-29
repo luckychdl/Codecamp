@@ -35,8 +35,8 @@ import {
 import Today from "../today/today.container";
 import BestItem from "../bestItem/bestItem.container";
 import InfiniteScroll from "react-infinite-scroller";
-import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
-import { DatePicker } from "antd";
+import { getComma } from "../../../../commons/libraries/utils";
+import { ChangeEvent, FormEvent, MouseEvent } from "react";
 
 interface IMarketMainUIProps {
   onClickMove: () => void;
@@ -55,27 +55,7 @@ interface IMarketMainUIProps {
   hasMore: boolean;
   data?: any;
 }
-const { RangePicker } = DatePicker;
 const MarketMainUI = (props: IMarketMainUIProps) => {
-  const [dates, setDates] = useState([]);
-  const [hackValue, setHackValue] = useState();
-  const [value, setValue] = useState();
-  const disabledDate = (current) => {
-    if (!dates || dates.length === 0) {
-      return false;
-    }
-    const tooLate = dates[0] && current.diff(dates[0], "days") > 7;
-    const tooEarly = dates[1] && dates[1].diff(current, "days") > 7;
-    return tooEarly || tooLate;
-  };
-  const onOpenChange = (open) => {
-    if (open) {
-      setHackValue([]);
-      setDates([]);
-    } else {
-      setHackValue(undefined);
-    }
-  };
   console.log(props.data?.fetchUseditems);
   return (
     <TotalWrapper>
@@ -96,19 +76,7 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
             </SellWrapper>
             <SearchWrapper>
               <Search onChange={props.onChangeSearch}></Search>
-              <RangePicker
-                value={hackValue || value}
-                disabledDate={disabledDate}
-                onCalendarChange={(val) => setDates(val)}
-                onChange={(val) => setValue(val)}
-                onOpenChange={onOpenChange}
-                style={{
-                  width: "210px",
-                  height: "50px",
-                  border: "none",
-                  outlineColor: "#FFFFFF",
-                }}
-              />
+
               {/* <Date>{getDate(props.data?.fetchUseditems.createdAt)}</Date> */}
               <SearchBtn onClick={props.onClickSearch}>검색</SearchBtn>
             </SearchWrapper>
@@ -157,7 +125,7 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
                   <ListSecondWrapper>
                     <PriceWrapper>
                       <PriceImg src="/FreeBoard/money.svg" />
-                      <Price>{data.price}</Price>
+                      <Price>{getComma(data.price)}</Price>
                     </PriceWrapper>
                   </ListSecondWrapper>
                 </ListMainWrapper>

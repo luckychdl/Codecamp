@@ -1,4 +1,4 @@
-import { getDate } from "../../../../commons/libraries/utils";
+import { getComma, getDate } from "../../../../commons/libraries/utils";
 import {
   MainWrapper,
   Wrapper,
@@ -21,8 +21,8 @@ const MyPointPayPageUI = (props: any) => {
           <Row key={data._id}>
             <Column>{getDate(data.updatedAt)}</Column>
             <Title id={data._id}>{data.impUid}</Title>
-            <Column>{data.amount}</Column>
-            <Column>{data.balance}</Column>
+            <Column>{getComma(data.amount)}</Column>
+            <Column>{getComma(data.balance)}</Column>
           </Row>
         ))}
       </Wrapper>

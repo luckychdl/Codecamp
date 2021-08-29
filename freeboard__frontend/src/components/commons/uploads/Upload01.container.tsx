@@ -6,6 +6,7 @@ import { checkValidationFile } from "../../../commons/libraries/validations";
 interface IUpload01Props {
   index: number;
   data?: any;
+  newImages: any;
   onChangeFiles: (file: File, index: number) => void;
 }
 
@@ -25,15 +26,6 @@ function Upload01(props: IUpload01Props) {
     };
   }
 
-  // useEffect(() => {
-  //   const newImgUrl = props.data?.fetchUseditem.images
-  //     ?.map((data: any) => `https://storage.googleapis.com/${data}`)
-  //     .concat(imgUrl)
-  //     .slice(0, 4);
-  //   console.log("imgUrl", newImgUrl);
-
-  //   setImgUrl(newImgUrl);
-  // }, [props.data]);
   const onClickBox = () => {
     fileRef.current?.click();
   };
@@ -42,6 +34,7 @@ function Upload01(props: IUpload01Props) {
       <Upload01UI
         onChangeFile={onChangeFile}
         onClickBox={onClickBox}
+        newImages={props.newImages}
         imgUrl={imgUrl}
         fileRef={fileRef}
       />

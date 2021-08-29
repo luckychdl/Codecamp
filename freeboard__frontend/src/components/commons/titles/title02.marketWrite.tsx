@@ -8,7 +8,7 @@ const Title02 = styled.div`
 `;
 
 const TitleMarketWrite = (props: any) => {
-  return <Title02>{props.divName}</Title02>;
+  return <Title02 defaultValue={props.defaultValue}>{props.divName}</Title02>;
 };
 
 export default TitleMarketWrite;

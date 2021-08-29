@@ -4,6 +4,7 @@ import { ChangeEvent, RefObject } from "react";
 interface IUpload01UIProps {
   fileRef: RefObject<HTMLInputElement>;
   imgUrl: string;
+  newImages: any;
   onClickBox: () => void;
   onChangeFile: (event: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -11,8 +12,13 @@ interface IUpload01UIProps {
 export default function Upload01UI(props: IUpload01UIProps) {
   return (
     <>
-      {props.imgUrl ? (
-        <Img src={props.imgUrl} onClick={props.onClickBox} />
+      {props.imgUrl || props.newImages ? (
+        <Img
+          src={
+            props.imgUrl || `https://storage.googleapis.com/${props.newImages}`
+          }
+          onClick={props.onClickBox}
+        />
       ) : (
         <PhotoSubWrapper onClick={props.onClickBox}>
           <Plus>+</Plus>

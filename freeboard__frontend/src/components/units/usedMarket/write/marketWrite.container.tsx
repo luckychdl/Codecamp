@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   CREATE_USED_ITEM,
   UPDATE_USED_ITEM,
@@ -7,16 +6,18 @@ import {
 import MarketWriteUI from "./marketWrite.presenter";
 import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
-// import withAuth from "../../../commons/hocs/withAuth";
+import withAuth from "../../../commons/hocs/withAuth";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaWrite } from "../../../../commons/libraries/yup.validation";
 import { FETCH_USED_ITEM } from "../detail/marketDetail.queries";
+import { useEffect, useState } from "react";
 const MarketWrite = (props: any) => {
   const [files, setFiles] = useState<(File | null)[]>([]);
   // const [fileUrl, setFileUrl] = useState([]);
   const [address, setAddress] = useState(0);
+  const [defaultAddress, setDefaultAddress] = useState("");
   const [lng, setLng] = useState();
   const [lat, setLat] = useState();
   const [addressDetail, setAddressDetail] = useState(0);
@@ -57,7 +58,6 @@ const MarketWrite = (props: any) => {
           },
         },
       });
-
       Modal.success({
         content: "상품이 등록되었습니다!",
         onOk() {
@@ -71,12 +71,23 @@ const MarketWrite = (props: any) => {
     }
   };
   const onClickUpdate = async (data: any) => {
-    const uploadFiles = files
-      .filter((data) => data !== undefined)
-      .map((data) => uploadFile({ variables: { file: data } }));
-    const results = await Promise.all(uploadFiles);
-    const images = results.map((el) => el.data.uploadFile.url);
-    console.log(images);
+    // const uploadFiles = files
+    //   .filter((data) => data !== undefined)
+    //   .map((data) => uploadFile({ variables: { file: data } }));
+    // const results = await Promise.all(uploadFiles);
+    // const images = results.map((el) =>
+    //   el.data.uploadFile.url ? el.data.uploadFile.url : el
+    // );
+    const uploadFiles = await Promise.all(
+      files.map((data) =>
+        typeof data !== "string"
+          ? uploadFile({ variables: { file: data } })
+          : data
+      )
+    );
+    const images = uploadFiles
+      .filter((data) => data)
+      .map((el) => (el.data?.uploadFile.url ? el.data?.uploadFile.url : el));
     try {
       const result = await updateUseditem({
         variables: {
@@ -100,7 +111,7 @@ const MarketWrite = (props: any) => {
       Modal.success({
         content: "수정이 완료되었습니다.",
         onOk() {
-          router.push(`/usedMarket/detail/${result.data?.createUseditem._id}`);
+          router.push(`/usedMarket/detail/${result.data?.updateUseditem._id}`);
         },
       });
     } catch (err) {
@@ -123,13 +134,18 @@ const MarketWrite = (props: any) => {
   const onChangeValue = (val: any) => {
     setValue("contents", val);
   };
-
+  useEffect(() => {
+    setFiles(data?.fetchUseditem.images);
+    setDefaultAddress(data?.fetchUseditem.useditemAddress.address);
+  }, [defaultAddress, data]);
   return (
     <>
       <MarketWriteUI
         isActive={formState.isValid}
         errors={formState.errors}
         data={data}
+        files={files}
+        defaultAddress={defaultAddress}
         isEditWrite={props.isEditWrite}
         onClickUpdate={onClickUpdate}
         setLng={setLng}
@@ -146,4 +162,4 @@ const MarketWrite = (props: any) => {
     </>
   );
 };
-export default MarketWrite;
+export default withAuth(MarketWrite);

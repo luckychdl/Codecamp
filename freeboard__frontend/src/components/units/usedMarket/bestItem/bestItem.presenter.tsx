@@ -1,3 +1,4 @@
+import { getComma } from "../../../../commons/libraries/utils";
 import {
   MainWrapper,
   MainTitle,
@@ -31,7 +32,7 @@ const BestItemUI = (props: any) => {
                 <ColumnSubWrapper>
                   <Name>{el.name}</Name>
                   <Remarks>{el.remarks}</Remarks>
-                  <Price>{el.price}원</Price>
+                  <Price>{getComma(el.price)}원</Price>
                   <Tags>#{el.tags}</Tags>
                 </ColumnSubWrapper>
                 <HeartWrapper>

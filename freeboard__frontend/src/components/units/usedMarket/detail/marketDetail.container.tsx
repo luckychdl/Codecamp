@@ -57,23 +57,40 @@ const MarketDetail = () => {
     }
   };
   const onClickBuying = async () => {
-    try {
-      await createPointTransactionOfBuyingAndSelling({
-        variables: {
-          useritemId: router.query.useditemId,
-        },
-      });
-      Modal.success({
-        content: "구매가 완료되었습니다.",
+    if (localStorage.getItem("refreshToken")) {
+      try {
+        await createPointTransactionOfBuyingAndSelling({
+          variables: {
+            useritemId: router.query.useditemId,
+          },
+        });
+        Modal.success({
+          content: "구매가 완료되었습니다.",
+          onOk() {
+            router.push("/usedMarket");
+          },
+        });
+      } catch (err) {
+        Modal.error({
+          content: err.message,
+        });
+      }
+    } else {
+      Modal.confirm({
+        content: "로그인이 필요합니다.",
         onOk() {
-          router.push("/usedMarket");
+          router.push("/boards/login");
         },
-      });
-    } catch (err) {
-      Modal.error({
-        content: err.message,
       });
     }
+  };
+  const onClickMoveToLogin = () => {
+    Modal.confirm({
+      content: "로그인이 필요합니다.",
+      onOk() {
+        router.push("/boards/login");
+      },
+    });
   };
   const onClickMove = () => {
     router.push("/usedMarket");
@@ -138,6 +155,7 @@ const MarketDetail = () => {
     <>
       <MarketDetailUI
         data={data}
+        onClickMoveToLogin={onClickMoveToLogin}
         onClickBuying={onClickBuying}
         onClickMove={onClickMove}
         onClickEdit={onClickEdit}

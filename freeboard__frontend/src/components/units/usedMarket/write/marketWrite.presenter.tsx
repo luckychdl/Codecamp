@@ -24,7 +24,12 @@ const MarketWriteUI = (props: any) => {
       )}
     >
       <MainWrapper>
-        <Title>게시물 등록</Title>
+        {props.isEditWrite ? (
+          <Title>게시물 수정</Title>
+        ) : (
+          <Title>게시물 등록</Title>
+        )}
+
         <MenuWrapper>
           <Title02 divName={"상품명"}></Title02>
           <Input03
@@ -92,6 +97,8 @@ const MarketWriteUI = (props: any) => {
               setLat={props.setLat}
               setAddress={props.setAddress}
               setAddressDetail={props.setAddressDetail}
+              isEditWrite={props.isEditWrite}
+              defaultAddress={props.defaultAddress}
               data={props.data}
             />
             {/* <Title02 divName={"거래위치"}></Title02>
@@ -102,6 +109,7 @@ const MarketWriteUI = (props: any) => {
                 <Upload01
                   key={`${url}_${index}`}
                   index={index}
+                  newImages={props.data?.fetchUseditem.images[index]}
                   imgUrl={url}
                   {...props.register("images")}
                   data={props.data}
@@ -110,7 +118,6 @@ const MarketWriteUI = (props: any) => {
                 />
               ))}
             </UploadWrapper>
-            <Title02 divName={"메인 사진 설정"}></Title02>
           </LocationWrapper>
           {/* <AddressWrapper>
             <Title02 divName={"GPS"}></Title02>

@@ -1,3 +1,4 @@
+import { getComma } from "../../../../commons/libraries/utils";
 import {
   MainWrapper,
   Title,
@@ -41,7 +42,7 @@ const UserInfoUI = (props: IUserInfoUIProps) => {
           )}
 
           <PointAmount>
-            {props.data?.fetchUserLoggedIn.userPoint?.amount}
+            {getComma(props.data?.fetchUserLoggedIn.userPoint?.amount)}
           </PointAmount>
         </MyPageWrapper>
         <MyMarketWrapper>

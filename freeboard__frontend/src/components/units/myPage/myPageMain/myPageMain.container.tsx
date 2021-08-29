@@ -43,7 +43,6 @@ const MyPageMainPage = () => {
       isOpen={isOpen}
       isInfo={isInfo}
       isMarket={isMarket}
-      setIsMarket={setIsMarket}
       onClickMyInfo={onClickMyInfo}
       onClickMoveToMenu={onClickMoveToMenu}
       onClickMine={onClickMine}

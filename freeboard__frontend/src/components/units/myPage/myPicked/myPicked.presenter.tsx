@@ -1,4 +1,4 @@
-import { getDate } from "../../../../commons/libraries/utils";
+import { getComma, getDate } from "../../../../commons/libraries/utils";
 import {
   MainWrapper,
   Wrapper,
@@ -27,7 +27,7 @@ const MyPickedUI = (props: any) => {
               <Column>{index + 1}</Column>
               <Title id={data._id}>{data.name}</Title>
               <Sold>{data.buyer?.name ? "판매완료" : ""}</Sold>
-              <Column>{data.price}</Column>
+              <Column>{getComma(data.price)}</Column>
               <Column>{data.seller.name}</Column>
               <Column>{getDate(data.updatedAt)}</Column>
             </Row>

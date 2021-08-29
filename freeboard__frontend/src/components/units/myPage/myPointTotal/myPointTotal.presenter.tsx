@@ -1,4 +1,4 @@
-import { getDate } from "../../../../commons/libraries/utils";
+import { getComma, getDate } from "../../../../commons/libraries/utils";
 import {
   MainWrapper,
   Wrapper,
@@ -17,18 +17,15 @@ const MyPointTotalPageUI = (props: any) => {
           <ListColumn>거래 및 충전 내역</ListColumn>
           <ListColumn>잔액</ListColumn>
         </Row>
-        {props.data?.fetchPointTransactions
+        {props.data?.fetchPointTransactions.map((data: any, index: number) => (
+          <Row key={data._id}>
+            <Column>{getDate(data.updatedAt)}</Column>
+            <Title id={data._id}>{data.status}</Title>
 
-          .map((data: any, index: number) => (
-            <Row key={data._id}>
-              <Column>{getDate(data.updatedAt)}</Column>
-              <Title id={data._id}>{data.status}</Title>
-
-              <Column>{data.statusDetail}</Column>
-              <Column>{data.balance}</Column>
-            </Row>
-          ))
-          .reverse()}
+            <Column>{data.statusDetail}</Column>
+            <Column>{getComma(data.balance)}</Column>
+          </Row>
+        ))}
       </Wrapper>
     </MainWrapper>
   );

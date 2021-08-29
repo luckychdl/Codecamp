@@ -32,12 +32,14 @@ import Slider from "react-slick";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
 import { Menu, Dropdown } from "antd";
+import { getComma } from "../../../../commons/libraries/utils";
 interface IMarketDetailUIProps {
   onClickMove: () => void;
   data?: IQuery;
   onClickToggle: () => void;
   onClickEdit: () => void;
   onClickBuying: () => void;
+  onClickDelete: () => void;
 }
 
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
@@ -109,7 +111,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
         <NameWrapper>
           <Remarks>{props.data?.fetchUseditem.remarks}</Remarks>
           <Name>{props.data?.fetchUseditem?.name}</Name>
-          <Price>{props.data?.fetchUseditem.price}원</Price>
+          <Price>{getComma(props.data?.fetchUseditem.price)}원</Price>
         </NameWrapper>
         <LikeWrapper>
           <Like src="/FreeBoard/heart.svg" onClick={props.onClickToggle} />
