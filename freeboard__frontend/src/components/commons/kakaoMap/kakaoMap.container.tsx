@@ -54,8 +54,12 @@ const KakaoMap = (props: any) => {
           // 정상적으로 검색이 완료됐으면
           if (status === window.kakao.maps.services.Status.OK) {
             const coords = new window.kakao.maps.LatLng(
-              result[0].y,
-              result[0].x
+              props.data
+                ? props.data?.fetchUseditem.useditemAddress.lat
+                : result[0].y,
+              props.data
+                ? props.data?.fetchUseditem.useditemAddress.lng
+                : result[0].x
             );
 
             // 결과값으로 받은 위치를 마커로 표시합니다
@@ -71,8 +75,10 @@ const KakaoMap = (props: any) => {
             // infowindow.open(map, marker);
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            console.log(props.data?.fetchUseditem.useditemAddress.lng, "aaa");
             marker.setMap(map);
             map.setCenter(coords);
+
             setLng(coords.La);
             setLat(coords.Ma);
             props.setAddress(address);

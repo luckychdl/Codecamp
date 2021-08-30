@@ -12,9 +12,6 @@ import Title02 from "../titles/title02.marketWrite";
 import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
 const KakaoMapPage = (props: any) => {
-  console.log(props.data?.fetchUseditem.useditemAddress.addressDetail);
-  console.log(props.data?.fetchUseditem.useditemAddress.address, "??");
-  console.log(props.defaultAddress, "<<");
   return (
     <MainWrapper>
       <LocationWrapper>
@@ -46,8 +43,12 @@ const KakaoMapPage = (props: any) => {
         />
         <AddressInput
           onClick={props.onClickBox}
-          value={props.address}
-          defaultValue={props.data?.fetchUseditem.useditemAddress.address}
+          value={
+            props.data
+              ? props.data?.fetchUseditem.useditemAddress.address
+              : props.address
+          }
+          // defaultValue={props.data?.fetchUseditem.useditemAddress.address}
         />
         {props.isOpen && (
           <Modal

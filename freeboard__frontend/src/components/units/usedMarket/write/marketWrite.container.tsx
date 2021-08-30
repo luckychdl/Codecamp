@@ -85,6 +85,7 @@ const MarketWrite = (props: any) => {
           : data
       )
     );
+    console.log(uploadFiles);
     const images = uploadFiles
       .filter((data) => data)
       .map((el) => (el.data?.uploadFile.url ? el.data?.uploadFile.url : el));
@@ -123,6 +124,7 @@ const MarketWrite = (props: any) => {
 
   const onChangeFiles = (file: File, index: number) => {
     const newFiles = [...files];
+    console.log(files);
     newFiles[index] = file;
     setFiles(newFiles);
   };
