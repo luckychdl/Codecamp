@@ -14,7 +14,7 @@ import { schemaWrite } from "../../../../commons/libraries/yup.validation";
 import { FETCH_USED_ITEM } from "../detail/marketDetail.queries";
 import { useEffect, useState } from "react";
 const MarketWrite = (props: any) => {
-  const [files, setFiles] = useState<(File | null)[]>([]);
+  const [files, setFiles] = useState<(File | null)[]>([null, null, null, null]);
   // const [fileUrl, setFileUrl] = useState([]);
   const [address, setAddress] = useState(0);
   const [defaultAddress, setDefaultAddress] = useState("");
@@ -33,13 +33,26 @@ const MarketWrite = (props: any) => {
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.useditemId },
   });
+
+  useEffect(() => {
+    if (!data) return;
+    setFiles(data?.fetchUseditem?.images);
+    setDefaultAddress(data?.fetchUseditem.useditemAddress.address);
+  }, [data]);
+  console.log(files, "bb");
+  function onChangeFiles(file: File, index: number) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+  }
   const onClickItem = async (data: any) => {
     try {
       const uploadFiles = files
         .filter((data) => data)
         .map((data) => uploadFile({ variables: { file: data } }));
       const results = await Promise.all(uploadFiles);
-      const images = results.map((data) => data.data.uploadFile.url);
+      const images = results.map((data) => data.data?.uploadFile.url);
+
       const result = await createUseditem({
         variables: {
           createUseditemInput: {
@@ -122,12 +135,6 @@ const MarketWrite = (props: any) => {
     }
   };
 
-  const onChangeFiles = (file: File, index: number) => {
-    const newFiles = [...files];
-    console.log(files);
-    newFiles[index] = file;
-    setFiles(newFiles);
-  };
   // const onChangeFileUrl = (imgUrl: string, index: number) => {
   //   const newFileUrl = [...imgUrl];
   //   newFileUrl[index] = imgUrl;
@@ -136,10 +143,7 @@ const MarketWrite = (props: any) => {
   const onChangeValue = (val: any) => {
     setValue("contents", val);
   };
-  useEffect(() => {
-    setFiles(data?.fetchUseditem.images);
-    setDefaultAddress(data?.fetchUseditem.useditemAddress.address);
-  }, [defaultAddress, data]);
+
   return (
     <>
       <MarketWriteUI

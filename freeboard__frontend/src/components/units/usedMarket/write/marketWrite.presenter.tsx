@@ -110,11 +110,8 @@ const MarketWriteUI = (props: any) => {
                   key={`${url}_${index}`}
                   index={index}
                   newImages={props.data?.fetchUseditem.images[index]}
-                  imgUrl={url}
-                  {...props.register("images")}
                   data={props.data}
                   onChangeFiles={props.onChangeFiles}
-                  onChangeFileUrl={props.onChangeFileUrl}
                 />
               ))}
             </UploadWrapper>

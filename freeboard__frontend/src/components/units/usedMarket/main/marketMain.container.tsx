@@ -43,6 +43,7 @@ const MarketMain = () => {
     if (!data) return;
     fetchMore({
       variables: { page: Math.floor(data?.fetchUseditems.length / 10) + 1 },
+      // @ts-ignore
       updateQuery: (prev, { fetchMoreResult }) => {
         /* @ts-ignore */
         if (!fetchMoreResult.fetchUseditems.length) setHasMore(false);

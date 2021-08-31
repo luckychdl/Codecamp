@@ -32,6 +32,7 @@ export const TodayTitle = styled.div`
 export const TodayWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 130px;
 
   padding: 20px;
 `;

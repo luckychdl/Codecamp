@@ -17,7 +17,7 @@ function Upload01(props: IUpload01Props) {
   async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
     const file: any = event.target.files?.[0];
     if (!checkValidationFile(file)) return;
-
+    console.log(file, "aa");
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
