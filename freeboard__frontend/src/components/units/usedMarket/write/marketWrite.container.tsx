@@ -39,7 +39,6 @@ const MarketWrite = (props: any) => {
     setFiles(data?.fetchUseditem?.images);
     setDefaultAddress(data?.fetchUseditem.useditemAddress.address);
   }, [data]);
-  console.log(files, "bb");
   function onChangeFiles(file: File, index: number) {
     const newFiles = [...files];
     newFiles[index] = file;
@@ -77,20 +76,13 @@ const MarketWrite = (props: any) => {
           router.push(`/usedMarket/detail/${result.data?.createUseditem._id}`);
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       Modal.error({
         content: err.message,
       });
     }
   };
   const onClickUpdate = async (data: any) => {
-    // const uploadFiles = files
-    //   .filter((data) => data !== undefined)
-    //   .map((data) => uploadFile({ variables: { file: data } }));
-    // const results = await Promise.all(uploadFiles);
-    // const images = results.map((el) =>
-    //   el.data.uploadFile.url ? el.data.uploadFile.url : el
-    // );
     const uploadFiles = await Promise.all(
       files.map((data) =>
         typeof data !== "string"
@@ -98,7 +90,6 @@ const MarketWrite = (props: any) => {
           : data
       )
     );
-    console.log(uploadFiles);
     const images = uploadFiles
       .filter((data) => data)
       .map((el) => (el.data?.uploadFile.url ? el.data?.uploadFile.url : el));
@@ -122,13 +113,14 @@ const MarketWrite = (props: any) => {
           useditemId: router.query.useditemId,
         },
       });
+      console.log(data.name);
       Modal.success({
         content: "수정이 완료되었습니다.",
         onOk() {
           router.push(`/usedMarket/detail/${result.data?.updateUseditem._id}`);
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       Modal.error({
         content: err.message,
       });

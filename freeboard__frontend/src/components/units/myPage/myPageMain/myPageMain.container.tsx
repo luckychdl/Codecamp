@@ -24,7 +24,6 @@ const MyPageMainPage = () => {
     setIsInfo(true);
     setIsOpen(false);
     setIsMarket(false);
-    console.log(isInfo, isOpen);
   };
 
   const onClickPicked = () => {

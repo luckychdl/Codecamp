@@ -7,7 +7,7 @@ const UpdateUser = () => {
   const [resetUserPassword] = useMutation(RESET_USER_PASSWORD);
   const { register, handleSubmit } = useForm();
 
-  const onClickReset = async (data) => {
+  const onClickReset = async (data: any) => {
     try {
       await resetUserPassword({
         variables: { password: String(data.password) },
@@ -15,7 +15,7 @@ const UpdateUser = () => {
       Modal.success({
         content: "비밀번호가 변경되었습니다.",
       });
-    } catch (err) {
+    } catch (err: any) {
       Modal.error({
         content: err.message,
       });

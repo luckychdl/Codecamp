@@ -19,7 +19,7 @@ export const InputBox = styled.input`
   width: 460px;
   height: 70px;
   padding-left: 20px;
-  border-radius: 7px;
+  border-radius: 5px;
   border: 1px solid #bdbdbd;
   font-size: 18px;
   outline-color: #512771;
@@ -32,7 +32,7 @@ export const LoginButton = styled.button`
   width: 460px;
   height: 70px;
   margin-top: 20px;
-  border-radius: 7px;
+  border-radius: 5px;
   background-color: #512771;
   color: white;
   font-size: 26px;
@@ -40,8 +40,7 @@ export const LoginButton = styled.button`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
-    border-radius: 10px;
+    top: 4px;
   }
 `;
 export const FooterWrapper = styled.div`
@@ -55,8 +54,7 @@ export const SignInButton = styled.div`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
-    border-radius: 10px;
+    top: 4px;
   }
 `;
 export const Error = styled.div`

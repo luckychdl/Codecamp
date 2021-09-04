@@ -20,8 +20,7 @@ export const FreeBoard = styled.div`
   }
   :active {
     position: relative;
-    top: 2px;
-    border-radius: 10px;
+    top: 4px;
   }
 `;
 export const Market = styled.div`
@@ -36,8 +35,7 @@ export const Market = styled.div`
   }
   :active {
     position: relative;
-    top: 2px;
-    border-radius: 10px;
+    top: 4px;
   }
 `;
 export const MyPage = styled.div`
@@ -52,8 +50,7 @@ export const MyPage = styled.div`
   }
   :active {
     position: relative;
-    top: 2px;
-    border-radius: 10px;
+    top: 4px;
   }
 `;
 export const Line = styled.div`
@@ -72,7 +69,6 @@ export const Gallery = styled.div`
   }
   :active {
     position: relative;
-    top: 2px;
-    border-radius: 10px;
+    top: 4px;
   }
 `;

@@ -17,7 +17,7 @@ const MyPointSellingPageUI = (props: any) => {
           <ListColumn>거래 내역</ListColumn>
           <ListColumn>거래 후 잔액</ListColumn>
         </Row>
-        {props.data?.fetchPointTransactionsOfSelling.map((data: any) => (
+        {props.sellingData?.fetchPointTransactionsOfSelling.map((data: any) => (
           <Row key={data._id}>
             <Column>{getDate(data.updatedAt)}</Column>
             <Title id={data._id}>{data.useditem.name}</Title>

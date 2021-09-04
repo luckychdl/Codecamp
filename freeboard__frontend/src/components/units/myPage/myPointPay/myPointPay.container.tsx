@@ -1,9 +1,6 @@
-import { useQuery } from "@apollo/client";
 import MyPointPayPageUI from "./myPointPay.presenter";
-import { FETCH_POINT_TRANSACTIONS_OF_LOADING } from "./myPointPay.queries";
-const MyPointPayPage = () => {
-  const { data } = useQuery(FETCH_POINT_TRANSACTIONS_OF_LOADING);
-  return <MyPointPayPageUI data={data} />;
+const MyPointPayPage = (props: any) => {
+  return <MyPointPayPageUI loadingData={props.loadingData} />;
 };
 
 export default MyPointPayPage;

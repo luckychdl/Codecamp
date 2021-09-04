@@ -46,8 +46,8 @@ export const SellWrapper = styled.div`
   justify-content: flex-start;
 `;
 interface IProps {
-  isSelling: boolean;
-  isSold: boolean;
+  isSelling?: boolean;
+  isSold?: boolean;
 }
 export const SellOn = styled.div`
   margin: 10px;
@@ -58,7 +58,7 @@ export const SellOn = styled.div`
     props.isSelling ? "3px solid #512771;" : "none"};
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const SoldOut = styled.div`
@@ -70,7 +70,7 @@ export const SoldOut = styled.div`
     props.isSold ? "3px solid #512771;" : "none"};
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const Search = styled.input`
@@ -96,12 +96,12 @@ export const Date = styled.div`
 export const SearchBtn = styled.button`
   margin-right: 10px;
   width: 78px;
-  height: 52px;
+  height: 45px;
+  border-radius: 5px;
   cursor: pointer;
   background-color: #512771;
   color: white;
   border: none;
-  border-radius: 7px;
 `;
 export const SearchWrapper = styled.div`
   display: flex;
@@ -183,7 +183,7 @@ export const ListMainWrapper = styled.div`
 
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const NameWrapper = styled.div`

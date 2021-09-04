@@ -64,9 +64,9 @@ export const MoveMyMarketImg = styled.img`
   margin-right: 10px;
 `;
 interface IProps {
-  isMarket: boolean;
-  isOpen: boolean;
-  isInfo: boolean;
+  isMarket?: boolean;
+  isOpen?: boolean;
+  isInfo?: boolean;
 }
 export const MoveMyMarketPage = styled.div`
   color: ${(props: IProps) => (props.isMarket ? "#512771" : "#BDBDBD")};

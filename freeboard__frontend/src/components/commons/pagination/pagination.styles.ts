@@ -13,7 +13,7 @@ export const Page = styled.button`
   border: none;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
     border-radius: 10px;
   }
   :hover {
@@ -30,7 +30,7 @@ export const Next = styled.button`
     props.nextActive ? "black" : "#e6e6e6"};
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
   :hover {
     color: ${(props: { nextActive: boolean }) =>
@@ -47,7 +47,7 @@ export const Prev = styled.button`
     props.prevActive ? "black" : "#e6e6e6"};
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
   :hover {
     color: ${(props: { prevActive: boolean }) =>

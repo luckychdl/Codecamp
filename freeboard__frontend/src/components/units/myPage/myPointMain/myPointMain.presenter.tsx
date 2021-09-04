@@ -7,15 +7,12 @@ import {
   BuyingPoint,
   SellingPoint,
   ContentsWrapper,
-  SearchWrapper,
-  Search,
-  SearchBtn,
 } from "./myPointMain.styles";
-// import MyPointMainPage from "../myPointMain/myPointMain.container";
 import MyPointTotalPage from "../myPointTotal/myPointTotal.container";
 import MyPointBuyingPage from "../myPointBought/myPointBought.container";
 import MyPointPayPage from "../myPointPay/myPointPay.container";
 import MyPointSellingPage from "../myPointSold/myPointSold.contatiner";
+import SearchBtn01 from "../../../commons/buttons/search";
 
 const MyPointMainPageUI = (props: any) => {
   return (
@@ -51,17 +48,25 @@ const MyPointMainPageUI = (props: any) => {
             판매내역
           </SellingPoint>
         </MyWrapper>
-        <SearchWrapper>
-          <Search />
-          <SearchBtn>검색</SearchBtn>
-        </SearchWrapper>
+        <SearchBtn01
+          onChange={props.onChangeSearch}
+          onClick={props.onClickSearch}
+        />
       </SubWrapper>
       <ContentsWrapper>
         {/* {props.myMenu === "myPointMain" && <MyPointMainPage />} */}
-        {props.myMenu === "myPointTotal" && <MyPointTotalPage />}
-        {props.myMenu === "myPointPay" && <MyPointPayPage />}
-        {props.myMenu === "myPointBuying" && <MyPointBuyingPage />}
-        {props.myMenu === "myPointSelling" && <MyPointSellingPage />}
+        {props.myMenu === "myPointTotal" && (
+          <MyPointTotalPage totalData={props.totalData} />
+        )}
+        {props.myMenu === "myPointPay" && (
+          <MyPointPayPage loadingData={props.loadingData} />
+        )}
+        {props.myMenu === "myPointBuying" && (
+          <MyPointBuyingPage buyingData={props.buyingData} />
+        )}
+        {props.myMenu === "myPointSelling" && (
+          <MyPointSellingPage sellingData={props.sellingData} />
+        )}
       </ContentsWrapper>
     </MainWrapper>
   );

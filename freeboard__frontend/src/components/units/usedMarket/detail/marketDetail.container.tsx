@@ -30,7 +30,7 @@ const MarketDetail = () => {
       });
 
       refetch();
-    } catch (err) {
+    } catch (err: any) {
       Modal.error({
         content: err.message,
       });
@@ -50,7 +50,7 @@ const MarketDetail = () => {
           router.push("/usedMarket");
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       Modal.error({
         content: err.message,
       });
@@ -70,7 +70,7 @@ const MarketDetail = () => {
             router.push("/usedMarket");
           },
         });
-      } catch (err) {
+      } catch (err: any) {
         Modal.error({
           content: err.message,
         });
@@ -155,6 +155,7 @@ const MarketDetail = () => {
     <>
       <MarketDetailUI
         data={data}
+        // @ts-ignore
         onClickMoveToLogin={onClickMoveToLogin}
         onClickBuying={onClickBuying}
         onClickMove={onClickMove}

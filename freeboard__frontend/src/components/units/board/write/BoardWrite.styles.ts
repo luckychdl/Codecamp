@@ -108,7 +108,7 @@ export const Search = styled.span`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const AdressSubBox = styled.input`
@@ -211,7 +211,7 @@ export const Button = styled.button`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const ErrorMessage = styled.div`
@@ -232,7 +232,7 @@ export const Cancle = styled.button`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const ButtonWrapper = styled.div``;

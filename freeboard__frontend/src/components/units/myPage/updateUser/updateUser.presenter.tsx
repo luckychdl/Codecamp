@@ -11,7 +11,7 @@ import {
   SubWrapper,
   Wrapper,
 } from "./updateUser.styles";
-const UpdateUserUI = (props) => {
+const UpdateUserUI = (props: any) => {
   return (
     <form onSubmit={props.handleSubmit(props.onClickReset)}>
       <MainWrapper>

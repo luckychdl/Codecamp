@@ -5,7 +5,7 @@ import MyPicked from "../myPicked/myPicked.container";
 import { MyWrapper, MyProduct, MyPick, SubWrapper } from "./myPageMain.styles";
 import MyPointMainPage from "../myPointMain/myPointMain.container";
 import { MouseEvent } from "react";
-import UpdateUser from "../updateUser/updateUser.container";
+import MyProfile from "../../../../../pages/myPage/myProfile";
 // import MyPointMainPage from "../myPointMain/myPointMain.container";
 // import MyPointTotalPage from "../myPointTotal/myPointTotal.container";
 // import MyPointBuyingPage from "../myPointBought/myPointBought.container";
@@ -40,7 +40,7 @@ const MyPageMainPageUI = (props: IMyPageMainPageUIProps) => {
         isInfo={props.isInfo}
         isMarket={props.isMarket}
       />
-      {props.isInfo && <UpdateUser />}
+      {props.isInfo && <MyProfile />}
       {props.isOpen && (
         <MyPointMainPage
           myMenu={props.myMenu}

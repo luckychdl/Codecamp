@@ -17,15 +17,17 @@ const MyPointTotalPageUI = (props: any) => {
           <ListColumn>거래 및 충전 내역</ListColumn>
           <ListColumn>잔액</ListColumn>
         </Row>
-        {props.data?.fetchPointTransactions.map((data: any, index: number) => (
-          <Row key={data._id}>
-            <Column>{getDate(data.updatedAt)}</Column>
-            <Title id={data._id}>{data.status}</Title>
+        {props.totalData?.fetchPointTransactions.map(
+          (data: any, index: number) => (
+            <Row key={data._id}>
+              <Column>{getDate(data.updatedAt)}</Column>
+              <Title id={data._id}>{data.status}</Title>
 
-            <Column>{data.statusDetail}</Column>
-            <Column>{getComma(data.balance)}</Column>
-          </Row>
-        ))}
+              <Column>{data.statusDetail}</Column>
+              <Column>{getComma(data.balance)}</Column>
+            </Row>
+          )
+        )}
       </Wrapper>
     </MainWrapper>
   );

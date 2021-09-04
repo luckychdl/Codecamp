@@ -114,7 +114,7 @@ export const SignUpButton = styled.button`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
     border-radius: 10px;
   }
 `;
@@ -138,7 +138,7 @@ export const MoveLogIn = styled.div`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
     border-radius: 10px;
   }
   :hover {

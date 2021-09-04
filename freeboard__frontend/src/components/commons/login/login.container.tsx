@@ -42,6 +42,7 @@ export default function LoginPage() {
           },
         },
       });
+      // @ts-ignore
       setUserInfo(resultUser.data.fetchUserLoggedIn);
       localStorage.setItem(
         "userInfo",
@@ -60,7 +61,7 @@ export default function LoginPage() {
           router.push("/usedMarket");
         },
       });
-    } catch (err) {
+    } catch (err: any) {
       Modal.error({
         content: err.message,
       });

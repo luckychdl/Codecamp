@@ -151,6 +151,6 @@ export const Button = styled.button`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;

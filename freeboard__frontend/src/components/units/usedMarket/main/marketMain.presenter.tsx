@@ -49,8 +49,8 @@ interface IMarketMainUIProps {
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
   onClickSelling: () => void;
   onClickSoldout: () => void;
-  isSelling: boolean;
-  isSold: boolean;
+  isSelling?: boolean;
+  isSold?: boolean;
   onSubmit: FormEvent<HTMLFormElement>;
   hasMore: boolean;
   data?: any;

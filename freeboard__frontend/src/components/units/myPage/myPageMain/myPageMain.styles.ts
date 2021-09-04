@@ -10,7 +10,7 @@ export const MyProduct = styled.div`
   }
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const MyPick = styled.div`
@@ -23,7 +23,7 @@ export const MyPick = styled.div`
   }
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const MyWrapper = styled.div`

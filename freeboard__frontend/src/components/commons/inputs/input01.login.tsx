@@ -4,7 +4,7 @@ const LoginInput = styled.input`
   width: 460px;
   height: 70px;
   padding-left: 20px;
-  border-radius: 7px;
+  border-radius: 5px;
   border: 1px solid #bdbdbd;
   font-size: 18px;
   outline-color: #512771;

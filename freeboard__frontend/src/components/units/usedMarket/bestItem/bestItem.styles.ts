@@ -58,6 +58,10 @@ export const ColumnWrapper = styled.div`
       7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
+  :active {
+    top: 4px;
+    position: relative;
+  }
   /* background-color: black; */
 `;
 export const Heart = styled.img``;
@@ -75,5 +79,4 @@ export const ColumnSubWrapper = styled.div`
 export const ContentsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  /* flex-direction: column; */
 `;

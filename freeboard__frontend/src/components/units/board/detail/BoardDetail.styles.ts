@@ -131,7 +131,7 @@ export const Like = styled.img`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
     border-radius: 10px;
   }
 `;
@@ -154,7 +154,7 @@ export const Button = styled.button`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const ReviewImg = styled.img`

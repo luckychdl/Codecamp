@@ -15,7 +15,7 @@ export const PhotoSubWrapper = styled.div`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const PhotoMainWrapper = styled.div`

@@ -71,7 +71,7 @@ export const Wrapper = styled.div`
     transition: all 0.3s ease;
   }
   :active {
-    top: 2px;
+    top: 4px;
     position: relative;
   }
 `;

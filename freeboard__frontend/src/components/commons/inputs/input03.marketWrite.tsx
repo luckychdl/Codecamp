@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 const Input03 = styled.input`
   width: 996px;
   height: 60px;
-  border-radius: 7px;
+  border-radius: 5px;
   padding-left: 15px;
   font-size: 16px;
   border: 1px solid #bdbdbd;
@@ -25,7 +25,9 @@ const InputMarket = (props: any) => {
         placeholder={props.inputName}
         defaultValue={props.defaultValue}
       />
-      <ErrorMessage>{props.errorMessage}</ErrorMessage>
+      <ErrorMessage style={{ paddingTop: "5px" }}>
+        {props.errorMessage}
+      </ErrorMessage>
     </>
   );
 };

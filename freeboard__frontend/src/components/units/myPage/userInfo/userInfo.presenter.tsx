@@ -22,9 +22,9 @@ interface IUserInfoUIProps {
   onClickMyMarket: () => void;
   onClickMoveToMenu: () => void;
   onClickMyInfo: () => void;
-  isMarket: boolean;
-  isInfo: boolean;
-  isOpen: boolean;
+  isMarket?: boolean;
+  isInfo?: boolean;
+  isOpen?: boolean;
   data?: any;
 }
 const UserInfoUI = (props: IUserInfoUIProps) => {

@@ -28,7 +28,7 @@ export const ContentsName = styled.div`
 export const ContentsInput = styled.input`
   width: 996px;
   height: 52px;
-  border-radius: 7px;
+  border-radius: 5px;
   padding-left: 15px;
   font-size: 16px;
   border: 1px solid #bdbdbd;
@@ -47,7 +47,7 @@ export const ContentsDetailInput = styled.textarea`
   width: 996px;
   height: 320px;
   resize: none;
-  border-radius: 7px;
+  border-radius: 5px;
   padding: 15px 0 0 15px;
   font-size: 17px;
   border: 1px solid #bdbdbd;
@@ -91,7 +91,7 @@ export const AddressInput = styled.input`
   margin-bottom: 15px;
   border: 1px solid #bdbdbd;
   outline-color: #757575;
-  border-radius: 7px;
+  border-radius: 5px;
 `;
 export const LocationMap = styled.div`
   background-color: skyblue;
@@ -112,7 +112,7 @@ export const Upload = styled.div`
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const UploadWrapper = styled.div`
@@ -126,12 +126,12 @@ export const Button = styled.button`
   color: white;
   background-color: #35c5f0;
   font-size: 18px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-bottom: 50px;
   cursor: pointer;
   :active {
     position: relative;
-    top: 2px;
+    top: 4px;
   }
 `;
 export const Error = styled.div`

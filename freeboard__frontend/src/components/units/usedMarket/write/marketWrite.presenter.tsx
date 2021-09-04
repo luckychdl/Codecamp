@@ -57,18 +57,21 @@ const MarketWriteUI = (props: any) => {
             onChange={props.onChangeValue}
             style={{
               width: "996px",
-              height: "300px",
+              height: "330px",
               borderRadius: "10px",
               fontSize: "16px",
               marginBottom: "20px",
-              // border: "1px solid #bdbdbd",
+              paddingBottom: "30px",
+
               outlineColor: "#35c5f0",
               // ::placeholder {
               //   color: "#bdbdbd"
             }}
           />
 
-          <Error>{props.errors.contents?.message}</Error>
+          <Error style={{ paddingTop: "5px" }}>
+            {props.errors.contents?.message}
+          </Error>
         </MenuWrapper>
         <MenuWrapper>
           <Title02 divName={"판매 가격"}></Title02>
