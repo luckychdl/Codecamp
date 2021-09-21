@@ -12,6 +12,7 @@ import MarketCommentList from "../../../../src/components/units/marketComment/li
 //     }
 //   }
 // `;
+
 const MarketDetailPage = (props: any) => {
   return (
     <>
