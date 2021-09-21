@@ -1,6 +1,6 @@
-// import MarketDetail from "../../../../src/components/units/usedMarket/detail/marketDetail.container";
-// import MarketCommentWrite from "../../../../src/components/units/marketComment/write/marketCommentWrite.container";
-// import MarketCommentList from "../../../../src/components/units/marketComment/list/marketCommentList.container";
+import MarketDetail from "../../../../src/components/units/usedMarket/detail/marketDetail.container";
+import MarketCommentWrite from "../../../../src/components/units/marketComment/write/marketCommentWrite.container";
+import MarketCommentList from "../../../../src/components/units/marketComment/list/marketCommentList.container";
 // import { request, gql } from "graphql-request";
 // import Head from "next/head";
 // const FETCH_USEDITEM = gql`
@@ -13,21 +13,21 @@
 //   }
 // `;
 const MarketDetailPage = (props: any) => {
-  //   return (
-  //     <>
-  //       <Head>
+  return (
+    <>
+      {/* //       <Head>
   //         <meta property="og:title" content={props.fetchUseditem.name} />
   //         <meta property="og:description" content={props.fetchUseditem.remarks} />
   //         <meta
   //           property="og:image"
   //           content={`https://storage.googleapis.com/${props.fetchUseditem.images[0]}`}
   //         />
-  //       </Head>
-  //       <MarketDetail />
-  //       <MarketCommentWrite />
-  //       <MarketCommentList />
-  //     </>
-  //   );
+  //       </Head> */}
+      <MarketDetail />
+      <MarketCommentWrite />
+      <MarketCommentList />
+    </>
+  );
 };
 
 export default MarketDetailPage;
