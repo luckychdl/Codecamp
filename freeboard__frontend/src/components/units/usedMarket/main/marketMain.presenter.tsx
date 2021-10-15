@@ -95,7 +95,6 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
             hasMore={props.hasMore}
             useWindow={false}
           >
-            {}
             {props.data?.fetchUseditems.map((data: any) => (
               <>
                 <ListMainWrapper
@@ -116,7 +115,7 @@ const MarketMainUI = (props: IMarketMainUIProps) => {
                       </NameWrapper>
                       <InfoSecondWrapper>
                         <HeartImage src="/FreeBoard/profileMain.png" />
-                        <Seller>{data.seller.name}</Seller>
+                        <Seller>{data.seller?.name}</Seller>
                         <HeartImage src="/FreeBoard/heart.svg" />
                         <HeartScore>{data.pickedCount}</HeartScore>
                       </InfoSecondWrapper>

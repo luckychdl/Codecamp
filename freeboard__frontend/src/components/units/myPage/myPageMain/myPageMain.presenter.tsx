@@ -6,11 +6,6 @@ import { MyWrapper, MyProduct, MyPick, SubWrapper } from "./myPageMain.styles";
 import MyPointMainPage from "../myPointMain/myPointMain.container";
 import { MouseEvent } from "react";
 import MyProfile from "../../../../../pages/myPage/myProfile";
-// import MyPointMainPage from "../myPointMain/myPointMain.container";
-// import MyPointTotalPage from "../myPointTotal/myPointTotal.container";
-// import MyPointBuyingPage from "../myPointBought/myPointBought.container";
-// import MyPointPayPage from "../myPointPay/myPointPay.container";
-// import MyPointSellingPage from "../myPointSold/myPointSold.contatiner";
 
 const MainWrapper = styled.div`
   display: flex;
@@ -50,11 +45,9 @@ const MyPageMainPageUI = (props: IMyPageMainPageUIProps) => {
       {props.isMarket && (
         <SubWrapper>
           <MyWrapper>
-            {/* @ts-ignore */}
             <MyProduct onClick={props.onClickMine} isMine={props.isMine}>
               나의 상품
-            </MyProduct>{" "}
-            |{/* @ts-ignore */}
+            </MyProduct>
             <MyPick onClick={props.onClickPicked} isPicked={props.isPicked}>
               마이찜
             </MyPick>

@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
-  width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,8 +14,8 @@ export const MainTitle = styled.div`
 `;
 export const BestWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 1050px;
+
+  width: 100%;
   cursor: pointer;
 `;
 export const Best = styled.img`

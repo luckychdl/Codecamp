@@ -27,7 +27,6 @@ import {
 } from "./marketDetail.styles";
 import Button01 from "../../../commons/buttons/button01";
 import { IQuery } from "../../../../commons/types/generated/types";
-// import DOMPurify from "dompurify";
 import Slider from "react-slick";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
@@ -40,6 +39,7 @@ interface IMarketDetailUIProps {
   onClickEdit: () => void;
   onClickBuying: () => void;
   onClickDelete: () => void;
+  onClickMoveToLogin: () => void;
 }
 
 const MarketDetailUI = (props: IMarketDetailUIProps) => {

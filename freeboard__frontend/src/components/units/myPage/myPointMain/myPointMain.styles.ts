@@ -3,14 +3,14 @@ interface Iprops {
   myMenu: String;
 }
 export const MainWrapper = styled.div`
-  width: 1200px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 `;
 export const SubWrapper = styled.div`
   display: flex;
-  width: 1200px;
+  width: 1000px;
   justify-content: flex-start;
 `;
 export const MyWrapper = styled.div`
@@ -72,7 +72,7 @@ export const SellingPoint = styled.div`
 export const ContentsWrapper = styled.div``;
 export const SearchWrapper = styled.div`
   display: flex;
-  width: 1200px;
+  width: 1000px;
   height: 40px;
   margin-top: 70px;
   justify-content: flex-end;

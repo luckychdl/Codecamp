@@ -16,7 +16,6 @@ const MarketMain = () => {
   const { data, refetch, fetchMore } = useQuery<IQuery>(FETCH_USED_ITEMS, {
     variables: { isSoldout: false },
   });
-  // const { data: buyData } = useQuery(FETCH_USED_ITEMS_I_BOUGHT);
   const onClickMove = () => {
     router.push("/usedMarket/new");
   };
@@ -26,10 +25,6 @@ const MarketMain = () => {
       (data: any) => data._id !== el._id
     );
     localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
-
-    // if (isExists) {
-    //   router.push(`/usedMarket/detail/${el._id}`);
-    // }
     router.push(`/usedMarket/detail/${el._id}`);
   };
   const onClickSearch = () => {

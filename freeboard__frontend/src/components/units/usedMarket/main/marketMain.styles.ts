@@ -4,7 +4,7 @@ export const TotalWrapper = styled.div`
   justify-content: space-evenly;
 `;
 export const MainWrapper = styled.div`
-  width: 1200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,6 +41,7 @@ export const SubWrapper = styled.div`
   margin-bottom: 50px;
 `;
 export const SellWrapper = styled.div`
+  margin-left: 30px;
   display: flex;
   width: 1050px;
   justify-content: flex-start;
@@ -171,7 +172,6 @@ export const ListMainWrapper = styled.div`
   cursor: pointer;
   width: 1050px;
   padding-top: 10px;
-  /* border-top: 1px solid #bdbdbd; */
   border-bottom: 1px solid #bdbdbd;
   :hover {
     background-color: #ede7f6;
@@ -199,5 +199,4 @@ export const TopWrapper = styled.div`
   width: 50px;
   justify-content: flex-end;
   align-items: flex-end;
-  /* position: fixed; */
 `;

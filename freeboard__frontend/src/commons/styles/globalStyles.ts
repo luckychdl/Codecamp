@@ -10,6 +10,6 @@ export const globalStyles = css`
 
   @font-face {
     font-family: "Poor Story", cursive;
-    src: url("/fonts/PoorStory-Regular.ttf");
+    src: url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
   }
 `;

@@ -155,7 +155,6 @@ const MarketDetail = () => {
     <>
       <MarketDetailUI
         data={data}
-        // @ts-ignore
         onClickMoveToLogin={onClickMoveToLogin}
         onClickBuying={onClickBuying}
         onClickMove={onClickMove}

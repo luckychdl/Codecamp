@@ -27,7 +27,7 @@ const KakaoMapPage = (props: any) => {
             readOnly
             defaultValue={props.data?.fetchUseditem.useditemAddress.lat}
           />
-          <LocationImg src="/FreeBoard/Location.svg" />
+          <LocationImg src="/FreeBoard/location.svg" />
           <Location
             placeholder={props.lng}
             readOnly
@@ -48,7 +48,6 @@ const KakaoMapPage = (props: any) => {
               ? props.data?.fetchUseditem.useditemAddress.address
               : props.address
           }
-          // defaultValue={props.data?.fetchUseditem.useditemAddress.address}
         />
         {props.isOpen && (
           <Modal
@@ -63,7 +62,6 @@ const KakaoMapPage = (props: any) => {
         <AddressInput
           type="text"
           onChange={props.onChangeAddressDetail}
-          // defaultValue={props.defaultAddressDetail}
           defaultValue={props.data?.fetchUseditem.useditemAddress.addressDetail}
         />
       </AddressWrapper>

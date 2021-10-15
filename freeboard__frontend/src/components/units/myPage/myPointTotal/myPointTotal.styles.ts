@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 export const PageWrapper = styled.div``;
 export const MainWrapper = styled.div`
-  width: 1200px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
 `;
 export const Row = styled.div`
   height: 40px;
-  width: 100%;
+  width: 1000px;
   line-height: 40px;
   display: flex;
   justify-content: space-between;

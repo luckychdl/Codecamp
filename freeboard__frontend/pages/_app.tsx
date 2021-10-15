@@ -68,7 +68,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     credentials: "include",
   });
   const client = new ApolloClient({
-    // uri: "http://backend02.codebootcamp.co.kr/graphql",
+    uri: "http://backend02.codebootcamp.co.kr/graphql07",
     link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
