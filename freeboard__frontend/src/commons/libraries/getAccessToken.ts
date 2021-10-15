@@ -20,7 +20,7 @@ export const getAccessToken = async (setAccessToken: any) => {
     const newAccessToken = result.restoreAccessToken.accessToken;
     setAccessToken(newAccessToken);
     return newAccessToken;
-  } catch (err) {
+  } catch (err: any) {
     console.log(err.message);
   }
 };
