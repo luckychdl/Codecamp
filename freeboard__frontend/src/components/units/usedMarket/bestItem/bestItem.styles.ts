@@ -14,7 +14,7 @@ export const MainTitle = styled.div`
 `;
 export const BestWrapper = styled.div`
   display: flex;
-
+  justify-content: flex-start;
   width: 100%;
   cursor: pointer;
 `;
