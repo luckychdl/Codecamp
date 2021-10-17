@@ -61,14 +61,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   });
   const uploadLink = createUploadLink({
-    uri: "https://backend02.codebootcamp.co.kr/graphql07",
+    uri: "https://backend02.codebootcamp.co.kr/graphql",
     headers: {
       authorization: `Bearer ${accessToken}`,
     },
     credentials: "include",
   });
   const client = new ApolloClient({
-    uri: "http://backend02.codebootcamp.co.kr/graphql07",
+    uri: "http://backend02.codebootcamp.co.kr/graphql",
     link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
