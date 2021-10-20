@@ -18,6 +18,7 @@ const MarketDetail = () => {
   const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
   const { data, refetch } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.useditemId },
+    skip: !router.query.useditemId,
   });
   const [toggleUseditemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
   const [createPointTransactionOfBuyingAndSelling] = useMutation(
