@@ -1,8 +1,9 @@
 ## Getting Started
+project install
 ```
 yarn install
 ```
-
-```bash
+project start
+```
 yarn dev
 ```
