@@ -1,9 +1,10 @@
 ## Getting Started
-project install
+
+## project install
 ```
 yarn install
 ```
-project start
+## project start
 ```
 yarn dev
 ```
