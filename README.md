@@ -1,4 +1,3 @@
-## Getting Started
 
 ## project install
 ```
