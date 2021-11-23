@@ -2,7 +2,7 @@ import MarketWrite from "../../../src/components/units/usedMarket/write/marketWr
 
 const MarketWritePage = () => {
   return (
-      <MarketWrite />
+     <MarketWrite />
   );
 };
 
