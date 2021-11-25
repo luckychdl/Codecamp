@@ -56,13 +56,12 @@ const MarketWriteUI = (props: any) => {
             placeholder="상품을 설명해주세요"
             onChange={props.onChangeValue}
             style={{
-              width: "996px",
+              maxWidth: "100%",
               height: "330px",
               borderRadius: "10px",
               fontSize: "16px",
               marginBottom: "20px",
               paddingBottom: "30px",
-
               outlineColor: "#35c5f0",
               // ::placeholder {
               //   color: "#bdbdbd"
@@ -119,17 +118,6 @@ const MarketWriteUI = (props: any) => {
               ))}
             </UploadWrapper>
           </LocationWrapper>
-          {/* <AddressWrapper>
-            <Title02 divName={"GPS"}></Title02>
-            <SubWrapper>
-              <Location placeholder="위도(LAT)" />
-              <LocationImg src="/FreeBoard/Location.svg" />
-              <Location placeholder="경도(LNG)" />
-            </SubWrapper>
-            <Title02 divName={"주소"}></Title02>
-            <AddressInput></AddressInput>
-            <AddressInput></AddressInput>
-          </AddressWrapper> */}
         </RowWrapper>
 
         <Button01

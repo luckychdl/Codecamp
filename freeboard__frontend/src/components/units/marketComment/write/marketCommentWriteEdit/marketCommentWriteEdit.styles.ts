@@ -19,12 +19,15 @@ export const Text = styled.div`
   padding-left: 20px;
 `;
 export const ButtonWrapper = styled.div`
-  width: 1200px;
+  width: 900px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-left: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
+  @media (max-width: 767px) {
+    width: 90%;
+  }
 `;
 export const TextWrapper = styled.div`
   display: flex;

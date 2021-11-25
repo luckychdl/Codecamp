@@ -49,7 +49,12 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
       return (
         <a>
           <img
-            style={{ width: "100px", height: "100px" }}
+            style={{
+              minWidth: "50px",
+              minHeight: "50px",
+              maxWidth: "100px",
+              maxHeight: "100px",
+            }}
             // @ts-ignore
             src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[i]}`}
           />
@@ -122,14 +127,24 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
       </MainNameWrapper>
 
       <ImgWrapper>
-        <div style={{ width: "600px", height: "600px", margin: "auto" }}>
+        <div
+          style={{
+            maxWidth: "600px",
+            minWidth: "300px",
+            minHeight: "300px",
+            maxHeight: "600px",
+            margin: "auto",
+          }}
+        >
           <Slider {...settings}>
             {props.data?.fetchUseditem.images?.map((data: any, index) => (
               <div key={index}>
                 <img
                   style={{
-                    width: "600px",
-                    height: "600px",
+                    maxWidth: "200px",
+                    minWidth: "200px",
+                    minHeight: "200px",
+                    maxHeight: "200px",
                     margin: "auto",
                     marginBottom: "100px",
                   }}

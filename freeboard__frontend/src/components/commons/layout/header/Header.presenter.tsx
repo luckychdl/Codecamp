@@ -48,7 +48,7 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
             <LoginButton onClick={props.onClickMoveToLogin}>로그인</LoginButton>
           ) : (
             <Wrapper>
-              <UserName>{userInfo.name} 님 환영합니다.</UserName>
+              <UserName>{userInfo.name} 님</UserName>
 
               <Dropdown
                 overlay={menu}
@@ -57,7 +57,7 @@ export default function LayoutHeaderUI(props: ILayouHeaderProps) {
                 onVisibleChange={onClickIsMore}
                 arrow
               >
-                <Button style={{ border: "none" }}>
+                <Button style={{ border: "none", padding: "0" }}>
                   <ProfileImg src="/FreeBoard/profile.svg" />
                   <TooltipImg src="/FreeBoard/more.svg" isMore={isMore} />
                 </Button>

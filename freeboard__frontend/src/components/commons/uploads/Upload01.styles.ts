@@ -17,13 +17,11 @@ export const PhotoSubWrapper = styled.div`
     position: relative;
     top: 4px;
   }
-`;
-export const PhotoMainWrapper = styled.div`
-  width: 996px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  text-align: center;
+  @media (max-width: 767px) {
+    width: 55px;
+    height: 55px;
+    margin-right: 0;
+  }
 `;
 export const Plus = styled.div``;
 export const Upload = styled.div``;
@@ -34,8 +32,11 @@ export const Img = styled.img`
   height: 78px;
   /* background-color: #bdbdbd; */
   margin-right: 20px;
-
   cursor: pointer;
   top: 0;
   left: 0;
+  @media (max-width: 767px) {
+    width: 80px;
+    height: 60px;
+  }
 `;

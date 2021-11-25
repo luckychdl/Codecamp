@@ -1,27 +1,39 @@
 import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
-  width: 1200px;
+  width: 100%;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 60px 0;
-
   padding-bottom: 50px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  @media (max-width: 767px) {
+    width: 100%;
+    box-shadow: none;
+    margin: 0 0;
+  }
 `;
 export const SubWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 792px;
+  align-items: center;
+  width: 100%;
+  max-width: 792px;
   margin-top: 100px;
   border-bottom: 1px solid #bdbdbd;
   padding-bottom: 20px;
+  @media (max-width: 767px) {
+    width: 90%;
+  }
 `;
 export const ProfileWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 767px) {
+  }
 `;
 export const ProfileImg = styled.img`
   margin-right: 10px;
@@ -43,9 +55,17 @@ export const MainNameWrapper = styled.div`
   justify-content: space-between;
   width: 792px;
   margin-top: 20px;
+  @media (max-width: 767px) {
+    width: 90%;
+    margin: 10px;
+  }
 `;
 export const NameWrapper = styled.div`
   margin-bottom: 80px;
+  @media (max-width: 767px) {
+    width: 100px;
+    margin: 10px;
+  }
 `;
 export const Remarks = styled.div`
   /* width: 200px; */
@@ -61,11 +81,17 @@ export const Name = styled.div`
   font-size: 24px;
   margin-bottom: 10px;
   color: #4f4f4f;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const LikeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 767px) {
+    margin: 10px;
+  }
 `;
 export const Like = styled.img`
   margin-bottom: 5px;
@@ -89,14 +115,23 @@ export const Tags = styled.div`
   padding-bottom: 40px;
 `;
 export const ContentsWrapper = styled.div`
-  margin-top: 150px;
+  margin-top: 100px;
   width: 792px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: 767px) {
+    width: 90%;
+  }
 `;
 export const MapBox = styled.div`
-  width: 792px;
+  max-width: 792px;
   height: 360px;
   border-bottom: 1px solid #bdbdbd;
   margin-bottom: 30px;
+  @media (max-width: 767px) {
+    width: 90%;
+  }
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
@@ -121,8 +156,12 @@ export const ButtonWrapper = styled.div`
 // `;
 export const ImgWrapper = styled.div`
   width: 600px;
-  height: 600px;
+  height: 300px;
   display: flex;
+  @media (max-width: 767px) {
+    width: 100%;
+    margin-top: 30px;
+  }
 `;
 export const Picture = styled.img`
   margin-bottom: 100px;
@@ -134,6 +173,9 @@ export const SliderUl = styled.ul`
     width: 100px;
     height: 100px;
     margin: 10px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `;
 export const Button = styled.button`

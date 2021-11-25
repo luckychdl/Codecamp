@@ -17,6 +17,10 @@ const Button01 = styled.button`
     position: relative;
     top: 2px;
   }
+  @media (max-width: 767px) {
+    width: 130px;
+    margin: 30px 0 0 0;
+  }
 `;
 
 const ButtonWrite = (props: any) => {

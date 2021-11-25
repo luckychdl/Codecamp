@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 
 export const BannerWrapper = styled.div`
   height: 400px;
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 150px;
+  }
 `;
 export const Banner = styled.div`
   height: 400px;
@@ -12,6 +16,10 @@ export const ImgWrapper = styled.div`
   width: 100%;
   height: 400px;
   text-align: center;
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 150px;
+  }
 `;
 export const LogoImg = styled.img`
   height: 100%;

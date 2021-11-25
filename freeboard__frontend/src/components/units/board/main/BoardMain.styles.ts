@@ -6,6 +6,9 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  @media (max-width: 767px) {
+    width: 90%;
+  }
 `;
 export const Wrapper = styled.div`
   border-top: 2px solid #424242;
@@ -40,6 +43,9 @@ export const ButtonWrapper = styled.div`
     position: relative;
     top: 4px;
   }
+  @media (max-width: 767px) {
+    margin-top: 20px;
+  }
 `;
 // export const EditOutlined = styled.img`
 //   width: 18px;
@@ -50,7 +56,6 @@ export const ButtonWrapper = styled.div`
 export const Button = styled.div`
   font-weight: 500;
   font-size: 16px;
-
   color: white;
 `;
 export const Column = styled.div`
@@ -59,6 +64,9 @@ export const Column = styled.div`
   font-size: 18px;
   border-top: 1px solid #e0e0e0;
   /* cursor: pointer; */
+  @media (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 export const Title = styled.div`
   width: 25%;
@@ -69,6 +77,10 @@ export const Title = styled.div`
   :active {
     position: relative;
     top: 4px;
+  }
+  @media (max-width: 767) {
+    overflow: hidden;
+    font-size: 14px;
   }
 `;
 export const Page = styled.button`
@@ -82,7 +94,10 @@ export const Page = styled.button`
     border-radius: 10px;
   }
   :hover {
-    color: blue;
+    color: #512771;
+  }
+  @media (max-width: 767px) {
+    margin: 0;
   }
 `;
 export const Next = styled.button`
@@ -124,12 +139,19 @@ export const PageWrapper = styled.div`
   width: 1200px;
   justify-content: center;
   margin: 30px;
+  @media (max-width: 767px) {
+    width: 330px;
+    margin: 10px;
+  }
 `;
 export const SearchWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 1200px;
   margin-bottom: 20px;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const Search = styled.input`
   width: 600px;
@@ -141,6 +163,9 @@ export const Search = styled.input`
   border: none;
   border-bottom: 1px solid #616161;
   outline-color: #512771;
+  @media (max-width: 767px) {
+    width: 200px;
+  }
 `;
 export const SearchButton = styled.button`
   width: 94px;
@@ -154,6 +179,11 @@ export const SearchButton = styled.button`
   :active {
     position: relative;
     top: 4px;
+  }
+  @media (max-width: 767px) {
+    font-size: 14px;
+    width: 80px;
+    height: 45px;
   }
 `;
 // export const Word = styled.span`

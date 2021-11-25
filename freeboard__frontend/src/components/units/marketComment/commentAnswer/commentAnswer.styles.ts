@@ -19,7 +19,7 @@ export const Text = styled.div`
   margin-left: 20px;
 `;
 export const ButtonWrapper = styled.div`
-  width: 1166px;
+  width: 966px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,6 +27,10 @@ export const ButtonWrapper = styled.div`
   margin-bottom: 20px;
   border-left: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
+
+  @media (max-width: 767px) {
+    width: 90%;
+  }
 `;
 export const ProfileWrapper = styled.div``;
 export const Profile = styled.div``;

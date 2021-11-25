@@ -5,6 +5,7 @@ import LayoutFooter from "./layout/footer/Footer.container";
 import styled from "@emotion/styled";
 const Body = styled.div`
   /* height: 500px; */
+  width: 100%;
   min-height: 70%;
   display: flex;
   flex-direction: column;

@@ -1,23 +1,37 @@
 import styled from "@emotion/styled";
 
 export const MainWrapper = styled.div`
-  width: 1200px;
-  height: 2000px;
+  width: 1000px;
+  /* height: 2000px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 60px;
   padding-bottom: 50px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  @media (max-width: 767px) {
+    width: 100%;
+    box-shadow: none;
+    margin-top: 0;
+    padding: 0;
+  }
 `;
 export const Title = styled.h1`
   font-weight: bold;
   font-size: 36px;
   color: #616161;
   margin: 80px 0 50px 0;
+  @media (max-width: 767px) {
+    margin: 40px 0 0 0;
+  }
 `;
 export const MenuWrapper = styled.div`
+  width: 850px;
   margin: 20px 0;
+  @media (max-width: 767px) {
+    /* margin: 0; */
+    max-width: 300px;
+  }
 `;
 export const ContentsName = styled.div`
   font-weight: 500;
@@ -35,6 +49,9 @@ export const ContentsInput = styled.input`
   outline-color: #757575;
   ::placeholder {
     color: #bdbdbd;
+  }
+  @media (max-width: 767px) {
+    width: 90%;
   }
 `;
 export const ContentsDetail = styled.div`
@@ -55,14 +72,24 @@ export const ContentsDetailInput = styled.textarea`
   ::placeholder {
     color: #bdbdbd;
   }
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const RowWrapper = styled.div`
   display: flex;
-  width: 996px;
+  width: 850px;
   justify-content: space-between;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const LocationWrapper = styled.div`
   margin-top: 20px;
+  /* width: 850px; */
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const Location = styled.input`
   width: 108px;
@@ -92,12 +119,18 @@ export const AddressInput = styled.input`
   border: 1px solid #bdbdbd;
   outline-color: #757575;
   border-radius: 5px;
+  @media (max-width: 767px) {
+    width: 90%;
+  }
 `;
 export const LocationMap = styled.div`
   background-color: skyblue;
   width: 384px;
   height: 252px;
   margin-bottom: 40px;
+  @media (max-width: 767px) {
+    width: 90%;
+  }
 `;
 export const SubWrapper = styled.div`
   display: flex;
@@ -117,7 +150,12 @@ export const Upload = styled.div`
 `;
 export const UploadWrapper = styled.div`
   display: flex;
+
   margin-bottom: 30px;
+  @media (max-width: 767px) {
+    width: 300px;
+    justify-content: space-between;
+  }
 `;
 export const Button = styled.button`
   width: 179px;

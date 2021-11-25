@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 export const TodayProductWrapper = styled.div`
-  width: 210px;
+  width: 100%;
+  max-width: 210px;
   height: 855.33px;
   margin-left: 20px;
   margin-top: 80px;
@@ -17,6 +18,9 @@ export const TodayProductWrapper = styled.div`
   z-index: 10;
   overflow: auto;
   ::-webkit-scrollbar {
+    display: none;
+  }
+  @media (max-width: 767px) {
     display: none;
   }
 `;

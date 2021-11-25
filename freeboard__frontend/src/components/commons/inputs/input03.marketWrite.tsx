@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 const Input03 = styled.input`
-  width: 996px;
+  width: 850px;
   height: 60px;
   border-radius: 5px;
   padding-left: 15px;
@@ -10,6 +10,9 @@ const Input03 = styled.input`
   outline-color: #512771;
   ::placeholder {
     color: #bdbdbd;
+  }
+  @media (max-width: 767px) {
+    width: 300px;
   }
 `;
 const ErrorMessage = styled.div`

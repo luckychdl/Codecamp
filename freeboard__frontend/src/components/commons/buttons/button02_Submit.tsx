@@ -6,6 +6,11 @@ const Button02 = styled.button`
   color: white;
   cursor: pointer;
   border: none;
+  @media (max-width: 767px) {
+    width: 60px;
+    height: 35px;
+    font-size: 12px;
+  }
 `;
 
 const SubmitButton02 = (props: any) => {

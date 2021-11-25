@@ -7,6 +7,10 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 64px;
   background-color: #512771;
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 40px;
+  }
 `;
 export const FreeBoard = styled.div`
   font-size: 18px;
@@ -21,6 +25,10 @@ export const FreeBoard = styled.div`
   :active {
     position: relative;
     top: 4px;
+  }
+  @media (max-width: 767px) {
+    font-size: 10px;
+    margin: 0 10px;
   }
 `;
 export const Market = styled.div`
@@ -37,6 +45,10 @@ export const Market = styled.div`
     position: relative;
     top: 4px;
   }
+  @media (max-width: 767px) {
+    font-size: 10px;
+    margin: 0 10px;
+  }
 `;
 export const MyPage = styled.div`
   margin: 0 40px;
@@ -52,10 +64,15 @@ export const MyPage = styled.div`
     position: relative;
     top: 4px;
   }
+  @media (max-width: 767px) {
+    font-size: 10px;
+    margin: 0 10px;
+  }
 `;
 export const Line = styled.div`
-  border: 1px solid #ffffff;
-  height: 20px;
+  color: #ffffff;
+  /* border: 1px solid #ffffff;
+  height: 20px; */
 `;
 export const Gallery = styled.div`
   margin: 0 40px;
@@ -70,5 +87,9 @@ export const Gallery = styled.div`
   :active {
     position: relative;
     top: 4px;
+  }
+  @media (max-width: 767px) {
+    font-size: 10px;
+    margin: 0 10px;
   }
 `;

@@ -19,6 +19,9 @@ export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const Name = styled.div`
   width: 500px;
@@ -26,6 +29,9 @@ export const Name = styled.div`
   font-weight: 500;
   font-size: 20px;
   margin-bottom: 20px;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const Contents = styled.div`
   font-size: 16px;
@@ -35,6 +41,9 @@ export const Contents = styled.div`
   word-break: normal;
   white-space: nowrap;
   color: #757575;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const CreatedAt = styled.div`
   margin-bottom: 10px;
@@ -44,6 +53,9 @@ export const SubWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   /* height: 80px; */
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const NameWrapper = styled.div``;
 export const Icon = styled.img`
