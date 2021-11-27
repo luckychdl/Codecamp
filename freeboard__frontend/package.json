@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build:ssg": "next build && next export",
+    "build-test": "next build && next start",
     "build:ssr": "next build",
     "start": "next start",
     "lint": "next lint"
