@@ -33,13 +33,13 @@ const MarketDetailPage = (props: any) => {
 
 export default MarketDetailPage;
 
-export const getServerSideProps = async (context: any) => {
-  const result = await request(
-    "https://backend02.codebootcamp.co.kr/graphql07",
-    FETCH_USEDITEM,
-    {
-      useditemId: context.query.useditemId,
-    }
-  );
-  return { props: { fetchUseditem: result.fetchUseditem } };
-};
+// export const getServerSideProps = async (context: any) => {
+//   const result = await request(
+//     "https://backend02.codebootcamp.co.kr/graphql07",
+//     FETCH_USEDITEM,
+//     {
+//       useditemId: context.query.useditemId,
+//     }
+//   );
+//   return { props: { fetchUseditem: result.fetchUseditem } };
+// };
